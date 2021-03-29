@@ -1,5 +1,4 @@
 const JWT = require('jsonwebtoken')
-const sendEmail = require('../utils/sendEmail');
 const User = require('../models/user');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
@@ -22,9 +21,7 @@ exports.register = asyncHandler(async (req, res, next) => {
     res.status(201).json({ success: true, data: user });
 });
 
-// @description Login user
-// @route GET /api/auth/login
-// @access Public
+
 exports.login = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -50,9 +47,7 @@ exports.login = asyncHandler(async (req, res, next) => {
     sendTokenResponse(user, 200, res);
 });
 
-// @description get current logged user
-// @route GET /api/auth/me
-// @access Private
+
 exports.getMe = asyncHandler(async (req, res, next) => {
 
 try{
@@ -66,7 +61,6 @@ try{
 });
 
 
-// Get token from model , create cookie and send response
 const sendTokenResponse = (user, statusCode, res) => {
     // Create token
     const token = user.getSignedJWT();
