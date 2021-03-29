@@ -47,7 +47,7 @@ app.use('/users' , require('./routes/users'));
 
 
 // Port
-const PORT = 5000
+const PORT = 2000
 app.listen(PORT, ()=> {
     console.log(`Server run ${PORT}`);
 })
