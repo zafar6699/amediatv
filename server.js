@@ -19,7 +19,7 @@ app.use('/api', require('./routes/profile'))
 app.use('/api', require('./routes/videos'))
 
 // Port
-const PORT = 5000
+const PORT = 2000
 app.listen(PORT, ()=> {
     console.log(`Server run ${PORT}`);
 })
