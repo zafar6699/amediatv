@@ -22,6 +22,29 @@
 
 <body>
 
+    <div class="modal fade my-modal" id="alertModal" tabindex="-1"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center pt-2 pb-2">
+                        <svg class="mdi-icon " width="72" height="72" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"></path>
+                        </svg>
+                    </div>
+                    <p style="text-align: center;">Siz muvaffaqiyatli ro'yxatdan o'tdingiz</p>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
+                    data-mdb-target="#exampleModal" class="btn btn-primary">Kirish</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -36,15 +59,15 @@
                 <div class="modal-body">
                     <div class="form-auth">
                         <h4>Email</h4>
-                        <input type="email" placeholder="Emailni kiriting...">
+                        <input type="email" id="email-login" placeholder="Emailni kiriting...">
                     </div>
                     <div class="form-auth">
                         <h4>Parol</h4>
-                        <input type="password" placeholder="Parolni kiriting...">
+                        <input type="password" id="password-login" placeholder="Parolni kiriting...">
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary">Kirish</button>
+                    <button type="button" class="btn btn-primary" onclick="loginUser()">Kirish</button>
                 </div>
                 <div class="modal-bottom">
                     <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
@@ -58,42 +81,42 @@
 
     <div class="modal fade" id="exampleModal-register" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog my-modal">
+        <div class="modal-dialog my-modal modal-register-post">
             <div class="modal-content">
-            <form action="/api/users/" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ro'yxatdan o'tish</h5>
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <!-- <form action="/auth/register" method="POST"> -->
                 <div class="modal-body">
-
                     <div class="form-auth">
                         <h4>Foydalanuvchi nomi</h4>
-                        <input type="text" name="name" placeholder="Ismingizni kiriting...">
+                        <input type="text" name="name" id="name" placeholder="Ismingizni kiriting...">
                     </div>
                     <div class="form-auth">
                         <h4>Email</h4>
-                        <input type="email" name="email" placeholder="Emailni kiriting...">
+                        <input type="email" name="email" id="email" placeholder="Emailni kiriting...">
                     </div>
                     <div class="form-auth">
                         <h4>Parol</h4>
-                        <input type="password" name="password" placeholder="Parolni kiriting...">
+                        <input type="password" name="password" id="password" placeholder="Parolni kiriting...">
                     </div>
                     <div class="form-auth">
                         <h4>Parolni tasdiqlash</h4>
-                        <input type="password" name="uid" placeholder="Parolni qaytaring...">
+                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Parolni qaytaring...">
+                        <h6>Parolni tasdiqlang</h6>
                     </div>
 
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Ro'yxatdan o'tish</button>
+                    <button type="button" class="btn btn-primary" onclick="addUser()">Ro'yxatdan o'tish</button>
                 </div>
                 <div class="modal-bottom">
                     <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
                         data-mdb-target="#exampleModal">Kirish</h5>
                     <a href="#">Parolni tiklash</a>
                 </div>
-            </form>
+                <!-- </form> -->
             </div>
         </div>
     </div>
@@ -329,6 +352,7 @@
 
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/4.0.9/jquery.inputmask.bundle.min.js"
             integrity="sha512-VpQwrlvKqJHKtIvpL8Zv6819FkTJyE1DoVNH0L2RLn8hUPjRjkS/bCYurZs0DX9Ybwu9oHRHdBZR9fESaq8Z8A=="
             crossorigin="anonymous"></script>
@@ -343,15 +367,80 @@
         <script src="/js/main.js"></script>
 
 
-        
-
-
 
         <script>
             var selector = $(".input-mask");
 
             var im = new Inputmask("+\\9\\98\\99-999-99-99");
             im.mask(selector);
+
+            
+            function addUser(){
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+                let password = document.getElementById("password").value;
+                let confirm_password = document.getElementById("confirm_password").value;
+                if(password == confirm_password){
+                    axios({
+                        url: "/auth/register",
+                        method: "POST",
+                        data: {
+                            name: name,
+                            email: email,
+                            password: password
+                        }
+                    })
+                    .then(res => {
+                        console.log(res);
+
+                        $("#exampleModal-register .btn-close").click()
+
+              
+
+                        const myModalEl = document.getElementById('alertModal')
+                        const modal = new mdb.Modal(myModalEl)
+                        modal.show()
+
+                        
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+                }
+                else{
+                    $("div.form-auth h6").addClass("__active")
+                }
+            }
+
+            function loginUser(){
+                let email = document.getElementById("email-login").value;
+                let password = document.getElementById("password-login").value;
+          
+                    axios({
+                        url: "/auth/login",
+                        method: "POST",
+                        data: {
+                            email: email,
+                            password: password
+                        }
+                    })
+                    .then(res => {
+                        console.log(res);
+
+                        localStorage.setItem('token', res.data.token);
+                        
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+        
+            }
+
+            const num = [1, 2, 22, 88, 74, 86];
+
+            
 
         </script>
 </body>

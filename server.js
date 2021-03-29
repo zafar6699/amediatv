@@ -1,5 +1,6 @@
 const express = require("express")
 const dotenv = require('dotenv');
+
 // const path = require('path').join(__dirname, '/public')
 const path = require("path");
 const layout = require('express-ejs-layouts')
@@ -17,7 +18,6 @@ connectDB();
 
 
 const app = express()
-
 
 
 app.use(cookieParser());

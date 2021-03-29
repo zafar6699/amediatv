@@ -50,14 +50,14 @@ exports.login = asyncHandler(async (req, res, next) => {
 
 exports.getMe = asyncHandler(async (req, res, next) => {
 
-try{
-    const token = req.headers.authorization
-    const my = JWT.decode(token.slice(7, token.length))
-    const user = await User.findOne({ _id: my.id })
-    res.status(200).json({ success: true, data: user });
-} catch (e){
-    console.log(e)
-}
+    try{
+        const token = req.headers.authorization
+        const my = JWT.decode(token.slice(7, token.length))
+        const user = await User.findOne({ _id: my.id })
+        res.status(200).json({ success: true, data: user });
+    } catch (e){
+        console.log(e)
+    }
 });
 
 
