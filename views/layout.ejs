@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= title %> </title>
+    <link rel="stylesheet" href="/style/style.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
+</head>
+<body>
+
+   
+    
+    
+    <div
+
+    class="modal fade my-modal"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Kirish</h5>
+            <button
+            type="button"
+            class="btn-close"
+            data-mdb-dismiss="modal"
+            aria-label="Close"
+            ></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-auth">
+                <h4>Email</h4>
+                <input type="email" placeholder="Emailni kiriting...">
+            </div>
+            <div class="form-auth">
+                <h4>Parol</h4>
+                <input type="password" placeholder="Parolni kiriting...">
+            </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-primary">Kirish</button>
+        </div>
+        <div class="modal-bottom">
+            <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal" data-mdb-target="#exampleModal-register">Ro'yxatdan o'tish</h5>
+            <a href="#">Parolni tiklash</a>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div
+    class="modal fade"
+    id="exampleModal-register"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    >
+    <div class="modal-dialog my-modal">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ro'yxatdan o'tish</h5>
+            <button
+            type="button"
+            class="btn-close"
+            data-mdb-dismiss="modal"
+            aria-label="Close"
+            ></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-auth">
+                <h4>Foydalanuvchi nomi</h4>
+                <input type="text" placeholder="Ismingizni kiriting...">
+            </div>
+            <div class="form-auth">
+                <h4>Email</h4>
+                <input type="email" placeholder="Emailni kiriting...">
+            </div>
+            <div class="form-auth">
+                <h4>Parol</h4>
+                <input type="password" placeholder="Parolni kiriting...">
+            </div>
+            <div class="form-auth">
+                <h4>Parolni tasdiqlash</h4>
+                <input type="password" placeholder="Parolni qaytaring...">
+            </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-primary">Ro'yxatdan o'tish</button>
+        </div>
+        <div class="modal-bottom">
+            <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Kirish</h5>
+            <a href="#">Parolni tiklash</a>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    
+
+    <div class="header-back"></div>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <h1>AniBla.uz</h1>
+                    <h2>
+                        <span>Birinchi</span>
+                        <span class="__bold">UZ</span>
+                        <span>fandab</span>
+                    </h2>
+                </div>
+
+                <ul class="menu-nav">
+                    <div class="close__nav"><i class="fa fa-times header_close"></i></div>
+                    <li class="dropdown-li">
+                        <a href="#">Janrlar <span><i class="fa fa-angle-down"></i></span></a>
+                        <div class="dropdown-content">
+                            <div class="container">
+                                <ul>
+                                    <li><a href="#">Vampirlar</a></li>
+                                    <li><a href="#">Harbiy</a></li>
+                                    <li><a href="#">Garem</a></li>
+                                    <li><a href="#">Iblislar</a></li>
+                                    <li><a href="#">Detektiv</a></li>
+                                    <li><a href="#">Yoshlarniki</a></li>
+                                    <li><a href="#">Drama</a></li>
+                                    <li><a href="#">O'yinlar</a></li>
+                                    <li><a href="#">Tarixiy</a></li>
+                                    <li><a href="#">Komediya</a></li>
+                                    <li><a href="#">Kosmik</a></li>
+                                    <li><a href="#">Sehir</a></li>
+                                    <li><a href="#">Mexa</a></li>
+                                    <li><a href="#">Musiqiy</a></li>
+                                    <li><a href="#">Kundalik hayot</a></li>
+                                    <li><a href="#">Sarguzasht</a></li>
+                                    <li><a href="#">Psixologiya</a></li>
+                                    <li><a href="#">Romantika</a></li>
+                                    <li><a href="#">Samuray</a></li>
+                                    <li><a href="#">G'ayrioddiy</a></li>
+                                    <li><a href="#">Syo'dze</a></li>
+                                    <li><a href="#">Syo'nen</a></li>
+                                    <li><a href="#">Triller</a></li>
+                                    <li><a href="#">Qo'rqinchlik</a></li>
+                                    <li><a href="#">Fantastika</a></li>
+                                    <li><a href="#">Fentezi</a></li>
+                                    <li><a href="#">Maktab</a></li>
+                                    <li><a href="#">Etti</a></li>
+                                    <li><a href="#">Sport</a></li>
+                                    <li><a href="#">Ekshen</a></li>
+                                    <li><a href="#">Super kuch</a></li>
+                                    <li><a href="#">Jang san`ati</a></li>
+                                    <li><a href="#">Melodrama</a></li>
+                                    <li><a href="#">Jangari</a></li>
+                                    <li><a href="#">O'zga dunyo</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown-li">
+                        <a href="#">Yillar <span><i class="fa fa-angle-down"></i></span></a>
+                        <div class="dropdown-content">
+                           <div class="container">
+                               <ul>
+                                   <li><a href="#">2020</a></li>
+                                   <li><a href="#">2019</a></li>
+                                   <li><a href="#">2018</a></li>
+                                   <li><a href="#">2017</a></li>
+                                   <li><a href="#">2016</a></li>
+                                   <li><a href="#">2015</a></li>
+                                   <li><a href="#">2014</a></li>
+                                   <li><a href="#">2013</a></li>
+                                   <li><a href="#">2012</a></li>
+                                   <li><a href="#">2011</a></li>
+                                   <li><a href="#">2010</a></li>
+                                   <li><a href="#">2009</a></li>
+                                   <li><a href="#">2008</a></li>
+                                   <li><a href="#">2007</a></li>
+                                   <li><a href="#">2006</a></li>
+                                   <li><a href="#">2005</a></li>
+                                   <li><a href="#">2004</a></li>
+                                   <li><a href="#">2003</a></li>
+                                   <li><a href="#">2002</a></li>
+                                   <li><a href="#">2001</a></li>
+                                   <li><a href="#">2000</a></li>
+                                   <li><a href="#">1999</a></li>
+                                   <li><a href="#">1998</a></li>
+                                   <li><a href="#">1997</a></li>
+                                   <li><a href="#">1996</a></li>
+                                   <li><a href="#">1995</a></li>
+                                   <li><a href="#">1994</a></li>
+                                   <li><a href="#">1993</a></li>
+                                   <li><a href="#">1992</a></li>
+                                   <li><a href="#">1991</a></li>
+                                   <li><a href="#">1990</a></li>
+                                   <li><a href="#">1989</a></li>
+                               </ul>
+                           </div>
+                        </div>
+                    </li>
+                </ul>
+
+                
+
+                <div class="header-right">
+                    
+                    <div class="header-search">
+                        <input type="search" placeholder="Saytdan izlash...">
+                        <button>
+                            <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="header-language">
+                        <a class="__select" href="#">UZ</a>
+                        <a href="#">RU</a>
+                    </div>
+
+                    <!-- loggedIn ----------------------------------------->
+
+                    <!-- <a href="#">
+                        <div class="header-profile-events">
+                            <span class="header-profile__icon">
+                                <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"></path>
+                                </svg>
+                            </span>
+                            <h4>Zafar</h4>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="header-profile-events">
+                            <span class="header-profile__icon">
+                                <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z"></path>
+                                </svg>
+                            </span>
+                            <h4>Chiqish</h4>
+                        </div>
+                    </a> -->
+
+                    <!-- Not loggenIn ------------------------------------------->
+
+                    <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+                        <div class="header-profile-events">
+                            <span class="header-profile__icon">
+                                <svg height="20" viewBox="0 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m218.667969 240h-202.667969c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h202.667969c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" fill="currentColor"></path><path d="m138.667969 320c-4.097657 0-8.191407-1.558594-11.308594-4.691406-6.25-6.253906-6.25-16.386719 0-22.636719l68.695313-68.691406-68.695313-68.671875c-6.25-6.253906-6.25-16.386719 0-22.636719s16.382813-6.25 22.636719 0l80 80c6.25 6.25 6.25 16.382813 0 22.636719l-80 80c-3.136719 3.132812-7.234375 4.691406-11.328125 4.691406zm0 0" fill="currentColor"></path><path d="m341.332031 512c-23.53125 0-42.664062-19.136719-42.664062-42.667969v-384c0-18.238281 11.605469-34.515625 28.882812-40.511719l128.171875-42.730468c28.671875-8.789063 56.277344 12.480468 56.277344 40.578125v384c0 18.21875-11.605469 34.472656-28.863281 40.488281l-128.214844 42.753906c-4.671875 1.449219-9 2.089844-13.589844 2.089844zm128-480c-1.386719 0-2.558593.171875-3.816406.554688l-127.636719 42.558593c-4.183594 1.453125-7.210937 5.675781-7.210937 10.21875v384c0 7.277344 7.890625 12.183594 14.484375 10.113281l127.636718-42.558593c4.160157-1.453125 7.210938-5.675781 7.210938-10.21875v-384c0-5.867188-4.777344-10.667969-10.667969-10.667969zm0 0" fill="currentColor"></path><path d="m186.667969 106.667969c-8.832031 0-16-7.167969-16-16v-32c0-32.363281 26.300781-58.667969 58.664062-58.667969h240c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16h-240c-14.699219 0-26.664062 11.96875-26.664062 26.667969v32c0 8.832031-7.167969 16-16 16zm0 0" fill="currentColor"></path><path d="m314.667969 448h-85.335938c-32.363281 0-58.664062-26.304688-58.664062-58.667969v-32c0-8.832031 7.167969-16 16-16s16 7.167969 16 16v32c0 14.699219 11.964843 26.667969 26.664062 26.667969h85.335938c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" fill="currentColor"></path>
+                                </svg>
+                            </span>
+                            <h4>Kirish</h4>
+                        </div>
+                    </button>
+                    <button data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal" data-mdb-target="#exampleModal-register">
+                        <div class="header-profile-events">
+                            <span class="header-profile__icon">
+                                <svg id="bold" enable-background="new 0 0 24 24" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="m12.25 2h-1.1c-.33-1.15-1.39-2-2.65-2s-2.32.85-2.65 2h-1.1c-.41 0-.75.34-.75.75v1.5c0 .96.79 1.75 1.75 1.75h5.5c.96 0 1.75-.79 1.75-1.75v-1.5c0-.41-.34-.75-.75-.75z" fill="currentColor"></path><path d="m14.25 3h-.25v1.25c0 1.52-1.23 2.75-2.75 2.75h-5.5c-1.52 0-2.75-1.23-2.75-2.75v-1.25h-.25c-1.52 0-2.75 1.23-2.75 2.75v12.5c0 1.52 1.23 2.75 2.75 2.75h7.38l.22-1.23c.1-.56.36-1.06.76-1.47l.8-.8h-8.16c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.05 0 .09 0 .14.02h.01l3.6-3.6v-6.67c0-1.52-1.23-2.75-2.75-2.75zm-1 11.25h-9.5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.41 0 .75.34.75.75s-.34.75-.75.75zm0-3.25h-9.5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.41 0 .75.34.75.75s-.34.75-.75.75z" fill="currentColor"></path><path d="m12.527 24c-.197 0-.389-.078-.53-.22-.173-.173-.251-.419-.208-.661l.53-3.005c.026-.151.1-.291.208-.4l7.425-7.424c.912-.914 1.808-.667 2.298-.177l1.237 1.237c.683.682.683 1.792 0 2.475l-7.425 7.425c-.108.109-.248.182-.4.208l-3.005.53c-.043.008-.087.012-.13.012zm3.005-1.28h.01z" fill="currentColor"></path>
+                                </svg>
+                            </span>
+                            <h4>Ro'yxatdan o'tish</h4>
+                        </div>
+                    </button>
+
+                    <span class="header-bars">
+                        <i class="fa fa-bars"></i>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <%- body %>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Manzilimiz</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. hitecto no</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Ijtiomoiy tarmoqlarda</h2>
+                    <ul>
+                        <li><a href="#"><img src="/img/tg.png" alt=""></a></li>
+                        <li><a href="#"><img src="/img/insta.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h2>Kontaktlar</h2>
+                    <h5>+998 (90) 116-66-99</h5>
+                    <h5>+998 (90) 116-66-99</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/4.0.9/jquery.inputmask.bundle.min.js" integrity="sha512-VpQwrlvKqJHKtIvpL8Zv6819FkTJyE1DoVNH0L2RLn8hUPjRjkS/bCYurZs0DX9Ybwu9oHRHdBZR9fESaq8Z8A==" crossorigin="anonymous"></script>
+
+    <!-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+
+    <script>
+        var selector = $(".input-mask");
+    
+        var im = new Inputmask("+\\9\\98\\99-999-99-99");
+        im.mask(selector);
+        
+    </script>
+</body>
+</html>
