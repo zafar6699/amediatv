@@ -3,11 +3,7 @@ const Janr = require("../models/janr")
 
 exports.Home = async (req, res) => {
     const janr = await Janr.find();
-
-    res.render("./main/index", {
-        janr: janr,
-        title: "Home"
-    })
+    res.render("./main/index", {title: "Home", layout: 'layout', janr})
 }
 
 exports.Janrs = async (req, res) => {

@@ -1,23 +1,45 @@
 const express = require("express")
 const dotenv = require('dotenv');
-
-// const path = require('path').join(__dirname, '/public')
 const path = require("path");
 const layout = require('express-ejs-layouts')
 const morgan = require('morgan');
 const cors = require('cors');
-
 const cookieParser = require('cookie-parser');
-const connectDB = require('./config/db');
-const errorHandler = require('./middlewares/error');
-// Load env vars
-dotenv.config({path : './config/config.env'})
-
-// Connect DB
-connectDB();
-
-
+const session = require('express-session')
+const mongoose = require('mongoose');
+const MongoDBSession = require('connect-mongodb-session')(session)
 const app = express()
+
+
+
+const MongoURI = "mongodb://localhost:27017/amedia_test"
+mongoose
+  .connect(MongoURI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  })
+  .then((res) => {
+    console.log('MongoDB Connected');
+  })
+ 
+const store = new MongoDBSession({
+  uri: MongoURI,
+  collection: "MYSession"
+})
+app.use(session({
+    secret: 'my_secret_key_124536798',
+    saveUninitialized: false,
+    store: store,
+    resave: false,
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24, // sessiya muddati 1 kun
+      sameSite: 'strict'
+    }
+  }));
+
 
 
 app.use(cookieParser());
