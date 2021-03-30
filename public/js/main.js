@@ -1,30 +1,4 @@
 
-// $(".reg-button-click").click(function(){
-// 	let name = $(".modal-register-post .modal-body input[name='name']").val()
-// 	let email = $(".modal-register-post .modal-body input[name='email']").val()
-// 	let password = $(".modal-register-post .modal-body input[name='password']").val()
-// 	let con_password = $(".modal-register-post .modal-body input[name='uid']").val()
-// 	console.log(name, email);
-
-// 	let user = {
-// 		name: name,
-// 		email: email,
-// 		password: password,
-// 		uid: 123
-// 	}
-
-// 	axios.post({
-// 		url: "http://amediatv.uz/auth/register",
-// 		method: "POST",
-// 		data: user
-// 	})
-// 	.then(response => {
-// 		console.log(response)
-// 	})
-// 	.catch(err => {
-// 		console.log(err)
-// 	})
-// });
 
 
 $(document).ready(function(){

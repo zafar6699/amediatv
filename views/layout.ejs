@@ -109,7 +109,7 @@
 
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary" onclick="addUser()">Ro'yxatdan o'tish</button>
+                    <button type="button" class="btn btn-primary" id="registerClick" onclick="addUser()">Ro'yxatdan o'tish</button>
                 </div>
                 <div class="modal-bottom">
                     <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
@@ -380,6 +380,7 @@
 
             
             function addUser(){
+                alert("o")
                 let name = document.getElementById("name").value;
                 let email = document.getElementById("email").value;
                 let password = document.getElementById("password").value;
@@ -417,6 +418,8 @@
                 }
             }
 
+            // document.getElementById("registerClick").addEventListener("click", addUser())
+
             function loginUser(){
                 let email = document.getElementById("email-login").value;
                 let password = document.getElementById("password-login").value;
@@ -442,13 +445,7 @@
         
             }
 
-            const num = [1, 2, 22, 88];
-
-            num.in = "pro";
-
-            for((index, item) in num){
-                console.log(index, item)
-            }
+       
 
         </script>
 </body>
