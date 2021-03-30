@@ -19,9 +19,6 @@ const janrSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-
-
-
     status:{
         type: Boolean, default: true
     }

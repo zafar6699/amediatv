@@ -143,8 +143,11 @@
                         <div class="dropdown-content">
                             <div class="container">
                                 <ul>
-                                    <li><a href="#">Vampirlar</a></li>
-                                    <li><a href="#">Harbiy</a></li>
+                                    <% janr.forEach(item => { %>
+
+                                    
+                                    <li><a href="#"><%- item.nameuz %></a></li>
+                                    <!-- <li><a href="#">Harbiy</a></li>
                                     <li><a href="#">Garem</a></li>
                                     <li><a href="#">Iblislar</a></li>
                                     <li><a href="#">Detektiv</a></li>
@@ -177,7 +180,8 @@
                                     <li><a href="#">Jang san`ati</a></li>
                                     <li><a href="#">Melodrama</a></li>
                                     <li><a href="#">Jangari</a></li>
-                                    <li><a href="#">O'zga dunyo</a></li>
+                                    <li><a href="#">O'zga dunyo</a></li> -->
+                                    <% }) %> 
                                 </ul>
                             </div>
                         </div>
@@ -438,9 +442,13 @@
         
             }
 
-            const num = [1, 2, 22, 88, 74, 86];
+            const num = [1, 2, 22, 88];
 
-            
+            num.in = "pro";
+
+            for((index, item) in num){
+                console.log(index, item)
+            }
 
         </script>
 </body>

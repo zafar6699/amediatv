@@ -37,8 +37,8 @@ app.use( express.json() )
 
 // Routes EJS
 app.use('/', require('./routes/index'))
-app.use('/api', require('./routes/profile'))
-app.use('/api', require('./routes/videos'))
+app.use('/', require('./routes/profile'))
+app.use('/', require('./routes/videos'))
 
 
 //  Router Backend
