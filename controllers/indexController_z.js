@@ -6,6 +6,9 @@ exports.Home = async (req, res) => {
     res.render("./main/index", {title: "Home", layout: 'layout', janr})
 }
 
+exports.OneJanr = async (req, res) => {
+    res.render("./main/onejanr", {title: "Home"})
+}
 exports.Janrs = async (req, res) => {
     const result = new Janr(req.body);
     await result.save()
