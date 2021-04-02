@@ -49,17 +49,17 @@
 
 
 
+    <form action="/auth/login" method="POST">
+        <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Kirish</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-    <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Kirish</h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
 
-                <form action="/auth/signin" method="POST">
                     <div class="modal-body">
                         <div class="form-auth">
                             <h4>Email</h4>
@@ -70,71 +70,71 @@
                             <div class="password-eye">
                                 <input type="password" id="password-login" name="password"
                                     placeholder="Parolni kiriting...">
-                                <button type="button"><i class="fa fa-eye"></i><i
-                                        class="fa fa-eye-slash none-eye"></i></button>
+                                <!-- <button type="button"><i class="fa fa-eye"></i><i
+                                        class="fa fa-eye-slash none-eye"></i></button> -->
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary">Kirish</button>
                     </div>
-                </form>
 
 
-                <div class="modal-bottom">
-                    <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
-                        data-mdb-target="#exampleModal-register">Ro'yxatdan o'tish</h5>
-                    <a href="#">Parolni tiklash</a>
+                    <div class="modal-bottom">
+                        <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
+                            data-mdb-target="#exampleModal-register">Ro'yxatdan o'tish</h5>
+                        <a href="#">Parolni tiklash</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 
-
-
-    <div class="modal fade" id="exampleModal-register" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog my-modal modal-register-post">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ro'yxatdan o'tish</h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- <form action="/auth/register" method="POST"> -->
-                <div class="modal-body">
-                    <div class="form-auth">
-                        <h4>Foydalanuvchi nomi</h4>
-                        <input type="text" name="name" id="name" placeholder="Ismingizni kiriting...">
+    <form action="/auth/register" method="POST">
+        <div class="modal fade" id="exampleModal-register" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog my-modal modal-register-post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ro'yxatdan o'tish</h5>
+                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="form-auth">
-                        <h4>Email</h4>
-                        <input type="email" name="email" id="email" placeholder="Emailni kiriting...">
+
+                    <div class="modal-body">
+                        <div class="form-auth">
+                            <h4>Foydalanuvchi nomi</h4>
+                            <input type="text" name="name" id="name" placeholder="Ismingizni kiriting...">
+                        </div>
+                        <div class="form-auth">
+                            <h4>Email</h4>
+                            <input type="email" name="email" id="email" placeholder="Emailni kiriting...">
+                        </div>
+                        <div class="form-auth">
+                            <h4>Parol</h4>
+                            <input type="password" name="password" id="password" placeholder="Parolni kiriting...">
+                        </div>
+                        <div class="form-auth">
+                            <h4>Parolni tasdiqlash</h4>
+                            <input type="password" name="confirm_password" id="confirm_password"
+                                placeholder="Parolni qaytaring...">
+                            <h6>Parolni tasdiqlang</h6>
+                        </div>
+
                     </div>
-                    <div class="form-auth">
-                        <h4>Parol</h4>
-                        <input type="password" name="password" id="password" placeholder="Parolni kiriting...">
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="button" class="btn btn-primary" id="registerClick" onclick="addUser()">Ro'yxatdan
+                            o'tish</button>
                     </div>
-                    <!-- <div class="form-auth">
-                        <h4>Parolni tasdiqlash</h4>
-                        <input type="password" name="confirm_password" id="confirm_password"
-                            placeholder="Parolni qaytaring...">
-                        <h6>Parolni tasdiqlang</h6>
-                    </div> -->
+                    <div class="modal-bottom">
+                        <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
+                            data-mdb-target="#exampleModal">Kirish</h5>
+                        <a href="#">Parolni tiklash</a>
+                    </div>
 
                 </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary" id="registerClick" onclick="addUser()">Ro'yxatdan
-                        o'tish</button>
-                </div>
-                <div class="modal-bottom">
-                    <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
-                        data-mdb-target="#exampleModal">Kirish</h5>
-                    <a href="#">Parolni tiklash</a>
-                </div>
-                <!-- </form> -->
             </div>
         </div>
-    </div>
+    </form>
 
 
 
@@ -399,59 +399,39 @@
                 let name = document.getElementById("name").value;
                 let email = document.getElementById("email").value;
                 let password = document.getElementById("password").value;
-
                 let confirm_password = document.getElementById("confirm_password").value;
+                if (password == confirm_password) {
+                    axios({
+                        url: "/auth/register",
+                        method: "POST",
+                        data: {
+                            name: name,
+                            email: email,
+                            password: password
+                        }
+                    })
+                        .then(res => {
+                            console.log(res);
 
-                axios({
-                    url: "/auth/register",
-                    method: "POST",
-                    data: {
-                        name: name,
-                        email: email,
-                        password: password
-                    }
-                })
-                .then((res) => {
-                    console.log(res)
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-
-                // if (password == confirm_password) {
-                //     axios({
-                //         url: "/auth/register",
-                //         method: "POST",
-                //         data: {
-                //             name: name,
-                //             email: email,
-                //             password: password
-                //         }
-                //     })
-                //         .then(res => {
-                //             console.log(res);
-
-                //             $("#exampleModal-register .btn-close").click()
+                            $("#exampleModal-register .btn-close").click()
 
 
 
-                //             const myModalEl = document.getElementById('alertModal')
-                //             const modal = new mdb.Modal(myModalEl)
-                //             modal.show()
+                            const myModalEl = document.getElementById('alertModal')
+                            const modal = new mdb.Modal(myModalEl)
+                            modal.show()
 
 
 
-                //         })
-                //         .catch(err => {
-                //             console.log(err);
-                //         })
-                // }
-                // else {
-                //     $("div.form-auth h6").addClass("__active")
-                // }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                }
+                else {
+                    $("div.form-auth h6").addClass("__active")
+                }
             }
-
-
 
 
         </script>

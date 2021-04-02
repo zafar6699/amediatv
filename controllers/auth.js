@@ -12,10 +12,12 @@ exports.register = async (req, res, next) => {
     })
     await user.save()
         .then(() => {
-            res.status(201).json({ success: true, data: user });
+            // res.status(201).json({ success: true, data: user });
+            res.redirect('/')
         })
         .catch((error) => {
-            res.status(400).json({ success: false, data: error });
+            // res.status(400).json({ success: false, data: error });
+            res.status(400).json({ success: false, data: 'Formani toldiring' });
         })
 
 }
