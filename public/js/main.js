@@ -107,6 +107,18 @@ $(document).ready(function(){
        $(".file-upload").click();
     });
 
+
+	$("div.password-eye button").click(function(){
+
+		let x = $(this).parent().find("input")
+		if (x.attr("type") === "password") {
+		  	x.attr("type", "text");
+		} else {
+			x.attr("type", "password");
+
+		}
+		$(this).find("i").toggleClass("none-eye")
+	})
 	   
 
 

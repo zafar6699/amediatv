@@ -1,6 +1,4 @@
-const JWT = require('jsonwebtoken')
 const User = require('../models/user');
-const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 
 exports.register = asyncHandler(async (req, res, next) => {
@@ -16,8 +14,7 @@ exports.register = asyncHandler(async (req, res, next) => {
     res.status(201).json({ success: true, data: user });
 });
 
-
-exports.login = asyncHandler(async (req, res, next) => {
+exports.login = async (req, res, next) => {
     const { email, password } = req.body;
     // Validate email & password
     if (!email || !password) {
@@ -30,15 +27,12 @@ exports.login = asyncHandler(async (req, res, next) => {
     if (!user) {
         return next(new ErrorResponse('Invalid credentials ', 401));
     }
-
-    //check if password matches
-    const isMatch = await user.matchPassword(password);
-
-    if (!isMatch) {
-        return next(new ErrorResponse('Invalid credentials ', 401));
+    const users = await User.findOne({ email: email }).select('password');
+    if (!users) {
+      res.render('./404', {title: '404', layout: 'layout'})
     }
 
-    sendTokenResponse(user, 200, res);
+    res.redirect('/')
 });
 
 

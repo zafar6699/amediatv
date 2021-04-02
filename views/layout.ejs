@@ -48,7 +48,8 @@
 
 
 
-    <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <form action="/auth/login" method="POST">
+        <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -59,15 +60,18 @@
                 <div class="modal-body">
                     <div class="form-auth">
                         <h4>Email</h4>
-                        <input type="email" id="email-login" placeholder="Emailni kiriting...">
+                        <input type="email" id="email-login" name="email" placeholder="Emailni kiriting...">
                     </div>
                     <div class="form-auth">
                         <h4>Parol</h4>
-                        <input type="password" id="password-login" placeholder="Parolni kiriting...">
+                        <div class="password-eye">
+                            <input type="password" id="password-login" name="password" placeholder="Parolni kiriting...">
+                            <button type="button"><i class="fa fa-eye"></i><i class="fa fa-eye-slash none-eye"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary" onclick="loginUser()">Kirish</button>
+                    <button type="submit" class="btn btn-primary">Kirish</button>
                 </div>
                 <div class="modal-bottom">
                     <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
@@ -77,6 +81,7 @@
             </div>
         </div>
     </div>
+</form>
 
 
     <div class="modal fade" id="exampleModal-register" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -143,11 +148,9 @@
                         <div class="dropdown-content">
                             <div class="container">
                                 <ul>
-                                    <% janr.forEach(item => { %>
 
                                     
-                                    <li><a href="#"><%- item.nameuz %></a></li>
-                                    <!-- <li><a href="#">Harbiy</a></li>
+                                    <li><a href="#">Harbiy</a></li>
                                     <li><a href="#">Garem</a></li>
                                     <li><a href="#">Iblislar</a></li>
                                     <li><a href="#">Detektiv</a></li>
@@ -180,8 +183,7 @@
                                     <li><a href="#">Jang san`ati</a></li>
                                     <li><a href="#">Melodrama</a></li>
                                     <li><a href="#">Jangari</a></li>
-                                    <li><a href="#">O'zga dunyo</a></li> -->
-                                    <% }) %> 
+                                    <li><a href="#">O'zga dunyo</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -419,30 +421,30 @@
 
             // document.getElementById("registerClick").addEventListener("click", addUser())
 
-            function loginUser(){
-                let email = document.getElementById("email-login").value;
-                let password = document.getElementById("password-login").value;
+            // function loginUser(){
+            //     let email = document.getElementById("email-login").value;
+            //     let password = document.getElementById("password-login").value;
           
-                    axios({
-                        url: "/auth/login",
-                        method: "POST",
-                        data: {
-                            email: email,
-                            password: password
-                        }
-                    })
-                    .then(res => {
-                        console.log(res);
+            //         axios({
+            //             url: "/auth/login",
+            //             method: "POST",
+            //             data: {
+            //                 email: email,
+            //                 password: password
+            //             }
+            //         })
+            //         .then(res => {
+            //             console.log(res);
 
-                        localStorage.setItem('token', res.data.token);
+            //             localStorage.setItem('token', res.data.token);
                         
 
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
+            //         })
+            //         .catch(err => {
+            //             console.log(err);
+            //         })
         
-            }
+            // }
 
        
 
