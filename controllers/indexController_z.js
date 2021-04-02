@@ -1,11 +1,13 @@
 const Janr = require("../models/janr")
-
+const Slider = require('../models/slider')
 
 exports.Home = async (req, res) => {
-    const janr = await Janr.find();
+    const janr = await Janr.find().sort({createdAt: - 1})
+    const slider = await Slider.find().sort({date: - 1})
 
     res.render("./main/index", {
         janr: janr,
+        slider: slider,
         title: "Home"
     })
 }
