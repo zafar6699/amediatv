@@ -67,6 +67,7 @@ app.use('/', require('./routes/videos'))
 app.use('/auth' , require('./routes/auth'));
 app.use('/users' , require('./routes/users'));
 app.use('/slider' , require('./routes/users'));
+app.use('/' , require('./routes/404'));
 
 
 // Port
