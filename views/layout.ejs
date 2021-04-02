@@ -22,8 +22,7 @@
 
 <body>
 
-    <div class="modal fade my-modal" id="alertModal" tabindex="-1"
-        aria-hidden="true">
+    <div class="modal fade my-modal" id="alertModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -33,14 +32,16 @@
                 <div class="modal-body">
                     <div class="d-flex justify-content-center pt-2 pb-2">
                         <svg class="mdi-icon " width="72" height="72" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"></path>
+                            <path
+                                d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z">
+                            </path>
                         </svg>
                     </div>
                     <p style="text-align: center;">Siz muvaffaqiyatli ro'yxatdan o'tdingiz</p>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
-                    data-mdb-target="#exampleModal" class="btn btn-primary">Kirish</button>
+                        data-mdb-target="#exampleModal" class="btn btn-primary">Kirish</button>
                 </div>
             </div>
         </div>
@@ -48,8 +49,8 @@
 
 
 
-    <form action="/auth/login" method="POST">
-        <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+
+    <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -57,22 +58,29 @@
                     <h5 class="modal-title" id="exampleModalLabel">Kirish</h5>
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-auth">
-                        <h4>Email</h4>
-                        <input type="email" id="email-login" name="email" placeholder="Emailni kiriting...">
-                    </div>
-                    <div class="form-auth">
-                        <h4>Parol</h4>
-                        <div class="password-eye">
-                            <input type="password" id="password-login" name="password" placeholder="Parolni kiriting...">
-                            <button type="button"><i class="fa fa-eye"></i><i class="fa fa-eye-slash none-eye"></i></button>
+
+                <form action="/auth/signin" method="POST">
+                    <div class="modal-body">
+                        <div class="form-auth">
+                            <h4>Email</h4>
+                            <input type="email" id="email-login" name="email" placeholder="Emailni kiriting...">
+                        </div>
+                        <div class="form-auth">
+                            <h4>Parol</h4>
+                            <div class="password-eye">
+                                <input type="password" id="password-login" name="password"
+                                    placeholder="Parolni kiriting...">
+                                <button type="button"><i class="fa fa-eye"></i><i
+                                        class="fa fa-eye-slash none-eye"></i></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Kirish</button>
-                </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Kirish</button>
+                    </div>
+                </form>
+
+
                 <div class="modal-bottom">
                     <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
                         data-mdb-target="#exampleModal-register">Ro'yxatdan o'tish</h5>
@@ -81,7 +89,7 @@
             </div>
         </div>
     </div>
-</form>
+
 
 
     <div class="modal fade" id="exampleModal-register" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -106,15 +114,17 @@
                         <h4>Parol</h4>
                         <input type="password" name="password" id="password" placeholder="Parolni kiriting...">
                     </div>
-                    <div class="form-auth">
+                    <!-- <div class="form-auth">
                         <h4>Parolni tasdiqlash</h4>
-                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Parolni qaytaring...">
+                        <input type="password" name="confirm_password" id="confirm_password"
+                            placeholder="Parolni qaytaring...">
                         <h6>Parolni tasdiqlang</h6>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary" id="registerClick" onclick="addUser()">Ro'yxatdan o'tish</button>
+                    <button type="button" class="btn btn-primary" id="registerClick" onclick="addUser()">Ro'yxatdan
+                        o'tish</button>
                 </div>
                 <div class="modal-bottom">
                     <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
@@ -149,7 +159,7 @@
                             <div class="container">
                                 <ul>
 
-                                    
+
                                     <li><a href="#">Harbiy</a></li>
                                     <li><a href="#">Garem</a></li>
                                     <li><a href="#">Iblislar</a></li>
@@ -252,7 +262,7 @@
                     </div>
 
                     <!-- loggedIn ----------------------------------------->
-<!-- 
+                    <!-- 
                     <a href="#">
                         <div class="header-profile-events">
                             <span class="header-profile__icon">
@@ -267,7 +277,9 @@
                         <div class="header-profile-events">
                             <span class="header-profile__icon">
                                 <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z"></path>
+                                    <path
+                                        d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z">
+                                    </path>
                                 </svg>
                             </span>
                             <button type="submit">Chiqish</button>
@@ -358,7 +370,9 @@
 
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+            integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+            crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/4.0.9/jquery.inputmask.bundle.min.js"
             integrity="sha512-VpQwrlvKqJHKtIvpL8Zv6819FkTJyE1DoVNH0L2RLn8hUPjRjkS/bCYurZs0DX9Ybwu9oHRHdBZR9fESaq8Z8A=="
             crossorigin="anonymous"></script>
@@ -380,73 +394,65 @@
             var im = new Inputmask("+\\9\\98\\99-999-99-99");
             im.mask(selector);
 
-            
-            function addUser(){
+
+            function addUser() {
                 let name = document.getElementById("name").value;
                 let email = document.getElementById("email").value;
                 let password = document.getElementById("password").value;
+
                 let confirm_password = document.getElementById("confirm_password").value;
-                if(password == confirm_password){
-                    axios({
-                        url: "/auth/register",
-                        method: "POST",
-                        data: {
-                            name: name,
-                            email: email,
-                            password: password
-                        }
-                    })
-                    .then(res => {
-                        console.log(res);
 
-                        $("#exampleModal-register .btn-close").click()
+                axios({
+                    url: "/auth/register",
+                    method: "POST",
+                    data: {
+                        name: name,
+                        email: email,
+                        password: password
+                    }
+                })
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
 
-              
+                // if (password == confirm_password) {
+                //     axios({
+                //         url: "/auth/register",
+                //         method: "POST",
+                //         data: {
+                //             name: name,
+                //             email: email,
+                //             password: password
+                //         }
+                //     })
+                //         .then(res => {
+                //             console.log(res);
 
-                        const myModalEl = document.getElementById('alertModal')
-                        const modal = new mdb.Modal(myModalEl)
-                        modal.show()
+                //             $("#exampleModal-register .btn-close").click()
 
-                        
 
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-                }
-                else{
-                    $("div.form-auth h6").addClass("__active")
-                }
+
+                //             const myModalEl = document.getElementById('alertModal')
+                //             const modal = new mdb.Modal(myModalEl)
+                //             modal.show()
+
+
+
+                //         })
+                //         .catch(err => {
+                //             console.log(err);
+                //         })
+                // }
+                // else {
+                //     $("div.form-auth h6").addClass("__active")
+                // }
             }
 
-            // document.getElementById("registerClick").addEventListener("click", addUser())
 
-            // function loginUser(){
-            //     let email = document.getElementById("email-login").value;
-            //     let password = document.getElementById("password-login").value;
-          
-            //         axios({
-            //             url: "/auth/login",
-            //             method: "POST",
-            //             data: {
-            //                 email: email,
-            //                 password: password
-            //             }
-            //         })
-            //         .then(res => {
-            //             console.log(res);
 
-            //             localStorage.setItem('token', res.data.token);
-                        
-
-            //         })
-            //         .catch(err => {
-            //             console.log(err);
-            //         })
-        
-            // }
-
-       
 
         </script>
 </body>

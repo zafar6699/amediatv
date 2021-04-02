@@ -1,8 +1,6 @@
 const express = require("express")
-const dotenv = require('dotenv');
 const path = require("path");
 const layout = require('express-ejs-layouts')
-const morgan = require('morgan');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
@@ -31,23 +29,19 @@ const store = new MongoDBSession({
 app.use(session({
     secret: 'my_secret_key_124536798',
     saveUninitialized: false,
-    store: store,
+    
     resave: false,
     cookie: {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24, // sessiya muddati 1 kun
-      sameSite: 'strict'
-    }
+  },
+  store: store,
   }));
 
 
 
 app.use(cookieParser());
-app.use(cors({ rogin : "*" }));
-// Dev logging middlewares
-if(process.env.NODE_ENV === 'developer'){
-    app.use(morgan('dev'));
-}
+app.use(cors());
 
 // Layout and ejs
 app.use(layout)

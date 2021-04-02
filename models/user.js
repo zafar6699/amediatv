@@ -14,16 +14,16 @@ const userSchema = mongoose.Schema({
         required: [true, 'Please add an email'],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid email'],
         unique: [true, 'Your email has already been registered'],
-        trim: true,
-        lowercase: true
+        // trim: true,
+        // lowercase: true
     },
     password: {
         type: String,
         required: [true, 'Please add a password'],
         minlength: [3, 'Password can\'t be shorter than 6 characters'],
         maxlength: [1024, 'Name can\'t be more than 1024 characters'],
-        trim: true,
-        select: false
+        // trim: true,
+        // select: false
     },
     tel: {
         type: Number,
