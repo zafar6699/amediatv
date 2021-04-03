@@ -40,9 +40,14 @@ exports.login = async (req, res, next) => {
     const body = await User.findOne({ email: req.body.email })
     req.session.user = body
     req.session.save()
-    res.status(200).json({ success: true, data: body });
+    // res.status(200).json({ success: true, data: body });
+    res.redirect('/')
 
 }
+
+
+
+
 exports.getSession = async (req, res) => {
     const user = req.session
     res.status(200).json({ success: true, data: user });

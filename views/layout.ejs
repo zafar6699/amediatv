@@ -49,7 +49,7 @@
 
 
 
-    <form action="/auth/login" method="POST">
+    <!-- <form action="/auth/signin" method="POST"> -->
         <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -58,8 +58,7 @@
                         <h5 class="modal-title" id="exampleModalLabel">Kirish</h5>
                         <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                     </div>
-
-
+                    
                     <div class="modal-body">
                         <div class="form-auth">
                             <h4>Email</h4>
@@ -70,13 +69,13 @@
                             <div class="password-eye">
                                 <input type="password" id="password-login" name="password"
                                     placeholder="Parolni kiriting...">
-                                <!-- <button type="button"><i class="fa fa-eye"></i><i
-                                        class="fa fa-eye-slash none-eye"></i></button> -->
+                                <button type="button"><i class="fa fa-eye"></i><i
+                                        class="fa fa-eye-slash none-eye"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Kirish</button>
+                        <button type="button" class="btn btn-primary" onclick="loginUser()">Kirish</button>
                     </div>
 
 
@@ -88,53 +87,52 @@
                 </div>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
 
-    <form action="/auth/register" method="POST">
-        <div class="modal fade" id="exampleModal-register" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog my-modal modal-register-post">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ro'yxatdan o'tish</h5>
-                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                    </div>
 
-                    <div class="modal-body">
-                        <div class="form-auth">
-                            <h4>Foydalanuvchi nomi</h4>
-                            <input type="text" name="name" id="name" placeholder="Ismingizni kiriting...">
-                        </div>
-                        <div class="form-auth">
-                            <h4>Email</h4>
-                            <input type="email" name="email" id="email" placeholder="Emailni kiriting...">
-                        </div>
-                        <div class="form-auth">
-                            <h4>Parol</h4>
-                            <input type="password" name="password" id="password" placeholder="Parolni kiriting...">
-                        </div>
-                        <div class="form-auth">
-                            <h4>Parolni tasdiqlash</h4>
-                            <input type="password" name="confirm_password" id="confirm_password"
-                                placeholder="Parolni qaytaring...">
-                            <h6>Parolni tasdiqlang</h6>
-                        </div>
-
+    <div class="modal fade" id="exampleModal-register" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog my-modal modal-register-post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ro'yxatdan o'tish</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- <form action="/auth/register" method="POST"> -->
+                <div class="modal-body">
+                    <div class="form-auth">
+                        <h4>Foydalanuvchi nomi</h4>
+                        <input type="text" name="name" id="name" placeholder="Ismingizni kiriting...">
                     </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary" id="registerClick" onclick="addUser()">Ro'yxatdan
-                            o'tish</button>
+                    <div class="form-auth">
+                        <h4>Email</h4>
+                        <input type="email" name="email" id="email" placeholder="Emailni kiriting...">
                     </div>
-                    <div class="modal-bottom">
-                        <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
-                            data-mdb-target="#exampleModal">Kirish</h5>
-                        <a href="#">Parolni tiklash</a>
+                    <div class="form-auth">
+                        <h4>Parol</h4>
+                        <input type="password" name="password" id="password" placeholder="Parolni kiriting...">
+                    </div>
+                    <div class="form-auth">
+                        <h4>Parolni tasdiqlash</h4>
+                        <input type="password" name="confirm_password" id="confirm_password"
+                            placeholder="Parolni qaytaring...">
+                        <h6>Parolni tasdiqlang</h6>
                     </div>
 
                 </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary" id="registerClick" onclick="addUser()">Ro'yxatdan
+                        o'tish</button>
+                </div>
+                <div class="modal-bottom">
+                    <h5 data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
+                        data-mdb-target="#exampleModal">Kirish</h5>
+                    <a href="#">Parolni tiklash</a>
+                </div>
+                <!-- </form> -->
             </div>
         </div>
-    </form>
+    </div>
 
 
 
@@ -432,6 +430,34 @@
                     $("div.form-auth h6").addClass("__active")
                 }
             }
+
+            // document.getElementById("registerClick").addEventListener("click", addUser())
+
+            function loginUser(){
+                let email = document.getElementById("email-login").value;
+                let password = document.getElementById("password-login").value;
+
+                    axios({
+                        url: "/auth/signin",
+                        method: "POST",
+                        data: {
+                            email: email,
+                            password: password
+                        }
+                    })
+                    .then(res => {
+                        console.log(res);
+
+                        localStorage.setItem('token', res.data.token);
+
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+
+            }
+
 
 
         </script>
