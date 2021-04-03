@@ -68,6 +68,7 @@ app.use('/category' , require('./routes/categories'));
 app.use('/member' , require('./routes/member'));
 app.use('/kino' , require('./routes/kino'));
 app.use('/season' , require('./routes/season'));
+app.use('/news' , require('./routes/news'));
 
 
 app.use('/' , require('./routes/404'));

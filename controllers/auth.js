@@ -21,9 +21,6 @@ exports.register = async (req, res, next) => {
         })
 
 }
-
-
-
 exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
@@ -45,17 +42,10 @@ exports.login = async (req, res, next) => {
     res.redirect('/')
 
 }
-
-
-
-
 exports.getSession = async (req, res) => {
     const user = req.session
     res.status(200).json({ success: true, data: user });
 }
-
-
-
 exports.logout = async (req, res) => {
     req.session.destroy()
     res.clearCookie('connect.sid')
