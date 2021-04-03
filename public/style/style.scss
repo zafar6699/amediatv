@@ -258,6 +258,13 @@ header.header{
                     margin-bottom: 0px;
                     font-weight: 400;
                 }
+                .header__logout{
+                    font-size: 14px;
+                    margin-left: 8px;
+                    color: #fff;
+                    margin-bottom: 0px;
+                    font-weight: 400;
+                }
             }
             a:hover{
                 text-decoration: underline !important;
@@ -392,7 +399,7 @@ div.banner{
         display: none;
     }
     .banner-right-img{
-        padding-left: 50px;
+        padding-left: 150px;
         div.__img{
             border-radius: 20px;
             overflow: hidden;

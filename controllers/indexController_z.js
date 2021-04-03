@@ -1,3 +1,4 @@
+const session = require("express-session")
 const Janr = require("../models/janr")
 const Slider = require('../models/slider')
 
@@ -6,9 +7,11 @@ exports.Home = async (req, res) => {
     const slider = await Slider.find().sort({date: - 1})
 
     res.render("./main/index", {
-        janr: janr,
+        layout: "./layout",
+        janr,
         slider: slider,
-        title: "Home"
+        title: "Home",
+        user: req.session.user,
     })
 }
 

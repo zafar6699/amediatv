@@ -3,13 +3,7 @@ const router = express.Router({mergeParams: true});
 const {
     addCinema,
     getAll,
-    filterByType,
-    getById,
-    deleteById,
-    updateById,
-    sortByCat,
-    editPoster,
-    editScreens
+    sortByCat
 } = require('../controllers/kino')
 const multer = require('multer')
 const md5 = require('md5')

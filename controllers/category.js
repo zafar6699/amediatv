@@ -1,3 +1,0 @@
-exports.Category = (req, res) => {
-    
-}
