@@ -1,18 +1,20 @@
 const session = require("express-session")
 const Janr = require("../models/janr")
 const Slider = require('../models/slider')
+const News = require("../models/news")
+
 
 exports.Home = async (req, res) => {
-    // const slider = await Slider.find()
-    //     .sort({date: -1})
-    //     .populate({path: 'kino',select: ['name','image','screens','description','rating']})
-    //     .populate({path: 'serial',select: ['name','image','screens','description','rating']})
+    const slider = await Slider.find()
+        .sort({date: -1})
+        .populate({path: 'kino',select: ['name','image','screens','description','rating']})
+        .populate({path: 'serial',select: ['name','image','screens','description','rating']})
 
     
-    // const news = await News.find()
-    //     .sort({date: -1})
-    //     .limit(3)
-    //     .select(['name','date','image'])
+    const news = await News.find()
+        .sort({date: -1})
+        .limit(3)
+        .select(['name','date','image'])
     // const anotatsiya = await Anotatsiya.find({status: true})
     //     .sort({date: -1})
     //     // .limit(1)
@@ -37,12 +39,12 @@ exports.Home = async (req, res) => {
 
 
     const janr = await Janr.find().sort({createdAt: - 1})
-    const slider = await Slider.find().sort({date: - 1})
+    // const slider = await Slider.find().sort({date: - 1})
 
     res.render("./main/index", {
         layout: "./layout",
         janr,
-        slider: slider,
+        slider,
         title: "Home",
         user: req.session.user,
     })
