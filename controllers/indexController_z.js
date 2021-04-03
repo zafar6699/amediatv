@@ -45,6 +45,7 @@ exports.Home = async (req, res) => {
         slider: slider,
         title: "Home",
         user: req.session.user,
+        lang: req.session.ulang
     })
 }
 

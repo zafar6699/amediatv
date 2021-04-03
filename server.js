@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const mongoose = require('mongoose');
 const MongoDBSession = require('connect-mongodb-session')(session)
+const i18n = require("i18n-express");
 const app = express()
 const bodyParser = require("body-parser")
 app.use(bodyParser.json())
@@ -44,6 +45,12 @@ app.use(session({
 app.use(cookieParser());
 app.use(cors());
 
+app.use(i18n({
+  translationsPath: path.join(__dirname, 'i18n'),
+  siteLangs: ["uz", "ru"],
+  textsVarName: 'translation'
+}));
+
 // Layout and ejs
 app.use(layout)
 app.use(express.static(path.join(__dirname, 'public')));
@@ -69,6 +76,7 @@ app.use('/member' , require('./routes/member'));
 app.use('/kino' , require('./routes/kino'));
 app.use('/season' , require('./routes/season'));
 app.use('/news' , require('./routes/news'));
+app.use('/anotatsiya' , require('./routes/anotatsiya'));
 
 
 app.use('/' , require('./routes/404'));
