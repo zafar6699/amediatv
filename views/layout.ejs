@@ -49,7 +49,7 @@
 
 
 
-    <form action="/auth/login" method="POST">
+    <form action="/auth/signin" method="POST">
         <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -159,41 +159,10 @@
                             <div class="container">
                                 <ul>
 
+                                    <% janr.forEach(function(item) { %>
+                                        <li><a href="byjanr/<%= item._id%>"> <%= item.nameuz %> </a></li>
+                                    <%}) %> 
 
-                                    <li><a href="#">Harbiy</a></li>
-                                    <li><a href="#">Garem</a></li>
-                                    <li><a href="#">Iblislar</a></li>
-                                    <li><a href="#">Detektiv</a></li>
-                                    <li><a href="#">Yoshlarniki</a></li>
-                                    <li><a href="#">Drama</a></li>
-                                    <li><a href="#">O'yinlar</a></li>
-                                    <li><a href="#">Tarixiy</a></li>
-                                    <li><a href="#">Komediya</a></li>
-                                    <li><a href="#">Kosmik</a></li>
-                                    <li><a href="#">Sehir</a></li>
-                                    <li><a href="#">Mexa</a></li>
-                                    <li><a href="#">Musiqiy</a></li>
-                                    <li><a href="#">Kundalik hayot</a></li>
-                                    <li><a href="#">Sarguzasht</a></li>
-                                    <li><a href="#">Psixologiya</a></li>
-                                    <li><a href="#">Romantika</a></li>
-                                    <li><a href="#">Samuray</a></li>
-                                    <li><a href="#">G'ayrioddiy</a></li>
-                                    <li><a href="#">Syo'dze</a></li>
-                                    <li><a href="#">Syo'nen</a></li>
-                                    <li><a href="#">Triller</a></li>
-                                    <li><a href="#">Qo'rqinchlik</a></li>
-                                    <li><a href="#">Fantastika</a></li>
-                                    <li><a href="#">Fentezi</a></li>
-                                    <li><a href="#">Maktab</a></li>
-                                    <li><a href="#">Etti</a></li>
-                                    <li><a href="#">Sport</a></li>
-                                    <li><a href="#">Ekshen</a></li>
-                                    <li><a href="#">Super kuch</a></li>
-                                    <li><a href="#">Jang san`ati</a></li>
-                                    <li><a href="#">Melodrama</a></li>
-                                    <li><a href="#">Jangari</a></li>
-                                    <li><a href="#">O'zga dunyo</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -262,33 +231,36 @@
                     </div>
 
                     <!-- loggedIn ----------------------------------------->
-                    <!-- 
-                    <a href="#">
-                        <div class="header-profile-events">
-                            <span class="header-profile__icon">
-                                <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"></path>
-                                </svg>
-                            </span>
-                            <h4>Zafar</h4>
-                        </div>
-                    </a> -->
-                    <form action="/auth/logout" method="POST">
-                        <div class="header-profile-events">
-                            <span class="header-profile__icon">
-                                <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z">
-                                    </path>
-                                </svg>
-                            </span>
-                            <button type="submit">Chiqish</button>
-                        </div>
-                    </form>
+                    <% if (user) { %>
+                        <a href="profile">
+                            <div class="header-profile-events">
+                                <span class="header-profile__icon">
+                                    <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"></path>
+                                    </svg>
+                                </span>
+                                <h4> <%= user.name %> </h4>
+                            </div>
+                        </a>
+                        <form action="/auth/logout" method="POST">
+                            <div class="header-profile-events">
+                                <span class="header-profile__icon">
+                                    <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                <button type="submit" class="header__logout">Chiqish</button>
+                            </div>
+                        </form>
+                    <% } %>
+                    
 
                     <!-- Not loggenIn ------------------------------------------->
 
-                    <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal"
+                    <% if (!user) { %>
+                        <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal"
                         data-mdb-target="#exampleModal">
                         <div class="header-profile-events">
                             <span class="header-profile__icon">
@@ -312,27 +284,30 @@
                             </span>
                             <h4>Kirish</h4>
                         </div>
-                    </button>
-                    <button data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
-                        data-mdb-target="#exampleModal-register">
-                        <div class="header-profile-events">
-                            <span class="header-profile__icon">
-                                <svg id="bold" enable-background="new 0 0 24 24" height="20" viewBox="0 0 24 24"
-                                    width="20" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="m12.25 2h-1.1c-.33-1.15-1.39-2-2.65-2s-2.32.85-2.65 2h-1.1c-.41 0-.75.34-.75.75v1.5c0 .96.79 1.75 1.75 1.75h5.5c.96 0 1.75-.79 1.75-1.75v-1.5c0-.41-.34-.75-.75-.75z"
-                                        fill="currentColor"></path>
-                                    <path
-                                        d="m14.25 3h-.25v1.25c0 1.52-1.23 2.75-2.75 2.75h-5.5c-1.52 0-2.75-1.23-2.75-2.75v-1.25h-.25c-1.52 0-2.75 1.23-2.75 2.75v12.5c0 1.52 1.23 2.75 2.75 2.75h7.38l.22-1.23c.1-.56.36-1.06.76-1.47l.8-.8h-8.16c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.05 0 .09 0 .14.02h.01l3.6-3.6v-6.67c0-1.52-1.23-2.75-2.75-2.75zm-1 11.25h-9.5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.41 0 .75.34.75.75s-.34.75-.75.75zm0-3.25h-9.5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.41 0 .75.34.75.75s-.34.75-.75.75z"
-                                        fill="currentColor"></path>
-                                    <path
-                                        d="m12.527 24c-.197 0-.389-.078-.53-.22-.173-.173-.251-.419-.208-.661l.53-3.005c.026-.151.1-.291.208-.4l7.425-7.424c.912-.914 1.808-.667 2.298-.177l1.237 1.237c.683.682.683 1.792 0 2.475l-7.425 7.425c-.108.109-.248.182-.4.208l-3.005.53c-.043.008-.087.012-.13.012zm3.005-1.28h.01z"
-                                        fill="currentColor"></path>
-                                </svg>
-                            </span>
-                            <h4>Ro'yxatdan o'tish</h4>
-                        </div>
-                    </button>
+                        </button>
+                        <button data-dismiss="modal" data-mdb-dismiss="modal" data-toggle="modal" data-mdb-toggle="modal"
+                            data-mdb-target="#exampleModal-register">
+                            <div class="header-profile-events">
+                                <span class="header-profile__icon">
+                                    <svg id="bold" enable-background="new 0 0 24 24" height="20" viewBox="0 0 24 24"
+                                        width="20" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="m12.25 2h-1.1c-.33-1.15-1.39-2-2.65-2s-2.32.85-2.65 2h-1.1c-.41 0-.75.34-.75.75v1.5c0 .96.79 1.75 1.75 1.75h5.5c.96 0 1.75-.79 1.75-1.75v-1.5c0-.41-.34-.75-.75-.75z"
+                                            fill="currentColor"></path>
+                                        <path
+                                            d="m14.25 3h-.25v1.25c0 1.52-1.23 2.75-2.75 2.75h-5.5c-1.52 0-2.75-1.23-2.75-2.75v-1.25h-.25c-1.52 0-2.75 1.23-2.75 2.75v12.5c0 1.52 1.23 2.75 2.75 2.75h7.38l.22-1.23c.1-.56.36-1.06.76-1.47l.8-.8h-8.16c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.05 0 .09 0 .14.02h.01l3.6-3.6v-6.67c0-1.52-1.23-2.75-2.75-2.75zm-1 11.25h-9.5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.41 0 .75.34.75.75s-.34.75-.75.75zm0-3.25h-9.5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h9.5c.41 0 .75.34.75.75s-.34.75-.75.75z"
+                                            fill="currentColor"></path>
+                                        <path
+                                            d="m12.527 24c-.197 0-.389-.078-.53-.22-.173-.173-.251-.419-.208-.661l.53-3.005c.026-.151.1-.291.208-.4l7.425-7.424c.912-.914 1.808-.667 2.298-.177l1.237 1.237c.683.682.683 1.792 0 2.475l-7.425 7.425c-.108.109-.248.182-.4.208l-3.005.53c-.043.008-.087.012-.13.012zm3.005-1.28h.01z"
+                                            fill="currentColor"></path>
+                                    </svg>
+                                </span>
+                                <h4>Ro'yxatdan o'tish</h4>
+                            </div>
+                        </button>
+                    <% } %>
+
+                    
 
                     <span class="header-bars">
                         <i class="fa fa-bars"></i>

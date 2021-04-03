@@ -26,6 +26,7 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
     const { email, password } = req.body
+
     if (!email || !password) {
         res.status(400).json({ success: false, data: 'Formani toldiring' });
     }
@@ -40,7 +41,7 @@ exports.login = async (req, res, next) => {
     const body = await User.findOne({ email: req.body.email })
     req.session.user = body
     req.session.save()
-    res.status(200).json({ success: true, data: body });
+    res.redirect("/")
 
 }
 exports.getSession = async (req, res) => {

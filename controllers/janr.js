@@ -6,10 +6,10 @@ const asyncHandler = require('../middlewares/async');
 // @description Get all Categories
 // @route GET /api/category
 // @access Public
-exports.getJanrs = asyncHandler( async (req , res , next) => {
+exports.getJanrs =  async (req , res , next) => {
     const janr = await Janr.find();
-    res.status(200).json({success: true , count : janr.length , data: janr});
-});
+    res.render("/", { janr: janr })
+}
 
 // @description Create Category
 // @route POST /api/category
@@ -26,7 +26,7 @@ exports.getJanr = asyncHandler( async (req , res , next) => {
     const janr = await Janr.findById(req.params.janrId);
     if(!janr)
         return next(new ErrorResponse(`Resourse not found with id of ${req.params.janrId}`, 404))
-    res.status(200).json({success: true , data: janr});
+    res.render("./main/onejanr")
 });
 
 // @description update Category

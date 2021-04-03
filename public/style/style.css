@@ -330,6 +330,14 @@ header.header div.header-content div.header-right div.header-profile-events h4 {
   font-weight: 400;
 }
 
+header.header div.header-content div.header-right div.header-profile-events .header__logout {
+  font-size: 14px;
+  margin-left: 8px;
+  color: #fff;
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+
 header.header div.header-content div.header-right a:hover {
   text-decoration: underline !important;
 }
@@ -468,7 +476,7 @@ div.banner .owl-nav {
 }
 
 div.banner .banner-right-img {
-  padding-left: 50px;
+  padding-left: 150px;
 }
 
 div.banner .banner-right-img div.__img {
