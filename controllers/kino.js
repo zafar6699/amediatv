@@ -150,7 +150,11 @@ exports.sortByCat = asyncHandler(async (req,res,next)=>{
 
 exports.getById = async (req, res) => {
     const kino = await Kino.findById(req.params.id)
+    .populate({path: 'category'})
+    .populate({path: 'janr'})
+    .populate({path: 'tarjimon'})
     const janr = await Janr.find().sort({createdAt: - 1})
+
 
     res.render("./main/kino", {
         kino,

@@ -1023,9 +1023,18 @@ div.news-one{
         width: 100%;
         margin-bottom: 30px;
         margin-top: 20px;
+        min-height: 300px;
+        height: 400px;
+        width: 100%;
+        position: relative;
         img{
-            max-width: 100%;
-            max-height: 500px;
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
         }
     }
     p{
@@ -1071,6 +1080,28 @@ div.page404{
 
 div.kino{
     margin: 30px 0px;
+    div.comment-send{
+        margin: 20px 0px;
+        textarea{
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 10px 15px;
+            &:focus{
+                outline: none;
+                border: 1px solid #333;
+            }
+        }
+        button{
+            padding: 20px 40px;
+            border-radius: 10px;
+            background-color: #6a2fe3;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    }
     .__video{
         video{
             width: 100%;
@@ -1118,6 +1149,7 @@ div.kino{
             }
         }
     }
+    
     div.profile-info{
         div.info__item{
             display: flex;
@@ -1125,10 +1157,12 @@ div.kino{
             margin-bottom: 15px;
             border-bottom: 1px solid #ddd;
             padding-bottom: 5px;
+            flex-wrap: wrap;
             h3{
                 font-size: 16px;
                 font-weight: 600;
                 margin-bottom: 0px;
+                width: 50%;
                 i{
                     font-size: 18px;
                     color: #6a2fe3;
@@ -1190,6 +1224,7 @@ div.kino{
     }
     .flex-ijodkor{
         display: flex;
+        flex-wrap: wrap;
 
         div.__item{
             width: 19%;
@@ -1197,7 +1232,14 @@ div.kino{
             background-color: rgb(236, 225, 174);
             // display: flex;   
             align-items: center;
-            padding: 20px 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            padding: 20px;
+            h4{
+                font-size: 24px;
+                font-weight: 600;
+                color: #111;
+            }
             div.img-pro{
                 width: 60px;
                 height: 60px;
@@ -1205,6 +1247,7 @@ div.kino{
                 position: relative;
                 overflow: hidden;
                 margin-right: 15px;
+                margin-bottom: 10px;
                 img{
                     width: 100%;
                     height: 100%;
@@ -1218,12 +1261,34 @@ div.kino{
         }
     }
 }
+@media(max-width: 768px){
+    div.kino{
+        div.img_left{
+            margin-bottom: 40px !important;
+        }
+        .__video{
+            margin-top: 30px;
+        }
+        .flex-ijodkor{
+            flex-wrap: wrap;
+            .__item{
+                width: 100% !important;
+                margin-right: 0px !important;
+            }
+        }
+    }
+}
 .__download{
     padding: 20px 40px;
     border-radius: 10px;
     background-color: #6a2fe3;
     color: #fff;
+    display: block;
+    text-align: center;
     width: 100%;
     border: none;
     cursor: pointer;
+    &:hover{
+        color: #fff;
+    }
 }

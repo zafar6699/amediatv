@@ -14,17 +14,17 @@
                             <div class="row">
                                 <div class="col-md-7">
                                     <% if(lang==='uz' ){ %>
-                                        <a class="banner__link" href="#">
+                                        <a  class="banner__link" href="/kino/<%= item.kino._id %>">
                                             <%= item.kino.name.uz %>
                                         </a>
                                     <% } %>
-                                    <% else if(lang==='ru' ){ %>
-                                        <a class="banner__link" href="#">
+                                    <%  if(lang==='ru' ){ %>
+                                        <a  class="banner__link" href="/kino/<%= item.kino._id %>">
                                             <%= item.kino.name.ru %>
                                         </a>
                                     <% } %>
-                                    <% else if(lang=='undifined' ){ %>
-                                        <a class="banner__link" href="#">
+                                    <%  if(lang=='undifined' ){ %>
+                                        <a  class="banner__link" href="/kino/<%= item.kino._id %>">
                                             <%= item.kino.name.uz %>
                                         </a>
                                     <% } %>
@@ -33,10 +33,10 @@
                                         <% if(lang==='uz' ){ %>
                                             <%= item.kino.description.uz %>
                                         <% } %>
-                                        <% else if(lang==='ru' ){ %>
+                                        <%  if(lang==='ru' ){ %>
                                             <%= item.kino.description.ru %>
                                         <% }%>
-                                        <% else if(lang=='undifined' ){ %>
+                                        <%  if(lang=='undifined' ){ %>
                                             <%= item.kino.description.uz %>
                                         <% } %>
                                     </p>
