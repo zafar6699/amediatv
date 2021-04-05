@@ -158,7 +158,17 @@
                                 <ul>
 
                                     <% janr.forEach(function(item) { %>
-                                        <li><a href="byjanr/<%= item._id%>"> <%= item.nameuz %> </a></li>
+                                        <li>
+                                            <% if(lang === "uz") { %>
+                                                <a href="byjanr/<%= item._id%>"> <%= item.nameuz %> </a>
+                                            <% } %>
+                                            <% if(lang === "ru") { %>
+                                                <a href="byjanr/<%= item._id%>"> <%= item.nameru %> </a>
+                                            <% } %>
+                                            <% if(lang == "undefined") { %>
+                                                <a href="byjanr/<%= item._id%>"> <%= item.nameuz %> </a>
+                                            <% } %>
+                                        </li>
                                     <%}) %> 
 
                                 </ul>
@@ -224,13 +234,24 @@
                     </div>
 
                     <div class="header-language">
-                        <a class="__select" href="/?clang=uz">UZ</a>
-                        <a href="/?clang=ru">RU</a>
+                        <% if(lang==='uz' ){ %>
+                            <a class="__select" href="/?clang=uz">UZ</a>
+                            <a href="/?clang=ru">RU</a>
+                        <% } %>
+                        <% if(lang==='ru' ){ %>
+                            <a  href="/?clang=uz">UZ</a>
+                            <a class="__select" href="/?clang=ru">RU</a>
+                        <% } %>
+                        <% if(lang == 'undefined' ){ %>
+                            <a class="__select" href="./?clang=uz">UZ</a>
+                            <a  href="/?clang=ru">RU</a>
+                        <% } %>
+                       
                     </div>
 
                     <!-- loggedIn ----------------------------------------->
                     <% if (user) { %>
-                        <a href="profile">
+                        <a href="/profile">
                             <div class="header-profile-events">
                                 <span class="header-profile__icon">
                                     <svg class="mdi-icon " width="24" height="24" fill="currentColor" viewBox="0 0 24 24">

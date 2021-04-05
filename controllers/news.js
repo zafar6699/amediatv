@@ -1,6 +1,8 @@
 const News = require('../models/news')
 const asyncHandler = require('../middlewares/async')
 const slugify = require('slugify');
+const Janr = require("../models/janr")
+
 
 exports.addNews = asyncHandler(async (req, res, next) => {
  const slug = Math.floor(Math.random() * 10000000)
@@ -15,7 +17,7 @@ exports.addNews = asyncHandler(async (req, res, next) => {
   },
   slug: slugify(slug.toString()),
   tags: req.body.tags,
-  image: `/public/uploads/cinema/${req.file.filename}`
+  image: `/uploads/cinema/${req.file.filename}`
  })
  news.save()
   .then(() => { res.status(201).json({ success: true, data: news }) })
@@ -25,7 +27,17 @@ exports.getAll = asyncHandler(async (req, res, next) => {
  const news = await News.find().sort({ date: -1 }).select(['name', 'date'])
  res.status(200).json({ success: true, data: news })
 })
-exports.getById = asyncHandler(async (req, res, next) => {
+exports.getById = async (req, res, next) => {
  const news = await News.findById(req.params.id)
- res.status(200).json({ success: true, data: news })
-})
+ const janr = await Janr.find().sort({createdAt: - 1})
+ const allNews = await News.find().sort({date: -1}).limit(3);
+
+
+ res.render("./main/news", {
+   news,
+   janr,
+   allNews,
+   title: "News",
+   user: req.session.user,
+ })
+}

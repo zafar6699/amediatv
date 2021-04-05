@@ -1,78 +1,93 @@
-<p><%= slider[0].kino.name %> </p>
 
-<% if %> 
 
 
 <div class="banner">
     <div class="owl-carousel owl-theme anime-carousel">
-        <div class="item">
-            <div class="carousel__item">
-                <img class="carousel-out__img" src="img/banner_img.png" alt="">
-                <div class="opacity__banner"></div>
+        <% slider.forEach(item => { %>
+            <div class="item">
+                <div class="carousel__item">
+                    <img class="carousel-out__img" src="<%= item.kino.image %> " alt="">
+                    <div class="opacity__banner"></div>
 
-                <div class="carousel-text-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <a class="banner__link" href="#">
-                                    Omadsizninig qayta tug'ilishi: O'zga olamdagi sarguzasht..
-                                </a>
-                                <p>
-                                    34 yoshli Otaku hali ham ishsiz edi. Ishsizlikka nuqta qo'yish kerak, barini boshidan 
-                                    boshlash kerak deb qaror qildi. Baxtga qarshi uni yuk mashinasi urib ketadi va o'zga olamga 
-                                    tushib qoladi. Sobiq Otaku bu olamga tushib Rudeus Greyret ismli bolakayga aylandi va eng qizig'i - 
-                                    eski hayotidagi xotiralar ongida qoladi. Endi u hayotini mojizaviy olamda yangidan boshlashi mumkin, 
-                                    nglagan qahramonimiz afsun ilmida eng yuqori cho'qqilarni maqsad qilib qo'ydi va bunga erishishiga qattiq 
-                                    ishonardi.
-                                </p>
-                                <div class="banner-stars">
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                </div>
-                                <div class="carousel-inner">
-                                    <button class="carousel-click click__left" type="button"><i class="fa fa-angle-left"></i></button>
-                                    <button class="carousel-click click__right" type="button"><i class="fa fa-angle-right"></i></button>
-                                    <div class="owl-carousel owl-theme banner-inner-carousel">
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
+                    <div class="carousel-text-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <% if(lang==='uz' ){ %>
+                                        <a class="banner__link" href="#">
+                                            <%= item.kino.name.uz %>
+                                        </a>
+                                    <% } %>
+                                    <% else if(lang==='ru' ){ %>
+                                        <a class="banner__link" href="#">
+                                            <%= item.kino.name.ru %>
+                                        </a>
+                                    <% } %>
+                                    <% else if(lang=='undifined' ){ %>
+                                        <a class="banner__link" href="#">
+                                            <%= item.kino.name.uz %>
+                                        </a>
+                                    <% } %>
+                                    
+                                    <p>
+                                        <% if(lang==='uz' ){ %>
+                                            <%= item.kino.description.uz %>
+                                        <% } %>
+                                        <% else if(lang==='ru' ){ %>
+                                            <%= item.kino.description.ru %>
+                                        <% }%>
+                                        <% else if(lang=='undifined' ){ %>
+                                            <%= item.kino.description.uz %>
+                                        <% } %>
+                                    </p>
+                                    <div class="banner-stars">
+                                        <% if(item.kino.rating===1 ){ %>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                        <% } %>
+                                        <% if(item.kino.rating===2 ){ %>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                        <% } %>
+                                        <% if(item.kino.rating===3 ){ %>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                        <% } %>
+                                        <% if(item.kino.rating===4 ){ %>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                        <% } %>
+                                        <% if(item.kino.rating===5 ){ %>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                        <% } %>
+                                        
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <button class="carousel-click click__left" type="button"><i class="fa fa-angle-left"></i></button>
+                                        <button class="carousel-click click__right" type="button"><i class="fa fa-angle-right"></i></button>
+                                        <div class="owl-carousel owl-theme banner-inner-carousel">
+                                            <% item.kino.screens.thumb.forEach(screen_item => { %>
+                                                <div class="item">
+                                                    <div class="sm__item">
+                                                        <img src="<%= screen_item %>" alt="">
+                                                    </div>
+                                                </div>
+                                            <%}) %>
+                            
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="banner-right-img">
-                                    <div class="__img">
-                                        <img src="img/right_img.png" alt="">
+                                <div class="col-md-5">
+                                    <div class="banner-right-img">
+                                        <div class="__img">
+                                            <img src="<%= item.kino.screens.original[0] %>" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -80,159 +95,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="item">
-            <div class="carousel__item">
-                <img class="carousel-out__img" src="img/banner_img.png" alt="">
-                <div class="opacity__banner"></div>
-
-                <div class="carousel-text-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <a class="banner__link" href="#">
-                                    Omadsizninig qayta tug'ilishi: O'zga olamdagi sarguzasht..
-                                </a>
-                                <p>
-                                    34 yoshli Otaku hali ham ishsiz edi. Ishsizlikka nuqta qo'yish kerak, barini boshidan 
-                                    boshlash kerak deb qaror qildi. Baxtga qarshi uni yuk mashinasi urib ketadi va o'zga olamga 
-                                    tushib qoladi. Sobiq Otaku bu olamga tushib Rudeus Greyret ismli bolakayga aylandi va eng qizig'i - 
-                                    eski hayotidagi xotiralar ongida qoladi. Endi u hayotini mojizaviy olamda yangidan boshlashi mumkin, 
-                                    nglagan qahramonimiz afsun ilmida eng yuqori cho'qqilarni maqsad qilib qo'ydi va bunga erishishiga qattiq 
-                                    ishonardi.
-                                </p>
-                                <div class="banner-stars">
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                </div>
-                                <div class="carousel-inner">
-                                    <button class="carousel-click click__left" type="button"><i class="fa fa-angle-left"></i></button>
-                                    <button class="carousel-click click__right" type="button"><i class="fa fa-angle-right"></i></button>
-                                    <div class="owl-carousel owl-theme banner-inner-carousel">
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="banner-right-img">
-                                    <div class="__img">
-                                        <img src="img/right_img.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item">
-            <div class="carousel__item">
-                <img class="carousel-out__img" src="img/banner_img.png" alt="">
-                <div class="opacity__banner"></div>
-
-                <div class="carousel-text-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <a class="banner__link" href="#">
-                                    Omadsizninig qayta tug'ilishi: O'zga olamdagi sarguzasht..
-                                </a>
-                                <p>
-                                    34 yoshli Otaku hali ham ishsiz edi. Ishsizlikka nuqta qo'yish kerak, barini boshidan 
-                                    boshlash kerak deb qaror qildi. Baxtga qarshi uni yuk mashinasi urib ketadi va o'zga olamga 
-                                    tushib qoladi. Sobiq Otaku bu olamga tushib Rudeus Greyret ismli bolakayga aylandi va eng qizig'i - 
-                                    eski hayotidagi xotiralar ongida qoladi. Endi u hayotini mojizaviy olamda yangidan boshlashi mumkin, 
-                                    nglagan qahramonimiz afsun ilmida eng yuqori cho'qqilarni maqsad qilib qo'ydi va bunga erishishiga qattiq 
-                                    ishonardi.
-                                </p>
-                                <div class="banner-stars">
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                    <span><i class="fa fa-star __gold"></i></span>
-                                </div>
-                                <div class="carousel-inner">
-                                    <button class="carousel-click click__left" type="button"><i class="fa fa-angle-left"></i></button>
-                                    <button class="carousel-click click__right" type="button"><i class="fa fa-angle-right"></i></button>
-                                    <div class="owl-carousel owl-theme banner-inner-carousel">
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="sm__item">
-                                                <img src="img/sm_img.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="banner-right-img">
-                                    <div class="__img">
-                                        <img src="img/right_img.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <% }) %>
+        
+        
     </div>
 </div>
 <div class="news-home">
@@ -256,45 +121,31 @@
             </div>
             <div class="col-md-8">
                 <div class="box-border">
-                    <video controls class="home__video" src="img/video.mp4"></video>
+                    <video controls class="home__video" src="<%= oneKino[0].video%>"></video>
                 </div>
             </div>
+            <% news.forEach(item => { %>
             <div class="col-md-4">
-                <a href="#">
+                <a href="/news/<%= item._id %>">
                     <div class="box-border news__item">
-                        <img src="img/right_img.png" alt="">
+                        <img src="<%= item.image %>" alt="">
                         <div class="opa"></div>
                         <div class="news__item__title">
                             <h3>Yangiliklar</h3>
-                            <h4>tez kunlarda Dota haqida anime o'zbek tilida</h4>
+                            <% if(lang === "uz"){ %>
+                                <h4><%= item.name.uz%></h4>
+                            <% } %>
+                            <% if(lang === "ru"){ %>
+                                <h4><%= item.name.ru%></h4>
+                            <% } %>
+                            <% if(lang == "undifined"){ %>
+                                <h4><%= item.name.uz%></h4>
+                            <% } %>
                         </div>
                     </div>
-                </a>
+                </a>    
             </div>
-            <div class="col-md-4">
-                <a href="#">
-                    <div class="box-border news__item">
-                        <img src="img/right_img.png" alt="">
-                        <div class="opa"></div>
-                        <div class="news__item__title">
-                            <h3>Yangiliklar</h3>
-                            <h4>tez kunlarda Dota haqida anime o'zbek tilida</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="#">
-                    <div class="box-border news__item">
-                        <img src="img/right_img.png" alt="">
-                        <div class="opa"></div>
-                        <div class="news__item__title">
-                            <h3>Yangiliklar</h3>
-                            <h4>tez kunlarda Dota haqida anime o'zbek tilida</h4>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <% }) %>
         </div>
     </div>
 </div>
@@ -303,160 +154,55 @@
     <div class="container">
         <div class="tab-links">
             <ul>
-                <li class="link__active">Hamma animelar</li>
-                <li>Anime filmalar</li>
-                <li>Ongoing</li>
+                <% category.forEach((element, index) => { %>
+
+                    <li <% if(index == 0) { %> class="link__active" <% } %>>
+                        <%if(lang === "uz") { %>
+                            <%= element.nameuz %>
+                        <% } %>
+                        <%if(lang === "ru") { %>
+                            <%= element.nameru %>
+                        <% } %>
+                        <%if(lang == "undefined") { %>
+                            <%= element.nameuz %>
+                        <% } %>
+                    </li>
+                    
+                <% }); %> 
+                
             </ul>
         </div>
         <div class="tab-content">
-            <aside class="__active">
-                <div class="tab-inner-box">
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
+
+            <% sortKino.forEach((element, index) => { %>
+                <aside <% if(index == 0) { %> class="__active" <% } %> >
+                    <div class="tab-inner-box">
+                        <% element.forEach(item => { %>
+                            
+                                <div class="__item">
+                                    <a href="/kino/<%= item._id %>">
+                                        <div class="img__in">
+                                            <div class="opa"></div>
+                                            <img src="<%= item.image %>" alt="">
+                                        </div>
+                                        <h3>
+                                            <%if ( lang === "uz" ) { %>
+                                                <%= item.name.uz %>
+                                            <% } %> 
+                                            <%if ( lang === "ru" ) { %>
+                                                <%= item.name.ru %>
+                                            <% } %> 
+                                            <%if ( lang == "undefined" ) { %>
+                                                <%= item.name.uz %>
+                                            <% } %> 
+                                        </h3>
+                                    </a>  
+                                </div>
+                             
+                        <% }); %>
                     </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                </div>
-            </aside>
-            <aside>
-                <div class="tab-inner-box">
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                </div>
-            </aside>
-            <aside>
-                <div class="tab-inner-box">
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                    <div class="__item">
-                        <div class="img__in">
-                            <div class="opa"></div>
-                            <img src="img/right_img.png" alt="">
-                            <h4> [ 10-12 ] </h4>
-                        </div>
-                        <h3>Va'da qilingan neverland 2-fasl [10-12]</h3>
-                    </div>
-                </div>
-            </aside>
+                </aside>
+            <% }); %>
         </div>
     </div>
 </div>

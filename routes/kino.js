@@ -3,7 +3,8 @@ const router = express.Router({mergeParams: true});
 const {
     addCinema,
     getAll,
-    sortByCat
+    sortByCat,
+    getById
 } = require('../controllers/kino')
 const multer = require('multer')
 const md5 = require('md5')
@@ -22,6 +23,8 @@ const upload = multer({storage: storage});
 router.post('/add', upload.array('images', 12), addCinema)
 router.get('/all',getAll)
 router.get('/sort',sortByCat)
+router.get('/:id', getById)
+
 
 
 module.exports = router

@@ -10,10 +10,7 @@ const commentSchema = mongoose.Schema({
         type : mongoose.Schema.ObjectId,
         ref: 'kino'
     },
-    season : {
-        type : mongoose.Schema.ObjectId,
-        ref: 'season'
-    },
+
     user : {
         type : mongoose.Schema.ObjectId,
         required : true,

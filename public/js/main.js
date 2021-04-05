@@ -49,6 +49,28 @@ $(document).ready(function(){
 	    }
     });
 
+	$('.owl-kadr').owlCarousel({
+	    // loop:true,
+	    autoplay: false,
+        margin: 15,
+		loop: true,
+	    nav: true,
+	    responsive:{
+	        0:{
+                items:1,
+	        },
+	        300:{
+                items: 2,
+	        },
+	        700:{
+                items: 4,
+	        },
+	        1000:{
+	            items: 5
+	        }
+	    }
+    });
+
 	$(window).click(function(){
 		$("header.header ul.menu-nav li.dropdown-li div.dropdown-content").slideUp(200);
 

@@ -9,6 +9,7 @@ const path = require('path');
 const JWT = require('jsonwebtoken');
 const User =  require('../models/user')
 const md5 = require('md5');
+const Janr = require("../models/janr")
 
 
 exports.addCinema = asyncHandler(async (req,res,next) => {
@@ -17,8 +18,8 @@ exports.addCinema = asyncHandler(async (req,res,next) => {
     const thumb=[];
     for (const file of files) {
         const { filename } = file;
-        urls.push(`/public/uploads/cinema/org/${filename}`)
-        thumb.push(`/public/uploads/cinema/thumb/${filename}`)
+        urls.push(`/uploads/cinema/org/${filename}`)
+        thumb.push(`/uploads/cinema/thumb/${filename}`)
         await sharp(path.join(path.dirname(__dirname) + `/public/uploads/cinema/org/${filename}`) ).resize(100,100)
             .jpeg({
                 quality: 60
@@ -147,6 +148,16 @@ exports.sortByCat = asyncHandler(async (req,res,next)=>{
     })
 })
 
+exports.getById = async (req, res) => {
+    const kino = await Kino.findById(req.params.id)
+    const janr = await Janr.find().sort({createdAt: - 1})
 
+    res.render("./main/kino", {
+        kino,
+        janr,
+        title: "Kino",
+        user: req.session.user,
+    })
+}
 
 

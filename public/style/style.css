@@ -482,7 +482,21 @@ div.banner .banner-right-img {
 div.banner .banner-right-img div.__img {
   border-radius: 20px;
   overflow: hidden;
+  min-height: 500px;
+  width: 100%;
+  position: relative;
+}
+
+div.banner .banner-right-img div.__img img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 div.banner div.carousel__item {
@@ -694,6 +708,9 @@ div.news-home .news__item .news__item__title h4 {
 
 div.news-home .news__item img {
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1288,5 +1305,200 @@ div.page404 a {
   text-align: center;
   color: #6a2fe3;
   font-size: 18px;
+}
+
+div.kino {
+  margin: 30px 0px;
+}
+
+div.kino .__video video {
+  width: 100%;
+  height: 100%;
+}
+
+div.kino div.img_left {
+  width: 100%;
+  min-height: 400px;
+  max-height: 500px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+div.kino div.img_left img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+div.kino div.img_left div.__bottom {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+div.kino div.img_left div.__bottom h3 {
+  font-size: 18px;
+  color: #fff;
+}
+
+div.kino div.img_left div.__bottom div.banner-stars i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+div.kino div.img_left div.__bottom div.banner-stars i.__gold {
+  color: gold;
+}
+
+div.kino div.profile-info div.info__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+div.kino div.profile-info div.info__item h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0px;
+}
+
+div.kino div.profile-info div.info__item h3 i {
+  font-size: 18px;
+  color: #6a2fe3;
+  margin-right: 10px;
+}
+
+div.kino div.profile-info div.info__item h4 {
+  font-size: 16px;
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+
+div.kino div.profile-info div.info__item .__color {
+  color: #6a2fe3;
+  font-weight: 600;
+}
+
+div.kino .kino__top {
+  padding-bottom: 40px;
+  border-bottom: 2px solid #ccc;
+}
+
+div.kino .kino-kadr {
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+}
+
+div.kino .kino-kadr .img-kadr {
+  height: 300px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+div.kino .kino-kadr .img-kadr img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+div.kino .kino-kadr .owl-nav {
+  display: none;
+}
+
+div.kino .kino-kadr .owl-dots {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+}
+
+div.kino .kino-kadr .owl-dots button {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background-color: #e2e2e2;
+  margin: 0px 5px;
+}
+
+div.kino .kino-kadr .owl-dots button.active {
+  background-color: #969696;
+}
+
+div.kino .flex-ijodkor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+div.kino .flex-ijodkor div.__item {
+  width: 19%;
+  margin-right: 15px;
+  background-color: #ece1ae;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 10px;
+}
+
+div.kino .flex-ijodkor div.__item div.img-pro {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+div.kino .flex-ijodkor div.__item div.img-pro img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.__download {
+  padding: 20px 40px;
+  border-radius: 10px;
+  background-color: #6a2fe3;
+  color: #fff;
+  width: 100%;
+  border: none;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

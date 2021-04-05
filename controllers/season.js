@@ -17,8 +17,8 @@ exports.addSeason = asyncHandler(async (req,res,next) =>{
 
     for (const file of files) {
         const { filename } = file;
-        urls.push(`/public/uploads/cinema/org/${ filename}`)
-        thumb.push(`/public/uploads/cinema/thumb/${ filename}`)
+        urls.push(`/uploads/cinema/org/${ filename}`)
+        thumb.push(`/uploads/cinema/thumb/${ filename}`)
         await sharp(path.join(path.dirname(__dirname) + `/public/uploads/cinema/org/${filename}`) ).resize(1440,600)
             .jpeg({
                 quality: 60

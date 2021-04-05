@@ -403,7 +403,18 @@ div.banner{
         div.__img{
             border-radius: 20px;
             overflow: hidden;
-            height: 100%;
+            min-height: 500px;
+            width: 100%;
+            position: relative;
+            img{
+                width: 100%;
+                object-fit: cover;
+                height: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
         }
     }
     div.carousel__item{
@@ -575,6 +586,8 @@ div.news-home{
         }
         img{
             width: 100%;
+            object-fit: cover;
+            height: 100%;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -1054,4 +1067,163 @@ div.page404{
         color: #6a2fe3;
         font-size: 18px;
     }
+}
+
+div.kino{
+    margin: 30px 0px;
+    .__video{
+        video{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    div.img_left{
+        width: 100%;
+        min-height: 400px;
+        max-height: 500px;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        background-color: rgba($color: #000000, $alpha: 1);
+        display: flex;
+        align-items: flex-end;
+        // padding: 20px;
+        img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0.6;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        div.__bottom{
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            h3{
+                font-size: 18px;
+                color: #fff;
+            }
+            div.banner-stars{
+                // margin-bottom: 25px;
+                i{
+                    font-size: 20px;
+                    margin-right: 10px;
+                }
+                i.__gold{   
+                    color: gold;
+                }
+            }
+        }
+    }
+    div.profile-info{
+        div.info__item{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            h3{
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 0px;
+                i{
+                    font-size: 18px;
+                    color: #6a2fe3;
+                    margin-right: 10px;
+                }
+            }
+            h4{
+                font-size: 16px;
+                margin-bottom: 0px;
+                font-weight: 500;
+            }
+            .__color{
+                color: #6a2fe3;
+                font-weight: 600;
+            }
+        }
+    }
+    .kino__top{
+        padding-bottom: 40px;
+        border-bottom: 2px solid #ccc;
+    }
+    .kino-kadr{
+        padding-bottom: 20px;
+        border-bottom: 2px solid #ccc;
+        .img-kadr{
+            height: 300px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            img{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .owl-nav{
+            display: none;
+        }
+        .owl-dots{
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            button{
+                width: 15px;
+                height: 15px;
+                border-radius: 100%;
+                background-color: rgb(226, 226, 226);
+                margin: 0px 5px;
+            }
+            button.active{
+                background-color: rgb(150, 150, 150);
+            }
+        }
+    }
+    .flex-ijodkor{
+        display: flex;
+
+        div.__item{
+            width: 19%;
+            margin-right: 15px;
+            background-color: rgb(236, 225, 174);
+            // display: flex;   
+            align-items: center;
+            padding: 20px 10px;
+            div.img-pro{
+                width: 60px;
+                height: 60px;
+                border-radius: 100%;
+                position: relative;
+                overflow: hidden;
+                margin-right: 15px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    object-fit: cover;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+}
+.__download{
+    padding: 20px 40px;
+    border-radius: 10px;
+    background-color: #6a2fe3;
+    color: #fff;
+    width: 100%;
+    border: none;
+    cursor: pointer;
 }

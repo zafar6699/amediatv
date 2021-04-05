@@ -30,7 +30,6 @@ const store = new MongoDBSession({
 app.use(session({
     secret: 'my_secret_key_124536798',
     saveUninitialized: false,
-    
     resave: false,
     cookie: {
       httpOnly: true,
