@@ -67,6 +67,7 @@ app.use('/', require('./routes/videos'))
 
 //  Router Backend
 app.use('/auth' , require('./routes/auth'));
+app.use('/comment' , require('./routes/comment'));
 app.use('/users' , require('./routes/users'));
 app.use('/slider' , require('./routes/slider'));
 app.use('/janr' , require('./routes/janr'));
