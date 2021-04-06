@@ -155,6 +155,7 @@ exports.getById = async (req, res) => {
     .populate({path: 'tarjimon'})
     const janr = await Janr.find().sort({createdAt: - 1})
 
+    // res.json(kino)
 
     res.render("./main/kino", {
         kino,
