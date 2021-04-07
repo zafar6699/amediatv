@@ -6,9 +6,8 @@ const {
 } = require('../controllers/balance')
 
 
-router.route('/')
-    .post(addBalance)
-    .get(getBalances)
+router.post('/',addBalance)
+router.get('/',getBalances)
 
 
 
