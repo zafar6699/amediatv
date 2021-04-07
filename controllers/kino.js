@@ -93,7 +93,8 @@ exports.addCinema = asyncHandler(async (req,res,next) => {
          price: req.body.price,
          slug: (Math.floor(Math.random()*9999999999999)).toString(),
          year: req.body.year,
-         country: req.body.country
+         country: req.body.country,
+         tags: req.body.tags
 
          //status: req.body.status,
 

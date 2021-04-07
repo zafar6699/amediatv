@@ -77,6 +77,13 @@ app.use('/kino' , require('./routes/kino'));
 app.use('/season' , require('./routes/season'));
 app.use('/news' , require('./routes/news'));
 app.use('/anotatsiya' , require('./routes/anotatsiya'));
+app.use('/seriyaComment', require('./routes/commentSerial'));
+app.use('/rate' , require('./routes/rating'));
+app.use('/ratingSeason' , require('./routes/ratingSeason'));
+app.use('/balance' , require('./routes/balance'));
+app.use('/payment' , require('./routes/payment'));
+app.use('/pricelist', require('./routes/priceList'));
+app.use('/search' , require('./routes/search'));
 
 
 app.use('/' , require('./routes/404'));

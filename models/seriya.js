@@ -7,7 +7,8 @@ const seriyaSchema = new mongoose.Schema({
     video: {type: String, required: true},
     season: {type: mongoose.Schema.ObjectId, ref: 'season', required: true},
     slug: {type: String, unique: true, lowercase: true},
-    url: {type: String, required: true},
+    url: { type: String, required: true },
+    tags: {type: String},
     length: {type: String, required: true},
     date: {type: Date, default: Date.now()}
 })

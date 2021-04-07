@@ -37,8 +37,8 @@ const KinoSchema = mongoose.Schema({
         thumb:[{type: String,required: true}],
         original:[{type: String, required: true}]
     },
-    image: {type: String, required: true},
-
+    image: { type: String, required: true },
+    tags: {type: String},
     price: {
         type: String,
         enum:['free','selling'],

@@ -43,7 +43,7 @@ exports.login = async (req, res, next) => {
 
 }
 exports.getSession = async (req, res) => {
-    const user = req.session
+    const user = req.session.user
     res.status(200).json({ success: true, data: user });
 }
 exports.logout = async (req, res) => {
