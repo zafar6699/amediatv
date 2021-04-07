@@ -118,7 +118,9 @@ exports.getAllSeason = asyncHandler(async (req,res,next)=>{
 
     res.render("./main/serial", {
         janr,
-        serial
+        serial: season,
+        title: "Serial",
+        user: req.session.user
     })
 })
 exports.getByIdSeason = asyncHandler(async (req,res,next) => {
@@ -127,6 +129,8 @@ exports.getByIdSeason = asyncHandler(async (req,res,next) => {
     const comment = await SeriyaCommnent.find({season: req.params.id})
         .sort({date: -1})
       //.populate(['user'])
+    const janr = await Janr.find().sort({createdAt: - 1})
+
 
     const seria = await Seriya.find({season: req.params.id})
         .sort({date: -1})
@@ -134,11 +138,11 @@ exports.getByIdSeason = asyncHandler(async (req,res,next) => {
         .populate(['category', 'janr','translator','tayming','tarjimon','seriya'])
     if(season.price == 'free'){
 
-        res.status(200).json({
-            success: true,
-            data: season,
-            comment,
-            seria
+        res.render("./main/oneserial", {
+            janr,
+            serial: season,
+            title: "Serial",
+            user: req.session.user
         })
     } else {
         const token = req.headers.authorization
