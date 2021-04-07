@@ -61,7 +61,12 @@ exports.addBalance = async (req, res, next) => {
                     })
                 })
 
+            req.session.balance = balanseJournal;
+            req.session.save()
+
         } else {
+
+            
             res.status(402).json({
                 status: false,
                 data: 'Mablag` yetarli emas'
