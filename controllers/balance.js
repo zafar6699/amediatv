@@ -8,41 +8,42 @@ exports.addBalance = async (req, res, next) => {
     // const token = req.headers.authorization
     // const user = jwt.decode(token.slice(7, token.length))
 
-    const user = req.session.user // sessiya keladi userning
+    const user = req.session.user
     
     const price = req.body.price;
 
     let priceList = await PriceList.findById({_id: price})
-    const today = new Date();
+    // const today = new Date();
+    const today = priceList.createdAt
     let endDate;
     let ress;
     // 12-2-20201
     switch (priceList.type) {
         case '1':
             ress =  new Date(today.getTime() + (1*31*24*60*60*1000))
-            endDate = `${ress.getDate()}-${ress.getMonth()+1}-${ress.getFullYear()}`
+            endDate = ress.toISOString()
             break;
         case '3':
             ress = new Date(today.getTime() + (3*31*24*60*60*1000))
-            endDate = `${ress.getDate()}-${ress.getMonth()+1}-${ress.getFullYear()}`
+            endDate = ress.toISOString()
             break;
         case '6':
             ress = new Date(today.getTime() + (6*(30.40)*24*60*60*1000))
-            endDate = `${ress.getDate()}-${ress.getMonth()+1}-${ress.getFullYear()}`
+            endDate = ress.toISOString()
             break;
         case '10':
             ress = new Date(today.getTime() + (12*(30.40)*24*60*60*1000))
-            endDate = `${ress.getDate()}-${ress.getMonth()+1}-${ress.getFullYear()}`
+            endDate = ress.toISOString()
             break;
     }
-    const candidate = await User.findById({_id: user.id})
+    const candidate = await User.findById({_id: user._id})
     if(!priceList){
         return res.send('Bunday tarif mavjud emas')
     } else {
         if(candidate.balance > 0 && candidate.balance >= priceList.amount){
             const balanseJournal = new Balance({
                 user: user._id,
-                price: price,
+                price:  price,
                 endDate: endDate,
                 status: true
             })
