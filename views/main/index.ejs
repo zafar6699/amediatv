@@ -102,7 +102,10 @@
 </div>
 <div class="news-home">
     <div class="container">
-        <h1 class="title__z"><i class="fa fa-angle-right"></i> Yangiliklar</h1>
+        <div class="d-flex justify-content-between">
+            <h1 class="title__z"><i class="fa fa-angle-right"></i> Yangiliklar</h1>
+            <a href="/news/all" >Barchasi ></a>
+        </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="box-border news-first">
@@ -149,7 +152,38 @@
         </div>
     </div>
 </div>
-
+<div class="news-home">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h1 class="title__z"><i class="fa fa-angle-right"></i> Seriallar</h1>
+            <a href="/season/all" >Barchasi ></a>
+        </div>
+        <div class="row">
+            <% serial.forEach(item => { %>
+            <div class="col-md-3">
+                <a href="/serial/<%= item._id %>">
+                    <div class="box-border news__item">
+                        <img src="<%= item.image %>" alt="">
+                        <div class="opa"></div>
+                        
+                    </div>
+                    <div class="news__item__title2">
+                        <% if(lang === "uz"){ %>
+                            <h4><%= item.name.uz%></h4>
+                        <% } %>
+                        <% if(lang === "ru"){ %>
+                            <h4><%= item.name.ru%></h4>
+                        <% } %>
+                        <% if(lang == "undifined"){ %>
+                            <h4><%= item.name.uz%></h4>
+                        <% } %>
+                    </div>
+                </a>    
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
 <div class="tab-animes">
     <div class="container">
         <div class="tab-links">

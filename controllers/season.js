@@ -2,6 +2,7 @@ const Season = require('../models/season')
 const Seriya = require('../models/seriya')
 const SeriyaCommnent =  require('../models/commentSerial')
 const asyncHandler = require('../middlewares/async')
+const Janr = require("../models/janr")
 const path = require('path');
 const sharp = require('sharp')
 const JWT = require('jsonwebtoken');
@@ -113,10 +114,11 @@ exports.getAllSeason = asyncHandler(async (req,res,next)=>{
         .sort({date: -1})
         .select({name: 1, category: 1, image: 1, rating: 1, janr: 1, price: 1, date:1})
         .populate({path: 'category', select: 'nameuz'})
+    const janr = await Janr.find().sort({createdAt: - 1})
 
-    res.status(200).json({
-        success: true,
-        data: season
+    res.render("./main/serial", {
+        janr,
+        serial
     })
 })
 exports.getByIdSeason = asyncHandler(async (req,res,next) => {

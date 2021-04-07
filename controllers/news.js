@@ -25,8 +25,15 @@ exports.addNews = asyncHandler(async (req, res, next) => {
     .catch((error) => { res.status(400).json({ success: false, error }) })
 })
 exports.getAll = asyncHandler(async (req, res, next) => {
-  const news = await News.find().sort({ date: -1 }).select(['name', 'date'])
-  res.status(200).json({ success: true, data: news })
+  const news = await News.find().sort({ date: -1 })
+  const janr = await Janr.find().sort({ createdAt: - 1 })
+  res.render("./main/allnews", {
+    janr,
+    news,
+    title: "AllNews",
+    user: req.session.user
+  })
+
 })
 exports.getById = async (req, res, next) => {
   const news = await News.findById(req.params.id)

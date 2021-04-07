@@ -1,0 +1,34 @@
+
+
+
+<div class="news-home mb-5">
+    <div class="container">
+        <h1 class="title__z"><i class="fa fa-angle-right"></i> Yangiliklar</h1>
+        <div class="row">
+            <% news.forEach(item => { %>
+            <div class="col-md-4">
+                <a href="/news/<%= item._id %>">
+                    <div class="box-border news__item">
+                        <img src="<%= item.image %>" alt="">
+                        <div class="opa"></div>
+                        <div class="news__item__title">
+                            <h3>Yangiliklar</h3>
+                            <% if(lang === "uz"){ %>
+                                <h4><%= item.name.uz%></h4>
+                            <% } %>
+                            <% if(lang === "ru"){ %>
+                                <h4><%= item.name.ru%></h4>
+                            <% } %>
+                            <% if(lang == "undifined"){ %>
+                                <h4><%= item.name.uz%></h4>
+                            <% } %>
+                        </div>
+                    </div>
+                </a>    
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+
