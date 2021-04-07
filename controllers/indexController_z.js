@@ -8,6 +8,7 @@ const Category = require("../models/category")
 
 
 exports.Home = async (req, res) => {
+    const janr = await Janr.find()
     const slider = await Slider.find()
         .sort({date: -1})
         .populate({path: 'kino',select: ['name','image','screens','description','rating']})
@@ -25,12 +26,7 @@ exports.Home = async (req, res) => {
         .limit(3)
         .select(['name','date','image'])
 
-
-    // const anotatsiya = await Anotatsiya.find({status: true})
-    //     .sort({date: -1})
-    //     // .limit(1)
     const kino = await Kino.find()
-        // .limit(20)
         .sort({date: -1})
         .select({name: 1, category: 1, url: 1, image: 1, rating: 1,year: 1, janr: 1,date: 1,description: 1, price:1})
         .populate({path: 'category', select: 'nameuz'})
@@ -50,15 +46,11 @@ exports.Home = async (req, res) => {
         let s = await Kino.find({ category: { $all: [element._id] } }).select({name: 1, image: 1});
         sortKino.push(s);        
     });
-
-
-
-    const janr = await Janr.find().sort({createdAt: - 1})
-    // const slider = await Slider.find().sort({date: - 1})
+    
 
     res.render("./main/index", {
         layout: "./layout",
-        janr,
+        janr: janr,
         slider,
         serial: season,
         category,
@@ -69,6 +61,7 @@ exports.Home = async (req, res) => {
         user: req.session.user,
         lang: req.session.ulang
     })
+    console.log(janr)
 }
 
 exports.OneJanr = async (req, res) => {

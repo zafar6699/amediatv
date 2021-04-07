@@ -11,7 +11,7 @@ const router = express.Router({mergeParams: true});
 const {protect , authorize} = require('../middlewares/auth');
 
 router.use('/:productId/comment' , require('./comment'));
-router.use('/:productId/video' , require('./video'));
+// router.use('/:productId/video' , require('./video'));
 
 
 router.route('/')

@@ -157,19 +157,17 @@
                             <div class="container">
                                 <ul>
 
-                                    <% janr.forEach(function(item) { %>
+                                        <% for(let item of janr) {%> 
                                         <li>
                                             <% if(lang === "uz") { %>
-                                                <a href="byjanr/<%= item._id%>"> <%= item.nameuz %> </a>
-                                            <% } %>
-                                            <% if(lang === "ru") { %>
-                                                <a href="byjanr/<%= item._id%>"> <%= item.nameru %> </a>
-                                            <% } %>
-                                            <% if(lang == "undefined") { %>
-                                                <a href="byjanr/<%= item._id%>"> <%= item.nameuz %> </a>
+                                                <a href="/a"> <%= item.nameuz %> </a>
+                                            <% } else if(lang === "ru") { %>
+                                                <a href="/a"> <%= item.nameru %> </a>
+                                            <% }else if(lang == "undefined") { %>
+                                                <a href="/a"> <%= item.nameuz %> </a>
                                             <% } %>
                                         </li>
-                                    <%}) %> 
+                                        <% } %> 
 
                                 </ul>
                             </div>
