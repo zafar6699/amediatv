@@ -2,15 +2,13 @@ const express = require('express')
 const router = express.Router()
 const {
     addBalance,
-    getBalances,
-    deleteBalalnces
+    getBalances
 } = require('../controllers/balance')
 
-const {protect , authorize} = require('../middlewares/auth');
 
 router.route('/')
-    .post(protect,addBalance)
-    .get(/* protect,authorize('admin'), */getBalances)
+    .post(addBalance)
+    .get(getBalances)
 
 
 
