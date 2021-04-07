@@ -1,14 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const {
-    // addPrices,
+    addPrices,
     getPrices,
     // updatePrices
 } = require('../controllers/priceList')
 const {protect , authorize} = require('../middlewares/auth');
 
 router.route('/')
-    // .post(protect, authorize('admin'),addPrices)
+    .post(addPrices)
     .get(getPrices)
 
 // router.route('/:id')
