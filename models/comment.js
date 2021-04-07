@@ -10,7 +10,6 @@ const commentSchema = mongoose.Schema({
         type : mongoose.Schema.ObjectId,
         ref: 'kino'
     },
-
     user : {
         type : mongoose.Schema.ObjectId,
         required : true,
