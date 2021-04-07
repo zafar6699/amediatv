@@ -29,7 +29,14 @@ BalanceSchema.pre('save', async function (next){
     const priceList = await this.model('Price').findById({_id:this.price})
     const ostatok = candidate.balance - priceList.amount
     candidate.balance = ostatok
-    candidate.status = 'vip'
+
+    if (  (candidate.balance >= 0) && (priceList.amount > candidate.balance)  ) {
+        candidate.status = 'user'
+    }
+    else {
+        candidate.status = 'vip'
+    }
+
     candidate.save({validateBeforeSave: false})
     next();
 })

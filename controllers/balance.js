@@ -61,8 +61,7 @@ exports.addBalance = async (req, res, next) => {
                     })
                 })
 
-            req.session.balance = balanseJournal;
-            req.session.save()
+          
 
         } else {
 
