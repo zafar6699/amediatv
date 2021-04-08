@@ -136,7 +136,7 @@
                                 <h4><%= item.name.uz %></h4>
                             <% } else if(lang === "ru"){ %>
                                 <h4><%= item.name.ru %></h4>
-                            <% } else if(lang == "undifined"){ %>
+                            <% } else if(lang == undefined){ %>
                                 <h4><%= item.name.uz %></h4>
                             <% } %>
                         </div>
@@ -169,7 +169,7 @@
                         <% if(lang === "ru"){ %>
                             <h4><%= item.name.ru%></h4>
                         <% } %>
-                        <% if(lang == "undifined"){ %>
+                        <% if(lang == undefined){ %>
                             <h4><%= item.name.uz%></h4>
                         <% } %>
                     </div>
