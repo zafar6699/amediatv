@@ -1,3 +1,4 @@
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
 <% if (kino.price == "free") { %>
     <div class="kino">
@@ -97,10 +98,33 @@
                             <%= kino.description.uz  %> 
                         <% } %>
                     </p>
+
     
                     <div class="hashtag">
                         <span># <%= kino.tags %></span>
                     </div>
+                    <% if (user) { %>
+                        <div class="rating">
+                            <h4>Baho bering:</h4>
+                            <form action="/rate" method="POST">
+                                <div class="rate">
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                    <input type="hidden" name="kino" value="<%= kino._id %>">
+                                    <input type="hidden" name="user" value="<%= user._id %>">
+                                </div>
+                                <button>Baholash</button>
+                            </form>
+                        </div>
+                    <% } %>
                 </div>
             </div>
             <div class="kino-kadr pt-3">
@@ -154,3 +178,10 @@
 <% if (kino.price != "free") { %>
     <h3>Bu videoni ko'rishga siz uchun ruhsat yo'q</h3>
 <% } %>
+
+
+<script >
+    
+</script>
+
+
