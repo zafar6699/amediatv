@@ -4,7 +4,7 @@ const comments = require('../models/')
 exports.Profile = async (req, res) => {
     const janr = await Janr.find().sort({ createdAt: - 1 })
     const list = await priceList.find().sort({ date: -1 })
-    const 
+    // const 
     res.render("./main/profile", {
         title: "Profile",
         layout: "layout",
