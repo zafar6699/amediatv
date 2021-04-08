@@ -201,12 +201,13 @@
                 
             </ul>
         </div>
+        
         <div class="tab-content">
 
-            <% sortKino.forEach((element, index) => { %>
+            <% sortKino.forEach((e, index) => { %>
                 <aside <% if(index == 0) { %> class="__active" <% } %> >
                     <div class="tab-inner-box">
-                        <% element.forEach(item => { %>
+                        <% e.forEach(item => { %>
                             
                                 <div class="__item">
                                     <a href="/kino/<%= item._id %>">
