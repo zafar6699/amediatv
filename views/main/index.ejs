@@ -20,7 +20,7 @@
                                             <%= item.kino.name.ru %>
                                         </a>
                                     <% } %>
-                                    <%  if(lang=='undifined' ){ %>
+                                    <%  if(lang==undefined ){ %>
                                         <a  class="banner__link" href="/kino/<%= item.kino._id %>">
                                             <%= item.kino.name.uz %>
                                         </a>
@@ -33,7 +33,7 @@
                                         <%  if(lang==='ru' ){ %>
                                             <%= item.kino.description.ru %>
                                         <% }%>
-                                        <%  if(lang=='undifined' ){ %>
+                                        <%  if(lang==undefined ){ %>
                                             <%= item.kino.description.uz %>
                                         <% } %>
                                     </p>
@@ -192,7 +192,7 @@
                         <%if(lang === "ru") { %>
                             <%= element.nameru %>
                         <% } %>
-                        <%if(lang == "undefined") { %>
+                        <%if(lang == undefined) { %>
                             <%= element.nameuz %>
                         <% } %>
                     </li>
@@ -222,7 +222,7 @@
                                             <%if ( lang === "ru" ) { %>
                                                 <%= item.name.ru %>
                                             <% } %> 
-                                            <%if ( lang == "undefined" ) { %>
+                                            <%if ( lang == undefined ) { %>
                                                 <%= item.name.uz %>
                                             <% } %> 
                                         </h3>
