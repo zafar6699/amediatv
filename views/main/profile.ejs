@@ -67,101 +67,100 @@
         </div>
     </div>
 </div>
-<%= user._id %>
-    <div class="profile">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="profile-content">
-                        <div class="profile__img">
-                            <div class="avatar-wrapper">
-                                <img class="profile-pic" src="/img/insta.png" />
-                                <div class="upload-button">
-                                    <i class="fa fa-arrow-circle-up"></i>
-                                </div>
-                                <input class="file-upload" type="file">
+<div class="profile">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-content">
+                    <div class="profile__img">
+                        <div class="avatar-wrapper">
+                            <img class="profile-pic" src="/img/insta.png" />
+                            <div class="upload-button">
+                                <i class="fa fa-arrow-circle-up"></i>
                             </div>
-                        </div>
-
-                        <div class="profile-info">
-                            <div class="info__item">
-                                <h3>Ismi:</h3>
-                                <h4>
-                                    <%= user.name %>
-                                </h4>
-                            </div>
-                            <div class="info__item">
-                                <h3>Email:</h3>
-                                <h4>
-                                    <%= user.email %>
-                                </h4>
-                            </div>
-                            <div class="info__item">
-                                <h3>ID:</h3>
-                                <h4>
-                                    <%= user.uid %>
-                                </h4>
-                            </div>
-                            <div class="info__item">
-                                <h3>Balans:</h3>
-                                <h4 class="__color">
-                                    <%= user.balance %> so'm
-                                </h4>
-                            </div>
-
-                            <div class="info__item">
-                                <h3>Tarifning tugash sanasi:</h3>
-                                <h4 class="deadline" style="color: rgb(253, 29, 29); font-weight: 700;">
-                                    
-
-                                </h4>
-                            </div>
-                        </div>
-                        <div class="edit-actions">
-                            <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal"
-                                data-mdb-target="#exampleModal-1">Profilni tahririlash</button>
-                            <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal"
-                                data-mdb-target="#exampleModal-2">Balansni to'ldirish</button>
-                            <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal"
-                                data-mdb-target="#exampleModal-3">Parolni o'zgartirish</button>
+                            <input class="file-upload" type="file">
                         </div>
                     </div>
+
+                    <div class="profile-info">
+                        <div class="info__item">
+                            <h3>Ismi:</h3>
+                            <h4>
+                                <%= user.name %>
+                            </h4>
+                        </div>
+                        <div class="info__item">
+                            <h3>Email:</h3>
+                            <h4>
+                                <%= user.email %>
+                            </h4>
+                        </div>
+                        <div class="info__item">
+                            <h3>ID:</h3>
+                            <h4>
+                                <%= user.uid %>
+                            </h4>
+                        </div>
+                        <div class="info__item">
+                            <h3>Balans:</h3>
+                            <h4 class="__color">
+                                <%= user.balance %> so'm
+                            </h4>
+                        </div>
+
+                        <div class="info__item">
+                            <h3>Tarifning tugash sanasi:</h3>
+                            <h4 class="deadline" style="color: rgb(253, 29, 29); font-weight: 700;">
+
+
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="edit-actions">
+                        <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal"
+                            data-mdb-target="#exampleModal-1">Profilni tahririlash</button>
+                        <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal"
+                            data-mdb-target="#exampleModal-2">Balansni to'ldirish</button>
+                        <button data-toggle="modal" data-dismiss="modal" type="button" data-mdb-toggle="modal"
+                            data-mdb-target="#exampleModal-3">Parolni o'zgartirish</button>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="profile-content">
-                        <h2 class="title"><i class="fa fa-angle-right"></i> Tariflar</h2>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-content">
+                    <h2 class="title"><i class="fa fa-angle-right"></i> Tariflar</h2>
 
-                        <div class="content-tarif">
+                    <div class="content-tarif">
 
 
 
 
-                            <div class="tarif__item">
-                                <div class="tarif-top">
-                                    <h3>
-                                        <%= list[0].type %> oylik
-                                    </h3>
+                        <div class="tarif__item">
+                            <div class="tarif-top">
+                                <h3>
+                                    <%= list[0].type %> oylik
+                                </h3>
 
-                                </div>
-                                <div class="tarif-bottom">
-                                    <h4>
-                                        <%= list[0].amount %> so'm
-                                    </h4>
-                                    <form action="/balance/add" method="POST">
-                                        <input type="text" id="priceID" name="user" value="<%= list[0]._id %>">
-                                        <input type="text" id="userID" name="price" value="<%= user._id %>" >
-                                        <input type="text" id="statusCode"name="status" value="true" >
-                                        <button type="submit"> Obuna bo'lish </button>
-                                    </form>
-                                </div>
                             </div>
+                            <div class="tarif-bottom">
+                                <h4>
+                                    <%= list[0].amount %> so'm
+                                </h4>
+                                <form action="/balance/add" method="POST">
+                                    <input type="hidden" id="priceID" name="price" value="<%= list[0]._id %>">
+                                    <input type="hidden" id="userID" name="user" value="<%= user._id %>">
+                                    <input type="hidden" id="statusCode" name="status" value="true">
+                                    <button type="submit" > Obuna bo'lish </button>
+                                </form>
+                            </div>
+                        </div>
 
 
 
 
 
 
-                            <!-- <div class="tarif__item">
+                        <!-- <div class="tarif__item">
                             <div class="tarif-top">
                                 <h3>1 Oylik</h3>
                             </div>
@@ -188,136 +187,136 @@
                                 <button> Obuna bo'lish </button>
                             </div>
                         </div> -->
-                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="profile-content">
-                        <h2 class="title"><i class="fa fa-angle-right"></i> So'nggi izohlar</h2>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-content">
+                    <h2 class="title"><i class="fa fa-angle-right"></i> So'nggi izohlar</h2>
 
-                        <div class="content-comments">
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
-                                            <img src="" alt="">
-                                        </div>
-                                        <h4>Muhammad_Ali</h4>
+                    <div class="content-comments">
+                        <div class="comments__item">
+                            <div class="comments-top">
+                                <div class="left">
+                                    <div class="img">
+                                        <img src="" alt="">
                                     </div>
-                                    <h6>2021-03-25 20:03</h6>
+                                    <h4>Muhammad_Ali</h4>
                                 </div>
-                                <div class="comment__p">
-                                    <p>
-                                        Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                    </p>
-                                </div>
+                                <h6>2021-03-25 20:03</h6>
                             </div>
-
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
-                                            <img src="" alt="">
-                                        </div>
-                                        <h4>Muhammad_Ali</h4>
-                                    </div>
-                                    <h6>2021-03-25 20:03</h6>
-                                </div>
-                                <div class="comment__p">
-                                    <p>
-                                        Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                    </p>
-                                </div>
+                            <div class="comment__p">
+                                <p>
+                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
+                                </p>
                             </div>
-
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
-                                            <img src="/img/insta.png" alt="">
-                                        </div>
-                                        <h4>Muhammad_Ali</h4>
-                                    </div>
-                                    <h6>2021-03-25 20:03</h6>
-                                </div>
-                                <div class="comment__p">
-                                    <p>
-                                        Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
-                                            <img src="" alt="">
-                                        </div>
-                                        <h4>Muhammad_Ali</h4>
-                                    </div>
-                                    <h6>2021-03-25 20:03</h6>
-                                </div>
-                                <div class="comment__p">
-                                    <p>
-                                        Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
-                                            <img src="" alt="">
-                                        </div>
-                                        <h4>Muhammad_Ali</h4>
-                                    </div>
-                                    <h6>2021-03-25 20:03</h6>
-                                </div>
-                                <div class="comment__p">
-                                    <p>
-                                        Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
-                                            <img src="" alt="">
-                                        </div>
-                                        <h4>Muhammad_Ali</h4>
-                                    </div>
-                                    <h6>2021-03-25 20:03</h6>
-                                </div>
-                                <div class="comment__p">
-                                    <p>
-                                        Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
-                                            <img src="" alt="">
-                                        </div>
-                                        <h4>Muhammad_Ali</h4>
-                                    </div>
-                                    <h6>2021-03-25 20:03</h6>
-                                </div>
-                                <div class="comment__p">
-                                    <p>
-                                        Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                    </p>
-                                </div>
-                            </div>
-
                         </div>
+
+                        <div class="comments__item">
+                            <div class="comments-top">
+                                <div class="left">
+                                    <div class="img">
+                                        <img src="" alt="">
+                                    </div>
+                                    <h4>Muhammad_Ali</h4>
+                                </div>
+                                <h6>2021-03-25 20:03</h6>
+                            </div>
+                            <div class="comment__p">
+                                <p>
+                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="comments__item">
+                            <div class="comments-top">
+                                <div class="left">
+                                    <div class="img">
+                                        <img src="/img/insta.png" alt="">
+                                    </div>
+                                    <h4>Muhammad_Ali</h4>
+                                </div>
+                                <h6>2021-03-25 20:03</h6>
+                            </div>
+                            <div class="comment__p">
+                                <p>
+                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="comments__item">
+                            <div class="comments-top">
+                                <div class="left">
+                                    <div class="img">
+                                        <img src="" alt="">
+                                    </div>
+                                    <h4>Muhammad_Ali</h4>
+                                </div>
+                                <h6>2021-03-25 20:03</h6>
+                            </div>
+                            <div class="comment__p">
+                                <p>
+                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="comments__item">
+                            <div class="comments-top">
+                                <div class="left">
+                                    <div class="img">
+                                        <img src="" alt="">
+                                    </div>
+                                    <h4>Muhammad_Ali</h4>
+                                </div>
+                                <h6>2021-03-25 20:03</h6>
+                            </div>
+                            <div class="comment__p">
+                                <p>
+                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="comments__item">
+                            <div class="comments-top">
+                                <div class="left">
+                                    <div class="img">
+                                        <img src="" alt="">
+                                    </div>
+                                    <h4>Muhammad_Ali</h4>
+                                </div>
+                                <h6>2021-03-25 20:03</h6>
+                            </div>
+                            <div class="comment__p">
+                                <p>
+                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="comments__item">
+                            <div class="comments-top">
+                                <div class="left">
+                                    <div class="img">
+                                        <img src="" alt="">
+                                    </div>
+                                    <h4>Muhammad_Ali</h4>
+                                </div>
+                                <h6>2021-03-25 20:03</h6>
+                            </div>
+                            <div class="comment__p">
+                                <p>
+                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
