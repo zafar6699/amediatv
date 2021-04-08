@@ -6,19 +6,28 @@
                 <h5 class="modal-title" id="exampleModalLabel">Profilni tahrirlash</h5>
                 <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="form-auth">
-                    <h4>Foydalanuvchi nomi</h4>
-                    <input type="text" placeholder="Foydalanuvchi nomini kiriting...">
-                </div>
-                <div class="form-auth">
+
+            <form action="/auth/updatedetails" method="PUT" class="mt-3 mb-5">
+                <div class="modal-body">
+                    <div class="form-auth">
+                        <h4>Foydalanuvchi nomi</h4>
+                        <input type="text" name="name" value="<%= user.name %> " placeholder="Foydalanuvchi nomini kiriting...">
+                    </div>
+                    <div class="form-auth">
+                        <h4>Foydalanuvchi email</h4>
+                        <input type="email" name="email" email="email" value="<%= user.email %> "
+                            placeholder="Foydalanuvchi pochtasini kiriting...">
+                    </div>
+
+                    <!-- <div class="form-auth">
                     <h4>Telefon</h4>
                     <input class="input-mask" type="text" placeholder="+9989_-___-__-__">
+                </div> -->
                 </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-primary">Saqlash</button>
-            </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Saqlash</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -104,7 +113,7 @@
                         <div class="info__item">
                             <h3>Status:</h3>
                             <h4 class="__color">
-                                <%= user.status %> 
+                                <%= user.status %>
                             </h4>
                         </div>
                         <div class="info__item">
@@ -140,34 +149,34 @@
 
 
 
-                        <% for (let item of list) {%> 
-                        <div class="tarif__item">
-                            <div class="tarif-top">
-                                <h3>
-                                    <%= item.type %> oylik
-                                </h3>
+                        <% for (let item of list) {%>
+                            <div class="tarif__item">
+                                <div class="tarif-top">
+                                    <h3>
+                                        <%= item.type %> oylik
+                                    </h3>
 
+                                </div>
+                                <div class="tarif-bottom">
+                                    <h4>
+                                        <%= item.amount %> so'm
+                                    </h4>
+                                    <form action="/balance/add" method="POST">
+                                        <input type="hidden" id="priceID" name="price" value="<%= item._id %>">
+                                        <input type="hidden" id="userID" name="user" value="<%= user._id %>">
+                                        <input type="hidden" id="statusCode" name="status" value="true">
+                                        <button type="submit"> Obuna bo'lish </button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="tarif-bottom">
-                                <h4>
-                                    <%= item.amount %> so'm
-                                </h4>
-                                <form action="/balance/add" method="POST">
-                                    <input type="hidden" id="priceID" name="price" value="<%= item._id %>">
-                                    <input type="hidden" id="userID" name="user" value="<%= user._id %>">
-                                    <input type="hidden" id="statusCode" name="status" value="true">
-                                    <button type="submit" > Obuna bo'lish </button>
-                                </form>
-                            </div>
-                        </div>
-                        <% } %> 
+                            <% } %>
 
 
 
 
 
 
-                        <!-- <div class="tarif__item">
+                                <!-- <div class="tarif__item">
                             <div class="tarif-top">
                                 <h3>1 Oylik</h3>
                             </div>
@@ -202,124 +211,31 @@
                     <h2 class="title"><i class="fa fa-angle-right"></i> So'nggi izohlar</h2>
 
                     <div class="content-comments">
-                        <div class="comments__item">
-                            <div class="comments-top">
-                                <div class="left">
-                                    <div class="img">
-                                        <img src="" alt="">
-                                    </div>
-                                    <h4>Muhammad_Ali</h4>
-                                </div>
-                                <h6>2021-03-25 20:03</h6>
-                            </div>
-                            <div class="comment__p">
-                                <p>
-                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                </p>
-                            </div>
-                        </div>
 
-                        <div class="comments__item">
-                            <div class="comments-top">
-                                <div class="left">
-                                    <div class="img">
-                                        <img src="" alt="">
+                        <% for(const item of comment) {%>
+                            <div class="comments__item">
+                                <div class="comments-top">
+                                    <div class="left">
+                                        <div class="img">
+                                            <img src="<%= item.image %> " alt="">
+                                        </div>
+                                        <h4>
+                                            <%= item.user %>
+                                        </h4>
                                     </div>
-                                    <h4>Muhammad_Ali</h4>
+                                    <h6>
+                                        <%= moment(item.date.fsts).format("DD-MM-YYYY") %>
+                                    </h6>
                                 </div>
-                                <h6>2021-03-25 20:03</h6>
+                                <div class="comment__p">
+                                    <p>
+                                        <%= item.message %>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="comment__p">
-                                <p>
-                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                </p>
-                            </div>
-                        </div>
+                            <% } %>
 
-                        <div class="comments__item">
-                            <div class="comments-top">
-                                <div class="left">
-                                    <div class="img">
-                                        <img src="/img/insta.png" alt="">
-                                    </div>
-                                    <h4>Muhammad_Ali</h4>
-                                </div>
-                                <h6>2021-03-25 20:03</h6>
-                            </div>
-                            <div class="comment__p">
-                                <p>
-                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                </p>
-                            </div>
-                        </div>
 
-                        <div class="comments__item">
-                            <div class="comments-top">
-                                <div class="left">
-                                    <div class="img">
-                                        <img src="" alt="">
-                                    </div>
-                                    <h4>Muhammad_Ali</h4>
-                                </div>
-                                <h6>2021-03-25 20:03</h6>
-                            </div>
-                            <div class="comment__p">
-                                <p>
-                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="comments__item">
-                            <div class="comments-top">
-                                <div class="left">
-                                    <div class="img">
-                                        <img src="" alt="">
-                                    </div>
-                                    <h4>Muhammad_Ali</h4>
-                                </div>
-                                <h6>2021-03-25 20:03</h6>
-                            </div>
-                            <div class="comment__p">
-                                <p>
-                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="comments__item">
-                            <div class="comments-top">
-                                <div class="left">
-                                    <div class="img">
-                                        <img src="" alt="">
-                                    </div>
-                                    <h4>Muhammad_Ali</h4>
-                                </div>
-                                <h6>2021-03-25 20:03</h6>
-                            </div>
-                            <div class="comment__p">
-                                <p>
-                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="comments__item">
-                            <div class="comments-top">
-                                <div class="left">
-                                    <div class="img">
-                                        <img src="" alt="">
-                                    </div>
-                                    <h4>Muhammad_Ali</h4>
-                                </div>
-                                <h6>2021-03-25 20:03</h6>
-                            </div>
-                            <div class="comment__p">
-                                <p>
-                                    Gap yoq vapshi zor hamma animaga gap yo zur omad silaga
-                                </p>
-                            </div>
-                        </div>
 
                     </div>
                 </div>

@@ -13,15 +13,12 @@ exports.Home = async (req, res) => {
     let sortKino = []
 
     
-    category.forEach(async (element) => {
+     category.forEach(async (element) => {
         let s = await Kino.find({ category: { $all: [element._id] } }).select({name: 1, image: 1});
         sortKino.push(s);        
     });
-    setTimeout(() => {
-        console.log("test---------------------------------->", sortKino)
-    }, 200);
-
     const janr = await Janr.find()
+
     const slider = await Slider.find()
         .sort({date: -1})
         .populate({path: 'kino',select: ['name','image','screens','description','rating']})
@@ -52,23 +49,27 @@ exports.Home = async (req, res) => {
         .populate(['janr'])
 
     
+    // setTimeout(() => {
+        console.log("test---------------------------------->", janr)
+    // }, 200);
+    console.log(news)
 
     res.render("./main/index", {
-        sortKino,
-        janr: janr,
+        lang: req.session.ulang,
+        janr,
         slider,
-        serial: season, kino,
-        category,
-        
-        news,
         oneKino,
-        
+        news,
+        kino,
+        serial: season,
+        category,
+        sortKino,
         title: "Home",
         user: req.session.user,
-        lang: req.session.ulang,
+        
         layout: "./layout",
     })
-    console.log(news)
+    
 }
 
 exports.OneJanr = async (req, res) => {

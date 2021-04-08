@@ -161,19 +161,13 @@
 
                                     <% for(let item of janr) {%>
                                         <li>
-                                            <% if(lang==="uz" ) { %>
-                                                <a href="/a">
-                                                    <%= item.nameuz %>
-                                                </a>
-                                                <% } else if(lang==="ru" ) { %>
-                                                    <a href="/a">
-                                                        <%= item.nameru %>
-                                                    </a>
-                                                    <% }else if(lang=="undefined" ) { %>
-                                                        <a href="/a">
-                                                            <%= item.nameuz %>
-                                                        </a>
-                                                        <% } %>
+                                            <% if(lang === "uz") { %>
+                                                <a href="/a"> <%= item.nameuz %> </a>
+                                            <% } else if(lang === "ru") { %>
+                                                <a href="/a"> <%= item.nameru %> </a>
+                                            <% }else if(lang == undefined) { %>
+                                                <a href="/a"> <%= item.nameuz %> </a>
+                                            <% } %>
                                         </li>
                                         <% } %>
 
@@ -240,10 +234,17 @@
                     </div>
 
                     <div class="header-language">
-                        <a class="<%=(lang==" uz"?"active":"")%>" href="/?clang=uz">UZ</a>
-                        <a href="/?clang=ru">RU</a>
-
-
+                            <% if (lang == "uz" || lang == undefined) { %>
+                                <a class="__select" href="/?clang=uz">UZ</a>
+                                <a href="/?clang=ru">RU</a>
+                            <% } %>
+                            <% if (lang == "ru") { %>
+                                <a  href="/?clang=uz">UZ</a>
+                                <a class="__select" href="/?clang=ru">RU</a>
+                            <% } %>
+                            
+                          
+                       
                     </div>
 
                     <!-- loggedIn ----------------------------------------->

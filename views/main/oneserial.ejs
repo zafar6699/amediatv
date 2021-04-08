@@ -1,149 +1,160 @@
 
-<div class="kino">
-    <div class="container">
-        <div class="row kino__top">
-            <div class="col-md-3">
-                <div class="img_left">
-                    <img src="<%= serial.image %>" alt="">
-                    <div class="__bottom">
-                        <% if (lang == "uz") { %>
-                            <h3><%= serial.name.uz %></h3>
-                        <% } %>
-                        <% if (lang == "ru") { %>
-                            <h3><%= serial.name.ru %></h3>
-                        <% } %>
-                        <% if (lang == "undefined") { %>
-                            <h3><%= serial.name.uz %></h3>
-                        <% } %>
-                        <div class="banner-stars">
-                            <span><i class="fa fa-star __gold"></i></span>
-                            <span><i class="fa fa-star __gold"></i></span>
-                            <span><i class="fa fa-star __gold"></i></span>
-                            <span><i class="fa fa-star __gold"></i></span>
-                            <span><i class="fa fa-star __gold"></i></span>
+<% if (serial.price == "free" || user.status == "vip") { %>
+    
+    <div class="kino">
+        <div class="container">
+            <div class="row kino__top">
+                <div class="col-md-3">
+                    <div class="img_left">
+                        <img src="<%= serial.image %>" alt="">
+                        <div class="__bottom">
+                            <% if (lang == "uz") { %>
+                                <h3><%= serial.name.uz %></h3>
+                            <% } %>
+                            <% if (lang == "ru") { %>
+                                <h3><%= serial.name.ru %></h3>
+                            <% } %>
+                            <% if (lang == undefined) { %>
+                                <h3><%= serial.name.uz %></h3>
+                            <% } %>
+                            <div class="banner-stars">
+                                <span><i class="fa fa-star __gold"></i></span>
+                                <span><i class="fa fa-star __gold"></i></span>
+                                <span><i class="fa fa-star __gold"></i></span>
+                                <span><i class="fa fa-star __gold"></i></span>
+                                <span><i class="fa fa-star __gold"></i></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-9 __video">
-                <video controls src="<%= serial.video %>"></video>
-            </div>
-            <div class="col-md-3 mt-4">
-                <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
+                <div class="col-md-9 __video">
+                    <video controls src="<%= serial.video %>"></video>
+                </div>
+                <div class="col-md-3 mt-4">
+                    <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
 
-                <div class="profile-info">
-                    <div class="info__item">
-                        <h3> <i class="fa fa-map"></i> Mamlakat:</h3>
-                        <h4><%= serial.country %></h4>
+                    <div class="profile-info">
+                        <div class="info__item">
+                            <h3> <i class="fa fa-map"></i> Mamlakat:</h3>
+                            <h4><%= serial.country %></h4>
+                        </div>
+                        <div class="info__item">
+                            <h3> <i class="fa fa-user"></i> Rejissor:</h3>
+                            <h4> <%= serial.rejissor %> </h4>
+                        </div>
+                        <div class="info__item">
+                            <h3 > <i class="fa fa-microphone"></i> Studiya:</h3>
+                            <h4><%= serial.studia %></h4>
+                        </div>
+                        <div class="info__item">
+                            <h3> <i class="fa fa-folder-open"></i> Janr:</h3>
+                            <% serial.janr.forEach(element => { %>
+                                <% if ( lang == "uz" ) { %>
+                                    <h4><%= element.nameuz %></h4>
+                                <% } %> 
+                                <% if ( lang == "ru" ) { %>
+                                    <h4><%= element.nameru %></h4>
+                                <% } %> 
+                                <% if ( lang == undefined ) { %>
+                                    <h4><%= element.nameuz %></h4>
+                                <% } %> 
+                            <% }); %>
+                            
+                        </div>
+                        <div class="info__item">
+                            <h3><i class="fa fa-list"></i> Kategoriya:</h3>
+                            <% serial.category.forEach(element => { %>
+                                <% if ( lang == "uz" ) { %>
+                                    <h4><%= element.nameuz %></h4> /
+                                <% } %> 
+                                <% if ( lang == "ru" ) { %>
+                                    <h4><%= element.nameru %></h4> /
+                                <% } %> 
+                                <% if ( lang == undefined ) { %>
+                                    <h4><%= element.nameuz %></h4> /
+                                <% } %> 
+                            <% }); %>
+                        </div>
+                        <div class="info__item">
+                            <h3><i class="fa fa-clock"></i> Yil:</h3>
+                            <h4> <%= serial.year %>  </h4>
+                        </div>
                     </div>
-                    <div class="info__item">
-                        <h3> <i class="fa fa-user"></i> Rejissor:</h3>
-                        <h4> <%= serial.rejissor %> </h4>
+                </div>
+                <div class="col-md-9 mt-4">
+                    <div>
+                        <a class="__download" href="<%= serial.url %>" target="_blank">
+                            <i class="fa fa-download"></i>   Yuklab olish
+                        </a>
                     </div>
-                    <div class="info__item">
-                        <h3 > <i class="fa fa-microphone"></i> Studiya:</h3>
-                        <h4><%= serial.studia %></h4>
+                    <p class="mt-4">
+                        <% if (lang == "uz") { %>
+                            <%= serial.description.uz  %> 
+                        <% } %>
+                        <% if (lang == "ru") { %>
+                            <%= serial.description.ru  %> 
+                        <% } %>
+                        <% if (lang == undefined) { %>
+                            <%= serial.description.uz  %> 
+                        <% } %>
+                    </p>
+
+                    <div class="hashtag">
+                        <span># <%= serial.tags %></span>
                     </div>
-                    <div class="info__item">
-                        <h3> <i class="fa fa-folder-open"></i> Janr:</h3>
-                        <% serial.janr.forEach(element => { %>
-                            <% if ( lang == "uz" ) { %>
-                                <h4><%= element.nameuz %></h4>
-                            <% } %> 
-                            <% if ( lang == "ru" ) { %>
-                                <h4><%= element.nameru %></h4>
-                            <% } %> 
-                            <% if ( lang == "undefined" ) { %>
-                                <h4><%= element.nameuz %></h4>
-                            <% } %> 
+                </div>
+            </div>
+            <div class="kino-kadr pt-3">
+                <h1 class="title__z"><i class="fa fa-angle-right"></i> Filmdan kadrlar</h1>
+
+                <div class="carousel-kadr">
+                    <div class="owl-carousel owl-kadr owl-theme">
+                        <% serial.screens.thumb.forEach(element => { %>
+                            <div class="item">
+                                <div class="img-kadr">
+                                    <img src="<%= element %>" alt="">
+                                </div>
+                            </div>
                         <% }); %>
                         
-                    </div>
-                    <div class="info__item">
-                        <h3><i class="fa fa-list"></i> Kategoriya:</h3>
-                        <% serial.category.forEach(element => { %>
-                            <% if ( lang == "uz" ) { %>
-                                <h4><%= element.nameuz %></h4> /
-                            <% } %> 
-                            <% if ( lang == "ru" ) { %>
-                                <h4><%= element.nameru %></h4> /
-                            <% } %> 
-                            <% if ( lang == "undefined" ) { %>
-                                <h4><%= element.nameuz %></h4> /
-                            <% } %> 
-                        <% }); %>
-                    </div>
-                    <div class="info__item">
-                        <h3><i class="fa fa-clock"></i> Yil:</h3>
-                        <h4> <%= serial.year %>  </h4>
+                        
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 mt-4">
-                <div>
-                    <a class="__download" href="<%= serial.url %>" target="_blank">
-                        <i class="fa fa-download"></i>   Yuklab olish
-                    </a>
-                </div>
-                <p class="mt-4">
-                    <% if (lang == "uz") { %>
-                        <%= serial.description.uz  %> 
-                    <% } %>
-                    <% if (lang == "ru") { %>
-                        <%= serial.description.ru  %> 
-                    <% } %>
-                    <% if (lang == "undefined") { %>
-                        <%= serial.description.uz  %> 
-                    <% } %>
-                </p>
+            <div class="kino-kadr pt-3">
+                <h1 class="title__z"><i class="fa fa-angle-right"></i> Ijodkorlar</h1>
 
-                <div class="hashtag">
-                    <span># <%= serial.tags %></span>
-                </div>
-            </div>
-        </div>
-        <div class="kino-kadr pt-3">
-            <h1 class="title__z"><i class="fa fa-angle-right"></i> Filmdan kadrlar</h1>
-
-            <div class="carousel-kadr">
-                <div class="owl-carousel owl-kadr owl-theme">
-                    <% serial.screens.thumb.forEach(element => { %>
-                        <div class="item">
-                            <div class="img-kadr">
-                                <img src="<%= element %>" alt="">
+                <div class="flex-ijodkor">
+                    <% serial.tarjimon.forEach(element => { %>
+                        <div class="__item">
+                            <div class="img-pro">
+                                <img src="<%= element.image %>" alt="">
                             </div>
+                            <h4><%= element.name %></h4>
                         </div>
                     <% }); %>
                     
-                    
                 </div>
-            </div>
-        </div>
-        <div class="kino-kadr pt-3">
-            <h1 class="title__z"><i class="fa fa-angle-right"></i> Ijodkorlar</h1>
-
-            <div class="flex-ijodkor">
-                <% serial.tarjimon.forEach(element => { %>
-                    <div class="__item">
-                        <div class="img-pro">
-                            <img src="<%= element.image %>" alt="">
-                        </div>
-                        <h4><%= element.name %></h4>
-                    </div>
-                <% }); %>
                 
             </div>
-            
-        </div>
-        <div class="comment-send">
-            <form action="/comment/season" method="post">
-                <textarea name="message" id="" cols="30" rows="10" placeholder="Izoh qoldiring..."></textarea>
-                <input type="hidden" value="<%= serial._id %>" name="season">
-                <input type="hidden" value="<%= user._id %>" name="user">
-                <div class="d-flex justify-content-end">
-                    <button>Jo'natish</button>
+            <% if (user) { %>
+                <div class="comment-send">
+                    <form action="/comment/season" method="post">
+                        <textarea name="message" id="" cols="30" rows="10" placeholder="Izoh qoldiring..."></textarea>
+                        <input type="hidden" value="<%= serial._id %>" name="season">
+                        <input type="hidden" value="<%= user._id %>" name="user">
+                        <div class="d-flex justify-content-end">
+                            <button>Jo'natish</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            <% } %>
         </div>
     </div>
-</div>
+<% } %>
+
+
+
+<% if (serial.price != "free") { %>
+    <h3>Bu videoni ko'rishga siz uchun ruhsat yo'q</h3>
+<% } %>

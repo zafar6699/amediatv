@@ -39,7 +39,7 @@ exports.login = async (req, res, next) => {
     }
     const body = await User.findOne({ email: req.body.email })
 
-    const balance = await Balance.find({user: body._id}).sort({createdAt: -1}).skip(0).limit(1)
+    const balance = await Balance.find({ user: body._id }).sort({ createdAt: -1 }).skip(0).limit(1)
     req.session.balance = balance
     req.session.user = body
     req.session.save()
@@ -64,7 +64,7 @@ exports.UpdateDetails = async (req, res, next) => {
     const FieldsToUpdate = {
         name: req.body.name,
         email: req.body.email,
-        tel: "+998" + req.body.tel
+        // tel: "+998" + req.body.tel
     }
     const user = await User.findByIdAndUpdate(req.user.id, FieldsToUpdate, {
         new: true,
@@ -81,7 +81,7 @@ exports.UpdatePassword = async (req, res, next) => {
     const user = await User.findById(req.user.id).select('+password');
 
     if (!(await user.matchPassword(req.body.currentPassword))) {
-        res.status(401).json({ success: false, data: 'Password is incorrect'})
+        res.status(401).json({ success: false, data: 'Password is incorrect' })
     }
     user.password = req.body.newPassword;
     await user.save();
