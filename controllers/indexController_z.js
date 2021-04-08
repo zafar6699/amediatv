@@ -52,7 +52,7 @@ exports.Home = async (req, res) => {
         layout: "./layout",
         janr: janr,
         slider,
-        serial: season,
+        serial: season, kino,
         category,
         sortKino,
         news,
@@ -61,7 +61,7 @@ exports.Home = async (req, res) => {
         user: req.session.user,
         lang: req.session.ulang
     })
-    console.log(janr)
+    console.log(news)
 }
 
 exports.OneJanr = async (req, res) => {

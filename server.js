@@ -38,7 +38,7 @@ app.use(session({
   store: store,
   }));
 
-
+  app.locals.moment = require('moment')
 
 
 app.use(cookieParser());

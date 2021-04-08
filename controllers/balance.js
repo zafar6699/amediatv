@@ -13,8 +13,7 @@ exports.addBalance = async (req, res, next) => {
     const price = req.body.price;
 
     let priceList = await PriceList.findById({_id: price})
-    // const today = new Date();
-    const today = priceList.createdAt
+    const today = new Date();
     let endDate;
     let ress;
     // 12-2-20201
@@ -47,6 +46,8 @@ exports.addBalance = async (req, res, next) => {
                 endDate: endDate,
                 status: true
             })
+            
+
             balanseJournal.save()
                 .then(()=>{
                     res.status(201).json({
@@ -61,11 +62,12 @@ exports.addBalance = async (req, res, next) => {
                     })
                 })
 
-          
+                req.session.balance = balanseJournal
+                req.session.user = candidate
+                req.session.save()
+            
 
         } else {
-
-            
             res.status(402).json({
                 status: false,
                 data: 'Mablag` yetarli emas'

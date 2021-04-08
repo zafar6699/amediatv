@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 
 const BalanceSchema = mongoose.Schema({
     user: {
-        type : mongoose.Schema.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'Users',
-        required : true
+        required: true
     },
     price: {
         type: mongoose.Schema.ObjectId,
@@ -15,29 +15,30 @@ const BalanceSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    status:{
+    status: {
         type: Boolean,
         required: true
     },
-    createdAt:{
+    createdAt: {
         type: Date,
         default: Date.now()
     }
 })
-BalanceSchema.pre('save', async function (next){
-    const candidate = await this.model('Users').findByIdAndUpdate({_id:this.user})
-    const priceList = await this.model('Price').findById({_id:this.price})
+BalanceSchema.pre('save', async function (next) {
+    const candidate = await this.model('Users').findByIdAndUpdate({ _id: this.user })
+    const priceList = await this.model('Price').findById({ _id: this.price })
     const ostatok = candidate.balance - priceList.amount
     candidate.balance = ostatok
 
-    if (  (candidate.balance >= 0) && (priceList.amount > candidate.balance)  ) {
+    if ((candidate.balance >= 0) && (priceList.amount > candidate.balance)) {
         candidate.status = 'user'
     }
     else {
         candidate.status = 'vip'
     }
+   
 
-    candidate.save({validateBeforeSave: false})
+    candidate.save({ validateBeforeSave: false })
     next();
 })
 module.exports = mongoose.model('Balance', BalanceSchema)

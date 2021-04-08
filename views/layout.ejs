@@ -141,7 +141,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-logo">
-                    <h1>AniBla.uz</h1>
+                    <a href="/"><h1>AniBla.uz</h1></a>
                     <h2>
                         <span>Birinchi</span>
                         <span class="__bold">UZ</span>
@@ -232,18 +232,9 @@
                     </div>
 
                     <div class="header-language">
-                        <% if(lang==='uz' ){ %>
-                            <a class="__select" href="/?clang=uz">UZ</a>
+                            <a class="<%=(lang=="uz"?"active":"")%>" href="/?clang=uz">UZ</a>
                             <a href="/?clang=ru">RU</a>
-                        <% } %>
-                        <% if(lang==='ru' ){ %>
-                            <a  href="/?clang=uz">UZ</a>
-                            <a class="__select" href="/?clang=ru">RU</a>
-                        <% } %>
-                        <% if(lang == 'undefined' ){ %>
-                            <a class="__select" href="./?clang=uz">UZ</a>
-                            <a  href="/?clang=ru">RU</a>
-                        <% } %>
+                          
                        
                     </div>
 
@@ -425,7 +416,7 @@
                 }
             }
 
-            // document.getElementById("registerClick").addEventListener("click", addUser())
+            
 
             function loginUser(){
                 let email = document.getElementById("email-login").value;
@@ -451,6 +442,35 @@
                     })
 
             }
+
+            axios.get("/auth/session")
+                    .then(res => {
+
+                        let result =  new Date(res.data.data.balance[0].endDate)
+                        let sessionUser = res.data.data.user._id
+                        document.querySelector('.deadline').innerHTML = result.toLocaleString()
+                        console.log(sessionUser);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+
+                    console.log(sessionUser)
+
+           
+
+
+
+
+            axios.get("/auth/session")
+                    .then(res => {
+                        let result =  new Date(res.data.data.balance[0].endDate)
+                        document.querySelector('.deadline').innerHTML = result.toLocaleString()
+                        console.log(result);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
 
 
 

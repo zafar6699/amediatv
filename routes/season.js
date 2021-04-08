@@ -7,7 +7,8 @@ const path = require('path')
 const {
     addSeason,
     getAllSeason,
-    getByIdSeason
+    getByIdSeason,
+    addSeriya
 } = require('../controllers/season')
 
 
@@ -22,7 +23,8 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 // Season Router
-router.post('/add', upload.array('images',10), addSeason)
+router.post('/add', upload.array('images', 10), addSeason)
+router.post('/seriya/add',addSeriya)
 router.get('/all', getAllSeason )
 router.get('/:id', getByIdSeason)
 

@@ -21,8 +21,8 @@ router.route('/')
     .get(getCategories)
     .post(createCategory)
 
-router.route('/:categoryId')
-    .get(getCategory)
+// router.route('/:categoryId')
+//     .get(getCategory)
 router.route('/query/:categoryId')
     .get(getQuery)
 

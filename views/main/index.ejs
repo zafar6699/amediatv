@@ -124,28 +124,26 @@
                     <video controls class="home__video" src="<%= oneKino[0].video%>"></video>
                 </div>
             </div>
-            <% news.forEach(item => { %>
+            <% for(const item of news) {%> 
             <div class="col-md-4">
                 <a href="/news/<%= item._id %>">
                     <div class="box-border news__item">
                         <img src="<%= item.image %>" alt="">
                         <div class="opa"></div>
                         <div class="news__item__title">
-                            <h3>Yangiliklar</h3>
+                            <!-- <h3>Yangiliklar</h3> -->
                             <% if(lang === "uz"){ %>
-                                <h4><%= item.name.uz%></h4>
-                            <% } %>
-                            <% if(lang === "ru"){ %>
-                                <h4><%= item.name.ru%></h4>
-                            <% } %>
-                            <% if(lang == "undifined"){ %>
-                                <h4><%= item.name.uz%></h4>
+                                <h4><%= item.name.uz %></h4>
+                            <% } else if(lang === "ru"){ %>
+                                <h4><%= item.name.ru %></h4>
+                            <% } else if(lang == "undifined"){ %>
+                                <h4><%= item.name.uz %></h4>
                             <% } %>
                         </div>
                     </div>
                 </a>    
             </div>
-            <% }) %>
+            <% } %>
         </div>
     </div>
 </div>

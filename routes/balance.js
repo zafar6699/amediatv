@@ -6,7 +6,7 @@ const {
 } = require('../controllers/balance')
 
 
-router.post('/',addBalance)
+router.post('/add',addBalance)
 router.get('/',getBalances)
 
 

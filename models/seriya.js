@@ -10,6 +10,7 @@ const seriyaSchema = new mongoose.Schema({
     url: { type: String, required: true },
     tags: {type: String},
     length: {type: String, required: true},
+    tags: {type: String, default: ""},
     date: {type: Date, default: Date.now()}
 })
 module.exports = mongoose.model('seriya', seriyaSchema)

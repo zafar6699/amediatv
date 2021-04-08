@@ -1,64 +1,64 @@
 const Season = require('../models/season')
 const Seriya = require('../models/seriya')
-const SeriyaCommnent =  require('../models/commentSerial')
+const SeriyaCommnent = require('../models/commentSerial')
 const asyncHandler = require('../middlewares/async')
 const Janr = require("../models/janr")
 const path = require('path');
 const sharp = require('sharp')
 const JWT = require('jsonwebtoken');
-const User =  require('../models/user')
+const User = require('../models/user')
 
 
 
 // Season Controller
-exports.addSeason = asyncHandler(async (req,res,next) =>{
+exports.addSeason = asyncHandler(async (req, res, next) => {
     const files = req.files;
     const urls = [];
-    const thumb=[];
+    const thumb = [];
 
     for (const file of files) {
         const { filename } = file;
-        urls.push(`/uploads/cinema/org/${ filename}`)
-        thumb.push(`/uploads/cinema/thumb/${ filename}`)
-        await sharp(path.join(path.dirname(__dirname) + `/public/uploads/cinema/org/${filename}`) ).resize(1440,600)
+        urls.push(`/uploads/cinema/org/${filename}`)
+        thumb.push(`/uploads/cinema/thumb/${filename}`)
+        await sharp(path.join(path.dirname(__dirname) + `/public/uploads/cinema/org/${filename}`)).resize(1440, 600)
             .jpeg({
                 quality: 60
             })
-            .toFile(path.join(path.dirname(__dirname) + `/public/uploads/cinema/thumb/${filename}`), (err)=>{
-                if(err) {
+            .toFile(path.join(path.dirname(__dirname) + `/public/uploads/cinema/thumb/${filename}`), (err) => {
+                if (err) {
                     throw err
                 }
-                
+
             })
     }
 
 
 
 
-    const category=[];
+    const category = [];
     const translator = [];
     const tarjimon = [];
     const janrs = [];
     const tayming = [];
 
 
-    for(const cat of req.body.category){
+    for (const cat of req.body.category) {
         const catt = cat
         category.push(catt)
     }
-    for (const member of req.body.translator){
+    for (const member of req.body.translator) {
         const mem = member;
         translator.push(mem)
-    } 
-    for (const key of req.body.tarjimon){
+    }
+    for (const key of req.body.tarjimon) {
         const tarj = key;
         tarjimon.push(tarj)
     }
-    for (const janr of req.body.janr){
+    for (const janr of req.body.janr) {
         const ja = janr;
         janrs.push(ja)
     }
-    for(const tay of req.body.tayming){
+    for (const tay of req.body.tayming) {
         const taym = tay
         tayming.push(taym)
     }
@@ -89,14 +89,14 @@ exports.addSeason = asyncHandler(async (req,res,next) =>{
         rejissor: req.body.rejissor,
         length: req.body.length,
         studia: req.body.studia,
-        tayming:tayming,
+        tayming: tayming,
         price: req.body.price,
         janr: janrs,
         country: req.body.country,
-        slug:(Math.floor(Math.random()*9999999999999)).toString()
+        slug: (Math.floor(Math.random() * 9999999999999)).toString()
     })
     season.save()
-        .then(()=> {
+        .then(() => {
             res.status(201).json({
                 success: true,
                 data: season
@@ -109,63 +109,86 @@ exports.addSeason = asyncHandler(async (req,res,next) =>{
             })
         })
 })
-exports.getAllSeason = asyncHandler(async (req,res,next)=>{
+exports.getAllSeason = asyncHandler(async (req, res, next) => {
+    
     const season = await Season.find()
-        .sort({date: -1})
-        .select({name: 1, category: 1, image: 1, rating: 1, janr: 1, price: 1, date:1})
-        .populate({path: 'category', select: 'nameuz'})
-    const janr = await Janr.find().sort({createdAt: - 1})
+        .sort({ date: -1 })
+        .select({ name: 1, category: 1, image: 1, rating: 1, janr: 1, price: 1, date: 1 })
+        .populate({ path: 'category', select: 'nameuz' })
+    const janr = await Janr.find().sort({ createdAt: - 1 })
 
     res.render("./main/serial", {
         janr,
         serial: season,
         title: "Serial",
-        user: req.session.user
+        user: req.session.user, layout: 'layout'
     })
 })
-exports.getByIdSeason = asyncHandler(async (req,res,next) => {
-    // Find by id and compare user's id and seasons's id and check status
-
-    const comment = await SeriyaCommnent.find({season: req.params.id})
-        .sort({date: -1})
-      //.populate(['user'])
-    const janr = await Janr.find().sort({createdAt: - 1})
-
-
-    const seria = await Seriya.find({season: req.params.id})
-        .sort({date: -1})
+exports.getByIdSeason = asyncHandler(async (req, res, next) => {
+    const comment = await SeriyaCommnent.find({ season: req.params.id })
+        .sort({ date: -1 })
+    //.populate(['user'])
+    let janr = await Janr.find()
+    const seria = await Seriya.find({ season: req.params.id })
+        .sort({ date: -1 })
     const season = await Season.findById(req.params.id)
-        .populate(['category', 'janr','translator','tayming','tarjimon','seriya'])
-    if(season.price == 'free'){
-
+        .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
+    if (season.price == 'free') {
         res.render("./main/oneserial", {
+            title: "Serial",
+            layout: 'layout',
+            user: req.session.user,
+            lang: req.session.ulang,
             janr,
             serial: season,
-            title: "Serial",
-            user: req.session.user
         })
     } else {
-        const token = req.headers.authorization
-        if(!token){
-            return res.status(401).json({
-                success: false,
-                data: "foydalanuvchi statusi vip emas"
+        // const user =  JWT.decode(token.slice(7,token.length))
+        const user = req.session.user
+        const me = await User.findOne({ _id: user._id })
+        if (me.status !== 'vip' && season.price === 'selling') {
+            res.render('./main/notVip', {
+                title: "401", layout: 'error',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr
             })
-        }
-        const user =  JWT.decode(token.slice(7,token.length))
-        const me = await User.findOne({_id: user.id})
-        if(me.status !== 'vip' && season.price === 'selling'){
-            return res.status(403).json({
-                success: false,
-                data: "foydalanuvchi statusi vip emas"
-            })
-        }else if(me.status === 'vip' && season.price === 'selling'){
-            return res.status(200).json({
-                success: true,
-                data: season,
-               // comment,
-                seria
+        } else if (me.status === 'vip' && season.price === 'selling') {
+            res.render("./main/notVip", {
+                title: "402",
+                layout: 'error',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr
             })
         }
     }
+})
+
+exports.addSeriya = asyncHandler(async (req, res, next) => {
+    const seriya = new Seriya({
+        name: {
+            uz: req.body.nameuz,
+            ru: req.body.nameru
+        },
+        length: req.body.length,
+        url: req.body.url,
+        video: req.body.video,
+        season: req.body.season,
+        slug: (Math.floor(Math.random() * 9999999999999)).toString(),
+        tags: req.body.tags
+    })
+    seriya.save()
+        .then(() => {
+            res.status(201).json({
+                success: true,
+                data: seriya
+            })
+        })
+        .catch((error) => {
+            res.status(400).json({
+                success: false,
+                data: error
+            })
+        })
 })

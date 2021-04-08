@@ -1,6 +1,19 @@
 const Janr = require("../models/janr")
-
+const priceList = require('../models/priceList')
 exports.Profile = async (req, res) => {
-    const janr = await Janr.find().sort({createdAt: - 1})
-    res.render("./main/profile", { title: "Profile", janr, user: req.session.user, layout: "layout" })
+    const janr = await Janr.find().sort({ createdAt: - 1 })
+    const list = await priceList.find().sort({ date: -1 })
+    
+    res.render("./main/profile", {
+        title: "Profile",
+        layout: "layout",
+        janr,
+        list,
+        user: req.session.user,
+
+        balance: req.session.balance
+        
+        
+    })
+
 }

@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Balance = require('../models/balance');
 
 exports.register = async (req, res, next) => {
     const candidate = await (await User.findOne().sort({ createdAt: -1 }))
@@ -37,14 +38,16 @@ exports.login = async (req, res, next) => {
         res.status(404).json({ success: false, data: 'Parol topilmadi' });
     }
     const body = await User.findOne({ email: req.body.email })
+
+    const balance = await Balance.find({user: body._id}).sort({createdAt: -1}).skip(0).limit(1)
+    req.session.balance = balance
     req.session.user = body
     req.session.save()
-    // res.status(200).json({ success: true, data: body });
     res.redirect('/')
 
 }
 exports.getSession = async (req, res) => {
-    const user = req.session.user
+    const user = req.session
     res.status(200).json({ success: true, data: user });
 }
 exports.logout = async (req, res) => {

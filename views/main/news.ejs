@@ -4,7 +4,7 @@
             <div class="col-md-9 pr-5">
                 <div class="date-news">
                     <i class="fa fa-calendar" aria-hidden="false"></i>
-                    <h6>22.03.2021 17:45</h6>
+                    <h6><%= moment(news.date).format("DD-MM-YYYY") %></h6>
                 </div>
                 <h1 class="title-news"><%= news.name.uz %></h1>
                 <div class="img-news">
