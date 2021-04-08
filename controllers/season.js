@@ -154,12 +154,20 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
                 janr
             })
         } else if (me.status === 'vip' && season.price === 'selling') {
-            res.render("./main/notVip", {
-                title: "402",
-                layout: 'error',
+            // res.render("./main/notVip", {
+            //     title: "402",
+            //     layout: 'error',
+            //     user: req.session.user,
+            //     lang: req.session.ulang,
+            //     janr
+            // })
+            res.render("./main/oneserial", {
+                title: "Serial",
+                layout: 'layout',
                 user: req.session.user,
                 lang: req.session.ulang,
-                janr
+                janr,
+                serial: season,
             })
         }
     }

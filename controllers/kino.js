@@ -150,20 +150,72 @@ exports.sortByCat = asyncHandler(async (req,res,next)=>{
 })
 
 exports.getById = async (req, res) => {
+    // const kino = await Kino.findById(req.params.id)
+    // .populate({path: 'category'})
+    // .populate({path: 'janr'})
+    // .populate({path: 'tarjimon'})
+    // const janr = await Janr.find().sort({createdAt: - 1})
+
+    // // res.json(kino)
+
+    // res.render("./main/kino", {
+    //     kino,
+    //     janr,
+    //     title: "Kino",
+    //     user: req.session.user,
+    // })
+
+
+
+
+
+
+
+
+
+    
+    let janr = await Janr.find()
+   
     const kino = await Kino.findById(req.params.id)
-    .populate({path: 'category'})
-    .populate({path: 'janr'})
-    .populate({path: 'tarjimon'})
-    const janr = await Janr.find().sort({createdAt: - 1})
+        .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
+    if (kino.price == 'free') {
+        res.render("./main/kino", {
+            title: "Kino",
+            layout: 'layout',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr,
+            kino
+        })
+    } else {
+       
+        const user = req.session.user
+        const me = await User.findOne({ _id: user._id })
+        if (me.status !== 'vip' && kino.price === 'selling') {
+            res.render('./main/notVip', {
+                title: "401", layout: 'error',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr
+            })
+        } else if (me.status === 'vip' && kino.price === 'selling') {
+            
+            res.render("./main/kino", {
+                title: "Serial",
+                layout: 'layout',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr,
+                kino
+            })
+        }
+    }
 
-    // res.json(kino)
 
-    res.render("./main/kino", {
-        kino,
-        janr,
-        title: "Kino",
-        user: req.session.user,
-    })
+
+
+
+
 }
 
 
