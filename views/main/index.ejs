@@ -126,6 +126,7 @@
             </div>
             <% for(const item of news) {%> 
             <div class="col-md-4">
+                
                 <a href="/news/<%= item._id %>">
                     <div class="box-border news__item">
                         <img src="<%= item.image %>" alt="">
@@ -156,8 +157,10 @@
         <div class="row">
             <% serial.forEach(item => { %>
             <div class="col-md-3">
+                
                 <a href="/season/<%= item._id %>">
                     <div class="box-border news__item">
+                        <span style="z-index: 1; font-size: 15px;" class="badge  bg-warning text-dark"><%= item.price %></span>
                         <img src="<%= item.image %>" alt="">
                         <div class="opa"></div>
                         
@@ -212,9 +215,12 @@
                                 <div class="__item">
                                     <a href="/kino/<%= item._id %>">
                                         <div class="img__in">
+                                            <span style="z-index: 2; font-size: 15px;" class="badge bg-warning text-dark"><%= item.price %></span>
                                             <div class="opa"></div>
                                             <img src="<%= item.image %>" alt="">
+                                            
                                         </div>
+                                        
                                         <h3>
                                             <%if ( lang === "uz" ) { %>
                                                 <%= item.name.uz %>

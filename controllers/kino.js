@@ -176,9 +176,9 @@ exports.getById = async (req, res) => {
     
     let janr = await Janr.find()
    
-    const kino = await Kino.findById(req.params.id)
+    const kino = await Kino.findById({_id: req.params.id})
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
-    if (kino.price == 'free') {
+    if (kino.price === 'free') {
         res.render("./main/kino", {
             title: "Kino",
             layout: 'layout',
@@ -193,7 +193,7 @@ exports.getById = async (req, res) => {
         const me = await User.findOne({ _id: user._id })
         if (me.status !== 'vip' && kino.price === 'selling') {
             res.render('./main/notVip', {
-                title: "401", layout: 'error',
+                title: "Error", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
                 janr
@@ -201,7 +201,7 @@ exports.getById = async (req, res) => {
         } else if (me.status === 'vip' && kino.price === 'selling') {
             
             res.render("./main/kino", {
-                title: "Serial",
+                title: "Kino",
                 layout: 'layout',
                 user: req.session.user,
                 lang: req.session.ulang,
