@@ -31,9 +31,9 @@ exports.createRatingProduct = async (req, res) => {
                 product.rating = rate
                 product.save({ validateBeforeSave: false })
                     .then(() => {
-                        res.send(rate)
+                        res.redirect(`/season/${req.body.season}`)
                     })
-                res.send('rated')
+                    res.redirect(`/season/${req.body.season}`)
             })
         .catch((e) => res.send(e))
 
