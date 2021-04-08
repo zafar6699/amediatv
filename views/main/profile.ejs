@@ -102,6 +102,12 @@
                             </h4>
                         </div>
                         <div class="info__item">
+                            <h3>Status:</h3>
+                            <h4 class="__color">
+                                <%= user.status %> 
+                            </h4>
+                        </div>
+                        <div class="info__item">
                             <h3>Balans:</h3>
                             <h4 class="__color">
                                 <%= user.balance %> so'm
@@ -134,26 +140,27 @@
 
 
 
-
+                        <% for (let item of list) {%> 
                         <div class="tarif__item">
                             <div class="tarif-top">
                                 <h3>
-                                    <%= list[0].type %> oylik
+                                    <%= item.type %> oylik
                                 </h3>
 
                             </div>
                             <div class="tarif-bottom">
                                 <h4>
-                                    <%= list[0].amount %> so'm
+                                    <%= item.amount %> so'm
                                 </h4>
                                 <form action="/balance/add" method="POST">
-                                    <input type="hidden" id="priceID" name="price" value="<%= list[0]._id %>">
+                                    <input type="hidden" id="priceID" name="price" value="<%= item._id %>">
                                     <input type="hidden" id="userID" name="user" value="<%= user._id %>">
                                     <input type="hidden" id="statusCode" name="status" value="true">
                                     <button type="submit" > Obuna bo'lish </button>
                                 </form>
                             </div>
                         </div>
+                        <% } %> 
 
 
 
