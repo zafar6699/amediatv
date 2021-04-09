@@ -27,15 +27,15 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
     if (!email || !password) {
-        res.status(400).json({ success: false, data: 'Formani toldiring' });
+        res.render('./main/404Auth', {title: '404',layout: 'error'})
     }
     const users = await User.findOne({ email: email }).select('password');
     if (!users) {
-        res.status(404).json({ success: false, data: 'Foydalanuvchi topilmadi' });
+        res.render('./main/404Auth', {title: '404',layout: 'error'})
     }
     const isMatch = await users.matchPassword(password);
     if (!isMatch) {
-        res.status(404).json({ success: false, data: 'Parol topilmadi' });
+        res.render('./main/404Auth', {title: '404',layout: 'error'})
     }
     const body = await User.findOne({ email: req.body.email })
 

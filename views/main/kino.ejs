@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-md-9 __video">
-                    <video controls src="<%= kino.video %>"></video>
+                    <video src="<%= kino.video %>" controls > </video>
                 </div>
                 <div class="col-md-3 mt-4">
                     <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
@@ -81,12 +81,16 @@
                     </div>
                 </div>
                 <div class="col-md-9 mt-4">
-
-                    <div>
-                        <a class="__download" href="<%= kino.url %>" target="_blank">
-                            <i class="fa fa-download"></i>   Yuklab olish
-                        </a>
-                    </div>
+                    <% if (user.status === "vip") {%>
+                        <div>
+                            <a class="__download" href="<%= kino.url %>" id="download_blank" target="_blank">
+                                <i class="fa fa-download"></i>   Yuklab olish
+                            </a>
+                        </div>
+                    <% } else if (user.status === "vip") {%> 
+                        <div></div>
+                        <% } %> 
+                    
                     <p class="mt-4">
                         <% if (lang == "uz") { %>
                             <%= kino.description.uz  %> 

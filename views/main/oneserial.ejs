@@ -82,11 +82,15 @@
                     </div>
                 </div>
                 <div class="col-md-9 mt-4">
+                    <% if (user.status === "vip") {%>
                     <div>
                         <a class="__download" href="<%= serial.url %>" target="_blank">
                             <i class="fa fa-download"></i>   Yuklab olish
                         </a>
                     </div>
+                    <% } else if (user.status === "vip") {%>
+                        <div></div>
+                    <% } %>
                     <p class="mt-4">
                         <% if (lang == "uz") { %>
                             <%= serial.description.uz  %> 
