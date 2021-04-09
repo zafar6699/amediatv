@@ -28,7 +28,7 @@ router
     .route('/janrCategory/:id')
     .get(getByJanr)
 
-router.route('/query/:categoryId')
+router.route('/query/year/:year')
     .get(getQuery)
 
 module.exports = router;

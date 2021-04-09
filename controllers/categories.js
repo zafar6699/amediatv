@@ -33,26 +33,50 @@ exports.getCategory = asyncHandler(async (req, res, next) => {
 
 
 exports.getQuery = asyncHandler(async (req, res) => {
-    try {
-        let resultQuery;
-        let type = req.query.type
-        if (type == 'kino') {
-            resultQuery = await Kino.find({ category: req.params.categoryId })
-        }
-        if (type == 'season') {
-            resultQuery = await Season.find({ category: req.params.categoryId })
-        }
-        res.status(200).json({
-            success: true,
-            count: resultQuery.length,
-            data: resultQuery
-        })
+    // try {
+    //     let resultQuery;
+    //     let type = req.query.type
+    //     if (type == 'kino') {
+    //         resultQuery = await Kino.find({ category: req.params.categoryId })
+    //     }
+    //     if (type == 'season') {
+    //         resultQuery = await Season.find({ category: req.params.categoryId })
+    //     }
+    //     res.status(200).json({
+    //         success: true,
+    //         count: resultQuery.length,
+    //         data: resultQuery
+    //     })
 
-    } catch (error) {
-        if ((type != 'kino') || type != 'season') {
-            res.send(error)
-        }
+    // } catch (error) {
+    //     if ((type != 'kino') || type != 'season') {
+    //         res.send(error)
+    //     }
+    // }
+
+    const array = []
+    const janr = await Janr.find()
+    const kino = await Kino.find({ year: req.params.year }).sort({date: -1})
+    const season = await Season.find({ year: req.params.year }).sort({date: -1})
+
+    array.push(kino)
+    array.push(season)
+
+    if (!kino && !season) {
+        res.render('./main/404Auth', { title: '404', layout: 'error' })
     }
+   
+    res.render("./main/yearSort", {
+        
+        title: "Home",
+        user: req.session.user,
+        lang: req.session.ulang,
+        lang: req.session.ulang,
+        layout: "./layout",
+        janr,
+        array: array
+    })
+
 
 })
 
