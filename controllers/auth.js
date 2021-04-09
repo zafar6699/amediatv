@@ -1,5 +1,10 @@
 const User = require('../models/user');
 const Balance = require('../models/balance');
+const fs = require('fs')
+const sharp = require('sharp')
+const path = require('path');
+const md5 = require('md5');
+
 
 exports.register = async (req, res, next) => {
     const candidate = await (await User.findOne().sort({ createdAt: -1 }))
@@ -14,12 +19,15 @@ exports.register = async (req, res, next) => {
     })
     await user.save()
         .then(() => {
-            // res.status(201).json({ success: true, data: user });
             res.redirect('/')
         })
         .catch((error) => {
-            // res.status(400).json({ success: false, data: error });
-            res.status(400).json({ success: false, data: 'Formani toldiring' });
+            res.render('./main/sorry', {
+                title: "Error", layout: 'error',
+                // user: req.session.user,
+                // lang: req.session.ulang,
+                // janr
+            })
         })
 
 }
@@ -27,15 +35,15 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
     if (!email || !password) {
-        res.render('./main/404Auth', {title: '404',layout: 'error'})
+        res.render('./main/404Auth', { title: '404', layout: 'error' })
     }
     const users = await User.findOne({ email: email }).select('password');
     if (!users) {
-        res.render('./main/404Auth', {title: '404',layout: 'error'})
+        res.render('./main/404Auth', { title: '404', layout: 'error' })
     }
     const isMatch = await users.matchPassword(password);
     if (!isMatch) {
-        res.render('./main/404Auth', {title: '404',layout: 'error'})
+        res.render('./main/404Auth', { title: '404', layout: 'error' })
     }
     const body = await User.findOne({ email: req.body.email })
 
@@ -55,37 +63,90 @@ exports.logout = async (req, res) => {
     res.clearCookie('connect.sid')
     res.redirect('/')
 }
+exports.updateFile = async (req, res) => {
+    const user = req.session.user
+    const admin = await User.findByIdAndUpdate({ _id: user._id })
+    let compressedFile = path.join(__dirname, '../public/uploads', md5(new Date().getTime()) + '.jpg')
+    await sharp(req.file.path)
+        .resize(500, 500)
+        .jpeg({ quality: 100 })
+        .toFile(compressedFile, (error) => {
+            if (error) {
+                res.send(error)
+            }
+            fs.unlink(req.file.path, async (error) => {
+                if (error) {
+                    throw error
+                }
+            })
+        })
+    admin.photo = path.basename(compressedFile)
+    admin.save()
+        .then(() => {
+            res.redirect('/profile')
+            // res.json(admin)
+        })
+        .catch((error) => {
+            res.render('./main/404Auth', {
+                title: "Error", layout: 'error',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr
+            })
+        })
 
+    req.session.user.photo = admin.photo
+    req.session.save()
 
-
-
-
-exports.UpdateDetails = async (req, res, next) => {
-    const FieldsToUpdate = {
-        name: req.body.name,
-        email: req.body.email,
-        // tel: "+998" + req.body.tel
-    }
-    const user = await User.findByIdAndUpdate(req.user.id, FieldsToUpdate, {
-        new: true,
-        runValidators: true
-    });
-    res.status(201).json({ success: true, data: user });
 }
 
 
 
 
+exports.UpdateDetails = async (req, res, next) => {
+    const user = req.session.user
+    const admin = await User.findByIdAndUpdate({ _id: user._id });
+    admin.name = req.body.name
+    admin.email = req.body.email
+    await admin.save()
+        .then(() => {
+            res.redirect('/profile')
+            // res.json(admin)
+        })
+        .catch((error) => {
+            res.render('./main/404Auth', {
+                title: "Error", layout: 'error',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr
+            })
+            // res.json(error)
+        })
 
+    req.session.user = admin
+    req.session.save()
+}
 exports.UpdatePassword = async (req, res, next) => {
-    const user = await User.findById(req.user.id).select('+password');
+    const user = req.session.user
+    const admin = await User.findByIdAndUpdate({ _id: user._id });
+    admin.password = req.body.password
+    await admin.save()
+        .then(() => {
+            res.redirect('/profile')
+            // res.json(admin)
+        })
+        .catch((error) => {
+            res.render('./main/404Auth', {
+                title: "Error", layout: 'error',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr
+            })
+            // res.json(error)
+        })
 
-    if (!(await user.matchPassword(req.body.currentPassword))) {
-        res.status(401).json({ success: false, data: 'Password is incorrect' })
-    }
-    user.password = req.body.newPassword;
-    await user.save();
-    sendTokenResponse(user, 200, res);
+    req.session.user = admin
+    req.session.save()
 }
 
 

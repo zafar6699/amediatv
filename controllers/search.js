@@ -24,6 +24,7 @@ exports.search = asyncHandler(async (req,res,next)=>{
         data: result
     })
 })
+
 exports.filterByYear = asyncHandler(async (req,res,next) => {
     const pageNumber = req.query.page
     const kino = await Kino.find({info:{year: req.query.year}})

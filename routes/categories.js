@@ -1,10 +1,11 @@
 const express = require('express');
 const {
-        getQuery,
-        getCategories ,
-        getCategory ,
-        createCategory,
-       
+    getQuery,
+    getCategories,
+    getCategory,
+    createCategory,
+    getByJanr
+
 
 } = require('../controllers/categories');
 
@@ -23,6 +24,10 @@ router.route('/')
 
 // router.route('/:categoryId')
 //     .get(getCategory)
+router
+    .route('/janrCategory/:id')
+    .get(getByJanr)
+
 router.route('/query/:categoryId')
     .get(getQuery)
 

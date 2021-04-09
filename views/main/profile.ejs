@@ -7,22 +7,17 @@
                 <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form action="/auth/updatedetails" method="PUT" class="mt-3 mb-5">
+            <form class="mt-3 mb-5" action="<%=`/auth/detail/${user._id}?_method=PUT`%>" method="POST">
                 <div class="modal-body">
                     <div class="form-auth">
                         <h4>Foydalanuvchi nomi</h4>
-                        <input type="text" name="name" value="<%= user.name %> " placeholder="Foydalanuvchi nomini kiriting...">
+                        <input type="text" name="name" value="<%= user.name %>" />
                     </div>
                     <div class="form-auth">
                         <h4>Foydalanuvchi email</h4>
-                        <input type="email" name="email" email="email" value="<%= user.email %> "
-                            placeholder="Foydalanuvchi pochtasini kiriting...">
+                        <input type="email" name="email" value="<%= user.email %>">
                     </div>
 
-                    <!-- <div class="form-auth">
-                    <h4>Telefon</h4>
-                    <input class="input-mask" type="text" placeholder="+9989_-___-__-__">
-                </div> -->
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary">Saqlash</button>
@@ -56,23 +51,30 @@
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Parolni o'zgartirish</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form-auth">
-                    <h4>Parol</h4>
-                    <input type="password" placeholder="Parolni kiriting...">
+
+            <form class="mt-3 mb-5" action="<%=`/auth/updatepassword/${user._id}?_method=PUT`%>" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Parolni o'zgartirish</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="form-auth">
-                    <h4>Parolni tasdiqlash</h4>
-                    <input type="password" placeholder="Parolni qayta kiriting...">
+                <div class="modal-body">
+                    <h4>Yangi parolni kiriting</h4>
+                    <div class="form-auth">
+                        
+                        <div class="password-eye">
+                            <input type="password" id="password-login" name="password"
+                                placeholder="Yangi parolni kiriting...">
+                            <button type="button"><i class="fa fa-eye"></i><i
+                                    class="fa fa-eye-slash none-eye"></i></button>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-primary">Saqlash</button>
-            </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Saqlash</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
@@ -82,13 +84,26 @@
             <div class="col-md-4">
                 <div class="profile-content">
                     <div class="profile__img">
-                        <div class="avatar-wrapper">
-                            <img class="profile-pic" src="/img/insta.png" />
-                            <div class="upload-button">
-                                <i class="fa fa-arrow-circle-up"></i>
+
+                        <form action="<%=`/auth/upload/${user._id}?_method=PUT`%>" method="POST" ref='uploadForm'
+                            encType="multipart/form-data"
+                            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+                            <div class="avatar-wrapper">
+                                <!-- <img class="profile-pic" src="/img/insta.png"  /> -->
+                                <img class="profile-pic" src="/uploads/<%= user.photo %>" alt="Rasm bor" />
+                                <div class="upload-button">
+                                    <i class="fa fa-arrow-circle-up"></i>
+                                </div>
+                                <input class="file-upload" type="file" name="photo" multiple />
                             </div>
-                            <input class="file-upload" type="file">
-                        </div>
+                            <button type="submit" class="btn btn-success ml-5" style="margin: 0 auto;">
+                                <i class="fas fa-check"></i> Saqlash
+                            </button>
+                        </form>
+
+
+
                     </div>
 
                     <div class="profile-info">
@@ -173,35 +188,6 @@
 
 
 
-
-
-                                <!-- <div class="tarif__item">
-                            <div class="tarif-top">
-                                <h3>1 Oylik</h3>
-                            </div>
-                            <div class="tarif-bottom">
-                                <h4>10900 so'm</h4>
-                                <button> Obuna bo'lish </button>
-                            </div>
-                        </div>
-                        <div class="tarif__item">
-                            <div class="tarif-top">
-                                <h3>1 Oylik</h3>
-                            </div>
-                            <div class="tarif-bottom">
-                                <h4>10900 so'm</h4>
-                                <button> Obuna bo'lish </button>
-                            </div>
-                        </div>
-                        <div class="tarif__item">
-                            <div class="tarif-top">
-                                <h3>1 Oylik</h3>
-                            </div>
-                            <div class="tarif-bottom">
-                                <h4>10900 so'm</h4>
-                                <button> Obuna bo'lish </button>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -219,11 +205,11 @@
                                             <img src="<%= item.image %> " alt="">
                                         </div>
                                         <h4>
-                                            <%= item.user %>
+                                            <%= item.kinoId.name.uz %>
                                         </h4>
                                     </div>
                                     <h6>
-                                        <%= moment(item.date.fsts).format("DD-MM-YYYY") %>
+                                        <%= moment(item.date).format("DD-MM-YYYY") %>
                                     </h6>
                                 </div>
                                 <div class="comment__p">

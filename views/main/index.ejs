@@ -160,7 +160,11 @@
                 
                 <a href="/season/<%= item._id %>">
                     <div class="box-border news__item">
-                        <span style="z-index: 1; font-size: 15px;" class="badge  bg-warning text-dark"><%= item.price %></span>
+                        <% if(item.price == "selling") {%> 
+                            <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
+                            <% } if(item.price == "free") {%>
+                                <div></div>
+                                <% } %> 
                         <img src="<%= item.image %>" alt="">
                         <div class="opa"></div>
                         
@@ -215,7 +219,11 @@
                                 <div class="__item">
                                     <a href="/kino/<%= item._id %>">
                                         <div class="img__in">
-                                            <span style="z-index: 2; font-size: 15px;" class="badge bg-warning text-dark"><%= item.price %></span>
+                                            <% if(item.price == "selling") {%> 
+                                                <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
+                                                <% } if(item.price == "free") {%>
+                                                    <div></div>
+                                                    <% } %> 
                                             <div class="opa"></div>
                                             <img src="<%= item.image %>" alt="">
                                             

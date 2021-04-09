@@ -49,10 +49,7 @@ exports.Home = async (req, res) => {
         .populate(['janr'])
 
     
-    // setTimeout(() => {
-        console.log("test---------------------------------->", janr)
-    // }, 200);
-    console.log(news)
+  
 
     res.render("./main/index", {
         lang: req.session.ulang,

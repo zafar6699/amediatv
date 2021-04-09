@@ -8,8 +8,8 @@
     <title>
         <%= title %>
     </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="/style/style.css">
-
 
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
@@ -164,11 +164,11 @@
                                     <% for(let item of janr) {%>
                                         <li>
                                             <% if(lang === "uz") { %>
-                                                <a href="/onejanr/<%= item._id %>"> <%= item.nameuz %> </a>
+                                                <a href="/category/janrCategory/<%= item._id %>"> <%= item.nameuz %> </a>
                                             <% } else if(lang === "ru") { %>
-                                                <a href="/onejanr/<%= item._id %>"> <%= item.nameru %> </a>
+                                                <a href="/category/janrCategory/<%= item._id %>"> <%= item.nameru %> </a>
                                             <% }else if(lang == undefined) { %>
-                                                <a href="/onejanr/<%= item._id %>"> <%= item.nameuz %> </a>
+                                                <a href="/category/janrCategory/<%= item._id %>"> <%= item.nameuz %> </a>
                                             <% } %>
                                         </li>
                                         <% } %>
