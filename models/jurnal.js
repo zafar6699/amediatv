@@ -12,7 +12,6 @@ const jurnalSchema =  mongoose.Schema({
          },
     type: {
         type: String,
-        required: true
     },
     amount: {
         type: Number,

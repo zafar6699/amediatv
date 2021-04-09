@@ -31,20 +31,27 @@
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Balansni to'ldirish</h5>
-                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="form-auth">
-                    <h4>Summa</h4>
-                    <input type="number" placeholder="Summani kiriting...">
+            <form action="/payment/sendSumm" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Balansni to'ldirish</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-            <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-primary">To'lash</button>
-            </div>
+                <div class="modal-body">
+                    <div class="form-auth">
+                        <h4>Summa</h4>
+                        <input type="number" name="amount" placeholder="Summani kiriting..." required>
+                    </div>
+                    <div class="form-auth">
+                        <input type="number" name="userID" value="<%= user.uid %>" />
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">To'lash</button>
+                </div>
+            </form>
+            <% console.log(user) %> 
         </div>
+
     </div>
 </div>
 <div class="modal fade my-modal" id="exampleModal-3" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -60,7 +67,7 @@
                 <div class="modal-body">
                     <h4>Yangi parolni kiriting</h4>
                     <div class="form-auth">
-                        
+
                         <div class="password-eye">
                             <input type="password" id="password-login" name="password"
                                 placeholder="Yangi parolni kiriting...">
