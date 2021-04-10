@@ -23,4 +23,29 @@ exports.getJanr = asyncHandler( async (req , res , next) => {
     // res.render("./main/onejanr")
     res.status(201).json({success: true , data: janr});
 });
+exports.getByJanr = async (req, res) => {
+    const janrone = await Janr.findById({_id: req.params.id});
 
+    const category = await Category.find()
+
+    let sortKino = []
+
+    
+     category.forEach(async (element) => {
+        let s = await Kino.find({ 
+            category: { $all: [element._id]}, 
+            janr: { $all: [req.params._id] } 
+        }).select({name: 1, image: 1});
+        sortKino.push(s);        
+    });
+
+    const janr = await Janr.find();
+
+    res.render("./main/onejanr", {
+        janr,
+        title: "OneJanr",
+        layout: 'layout',
+        user: req.session.user,
+        lang: req.session.ulang,  
+    })   
+}

@@ -33,7 +33,8 @@
                 </div>
             </div>
             <div class="col-md-9 __video">
-                <video src="<%= kino.video %>" controls> </video>
+                <iframe src="<%= kino.video %>"></iframe>
+                
             </div>
             <div class="col-md-3 mt-4">
                 <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
@@ -208,5 +209,5 @@
 </div>
 
 <script>
-
+    var player = new MediaElementPlayer('#player1');
 </script>

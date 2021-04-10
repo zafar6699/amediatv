@@ -1370,6 +1370,11 @@ div.kino .__video video {
   height: 100%;
 }
 
+div.kino .__video iframe {
+  width: 100%;
+  height: 100%;
+}
+
 div.kino div.img_left {
   width: 100%;
   min-height: 400px;
