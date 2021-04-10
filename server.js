@@ -71,6 +71,7 @@ app.use('/comment' , require('./routes/comment'));
 app.use('/users' , require('./routes/users'));
 app.use('/slider' , require('./routes/slider'));
 app.use('/janr' , require('./routes/janr'));
+app.use('/onejanr' , require('./routes/onejanr'));
 app.use('/category' , require('./routes/categories'));
 app.use('/member' , require('./routes/member'));
 app.use('/kino' , require('./routes/kino'));
