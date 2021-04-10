@@ -46,7 +46,6 @@ exports.getByJanr = async (req, res) => {
         title: "OneJanr",
         layout: 'layout',
         user: req.session.user,
-        lang: req.session.ulang,
-        
+        lang: req.session.ulang,  
     })   
 }
