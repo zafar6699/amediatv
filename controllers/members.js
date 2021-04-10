@@ -51,7 +51,7 @@ exports.addMember = asyncHandler(async (req, res, next) => {
 
     const member = new Member({
         name: req.body.name,
-        image: `/public/uploads/members/${path.basename(compressedImageFileSavePath)}`
+        image: path.basename(compressedImageFileSavePath)
     })
     member.save()
         .then(() => {

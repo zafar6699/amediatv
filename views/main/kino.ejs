@@ -1,186 +1,212 @@
 <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
-    <div class="kino">
-        <div class="container">
-            <div class="row kino__top">
-                <div class="col-md-3">
-                    <div class="img_left">
-                        <img src="<%= kino.image %>" alt="">
-                        <div class="__bottom">
-                            <% if (lang == "uz") { %>
-                                <h3><%= kino.name.uz %></h3>
+<div class="kino">
+    <div class="container">
+        <div class="row kino__top">
+            <div class="col-md-3">
+                <div class="img_left">
+                    <img src="<%= kino.image %>" alt="">
+                    <div class="__bottom">
+                        <% if (lang=="uz" ) { %>
+                            <h3>
+                                <%= kino.name.uz %>
+                            </h3>
                             <% } %>
-                            <% if (lang == "ru") { %>
-                                <h3><%= kino.name.ru %></h3>
-                            <% } %>
-                            <% if (lang == undefined) { %>
-                                <h3><%= kino.name.uz %></h3>
-                            <% } %>
-                            <div class="banner-stars">
-                                <span><i class="fa fa-star __gold"></i></span>
-                                <span><i class="fa fa-star __gold"></i></span>
-                                <span><i class="fa fa-star __gold"></i></span>
-                                <span><i class="fa fa-star __gold"></i></span>
-                                <span><i class="fa fa-star __gold"></i></span>
-                            </div>
-                        </div>
+                                <% if (lang=="ru" ) { %>
+                                    <h3>
+                                        <%= kino.name.ru %>
+                                    </h3>
+                                    <% } %>
+                                        <% if (lang==undefined) { %>
+                                            <h3>
+                                                <%= kino.name.uz %>
+                                            </h3>
+                                            <% } %>
+                                                <div class="banner-stars">
+                                                    <span><i class="fa fa-star __gold"></i></span>
+                                                    <span><i class="fa fa-star __gold"></i></span>
+                                                    <span><i class="fa fa-star __gold"></i></span>
+                                                    <span><i class="fa fa-star __gold"></i></span>
+                                                    <span><i class="fa fa-star __gold"></i></span>
+                                                </div>
                     </div>
                 </div>
-                <div class="col-md-9 __video">
-                    <video src="<%= kino.video %>" controls > </video>
-                </div>
-                <div class="col-md-3 mt-4">
-                    <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
-    
-                    <div class="profile-info">
-                        <div class="info__item">
-                            <h3> <i class="fa fa-map"></i> Mamlakat:</h3>
-                            <h4><%= kino.country %></h4>
-                        </div>
-                        <div class="info__item">
-                            <h3> <i class="fa fa-user"></i> Rejissor:</h3>
-                            <h4> <%= kino.rejissor %> </h4>
-                        </div>
-                        <div class="info__item">
-                            <h3 > <i class="fa fa-microphone"></i> Studiya:</h3>
-                            <h4><%= kino.studia %></h4>
-                        </div>
-                        <div class="info__item">
-                            <h3> <i class="fa fa-folder-open"></i> Janr:</h3>
-                            <% kino.janr.forEach(element => { %>
-                                <% if ( lang == "uz" ) { %>
-                                    <h4><%= element.nameuz %></h4>
-                                <% } %> 
-                                <% if ( lang == "ru" ) { %>
-                                    <h4><%= element.nameru %></h4>
-                                <% } %> 
-                                <% if ( lang == undefined ) { %>
-                                    <h4><%= element.nameuz %></h4>
-                                <% } %> 
-                            <% }); %>
-                            
-                        </div>
-                        <div class="info__item">
-                            <h3><i class="fa fa-list"></i> Kategoriya:</h3>
-                            <% kino.category.forEach(element => { %>
-                                <% if ( lang == "uz" ) { %>
-                                    <h4><%= element.nameuz %></h4> /
-                                <% } %> 
-                                <% if ( lang == "ru" ) { %>
-                                    <h4><%= element.nameru %></h4> /
-                                <% } %> 
-                                <% if ( lang == undefined ) { %>
-                                    <h4><%= element.nameuz %></h4> /
-                                <% } %> 
-                            <% }); %>
-                        </div>
-                        <div class="info__item">
-                            <h3><i class="fa fa-clock"></i> Yil:</h3>
-                            <h4> <%= kino.year %>  </h4>
-                        </div>
+            </div>
+            <div class="col-md-9 __video">
+                <video src="<%= kino.video %>" controls> </video>
+            </div>
+            <div class="col-md-3 mt-4">
+                <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
+
+                <div class="profile-info">
+                    <div class="info__item">
+                        <h3> <i class="fa fa-map"></i> Mamlakat:</h3>
+                        <h4>
+                            <%= kino.country %>
+                        </h4>
+                    </div>
+                    <div class="info__item">
+                        <h3> <i class="fa fa-user"></i> Rejissor:</h3>
+                        <h4>
+                            <%= kino.rejissor %>
+                        </h4>
+                    </div>
+                    <div class="info__item">
+                        <h3> <i class="fa fa-microphone"></i> Studiya:</h3>
+                        <h4>
+                            <%= kino.studia %>
+                        </h4>
+                    </div>
+                    <div class="info__item">
+                        <h3> <i class="fa fa-folder-open"></i> Janr:</h3>
+                        <% kino.janr.forEach(element=> { %>
+                            <% if ( lang=="uz" ) { %>
+                                <h4>
+                                    <%= element.nameuz %>
+                                </h4>
+                                <% } %>
+                                    <% if ( lang=="ru" ) { %>
+                                        <h4>
+                                            <%= element.nameru %>
+                                        </h4>
+                                        <% } %>
+                                            <% if ( lang==undefined ) { %>
+                                                <h4>
+                                                    <%= element.nameuz %>
+                                                </h4>
+                                                <% } %>
+                                                    <% }); %>
+
+                    </div>
+                    <div class="info__item">
+                        <h3><i class="fa fa-list"></i> Kategoriya:</h3>
+                        <% kino.category.forEach(element=> { %>
+                            <% if ( lang=="uz" ) { %>
+                                <h4>
+                                    <%= element.nameuz %>
+                                </h4> /
+                                <% } %>
+                                    <% if ( lang=="ru" ) { %>
+                                        <h4>
+                                            <%= element.nameru %>
+                                        </h4> /
+                                        <% } %>
+                                            <% if ( lang==undefined ) { %>
+                                                <h4>
+                                                    <%= element.nameuz %>
+                                                </h4> /
+                                                <% } %>
+                                                    <% }); %>
+                    </div>
+                    <div class="info__item">
+                        <h3><i class="fa fa-clock"></i> Yil:</h3>
+                        <h4>
+                            <%= kino.year %>
+                        </h4>
                     </div>
                 </div>
-                <div class="col-md-9 mt-4">
-                    <% if (user.status === "vip") {%>
-                        <div>
-                            <a class="__download" href="<%= kino.url %>" id="download_blank" target="_blank">
-                                <i class="fa fa-download"></i>   Yuklab olish
-                            </a>
-                        </div>
-                    <% } else if (user.status === "vip") {%> 
+            </div>
+            <div class="col-md-9 mt-4">
+                <% if (user.status==="vip" ) {%>
+                    <div>
+                        <a class="__download" href="<%= kino.url %>" id="download_blank" target="_blank">
+                            <i class="fa fa-download"></i> Yuklab olish
+                        </a>
+                    </div>
+                    <% } else if (user.status==="vip" ) {%>
                         <div></div>
-                        <% } %> 
-                    
-                    <p class="mt-4">
-                        <% if (lang == "uz") { %>
-                            <%= kino.description.uz  %> 
                         <% } %>
-                        <% if (lang == "ru") { %>
-                            <%= kino.description.ru  %> 
-                        <% } %>
-                        <% if (lang == undefined) { %>
-                            <%= kino.description.uz  %> 
-                        <% } %>
-                    </p>
 
-    
-                    <div class="hashtag">
-                        <span># <%= kino.tags %></span>
-                    </div>
-                    <% if (user) { %>
-                        <div class="rating">
-                            <h4>Baho bering:</h4>
-                            <form action="/rate" method="POST">
-                                <div class="rate">
-                                    <input type="radio" id="star5" name="rating" value="5" />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rating" value="4" />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rating" value="3" />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rating" value="2" />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rating" value="1" />
-                                    <label for="star1" title="text">1 star</label>
-                                    <input type="hidden" name="kino" value="<%= kino._id %>">
-                                    <input type="hidden" name="user" value="<%= user._id %>">
-                                </div>
-                                <button>Baholash</button>
-                            </form>
-                        </div>
-                    <% } %>
-                </div>
-            </div>
-            <div class="kino-kadr pt-3">
-                <h1 class="title__z"><i class="fa fa-angle-right"></i> Filmdan kadrlar</h1>
-    
-                <div class="carousel-kadr">
-                    <div class="owl-carousel owl-kadr owl-theme">
-                        <% kino.screens.thumb.forEach(element => { %>
-                            <div class="item">
-                                <div class="img-kadr">
-                                    <img src="<%= element %>" alt="">
-                                </div>
+                            <p class="mt-4">
+                                <% if (lang=="uz" ) { %>
+                                    <%= kino.description.uz %>
+                                        <% } %>
+                                            <% if (lang=="ru" ) { %>
+                                                <%= kino.description.ru %>
+                                                    <% } %>
+                                                        <% if (lang==undefined) { %>
+                                                            <%= kino.description.uz %>
+                                                                <% } %>
+                            </p>
+
+
+                            <div class="hashtag">
+                                <span># <%= kino.tags %></span>
                             </div>
-                        <% }); %>
-                        
-                        
-                    </div>
-                </div>
+                            <% if (user) { %>
+                                <div class="rating">
+                                    <h4>Baho bering:</h4>
+                                    <form action="/rate" method="POST">
+                                        <div class="rate">
+                                            <input type="radio" id="star5" name="rating" value="5" />
+                                            <label for="star5" title="text">5 stars</label>
+                                            <input type="radio" id="star4" name="rating" value="4" />
+                                            <label for="star4" title="text">4 stars</label>
+                                            <input type="radio" id="star3" name="rating" value="3" />
+                                            <label for="star3" title="text">3 stars</label>
+                                            <input type="radio" id="star2" name="rating" value="2" />
+                                            <label for="star2" title="text">2 stars</label>
+                                            <input type="radio" id="star1" name="rating" value="1" />
+                                            <label for="star1" title="text">1 star</label>
+                                            <input type="hidden" name="kino" value="<%= kino._id %>">
+                                            <input type="hidden" name="user" value="<%= user._id %>">
+                                        </div>
+                                        <button>Baholash</button>
+                                    </form>
+                                </div>
+                                <% } %>
             </div>
-            <div class="kino-kadr pt-3">
-                <h1 class="title__z"><i class="fa fa-angle-right"></i> Ijodkorlar</h1>
-    
-                <div class="flex-ijodkor">
-                    <% kino.tarjimon.forEach(element => { %>
-                        <div class="__item">
-                            <div class="img-pro">
-                                <img src="<%= element.image %>" alt="">
-                            </div>
-                            <h4><%= element.name %></h4>
-                        </div>
-                    <% }); %>
-                    
-                </div>
-                
-            </div>
-            <% if (user) { %>
-                <div class="comment-send">
-                    <form action="/comment/kino" method="POST">
-                        <textarea name="message" id="" cols="30" rows="10" placeholder="Izoh qoldiring..."></textarea>
-                        <input type="hidden" value="<%= kino._id %>" name="kinoId">
-                        <input type="hidden" value="<%= user._id %>" name="user">
-                        <div class="d-flex justify-content-end">
-                            <button>Jo'natish</button>
-                        </div>
-                    </form>
-                </div>
-            <% } %>
         </div>
+        <div class="kino-kadr pt-3">
+            <h1 class="title__z"><i class="fa fa-angle-right"></i> Filmdan kadrlar</h1>
+
+            <div class="carousel-kadr">
+                <div class="owl-carousel owl-kadr owl-theme">
+                    <% kino.screens.thumb.forEach(element=> { %>
+                        <div class="item">
+                            <div class="img-kadr">
+                                <img src="<%= element %>" alt="">
+                            </div>
+                        </div>
+                        <% }); %>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="kino-kadr pt-3 ">
+            <h1 class="title__z"><i class="fa fa-angle-right"></i> Ijodkorlar</h1>
+
+            <div class="flex-ijodkor ">
+                    <% for(const item of kino.tarjimon) {%> 
+                    <div class="__item">
+                        <div class="img-pro">
+                            <img style="z-index: 10" src="/uploads/members/<%= item.image %>" alt="">
+                        </div>
+                        <h4>
+                            <%= item.name %>
+                        </h4>
+                    </div>
+                    <% } %>
+
+            </div>
+
+        </div>
+        <% if (user) { %>
+            <div class="comment-send">
+                <form action="/comment/kino" method="POST">
+                    <textarea name="message" id="" cols="30" rows="10" placeholder="Izoh qoldiring..."></textarea>
+                    <input type="hidden" value="<%= kino._id %>" name="kinoId">
+                    <input type="hidden" value="<%= user._id %>" name="user">
+                    <div class="d-flex justify-content-end">
+                        <button>Jo'natish</button>
+                    </div>
+                </form>
+            </div>
+            <% } %>
     </div>
+</div>
 
-<script >
-    
+<script>
+
 </script>
-
-

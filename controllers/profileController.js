@@ -4,19 +4,19 @@ const Comment = require('../models/comment')
 exports.Profile = async (req, res) => {
     const janr = await Janr.find().sort({ createdAt: - 1 })
     const list = await priceList.find().sort({ date: -1 })
-    const comment = await Comment.find()
+    const comment = await Comment.find().sort({ date: -1 })
         .populate(
             {
-                path: "user"
+                path: "user", select: ['name', 'photo']
             },
         )
         .populate(
             {
-                path: "kinoId"
+                path: "kinoId", select: 'name'
             },
         )
-        .sort({ date: -1 }).limit(5)
-
+        .sort({ date: -1 }).limit(25)
+    
     res.render("./main/profile", {
         title: "Profile",
         layout: "layout",
@@ -28,5 +28,7 @@ exports.Profile = async (req, res) => {
 
 
     })
+
+    // res.json(comment)
 
 }

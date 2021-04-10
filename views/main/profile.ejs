@@ -209,10 +209,10 @@
                                 <div class="comments-top">
                                     <div class="left">
                                         <div class="img">
-                                            <img src="<%= item.image %> " alt="">
+                                            <img src="/uploads/<%= item.user.photo %>" alt="">
                                         </div>
                                         <h4>
-                                            <%= item.kinoId.name.uz %>
+                                            <%= item.user.name %>
                                         </h4>
                                     </div>
                                     <h6>
@@ -220,6 +220,9 @@
                                     </h6>
                                 </div>
                                 <div class="comment__p">
+                                    <h6>
+                                        <%= item.kinoId.name.uz %>
+                                    </h6>
                                     <p>
                                         <%= item.message %>
                                     </p>
