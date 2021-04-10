@@ -15,9 +15,12 @@
                 </p>
             
 
-                <div class="adverstiment">
-                    <a href="#">
-                        <img src="/img/" alt="">
+                <div class="adverstiment col-md-10 offset-1">
+                    <a href="http://<%= news.videoLink %>">
+                        <div class="img-news">
+                            <img src="/img/banner_img.png" alt="Rasm">
+                        </div>
+                        
                     </a>
                 </div>
             </div>
@@ -33,11 +36,11 @@
                                         <img src="<%= element.image %>" alt="">
                                         <div class="opa"></div>
                                         <div class="news__item__title">
-                                            <h3>Yangiliklar</h3>
                                             <h4><%= element.name.uz %></h4>
                                         </div>
                                     </div>
                                 </a>
+                                    
                             <% }); %>
                             
                             
