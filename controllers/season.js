@@ -142,6 +142,8 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             lang: req.session.ulang,
             janr,
             serial: season,
+            seria,
+            comment
         })
     } else {
         // const user =  JWT.decode(token.slice(7,token.length))
@@ -152,16 +154,10 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
                 title: "401", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
-                janr
+                janr,seria,comment
             })
         } else if (me.status === 'vip' && season.price === 'selling') {
-            // res.render("./main/notVip", {
-            //     title: "402",
-            //     layout: 'error',
-            //     user: req.session.user,
-            //     lang: req.session.ulang,
-            //     janr
-            // })
+            
             res.render("./main/oneserial", {
                 title: "Serial",
                 layout: 'layout',
@@ -169,6 +165,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
                 lang: req.session.ulang,
                 janr,
                 serial: season,
+                seria, comment
             })
         }
     }
