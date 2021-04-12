@@ -14,8 +14,7 @@ exports.register = async (req, res, next) => {
         name,
         email,
         password,
-        uid,
-        balance
+        uid, balance
     })
     await user.save()
         .then(() => {
@@ -48,7 +47,7 @@ exports.login = async (req, res, next) => {
     const body = await User.findOne({ email: req.body.email })
 
     const balance = await Balance.find({ user: body._id }).sort({ createdAt: -1 }).skip(0).limit(1)
-    req.session.balance = balance
+    req.session.balane = balance
     req.session.user = body
     req.session.save()
     res.redirect('/')
@@ -95,7 +94,7 @@ exports.updateFile = async (req, res) => {
             })
         })
 
-    req.session.user.photo = admin.photo
+    req.session.user = admin
     req.session.save()
 
 }
