@@ -1,7 +1,4 @@
 
-    <pre>
-        <%= seria %>
-    </pre>
     <div class="kino">
         <div class="container">
             <div class="row kino__top">
@@ -30,12 +27,14 @@
                 </div>
                 <div class="col-md-9 __video">
                     <div class="video-player">
-                        <iframe controls src="<%= serial.video %>"></iframe>
+
+                        <video src="<%= seria[0].video %>"></video>
                         <div class="carousel-series">
                             <div class="owl-carousel season-carousel owl-theme">
-                                <% seria.forEach(element => { %>
+                                <% seria.forEach((element, index) => { %>
                                     <div class="item">
-                                        <a class="__active" href="/season/<%= element._id %>">
+                                        <a <% if( index == 0 ){ %> class="__active" <% } %> href="#">
+                                            <input type="hidden" value="<%= element.video %>" >
                                             <% if (lang == "uz") { %>
                                                 <b><%= element.name.uz %></b><i class="fa fa-eye"></i> 
                                             <% } %>
@@ -49,36 +48,6 @@
                                     </div>  
                                 <% }); %>
                                 
-                                <!-- <div class="item">
-                                    <a href="#">
-                                        <b>1-qism</b><i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <b>1-qism</b><i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <b>1-qism</b><i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <b>1-qism</b><i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <b>1-qism</b><i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#">
-                                        <b>1-qism</b><i class="fa fa-eye"></i>
-                                    </a>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -218,6 +187,35 @@
                 </div>
                 
             </div>
+            <h1 class="title__z mt-3"><i class="fa fa-angle-right"></i> Izohlar</h1>
+            <div class="content-comments2">
+
+                        <% for(const item of comment) {%>
+                            <div class="comments__item">
+                                <div class="comments-top">
+                                    <div class="left">
+                                        <div class="img">
+                                            <img src="/uploads/<%= item.user.photo %>" alt="">
+                                        </div>
+                                        <h4>
+                                            <%= item.user.name %>
+                                        </h4>
+                                    </div>
+                                    <h6>
+                                        <%= moment(item.date).format("DD-MM-YYYY") %>
+                                    </h6>
+                                </div>
+                                <div class="comment__p">
+                                    <p>
+                                        <%= item.message %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% } %>
+
+
+
+                    </div>
             <% if (user) { %>
                 <div class="comment-send">
                     <form action="/comment/season" method="post">

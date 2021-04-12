@@ -3,6 +3,18 @@
 
 $(document).ready(function(){
 
+
+	$(".video-player .carousel-series .item").click(function(){
+		let src = $(this).find("input").val();
+
+		$(".video-player video").attr("src", src)
+
+		$(".video-player .carousel-series .item").not(this).find("a").removeClass("__active")
+
+		$(this).find("a").addClass("__active")
+
+	});
+
     $('.anime-carousel').owlCarousel({
 	    // loop:true,
 	    autoplay: true,

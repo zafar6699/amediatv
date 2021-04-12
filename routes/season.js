@@ -8,6 +8,7 @@ const {
     addSeason,
     getAllSeason,
     getByIdSeason,
+    getByIdSeriya,
     addSeriya
 } = require('../controllers/season')
 
