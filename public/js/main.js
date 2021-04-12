@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$(".video-player .carousel-series .item").click(function(){
 		let src = $(this).find("input").val();
 
-		$(".video-player video").attr("src", src)
+		$(".video-player iframe").attr("src", src)
 
 		$(".video-player .carousel-series .item").not(this).find("a").removeClass("__active")
 

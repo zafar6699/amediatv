@@ -25,10 +25,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9 __video">
+                <div class="col-md-9  __video">
                     <div class="video-player">
 
-                        <video src="<%= seria[0].video %>"></video>
+                        <iframe src="<%= seria[0].video %>"></iframe>
                         <div class="carousel-series">
                             <div class="owl-carousel season-carousel owl-theme">
                                 <% seria.forEach((element, index) => { %>
@@ -215,7 +215,7 @@
 
 
 
-                    </div>
+            </div>
             <% if (user) { %>
                 <div class="comment-send">
                     <form action="/comment/season" method="post">

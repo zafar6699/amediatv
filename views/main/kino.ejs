@@ -33,7 +33,6 @@
                 </div>
             </div>
             <div class="col-md-9 __video">
-                <!-- <iframe src="<%= kino.video %>"></iframe> -->
                 <iframe src="https://www.youtube.com/embed/<%= kino.video %>" width="560" height="315" allowfullscreen="allowfullscreen"></iframe>
                 
             </div>
@@ -194,6 +193,35 @@
             </div>
 
         </div>
+        <h1 class="title__z mt-3"><i class="fa fa-angle-right"></i> Izohlar</h1>
+            <div class="content-comments2">
+
+                        <% for(const item of comment) {%>
+                            <div class="comments__item">
+                                <div class="comments-top">
+                                    <div class="left">
+                                        <div class="img">
+                                            <img src="/uploads/<%= item.user.photo %>" alt="">
+                                        </div>
+                                        <h4>
+                                            <%= item.user.name %>
+                                        </h4>
+                                    </div>
+                                    <h6>
+                                        <%= moment(item.date).format("DD-MM-YYYY") %>
+                                    </h6>
+                                </div>
+                                <div class="comment__p">
+                                    <p>
+                                        <%= item.message %>
+                                    </p>
+                                </div>
+                            </div>
+                            <% } %>
+
+
+
+            </div>
         <% if (user) { %>
             <div class="comment-send">
                 <form action="/comment/kino" method="POST">

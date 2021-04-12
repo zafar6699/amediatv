@@ -297,6 +297,7 @@ header.header{
     }
     .home__video{
         margin-top: 20px;
+        
     }
     .news-first{
         margin-bottom: 15px !important;
@@ -1380,10 +1381,18 @@ div.rating{
     }
     
 }
-
+iframe{
+    height: 100%;
+    min-height: 350px;
+}
+body{
+    height: 100%;
+}
 div.video-player{
     background-color: #000;
     padding: 5px 0px;
+    height: 100%;
+    
     div.item{
         color: #fff;
         margin: 0px 5px;

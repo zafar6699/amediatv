@@ -175,6 +175,9 @@ exports.getById = async (req, res) => {
 
     
     let janr = await Janr.find()
+    const comment = await Comment.find({ kinoId: req.params.id })
+        .sort({ date: -1 })
+        .populate(['user'])
    
     const kino = await Kino.findById({_id: req.params.id})
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
@@ -185,6 +188,7 @@ exports.getById = async (req, res) => {
             user: req.session.user,
             lang: req.session.ulang,
             janr,
+            comment,
             kino
         })
     } else {
