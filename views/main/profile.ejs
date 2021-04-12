@@ -41,13 +41,13 @@
                         <h4>Summa</h4>
                         <input type="number" name="amount" placeholder="Summani kiriting..." required>
                     </div>
-                    
+
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary">To'lash</button>
                 </div>
             </form>
-            <% console.log(user) %> 
+            <% console.log(user) %>
         </div>
 
     </div>
@@ -95,12 +95,15 @@
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 
                             <div class="avatar-wrapper">
-                                <!-- <img class="profile-pic" src="/img/insta.png"  /> -->
-                                <img class="profile-pic" src="/uploads/<%= user.photo %>" alt="Rasm bor" />
-                                <div class="upload-button">
-                                    <i class="fa fa-arrow-circle-up"></i>
-                                </div>
-                                <input class="file-upload" type="file" name="photo" multiple />
+                                <% if(user.photo){%>
+                                    <img class="profile-pic" src="/uploads/<%= user.photo %>" alt="" />
+                                    <% } else if(!user.photo) {%>
+                                        <img class="profile-pic" src="" alt="" />
+                                        <% } %>
+                                            <div class="upload-button">
+                                                <i class="fa fa-arrow-circle-up"></i>
+                                            </div>
+                                            <input class="file-upload" type="file" name="photo" multiple />
                             </div>
                             <button type="submit" class="btn btn-success ml-5" style="margin: 0 auto;">
                                 <i class="fas fa-check"></i> Saqlash
@@ -146,7 +149,7 @@
                         <div class="info__item">
                             <h3>Tarifning tugash sanasi:</h3>
                             <h4 class="deadline" style="color: rgb(253, 29, 29); font-weight: 700;">
-                                <%= moment(user.date).format("DD-MM-YYYY")%>
+                                <%= moment(user.balanceJournals).format("DD-MM-YYYY hh:mm")%>
                             </h4>
                         </div>
                     </div>
@@ -207,11 +210,18 @@
                                 <div class="comments-top">
                                     <div class="left">
                                         <div class="img">
-                                            <img src="/uploads/<%= item.user.photo %>" alt="">
+                                            <% if(!item.user){%>
+                                                <img src="" alt="">
+                                                <% } else  if(item.user){%>
+                                                    <img src="/uploads/<%= item.user.photo %>" alt="">
+                                                    <% } %>
                                         </div>
-                                        <h4>
-                                            <%= item.user.name %>
-                                        </h4>
+                                        <% if(!item.user){%>
+                                            <h4></h4>
+                                                <% } else if(item.user)  {%>
+                                                    <h4><%= item.user.name %></h4>
+                                                    <% } %>
+                                        
                                     </div>
                                     <h6>
                                         <%= moment(item.date).format("DD-MM-YYYY") %>

@@ -45,6 +45,7 @@ const userSchema = mongoose.Schema({
     },
     uid: { type: Number, required: true, unique: true },
     photo: String,
+    balanceJournals: {type: String},
     resetPasswordToken: String,
     resetPasswordExpire: Date,
     createdAt: {

@@ -20,6 +20,7 @@ exports.addBalance = async (req, res, next) => {
     switch (priceList.type) {
         case '1':
             ress = new Date(today.getTime() + (1 * 31 * 24 * 60 * 60 * 1000))
+            // ress = new Date(today.getTime() + (60 * 60 * 1000))
             endDate = ress.toISOString()
             break;
         case '3':
@@ -47,13 +48,16 @@ exports.addBalance = async (req, res, next) => {
                 status: true
             })
 
+            candidate.balanceJournals = balanseJournal.endDate
+            candidate.save()
+            req.session.user.status = "vip"
+            req.session.user.balance = candidate.balance
+            req.session.user.balanceJournals = balanseJournal.endDate
+            req.session.save()
+
 
             balanseJournal.save()
                 .then(() => {
-                    // res.status(201).json({
-                    //     success: true, 
-                    //     data: balanseJournal
-                    // })
                     res.redirect('/profile')
                 })
                 .catch((error) => {
@@ -63,10 +67,8 @@ exports.addBalance = async (req, res, next) => {
                     })
                 })
 
-            req.session.balance = balanseJournal
-            req.session.user.status = "vip"
+            
 
-            req.session.save()
 
 
         } else {
