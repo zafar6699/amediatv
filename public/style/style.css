@@ -1732,4 +1732,8 @@ div.video-player .owl-nav {
 div.video-player .owl-dots {
   display: none;
 }
+
+a:hover {
+  text-decoration: none !important;
+}
 /*# sourceMappingURL=style.css.map */
