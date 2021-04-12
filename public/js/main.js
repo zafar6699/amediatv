@@ -70,6 +70,27 @@ $(document).ready(function(){
 	        }
 	    }
     });
+	$('.season-carousel').owlCarousel({
+	    // loop:true,
+	    autoplay: false,
+        margin: 5,
+		loop: false,
+	    nav: true,
+	    responsive:{
+	        0:{
+                items:2,
+	        },
+	        300:{
+                items: 3,
+	        },
+	        700:{
+                items: 4,
+	        },
+	        1000:{
+	            items: 6
+	        }
+	    }
+    });
 
 	$(window).click(function(){
 		$("header.header ul.menu-nav li.dropdown-li div.dropdown-content").slideUp(200);

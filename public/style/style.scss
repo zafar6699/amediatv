@@ -1118,6 +1118,7 @@ div.kino{
         }
     }
     .__video{
+        height: 100%;
         video{
             width: 100%;
             height: 100%;
@@ -1377,4 +1378,47 @@ div.rating{
         color: #c59b08;
     }
     
+}
+
+div.video-player{
+    background-color: #000;
+    div.item{
+        color: #fff;
+        margin: 0px 5px;
+            border-radius: 5px;
+            overflow: hidden;
+        background-color: #333;
+        cursor: pointer;
+        b{
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+        }
+        i{
+            color: #fff;
+        }
+        a{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+
+            padding: 8px 15px;
+            &:hover{
+                text-decoration: none !important;
+            }
+        }
+        a.__active{
+            background-color: #37c9c9;
+        }
+    }
+    .owl-nav{
+        display: none;
+    }
+    .owl-dots{
+        display: none;
+    }
+}
+a:hover{
+    text-decoration: none !important;
 }
