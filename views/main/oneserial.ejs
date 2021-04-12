@@ -33,12 +33,23 @@
                         <iframe controls src="<%= serial.video %>"></iframe>
                         <div class="carousel-series">
                             <div class="owl-carousel season-carousel owl-theme">
-                                <div class="item">
-                                    <a class="__active" href="#">
-                                        <b>1-qism</b><i class="fa fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="item">
+                                <% seria.forEach(element => { %>
+                                    <div class="item">
+                                        <a class="__active" href="/season/<%= element._id %>">
+                                            <% if (lang == "uz") { %>
+                                                <b><%= element.name.uz %></b><i class="fa fa-eye"></i> 
+                                            <% } %>
+                                            <% if (lang == "ru") { %>
+                                                <b><%= element.name.ru %></b><i class="fa fa-eye"></i> 
+                                            <% } %>
+                                            <% if (lang == undefined) { %>
+                                                <b><%= element.name.uz %></b><i class="fa fa-eye"></i> 
+                                            <% } %>
+                                        </a>
+                                    </div>  
+                                <% }); %>
+                                
+                                <!-- <div class="item">
                                     <a href="#">
                                         <b>1-qism</b><i class="fa fa-eye"></i>
                                     </a>
@@ -67,7 +78,7 @@
                                     <a href="#">
                                         <b>1-qism</b><i class="fa fa-eye"></i>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

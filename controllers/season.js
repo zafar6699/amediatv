@@ -132,11 +132,6 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     let janr = await Janr.find()
     const seria = await Seriya.find({ season: req.params.id })
         .sort({ date: -1 })
-<<<<<<< HEAD
-        .populate(["season"])
-=======
-        .populate(['season'])
->>>>>>> f3aef64efd049e6f120ef618f07909e049e7f47e
     const season = await Season.findById(req.params.id)
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
     if (season.price == 'free') {
