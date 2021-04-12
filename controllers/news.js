@@ -16,8 +16,8 @@ exports.addNews = asyncHandler(async (req, res, next) => {
       ru: req.body.descriptionru
     },
     slug: slugify(slug.toString()),
-
     tags: req.body.tags,
+    videoLink: req.body.videoLink,
     image: `/uploads/cinema/${req.file.filename}`
   })
   news.save()

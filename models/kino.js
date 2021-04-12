@@ -37,8 +37,8 @@ const KinoSchema = mongoose.Schema({
         thumb:[{type: String,required: true}],
         original:[{type: String, required: true}]
     },
-    image: { type: String, required: true },
-    tags: {type: String},
+    image: {type: String, required: true},
+
     price: {
         type: String,
         enum:['free','selling'],
@@ -52,6 +52,7 @@ const KinoSchema = mongoose.Schema({
     }],
     country: {type: String, required: true},
     rating: {type: Number, default: 0},
+    tags: {type: String, default: ""},
     info:{
         views: {type: Number, default: 0},
     },
