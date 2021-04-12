@@ -31,7 +31,7 @@
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/payment/sendSumm" method="POST">
+            <form action="/payment/check/<%= user.uid %>/" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Balansni to'ldirish</h5>
                     <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
@@ -41,9 +41,7 @@
                         <h4>Summa</h4>
                         <input type="number" name="amount" placeholder="Summani kiriting..." required>
                     </div>
-                    <div class="form-auth">
-                        <input type="number" name="userID" value="<%= user.uid %>" />
-                    </div>
+                    
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary">To'lash</button>

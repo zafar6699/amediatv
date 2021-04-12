@@ -1,27 +1,16 @@
 const User = require('../models/user')
 const Jurnal = require('../models/jurnal')
 
-exports.FillBalance = async (req, res) => {
-    const user = req.session.user
-    const candidate = await User.findOne({ uid: user.uid })
-    const jurnal = new Jurnal({
-        userID: candidate.uid, // 10000000
-        amount: req.body.amount
-    })
 
-    await jurnal.save()
-        .then(() => {
-            return res.redirect(`https://pay.amediatv.uz/pay/payme/${jurnal.userID}/${jurnal.amount}/`)
-        })
-        .catch((error) => { return res.status(400).json({ success: false, data: error }) })
-}
 
 
 
 exports.checkUser = async (req, res) => {
     try {
-        const user = await User.findOne({ uid: req.params.id })
-            .select({ name: 1, balance: 1 })
+        // const user = await User.findOne({ uid: req.params.id })
+        //     .select({ name: 1, balance: 1 })
+
+        const user = req.session.user
 
         if (!user) {
             return res.status(404).json({
@@ -29,10 +18,26 @@ exports.checkUser = async (req, res) => {
                 data: 0
             })
         } else {
-            return res.status(200).json({
-                success: true,
-                user: user
+            // return res.status(200).json({
+            //     success: true,
+            //     user: user
+            // })
+            const priceCheck = new Jurnal({
+                userID: user.uid,
+                amount: req.body.amount
             })
+            priceCheck.save()
+                .then(() => {
+                    res.redirect(`https://pay.amediatv.uz/pay/payme/${user.uid}/${req.body/amount}`)
+                })
+                .catch((error) => {
+                    res.status(400).json({
+                        success: false
+                    })
+                })
+
+            res.redirect(`https://pay.amediatv.uz/pay/payme/${user.uid}/${user}`)
+
         }
 
     } catch (e) {

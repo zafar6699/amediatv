@@ -111,7 +111,7 @@ exports.addSeason = asyncHandler(async (req, res, next) => {
         })
 })
 exports.getAllSeason = asyncHandler(async (req, res, next) => {
-    
+
     const season = await Season.find()
         .sort({ date: -1 })
         .select({ name: 1, category: 1, image: 1, rating: 1, janr: 1, price: 1, date: 1 })
@@ -132,6 +132,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     let janr = await Janr.find()
     const seria = await Seriya.find({ season: req.params.id })
         .sort({ date: -1 })
+        .populate(['season'])
     const season = await Season.findById(req.params.id)
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
     if (season.price == 'free') {
@@ -154,10 +155,10 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
                 title: "401", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
-                janr,seria,comment
+                janr, seria, comment
             })
         } else if (me.status === 'vip' && season.price === 'selling') {
-            
+
             res.render("./main/oneserial", {
                 title: "Serial",
                 layout: 'layout',
