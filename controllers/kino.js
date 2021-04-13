@@ -193,14 +193,34 @@ exports.getById = async (req, res) => {
         })
     } else {
        
-        const user = req.session.user
-        const me = await User.findOne({ _id: user._id })
-        if (me.status !== 'vip' && kino.price === 'selling') {
+        const me = req.session.user
+        // const me = await User.findOne({ _id: user._id })
+        if (!me && kino) {
+            res.render("./main/kino", {
+                title: "Kino",
+                layout: 'layout',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr,
+                kino,
+                comment
+            })
+        }
+        else if (me.status !== 'vip' && kino.price === 'selling') {
             res.render('./main/notVip', {
                 title: "Error", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
-                janr
+                janr,
+                comment
+            })
+        } else if (!me && me.price === 'selling') {
+            res.render('./main/notVip', {
+                title: "Error", layout: 'error',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr,
+                comment
             })
         } else if (me.status === 'vip' && kino.price === 'selling') {
             
@@ -210,9 +230,11 @@ exports.getById = async (req, res) => {
                 user: req.session.user,
                 lang: req.session.ulang,
                 janr,
-                kino
+                kino,
+                comment
             })
         }
+        
     }
 
 

@@ -146,10 +146,20 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             comment
         })
     } else {
-        // const user =  JWT.decode(token.slice(7,token.length))
-        const user = req.session.user
-        const me = await User.findOne({ _id: user._id })
-        if (me.status !== 'vip' && season.price === 'selling') {
+        const me = req.session.user
+        // const me = await User.findOne({ _id: user._id })
+        if (!me && season) {
+            res.render("./main/oneserial", {
+                title: "Serial",
+                layout: 'layout',
+                user: req.session.user,
+                lang: req.session.ulang,
+                janr,
+                serial: season,
+                seria, comment
+            })
+        }
+        else if (me.status !== 'vip' && season.price === 'selling') {
             res.render('./main/notVip', {
                 title: "401", layout: 'error',
                 user: req.session.user,

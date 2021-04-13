@@ -9,12 +9,12 @@ const md5 = require('md5');
 exports.register = async (req, res, next) => {
     const candidate = await (await User.findOne().sort({ createdAt: -1 }))
     const uid = candidate ? candidate.uid + 1 : 10000000
-    const { name, email, password, balance } = req.body;
+    const { name, email, password } = req.body;
     let user = await User.create({
         name,
         email,
         password,
-        uid, balance
+        uid
     })
     await user.save()
         .then(() => {
@@ -44,7 +44,27 @@ exports.login = async (req, res, next) => {
     if (!isMatch) {
         res.render('./main/404Auth', { title: '404', layout: 'error' })
     }
+
+
+    /* Agar har safar profilga kirganda userni trafigi tugasa "status: user" boladi. 
+    Aks holda "vip" qiladi */
     const body = await User.findOne({ email: req.body.email })
+
+    const today = new Date();
+    const Next = new Date(body.balanceJournals)
+    
+    
+    if (today > Next) {
+        body.status = "user"
+    } else if(today < Next){
+        body.status = "vip"
+    }
+    await body.save({validateBeforeSave: false})
+
+    console.log(today)
+    console.log(body.status)
+    console.log(Next)
+
 
     const balance = await Balance.find({ user: body._id }).sort({ createdAt: -1 }).skip(0).limit(1)
     req.session.balane = balance
@@ -94,7 +114,7 @@ exports.updateFile = async (req, res) => {
             })
         })
 
-    req.session.user = admin
+    req.session.user.photo = admin.photo        
     req.session.save()
 
 }

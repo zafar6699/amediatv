@@ -105,7 +105,7 @@
                                             </div>
                                             <input class="file-upload" type="file" name="photo" multiple />
                             </div>
-                            <button type="submit" class="btn btn-success ml-5" style="margin: 0 auto;">
+                            <button type="submit" class="btn btn-success ml-2 mb-5">
                                 <i class="fas fa-check"></i> Saqlash
                             </button>
                         </form>
@@ -206,36 +206,42 @@
                     <div class="content-comments">
 
                         <% for(const item of comment) {%>
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
+                            <a href="/kino/<%= item.kinoId._id%>" class="text-dark">
+                                <div class="comments__item">
+                                    <div class="comments-top">
+                                        <div class="left">
+                                            <div class="img">
+                                                <% if(!item.user){%>
+                                                    <img src="" alt="">
+                                                    <% } else if(item.user){%>
+                                                        <img src="/uploads/<%= item.user.photo %>" alt="">
+                                                        <% } %>
+                                            </div>
                                             <% if(!item.user){%>
-                                                <img src="" alt="">
-                                                <% } else  if(item.user){%>
-                                                    <img src="/uploads/<%= item.user.photo %>" alt="">
+                                                <h4></h4>
+                                                <% } else if(item.user) {%>
+                                                    <h4>
+                                                        <%= item.user.name %>
+                                                    </h4>
                                                     <% } %>
+
                                         </div>
-                                        <% if(!item.user){%>
-                                            <h4></h4>
-                                                <% } else if(item.user)  {%>
-                                                    <h4><%= item.user.name %></h4>
-                                                    <% } %>
-                                        
+                                        <h6>
+                                            <%= moment(item.date).format("DD-MM-YYYY") %>
+                                        </h6>
                                     </div>
-                                    <h6>
-                                        <%= moment(item.date).format("DD-MM-YYYY") %>
-                                    </h6>
+                                    <div class="comment__p">
+
+                                        <h6>
+                                            <%= item.kinoId.name.uz %>
+                                        </h6>
+
+                                        <p>
+                                            <%= item.message %>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="comment__p">
-                                    <h6>
-                                        <%= item.kinoId.name.uz %>
-                                    </h6>
-                                    <p>
-                                        <%= item.message %>
-                                    </p>
-                                </div>
-                            </div>
+                            </a>
                             <% } %>
 
 

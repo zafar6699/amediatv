@@ -28,13 +28,40 @@
                                                     <span><i class="fa fa-star __gold"></i></span>
                                                     <span><i class="fa fa-star __gold"></i></span>
                                                     <span><i class="fa fa-star __gold"></i></span>
+
+                                                    <!-- <% if(kino.rating===1 ){ %>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                    <% } %>
+                                                    <% if(kino.rating===2 ){ %>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                    <% } %>
+                                                    <% if(kino.rating===3 ){ %>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                    <% } %>
+                                                    <% if(kino.rating===4 ){ %>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                    <% } %>
+                                                    <% if(kino.rating===5 ){ %>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                        <span><i class="fa fa-star __gold"></i></span>
+                                                    <% } %> -->
                                                 </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-9 __video">
-                <iframe src="https://www.youtube.com/embed/<%= kino.video %>" width="560" height="315" allowfullscreen="allowfullscreen"></iframe>
-                
+                <iframe src="https://www.youtube.com/embed/<%= kino.video %>" width="560" height="315"
+                    allowfullscreen="allowfullscreen"></iframe>
+
             </div>
             <div class="col-md-3 mt-4">
                 <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
@@ -107,16 +134,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 mt-4">
-                <% if (user.status === "vip" ) {%>
-                    <div>
-                        <a class="__download" href="https://t.me/AmediaTV_yuklashbot" id="download_blank" target="_blank">
-                            <i class="fa fa-download"></i> Yuklab olish
-                        </a>
-                    </div>
-                    <% } else if (user.status === "user" ) {%>
+            <div class="col-md-9 mt-2">
+                <% if (!user) {%>
+                    <div></div>
+                    <% } else if (user.status==="user" ) {%>
                         <div></div>
-                        <% } %>
+                        <% }else if (user.status==="vip"  ) {%>
+                            <div>
+                                <a class="__download" href="https://t.me/AmediaTV_yuklashbot" id="download_blank"
+                                    target="_blank">
+                                    <i class="fa fa-download"></i> Yuklab olish
+                                </a>
+                            </div>
+                            <% } %> 
 
                             <p class="mt-4">
                                 <% if (lang=="uz" ) { %>
@@ -179,7 +209,7 @@
             <h1 class="title__z"><i class="fa fa-angle-right"></i> Ijodkorlar</h1>
 
             <div class="flex-ijodkor ">
-                    <% for(const item of kino.tarjimon) {%> 
+                <% for(const item of kino.tarjimon) {%>
                     <div class="__item">
                         <div class="img-pro">
                             <img style="z-index: 10" src="/uploads/members/<%= item.image %>" alt="">
@@ -194,34 +224,38 @@
 
         </div>
         <h1 class="title__z mt-3"><i class="fa fa-angle-right"></i> Izohlar</h1>
-            <div class="content-comments2">
-
-                        <% for(const item of comment) {%>
-                            <div class="comments__item">
-                                <div class="comments-top">
-                                    <div class="left">
-                                        <div class="img">
-                                            <img src="/uploads/<%= item.user.photo %>" alt="">
-                                        </div>
-                                        <h4>
-                                            <%= item.user.name %>
-                                        </h4>
+        <div class="content-comments2">
+            <% if(!comment){%>
+                <div class="comments__item"></div>
+                <% } else if (comment){%>
+                    
+                    <% for(const item of comment) {%>
+                        <div class="comments__item">
+                            <div class="comments-top">
+                                <div class="left">
+                                    <div class="img">
+                                        <img src="/uploads/<%= item.user.photo %>" alt="">
                                     </div>
-                                    <h6>
-                                        <%= moment(item.date).format("DD-MM-YYYY") %>
-                                    </h6>
+                                    <h4>
+                                        <%= item.user.name %>
+                                    </h4>
                                 </div>
-                                <div class="comment__p">
-                                    <p>
-                                        <%= item.message %>
-                                    </p>
-                                </div>
+                                <h6>
+                                    <%= moment(item.date).format("DD-MM-YYYY") %>
+                                </h6>
                             </div>
-                            <% } %>
+                            <div class="comment__p">
+                                <p>
+                                    <%= item.message %>
+                                </p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% } %>
 
 
 
-            </div>
+        </div>
         <% if (user) { %>
             <div class="comment-send">
                 <form action="/comment/kino" method="POST">
@@ -240,5 +274,5 @@
 <script>
     let player = new MediaElementPlayer('#player1');
 
-   
+
 </script>

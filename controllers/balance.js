@@ -20,7 +20,7 @@ exports.addBalance = async (req, res, next) => {
     switch (priceList.type) {
         case '1':
             ress = new Date(today.getTime() + (1 * 31 * 24 * 60 * 60 * 1000))
-            // ress = new Date(today.getTime() + (60 * 60 * 1000))
+            // ress = new Date(today.getTime() + (2 * 60 * 1000)) // 1 minut
             endDate = ress.toISOString()
             break;
         case '3':
@@ -47,30 +47,34 @@ exports.addBalance = async (req, res, next) => {
                 endDate: endDate,
                 status: true
             })
+            balanseJournal.save()
 
-            candidate.balanceJournals = balanseJournal.endDate
-            candidate.save()
+            const candidates = await User.findByIdAndUpdate({ _id: user._id })
+            const ostatok = candidates.balance - priceList.amount
+            candidates.balance = ostatok
+
+
+            if ((candidates.balance >= 0) && (priceList.amount > candidates.balance)) {
+                candidates.status = 'user'
+            }
+            else if ((candidate.balance >= 0) && (priceList.amount <= candidate.balance)) {
+                candidates.status = 'vip'
+            }
+
+
+            candidates.balanceJournals = balanseJournal.endDate
+            candidates.save()
+
+
+            req.session.user.balance = candidates.balance = ostatok
             req.session.user.status = "vip"
-            req.session.user.balance = candidate.balance
             req.session.user.balanceJournals = balanseJournal.endDate
             req.session.save()
 
 
-            balanseJournal.save()
-                .then(() => {
-                    res.redirect('/profile')
-                })
-                .catch((error) => {
-                    res.status(400).json({
-                        success: false,
-                        error: error
-                    })
-                })
-
-            
 
 
-
+            res.redirect('/profile')
         } else {
             req.session.user.status = "user"
             req.session.save()

@@ -24,21 +24,22 @@ const BalanceSchema = mongoose.Schema({
         default: Date.now()
     }
 })
-BalanceSchema.pre('save', async function (next) {
-    const candidate = await this.model('Users').findByIdAndUpdate({ _id: this.user })
-    const priceList = await this.model('Price').findById({ _id: this.price })
-    const ostatok = candidate.balance - priceList.amount
-    candidate.balance = ostatok
+// BalanceSchema.pre('save', async function (next) {
+//     const candidate = await this.model('Users').findByIdAndUpdate({ _id: this.user })
+//     const priceList = await this.model('Price').findById({ _id: this.price })
+//     const ostatok = candidate.balance - priceList.amount
+//     candidate.balance = ostatok
 
-    if ((candidate.balance >= 0) && (priceList.amount > candidate.balance)) {
-        candidate.status = 'user'
-    }
-    else {
-        candidate.status = 'vip'
-    }
+//     if ((candidate.balance >= 0) && (priceList.amount > candidate.balance)) {
+//         candidate.status = 'user'
+//     }
+//     else if ((candidate.balance >= 0) && (priceList.amount <= candidate.balance)) {
+//         candidate.status = 'vip'
+//     }
    
 
-    candidate.save({ validateBeforeSave: false })
-    next();
-})
+//     // candidate.save({ validateBeforeSave: false })
+//     candidate.save()
+//     next();
+// })
 module.exports = mongoose.model('Balance', BalanceSchema)
