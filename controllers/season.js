@@ -192,7 +192,7 @@ exports.addSeriya = asyncHandler(async (req, res, next) => {
         video: req.body.video,
         season: req.body.season,
         slug: (Math.floor(Math.random() * 9999999999999)).toString(),
-        tags: req.body.tags
+        // tags: req.body.tags
     })
     seriya.save()
         .then(() => {
