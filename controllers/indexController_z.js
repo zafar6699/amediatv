@@ -40,10 +40,10 @@ exports.Home = async (req, res) => {
         .select({name: 1, category: 1, url: 1, image: 1, rating: 1,year: 1, janr: 1,date: 1,description: 1, price:1})
         .populate({path: 'category', select: 'nameuz'})
         .populate(['janr'])
-    const season = await Season.find()
+    const serial = await Season.find()
         .limit(4)
         .sort({date: -1})
-        .select({name: 1, category: 1, image: 1, rating: 1,year: 1, janr: 1,date: 1, num: 1, description: 1, price:1})
+        // .select({name: 1, category: 1, image: 1, rating: 1,year: 1, janr: 1,date: 1, num: 1, description: 1, price:1})
         .populate({path: 'category', select: 'nameuz'})
         .populate(['janr'])
 
@@ -52,18 +52,17 @@ exports.Home = async (req, res) => {
 
     res.render("./main/index", {
         lang: req.session.ulang,
+        title: "Home",
+        layout: "./layout",
+        user: req.session.user,
+        serial,
         janr,
         slider,
         oneKino,
         news,
         kino,
-        serial: season,
         category,
         sortKino,
-        title: "Home",
-        user: req.session.user,
-        
-        layout: "./layout",
     })
     
 }
