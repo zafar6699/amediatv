@@ -147,16 +147,23 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
         })
     } else {
         const me = req.session.user
-        // const me = await User.findOne({ _id: user._id })
-        if (!me && season) {
-            res.render('./main/401Register', {
-                title: "Error", layout: 'error',
+        //  registrtasiydan otmasa va serial pullik bolsa serialni ichiga kirmays=di
+        if (!me && season.price === 'selling') {
+            res.redirect('/')
+        }
+        //  registrtasiydan otmasa va serial tekin bolsa serialni ichiga kirmays=di
+        else if (!me && season.price === 'free') {
+            res.render("./main/oneserial", {
+                title: "Serial",
+                layout: 'layout',
                 user: req.session.user,
                 lang: req.session.ulang,
                 janr,
-                comment
+                serial: season,
+                seria, comment
             })
         }
+        // user vip bolmasa va serial pullik bolsa serialga kirmaydi
         else if (me.status !== 'vip' && season.price === 'selling') {
             res.render('./main/notVip', {
                 title: "401", layout: 'error',
@@ -164,8 +171,8 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
                 lang: req.session.ulang,
                 janr, seria, comment
             })
+            // user vip bolsa va serial pullik bolsa serialga kiradi
         } else if (me.status === 'vip' && season.price === 'selling') {
-
             res.render("./main/oneserial", {
                 title: "Serial",
                 layout: 'layout',
