@@ -18,7 +18,7 @@ router.post('/register', register);
 router.post('/signin', login);
 router.post('/logout', logout);
 router.get('/session', getSession);
-router.post('/upload/:id', upload.single('photo'), updateFile);
+router.put('/upload/:id', upload.single('photo'), updateFile);
 router.post('/updatepassword/:id', UpdatePassword);
 router.post('/detail/:id', UpdateDetails);
 
