@@ -19,8 +19,8 @@ exports.addBalance = async (req, res, next) => {
     // 12-2-20201
     switch (priceList.type) {
         case '1':
-            // ress = new Date(today.getTime() + (1 * 31 * 24 * 60 * 60 * 1000))
-            ress = new Date(today.getTime() + (3 * 60 * 1000)) // 3 minutlik tarif olish uchun 
+            ress = new Date(today.getTime() + (1 * 31 * 24 * 60 * 60 * 1000))
+            // ress = new Date(today.getTime() + (3 * 60 * 1000)) // 3 minutlik tarif olish uchun 
             endDate = ress.toISOString()
             break;
         case '3':
