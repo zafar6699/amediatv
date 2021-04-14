@@ -69,7 +69,7 @@
                     <div class="item">
                         <div class="carousel__item">
                             
-                            <img class="carousel-out__img" src="http://amediatv.uz:2000<%= item.kino.image %>" alt="">
+                            <img class="carousel-out__img" src="http://amediatv.uz:2000<%= item.serial.image %>" alt="">
                             
                             <div class="opacity__banner"></div>
                             <div class="carousel-text-content">
@@ -80,17 +80,17 @@
         
         
                                             <% if(lang==='uz' ){ %>
-                                                <a  class="banner__link" href="/kino/<%= item.kino._id %>">
+                                                <a  class="banner__link" href="/kino/<%= item.serial._id %>">
                                                     <%= item.kino.name.uz %>
                                                 </a>
                                             <% } %>
                                             <%  if(lang==='ru' ){ %>
-                                                <a  class="banner__link" href="/kino/<%= item.kino._id %>">
+                                                <a  class="banner__link" href="/kino/<%= item.serial._id %>">
                                                     <%= item.kino.name.ru %>
                                                 </a>
                                             <% } %>
                                             <%  if(lang==undefined ){ %>
-                                                <a  class="banner__link" href="/kino/<%= item.kino._id %>">
+                                                <a  class="banner__link" href="/kino/<%= item.serial._id %>">
                                                     <%= item.kino.name.uz %>
                                                 </a>
                                             <% } %>
