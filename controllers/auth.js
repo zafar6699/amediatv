@@ -9,12 +9,13 @@ const md5 = require('md5');
 exports.register = async (req, res, next) => {
     const candidate = await (await User.findOne().sort({ createdAt: -1 }))
     const uid = candidate ? candidate.uid + 1 : 10000000
-    const { name, email, password } = req.body;
+    const { name, email, password, balance } = req.body;
     let user = await User.create({
         name,
         email,
         password,
-        uid
+        uid,
+        balance
     })
     await user.save()
         .then(() => {
