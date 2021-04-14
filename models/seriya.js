@@ -8,7 +8,6 @@ const seriyaSchema = new mongoose.Schema({
     season: {type: mongoose.Schema.ObjectId, ref: 'season', required: true},
     slug: {type: String, unique: true, lowercase: true},
     url: { type: String, required: true },
-    // tags: {type: String},
     length: {type: String, required: true},
     tags: {type: String, default: ""},
     date: {type: Date, default: Date.now()}

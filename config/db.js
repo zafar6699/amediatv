@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb://localhost:27017/amedia_test'
+const url = 'mongodb://localhost:27017/amediatv'
 
 const connectDB = async () => {
    await mongoose.connect(url , {

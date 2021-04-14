@@ -10,6 +10,7 @@ const anotatsiyaSchema = mongoose.Schema({
         ru: {type: String, required: true}
     },
     video: {type: String, required: true},
+    tags: {type: String, default: ""},
     status: {type: Boolean, required: true},
     date: {type: Date, default: Date.now()}
 })
