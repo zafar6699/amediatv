@@ -8,7 +8,7 @@
                 </div>
                 <h1 class="title-news"><%= news.name.uz %></h1>
                 <div class="img-news">
-                    <img src="<%= news.image %>" alt>
+                    <img src="http://cdn.amediatv.uz<%= news.image %>" alt>
                 </div>
                 <p>
                     <%= news.description.uz %>
@@ -38,7 +38,7 @@
                             <% allNews.forEach(element => { %>
                                 <a href="/news/<%= element._id %>">
                                     <div class="box-border news__item">
-                                        <img src="<%= element.image %>" alt="">
+                                        <img src="http://cdn.amediatv.uz<%= element.image %>" alt="">
                                         <div class="opa"></div>
                                         <div class="news__item__title">
                                             <h4><%= element.name.uz %></h4>

@@ -196,13 +196,11 @@ exports.getById = async (req, res) => {
         const me = req.session.user
         // const me = await User.findOne({ _id: user._id })
         if (!me && kino) {
-            res.render("./main/kino", {
-                title: "Kino",
-                layout: 'layout',
+            res.render('./main/401Register', {
+                title: "Error", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
                 janr,
-                kino,
                 comment
             })
         }

@@ -5,7 +5,7 @@
         <div class="row kino__top">
             <div class="col-md-3">
                 <div class="img_left">
-                    <img src="<%= kino.image %>" alt="">
+                    <img src="http://cdn.amediatv.uz<%= kino.image %>" alt="">
                     <div class="__bottom">
                         <% if (lang=="uz" ) { %>
                             <h3>
@@ -172,7 +172,7 @@
                     <% kino.screens.thumb.forEach(element=> { %>
                         <div class="item">
                             <div class="img-kadr">
-                                <img src="<%= element %>" alt="">
+                                <img src="http://cdn.amediatv.uz<%= element %>" alt="">
                             </div>
                         </div>
                         <% }); %>
@@ -188,7 +188,7 @@
                 <% for(const item of kino.tarjimon) {%>
                     <div class="__item">
                         <div class="img-pro">
-                            <img style="z-index: 10" src="/uploads/members/<%= item.image %>" alt="">
+                            <img style="z-index: 10" src="http://cdn.amediatv.uz<%= item.image %>" alt="">
                         </div>
                         <h4>
                             <%= item.name %>
@@ -210,7 +210,7 @@
                             <div class="comments-top">
                                 <div class="left">
                                     <div class="img">
-                                        <img src="/uploads/<%= item.user.photo %>" alt="">
+                                        <img src="http://cdn.amediatv.uz<%= item.user.photo %>" alt="">
                                     </div>
                                     <h4>
                                         <%= item.user.name %>

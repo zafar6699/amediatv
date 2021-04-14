@@ -149,14 +149,12 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
         const me = req.session.user
         // const me = await User.findOne({ _id: user._id })
         if (!me && season) {
-            res.render("./main/oneserial", {
-                title: "Serial",
-                layout: 'layout',
+            res.render('./main/401Register', {
+                title: "Error", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
                 janr,
-                serial: season,
-                seria, comment
+                comment
             })
         }
         else if (me.status !== 'vip' && season.price === 'selling') {
