@@ -16,15 +16,17 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css" integrity="sha512-RZKnkU75qu9jzuyC+OJGffPEsJKQa7oNARCA6/8hYsHk2sd7Sj89tUCWZ+mV4uAaUbuzay7xFZhq7RkKFtP4Dw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css"
+        integrity="sha512-RZKnkU75qu9jzuyC+OJGffPEsJKQa7oNARCA6/8hYsHk2sd7Sj89tUCWZ+mV4uAaUbuzay7xFZhq7RkKFtP4Dw=="
+        crossorigin="anonymous" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
         integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
         crossorigin="anonymous" />
-        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet'>
 
-  
+
 
 </head>
 
@@ -240,7 +242,7 @@
                         <form action="/search" method="GET">
                             <input type="search" name="name" class="form-control" placeholder="Saytdan izlash...">
                             <button style="z-index: 10;" type="submit" class=" bg-dark btn btn-success">
-                               <i class="text-white fa fa-search"></i>
+                                <i class="text-white fa fa-search"></i>
                             </button>
                         </form>
                     </div>
@@ -383,7 +385,9 @@
         <!-- Scripts -->
         <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement.min.js" integrity="sha512-+b9/1TlD066WAdb06Kad2E1EY+rX1RHQ54KCMa70c1YcCDJ/Wfr1MqqOddjBAwvZ/2igGiBg+YADB3ZHZllb9g==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement.min.js"
+            integrity="sha512-+b9/1TlD066WAdb06Kad2E1EY+rX1RHQ54KCMa70c1YcCDJ/Wfr1MqqOddjBAwvZ/2igGiBg+YADB3ZHZllb9g=="
+            crossorigin="anonymous"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/4.0.9/jquery.inputmask.bundle.min.js"
             integrity="sha512-VpQwrlvKqJHKtIvpL8Zv6819FkTJyE1DoVNH0L2RLn8hUPjRjkS/bCYurZs0DX9Ybwu9oHRHdBZR9fESaq8Z8A=="
@@ -521,6 +525,7 @@
 
 
 
+            
 
 
 
@@ -529,12 +534,13 @@
                 .then(res => {
                     let result = new Date(res.data.data.balance[0].endDate)
                     document.querySelector('.deadline').innerHTML = result.toLocaleString()
-                    console.log(result);
                 })
                 .catch(err => {
                     console.log(err);
                 })
 
+
+          
 
 
 

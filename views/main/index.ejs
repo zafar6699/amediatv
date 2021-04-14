@@ -66,17 +66,14 @@
             <div class="item">
                 <div class="carousel__item">
                     
-                    <img class="carousel-out__img" src="http://cdn.amediatv.uz/<%= item.kino.image %> " alt="">
                     
+                    <%= item.kino.image %>
                     <div class="opacity__banner"></div>
                     <div class="carousel-text-content">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-7">
-                                    
-
-
-                                    <% if(lang==='uz' ){ %>
+                                   <% if(lang==='uz' ){ %>
                                         <a  class="banner__link" href="/kino/<%= item.kino._id %>">
                                             <%= item.kino.name.uz %>
                                         </a>
@@ -250,13 +247,6 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
 <div class="news-home">
     <div class="container">
         <div class="d-flex justify-content-between">
@@ -313,13 +303,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 
 <div class="tab-animes">
     <div class="container">
@@ -407,5 +390,5 @@
     </div>
 </div>
 
-
-<script></script>
+<script>
+</script>
