@@ -15,7 +15,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 const MongoURI = "mongodb://localhost:27017/amediatv"    
 mongoose
   .connect(MongoURI, {
-    useNewUrlParser: true,00010
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  })
+  .then((res) => {
     console.log('MongoDB Connected');
   })
  
