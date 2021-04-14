@@ -120,7 +120,9 @@
             </div>
             <div class="col-md-8">
                 <div class="box-border">
-                    <iframe class="home__video" src="<%= oneKino[0].video%>"></iframe>
+                    <% for(const item of oneKino) {%> 
+                    <iframe class="home__video" src="<%=item.video %>"></iframe>
+                    <% } %> 
                 </div>
             </div>
             <% for(const item of news) {%> 
