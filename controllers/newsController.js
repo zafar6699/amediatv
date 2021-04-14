@@ -1,3 +1,3 @@
 exports.News = (req, res) => {
-    res.render("./main/news", { title: "News" })
+    res.render("./main/news", { title: "AmediaTV.uz" })
 }

@@ -5,8 +5,6 @@ const jwt = require('jsonwebtoken');
 
 
 exports.addBalance = async (req, res, next) => {
-    // const token = req.headers.authorization
-    // const user = jwt.decode(token.slice(7, token.length))
 
     const user = req.session.user
 

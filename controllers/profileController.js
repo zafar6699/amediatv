@@ -32,7 +32,7 @@ exports.Profile = async (req, res) => {
         .sort({ date: -1 }).limit(25)
 
     res.render("./main/profile", {
-        title: "Profile",
+        title: "AmediaTV.uz",
         layout: "layout",
         janr,
         list,

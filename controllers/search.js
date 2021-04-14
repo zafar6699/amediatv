@@ -24,7 +24,7 @@ exports.search = asyncHandler(async (req, res, next) => {
         })
     }
     res.render('./main/search', {
-        title: "Searched", layout: 'layout',
+        title: "AmediaTV.uz", layout: 'layout',
         user: req.session.user,
         lang: req.session.ulang,
         kino,

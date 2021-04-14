@@ -106,7 +106,7 @@ exports.updateFile = async (req, res) => {
         })
         .catch((error) => {
             res.render('./main/404Auth', {
-                title: "Error", layout: 'error',
+                title: "AmediaTV.uz", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
                 janr
@@ -133,7 +133,7 @@ exports.UpdateDetails = async (req, res, next) => {
         })
         .catch((error) => {
             res.render('./main/404Auth', {
-                title: "Error", layout: 'error',
+                title: "AmediaTV.uz", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
                 janr
@@ -155,7 +155,7 @@ exports.UpdatePassword = async (req, res, next) => {
         })
         .catch((error) => {
             res.render('./main/404Auth', {
-                title: "Error", layout: 'error',
+                title: "AmediaTV.uz", layout: 'error',
                 user: req.session.user,
                 lang: req.session.ulang,
                 janr

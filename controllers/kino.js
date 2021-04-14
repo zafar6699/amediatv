@@ -160,7 +160,7 @@ exports.getById = async (req, res) => {
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
     if (kino.price === 'free') {
         res.render("./main/kino", {
-            title: "Kino",
+            title: "AmediaTV.uz",
             layout: 'layout',
             user: req.session.user,
             lang: req.session.ulang,
@@ -175,7 +175,7 @@ exports.getById = async (req, res) => {
         }
         else if (!me && kino.price === 'free') {
             res.render("./main/kino", {
-                title: "Kino",
+                title: "AmediaTV.uz",
                 layout: 'layout',
                 user: req.session.user,
                 lang: req.session.ulang,
@@ -203,7 +203,7 @@ exports.getById = async (req, res) => {
         } else if (me.status === 'vip' && kino.price === 'selling') {
 
             res.render("./main/kino", {
-                title: "Kino",
+                title: "AmediaTV.uz",
                 layout: 'layout',
                 user: req.session.user,
                 lang: req.session.ulang,

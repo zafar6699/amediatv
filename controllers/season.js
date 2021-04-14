@@ -121,7 +121,7 @@ exports.getAllSeason = asyncHandler(async (req, res, next) => {
     res.render("./main/serial", {
         janr,
         serial: season,
-        title: "Serial",
+        title: "AmediaTV.uz",
         user: req.session.user, layout: 'layout'
     })
 })
@@ -136,7 +136,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
     if (season.price == 'free') {
         res.render("./main/oneserial", {
-            title: "Serial",
+            title: "AmediaTV.uz",
             layout: 'layout',
             user: req.session.user,
             lang: req.session.ulang,
@@ -174,7 +174,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             // user vip bolsa va serial pullik bolsa serialga kiradi
         } else if (me.status === 'vip' && season.price === 'selling') {
             res.render("./main/oneserial", {
-                title: "Serial",
+                title: "AmediaTV.uz",
                 layout: 'layout',
                 user: req.session.user,
                 lang: req.session.ulang,

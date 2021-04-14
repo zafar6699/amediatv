@@ -68,7 +68,7 @@ exports.getQuery = asyncHandler(async (req, res) => {
    
     res.render("./main/yearSort", {
         
-        title: "Home",
+        title: "AmediaTV.uz",
         user: req.session.user,
         lang: req.session.ulang,
         lang: req.session.ulang,
@@ -97,7 +97,7 @@ exports.getByJanr = asyncHandler(async (req, res) => {
 
     res.render("./main/janrSort", {
         
-        title: "Home",
+        title: "AmediaTV.uz",
         user: req.session.user,
         lang: req.session.ulang,
         lang: req.session.ulang,

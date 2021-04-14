@@ -33,7 +33,7 @@ exports.updateFile = async (req, res) => {
       })
       .catch((error) => {
           res.render('./main/404Auth', {
-              title: "Error", layout: 'error',
+              title: "AmediaTV.uz", layout: 'error',
               user: req.session.user,
               lang: req.session.ulang,
               janr

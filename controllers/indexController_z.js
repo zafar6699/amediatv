@@ -67,7 +67,7 @@ exports.Home = async (req, res) => {
 
 
     res.render("./main/index", {
-        title: "Home",
+        title: "AmediaTV.uz",
         layout: "./layout",
         user: req.session.user, lang: req.session.ulang,
         serial, janr, slider, oneKino, news, kino, category, sortKino
@@ -76,7 +76,7 @@ exports.Home = async (req, res) => {
 }
 
 exports.OneJanr = async (req, res) => {
-    res.render("./main/onejanr", { title: "Home" })
+    res.render("./main/onejanr", { title: "AmediaTV.uz" })
 }
 exports.Janrs = async (req, res) => {
     const result = new Janr(req.body);

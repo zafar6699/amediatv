@@ -30,7 +30,7 @@ exports.getAll = asyncHandler(async (req, res, next) => {
   res.render("./main/allnews", {
     janr,
     news,
-    title: "AllNews",
+    title: "AmediaTV.uz",
     user: req.session.user
   })
 
@@ -45,7 +45,7 @@ exports.getById = async (req, res, next) => {
     news,
     janr,
     allNews,
-    title: "News",
+    title: "AmediaTV.uz",
     user: req.session.user,
   })
 }
