@@ -95,7 +95,7 @@
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="avatar-wrapper">
                                    <% if(user.photo){%>
-                                       <img class="profile-pic" src="http://amediatv.uz:2000<%= user.photo %>" alt="" />
+                                       <img class="profile-pic" src="http://amediatv.uz:2000/<%= user.photo %>" alt="" />
                                     <% } else if(!user.photo) {%>
                                         <img class="profile-pic" src="" alt="" />
                                     <% } %>
@@ -208,7 +208,7 @@
                                                     <% if(!item.user){%>
                                                         <img src="" alt="">
                                                         <% } else if(item.user){%>
-                                                            <img src="http://cdn.amediatv.uz/public/upload<%= item.user.photo %>" alt="">
+                                                            <img src="http://cdn.amediatv.uz/public/upload/<%= item.user.photo %>" alt="">
                                                             <% } %>
                                                 </div>
                                                 <% if(!item.user){%>
