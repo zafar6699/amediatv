@@ -95,7 +95,7 @@
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="avatar-wrapper">
                                    <% if(user.photo){%>
-                                       <img class="profile-pic" src="http://amediatv.uz:2000/public/upload<%= user.photo %>" alt="" />
+                                       <img class="profile-pic" src="http://amediatv.uz:2000<%= user.photo %>" alt="" />
                                     <% } else if(!user.photo) {%>
                                         <img class="profile-pic" src="" alt="" />
                                     <% } %>
@@ -165,11 +165,7 @@
             <div class="col-md-4">
                 <div class="profile-content">
                     <h2 class="title"><i class="fa fa-angle-right"></i> Tariflar</h2>
-
                     <div class="content-tarif">
-
-
-
                         <% for (let item of list) {%>
                             <div class="tarif__item">
                                 <div class="tarif-top">
@@ -191,10 +187,6 @@
                                 </div>
                             </div>
                             <% } %>
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -216,7 +208,7 @@
                                                     <% if(!item.user){%>
                                                         <img src="" alt="">
                                                         <% } else if(item.user){%>
-                                                            <img src="http://cdn.amediatv.uz<%= item.user.photo %>" alt="">
+                                                            <img src="http://cdn.amediatv.uz/public/upload<%= item.user.photo %>" alt="">
                                                             <% } %>
                                                 </div>
                                                 <% if(!item.user){%>
