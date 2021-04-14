@@ -19,13 +19,11 @@ exports.getSlidersForAdminPage = asyncHandler(async (req, res, next) => {
   .populate(
    {
     path: 'kino',
-    select: ['name', 'image']
    }
   )
   .populate(
    {
     path: 'serial',
-    select: ['name', 'image']
    }
   )
  //.populate(['kino','serial'])
