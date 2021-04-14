@@ -10,8 +10,8 @@ const i18n = require("i18n-express");
 const app = express()
 const bodyParser = require("body-parser")
 
-const MongoURI = "mongodb://localhost:27017/amedia_test"
-// const MongoURI = "mongodb://localhost:27017/amediatv"    
+// const MongoURI = "mongodb://localhost:27017/amedia_test"
+const MongoURI = "mongodb://localhost:27017/amediatv"    
 mongoose
   .connect(MongoURI, {
     useNewUrlParser: true,
