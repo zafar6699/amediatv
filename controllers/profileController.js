@@ -40,9 +40,9 @@ exports.Profile = async (req, res) => {
         comment,
         commentSeriya,
         balance: req.session.balance
-
-
     })
+
+    
 
     // res.json(comment)
 
