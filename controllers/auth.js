@@ -85,7 +85,7 @@ exports.logout = async (req, res) => {
 exports.updateFile = async (req, res) => {
     const user = req.session.user
     const admin = await User.findByIdAndUpdate({ _id: user._id })
-    let compressedFile = path.join(__dirname, '../public/uploads', md5(new Date().getTime()) + '.jpg')
+    let compressedFile = path.join(__dirname, '../public/uploads/members', md5(new Date().getTime()) + '.jpg')
     await sharp(req.file.path)
         .resize(500, 500)
         .jpeg({ quality: 100 })
