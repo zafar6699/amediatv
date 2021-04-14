@@ -5,12 +5,13 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user');
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
+const md5 = require('md5')
 
 
 exports.updateFile = async (req, res) => {
   const user = req.session.user
   const admin = await User.findByIdAndUpdate({ _id: user._id })
-  let compressedFile = path.join(__dirname, '../public/uploads/members', md5(new Date().getTime()) + '.jpg')
+  let compressedFile = path.join(__dirname, '../public/uploads', md5(new Date().getTime()) + '.jpg')
   await sharp(req.file.path)
       .resize(500, 500)
       .jpeg({ quality: 100 })
@@ -27,7 +28,8 @@ exports.updateFile = async (req, res) => {
   admin.photo = path.basename(compressedFile)
   admin.save()
       .then(() => {
-          res.redirect('/profile')
+        res.redirect('/profile')
+        // res.json(admin)
       })
       .catch((error) => {
           res.render('./main/404Auth', {
