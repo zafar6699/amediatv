@@ -7,10 +7,41 @@ const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middlewares/async');
 
 
-exports.createUser = asyncHandler( async (req , res , next) => {
-  const user = await User.create(req.body);
-  res.status(200).json({success: true , data: user});
-});
+exports.updateFile = async (req, res) => {
+  const user = req.session.user
+  const admin = await User.findByIdAndUpdate({ _id: user._id })
+  let compressedFile = path.join(__dirname, '../public/uploads/members', md5(new Date().getTime()) + '.jpg')
+  await sharp(req.file.path)
+      .resize(500, 500)
+      .jpeg({ quality: 100 })
+      .toFile(compressedFile, (error) => {
+          if (error) {
+              res.send(error)
+          }
+          fs.unlink(req.file.path, async (error) => {
+              if (error) {
+                  throw error
+              }
+          })
+      })
+  admin.photo = path.basename(compressedFile)
+  admin.save()
+      .then(() => {
+          res.redirect('/profile')
+      })
+      .catch((error) => {
+          res.render('./main/404Auth', {
+              title: "Error", layout: 'error',
+              user: req.session.user,
+              lang: req.session.ulang,
+              janr
+          })
+      })
+
+  req.session.user.photo = admin.photo        
+  req.session.save()
+
+}
 
 
 
