@@ -1,15 +1,81 @@
-<div class="banner">
-    <div class="owl-carousel owl-theme anime-carousel">
-        <% slider.forEach(item => { %>
-            <div class="item">
+<% if (slider == "") { %>
+    <div class="banner">
+        <div class="owl-carousel owl-theme anime-carousel">
+            <div class="item" style="display: block;">
                 <div class="carousel__item">
-                    <img class="carousel-out__img" src="<%= item.kino.image %> " alt="">
+                    <img class="carousel-out__img" src="/img/banner_img.png" alt="">
                     <div class="opacity__banner"></div>
-
+            
                     <div class="carousel-text-content">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-7">
+                                    
+                                        <a  class="banner__link" href="">
+                                              Kinoni nomi boladi
+                                        </a>
+                                    
+                                    <p>
+                                        Kinoni description bomadi
+                                    </p>
+                                    <div class="banner-stars">
+                                        
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                            <span><i class="fa fa-star __gold"></i></span>
+                                        
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <button class="carousel-click click__left" type="button"><i class="fa fa-angle-left"></i></button>
+                                        <button class="carousel-click click__right" type="button"><i class="fa fa-angle-right"></i></button>
+                                        <div class="owl-carousel owl-theme banner-inner-carousel">
+                                                <div class="item">
+                                                    <div class="sm__item">
+                                                        <img src="/img/banner_img.png" alt="Kinoni rasmi boladi">
+                                                    </div>
+                                                </div>
+                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="banner-right-img">
+                                        <div class="__img">
+                                            <img src="/img/banner_img.png" alt="Kinoni rasmi boladi">
+                                            <img src="/img/banner_img.png" alt="Kinoni rasmi boladi">
+                                            <img src="/img/banner_img.png" alt="Kinoni rasmi boladi">
+                                            <img src="/img/banner_img.png" alt="Kinoni rasmi boladi">
+                                            <img src="/img/banner_img.png" alt="Kinoni rasmi boladi">
+                                            <img src="/img/banner_img.png" alt="Kinoni rasmi boladi">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } else if(slider) {%>
+    <div class="banner">
+        <div class="owl-carousel owl-theme anime-carousel">
+        <% for (let item of slider) {%>
+            <div class="item">
+                <div class="carousel__item">
+                    
+                    <img class="carousel-out__img" src="<%= item.kino.image %> " alt="">
+                    
+                    <div class="opacity__banner"></div>
+                    <div class="carousel-text-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    
+
+
                                     <% if(lang==='uz' ){ %>
                                         <a  class="banner__link" href="/kino/<%= item.kino._id %>">
                                             <%= item.kino.name.uz %>
@@ -92,11 +158,17 @@
                     </div>
                 </div>
             </div>
-        <% }) %>
-        
-        
+        <% }%>
+        </div>
     </div>
-</div>
+<% } %>
+
+
+
+
+
+
+
 <div class="news-home">
     <div class="container">
         <div class="d-flex justify-content-between">
@@ -119,36 +191,72 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="box-border">
+                <div class="box-border"
+                <% if(oneKino == '') { %> 
+                    <p>Video bor</p>
+                    <iframe class="home__video" src="https://protonvideo.to/iframe/92c1159e5c14f1af9c40c56bcf3dcbc1/"></iframe>
+                <% } else { %> 
                     <% for(const item of oneKino) {%> 
-                    <iframe class="home__video" src="<%=item.video %>"></iframe>
+                        <iframe class="home__video" src="<%=item.video %>"></iframe>
                     <% } %> 
+                <% } %> 
                 </div>
             </div>
-            <% for(const item of news) {%> 
-            <div class="col-md-4">
-                
-                <a href="/news/<%= item._id %>">
-                    <div class="box-border news__item">
-                        <img src="<%= item.image %>" alt="">
-                        <div class="opa"></div>
-                        <div class="news__item__title">
-                            <!-- <h3>Yangiliklar</h3> -->
-                            <% if(lang === "uz"){ %>
-                                <h4><%= item.name.uz %></h4>
-                            <% } else if(lang === "ru"){ %>
-                                <h4><%= item.name.ru %></h4>
-                            <% } else if(lang == undefined){ %>
-                                <h4><%= item.name.uz %></h4>
-                            <% } %>
+
+
+
+            <% if(news == '') {%> 
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="box-border news__item">
+                            <img  src="/img/banner_img.png" alt="">
+                            <div class="opa"></div>
+                            <div class="news__item__title">
+                                <h4>Yangilik nomi ()default</h4>
+                            </div>
                         </div>
+                    </a>    
+                </div>
+               
+            <%} else {%> 
+                <% for(const item of news) {%> 
+                    <div class="col-md-4">
+                        
+                        <a href="/news/<%= item._id %>">
+                            <div class="box-border news__item">
+                                <img src="<%= item.image %>" alt="">
+                                <div class="opa"></div>
+                                <div class="news__item__title">
+                                    <!-- <h3>Yangiliklar</h3> -->
+                                    <% if(lang === "uz"){ %>
+                                        <h4><%= item.name.uz %></h4>
+                                    <% } else if(lang === "ru"){ %>
+                                        <h4><%= item.name.ru %></h4>
+                                    <% } else if(lang == undefined){ %>
+                                        <h4><%= item.name.uz %></h4>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </a>    
                     </div>
-                </a>    
-            </div>
-            <% } %>
+                    <% } %>
+            <% } %> 
+
+            
+
+
+
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
 <div class="news-home">
     <div class="container">
         <div class="d-flex justify-content-between">
@@ -157,98 +265,144 @@
             </a>
         </div>
         <div class="row">
-            <% serial.forEach(item => { %>
-            <div class="col-md-3">
-                
-                <a href="/season/<%= item._id %>">
-                    <div class="box-border news__item">
-                        <% if(item.price == "selling") {%> 
+            <% if(serial == '') {%> 
+                <div class="col-md-3">
+                    <a href="#">
+                        <div class="box-border news__item">
                             <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
-                            <% } if(item.price == "free") {%>
-                                <div></div>
-                                <% } %> 
-                        <img src="<%= item.image %>" alt="">
-                        <div class="opa"></div>
+                            <img  src="/img/right_img.png" alt="">
+                            <div class="opa"></div>
+                        </div>
+                        <div class="news__item__title2">
+                            <h4>Serialni nomi</h4>
+                        </div>
+                    </a>    
+                </div>
+                
+            <%} else {%> 
+                <% serial.forEach(item => { %>
+                    <div class="col-md-3">
                         
+                        <a href="/season/<%= item._id %>">
+                            <div class="box-border news__item">
+                                <% if(item.price == "selling") {%> 
+                                    <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
+                                    <% } if(item.price == "free") {%>
+                                        <div></div>
+                                        <% } %> 
+                                <img src="<%= item.image %>" alt="">
+                                <div class="opa"></div>
+                                
+                            </div>
+                            <div class="news__item__title2">
+                                <% if(lang === "uz"){ %>
+                                    <h4><%= item.name.uz%></h4>
+                                <% } %>
+                                <% if(lang === "ru"){ %>
+                                    <h4><%= item.name.ru%></h4>
+                                <% } %>
+                                <% if(lang == undefined){ %>
+                                    <h4><%= item.name.uz%></h4>
+                                <% } %>
+                            </div>
+                        </a>    
                     </div>
-                    <div class="news__item__title2">
-                        <% if(lang === "uz"){ %>
-                            <h4><%= item.name.uz%></h4>
-                        <% } %>
-                        <% if(lang === "ru"){ %>
-                            <h4><%= item.name.ru%></h4>
-                        <% } %>
-                        <% if(lang == undefined){ %>
-                            <h4><%= item.name.uz%></h4>
-                        <% } %>
-                    </div>
-                </a>    
-            </div>
-            <% }) %>
+                    <% }) %>
+            <% } %> 
+            
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
 <div class="tab-animes">
     <div class="container">
         <div class="tab-links">
             <ul>
-                <% category.forEach((element, index) => { %>
+                <% if(category == '') {%>
+                    <li>Categoriya (default)</li>
+                <%} else {%>
+                    <% category.forEach((element, index) => { %>
 
-                    <li <% if(index == 0) { %> class="link__active" <% } %>>
-                        <%if(lang === "uz") { %>
-                            <%= element.nameuz %>
-                        <% } %>
-                        <%if(lang === "ru") { %>
-                            <%= element.nameru %>
-                        <% } %>
-                        <%if(lang == undefined) { %>
-                            <%= element.nameuz %>
-                        <% } %>
-                    </li>
-                    
-                <% }); %> 
+                        <li <% if(index == 0) { %> class="link__active" <% } %>>
+                            <%if(lang === "uz") { %>
+                                <%= element.nameuz %>
+                            <% } %>
+                            <%if(lang === "ru") { %>
+                                <%= element.nameru %>
+                            <% } %>
+                            <%if(lang == undefined) { %>
+                                <%= element.nameuz %>
+                            <% } %>
+                        </li>
+                        
+                    <% }) %>    
+                <% } %> 
+                
                 
             </ul>
         </div>
         
         <div class="tab-content">
 
-            <% sortKino.forEach((e, index) => { %>
-                <aside <% if(index == 0) { %> class="__active" <% } %> >
-                    <div class="tab-inner-box">
-                        <% e.forEach(item => { %>
-                            
-                                <div class="__item">
-                                    <a href="/kino/<%= item._id %>">
-                                        <div class="img__in">
-                                            <% if(item.price == "selling") {%> 
-                                                <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
-                                                <% } if(item.price == "free") {%>
-                                                    <div></div>
-                                                    <% } %> 
-                                            <div class="opa"></div>
-                                            <img src="<%= item.image %>" alt="">
+            <% if(sortKino == '') {%>
+                <div class="col-md-4">
+                    <a href="#">
+                        <div class="box-border news__item">
+                            <img  src="/img/banner_img.png" alt="">
+                            <div class="opa"></div>
+                            <div class="news__item__title">
+                                <h4>default</h4>
+                            </div>
+                        </div>
+                    </a>    
+                </div>
+            <%} else {%> 
+                <% sortKino.forEach((e, index) => { %>
+                    <aside <% if(index == 0) { %> class="__active" <% } %> >
+                        <div class="tab-inner-box">
+                            <% e.forEach(item => { %>
+                                
+                                    <div class="__item">
+                                        <a href="/kino/<%= item._id %>">
+                                            <div class="img__in">
+                                                <% if(item.price == "selling") {%> 
+                                                    <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
+                                                    <% } if(item.price == "free") {%>
+                                                        <div></div>
+                                                        <% } %> 
+                                                <div class="opa"></div>
+                                                <img src="<%= item.image %>" alt="">
+                                                
+                                            </div>
                                             
-                                        </div>
-                                        
-                                        <h3>
-                                            <%if ( lang === "uz" ) { %>
-                                                <%= item.name.uz %>
-                                            <% } %> 
-                                            <%if ( lang === "ru" ) { %>
-                                                <%= item.name.ru %>
-                                            <% } %> 
-                                            <%if ( lang == undefined ) { %>
-                                                <%= item.name.uz %>
-                                            <% } %> 
-                                        </h3>
-                                    </a>  
-                                </div>
-                             
-                        <% }); %>
-                    </div>
-                </aside>
-            <% }); %>
+                                            <h3>
+                                                <%if ( lang === "uz" ) { %>
+                                                    <%= item.name.uz %>
+                                                <% } %> 
+                                                <%if ( lang === "ru" ) { %>
+                                                    <%= item.name.ru %>
+                                                <% } %> 
+                                                <%if ( lang == undefined ) { %>
+                                                    <%= item.name.uz %>
+                                                <% } %> 
+                                            </h3>
+                                        </a>  
+                                    </div>
+                                 
+                            <% }); %>
+                        </div>
+                    </aside>
+                <% }); %>
+            <% } %> 
+
+           
         </div>
     </div>
 </div>
