@@ -12,7 +12,7 @@ const bodyParser = require("body-parser")
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 // const MongoURI = "mongodb://localhost:27017/amedia_test"
-const MongoURI = "mongodb://localhost:27017/amediatv"
+const MongoURI = "mongodb://localhost:27017/amediatv"    
 mongoose
   .connect(MongoURI, {
     useNewUrlParser: true,
