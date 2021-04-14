@@ -25,12 +25,10 @@ exports.Home = async (req, res) => {
         .populate({path: 'kino',select: ['name','image','screens','description','rating']})
         .populate({path: 'serial',select: ['name','image','screens','description','rating']})
 
-    const oneKino = await Kino.find()
-        .limit(1)
-        .sort({date: -1})
-        .select({name: 1, category: 1, image: 1, rating: 1,year: 1, janr: 1,date: 1,description: 1, video:1})
-        .populate({path: 'category', select: 'nameuz'})
-        .populate(['janr'])
+    const oneKino = await Kino.find().sort({date: -1}).limit(1)
+        // .select({name: 1, category: 1, image: 1, rating: 1,year: 1, janr: 1,date: 1,description: 1, video:1})
+        // .populate({path: 'category', select: 'nameuz'})
+        // .populate(['janr'])
 
     const news = await News.find()
         .sort({date: -1})

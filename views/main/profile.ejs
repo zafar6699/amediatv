@@ -205,44 +205,81 @@
 
                     <div class="content-comments">
 
-                        <% for(const item of comment) {%>
-                            <a href="/kino/<%= item.kinoId._id%>" class="text-dark">
-                                <div class="comments__item">
-                                    <div class="comments-top">
-                                        <div class="left">
-                                            <div class="img">
+                        <% if(comment == '' || commentSeriya == '') {%> 
+                            <h5>Komment mavjud emas</h5>
+                        <% } else if(comment ||commentSeriya) {%> 
+                            <% for(const item of comment) {%>
+                                <a href="/kino/<%= item.kinoId._id%>" class="text-dark">
+                                    <div class="comments__item">
+                                        <div class="comments-top">
+                                            <div class="left">
+                                                <div class="img">
+                                                    <% if(!item.user){%>
+                                                        <img src="" alt="">
+                                                        <% } else if(item.user){%>
+                                                            <img src="/uploads/<%= item.user.photo %>" alt="">
+                                                            <% } %>
+                                                </div>
                                                 <% if(!item.user){%>
-                                                    <img src="" alt="">
-                                                    <% } else if(item.user){%>
-                                                        <img src="/uploads/<%= item.user.photo %>" alt="">
+                                                    <h4></h4>
+                                                    <% } else if(item.user) {%>
+                                                        <h4>
+                                                            <%= item.user.name %>
+                                                        </h4>
                                                         <% } %>
+    
                                             </div>
-                                            <% if(!item.user){%>
-                                                <h4></h4>
-                                                <% } else if(item.user) {%>
-                                                    <h4>
-                                                        <%= item.user.name %>
-                                                    </h4>
-                                                    <% } %>
-
+                                            <h6>
+                                                <%= moment(item.date).format("DD-MM-YYYY") %>
+                                            </h6>
                                         </div>
-                                        <h6>
-                                            <%= moment(item.date).format("DD-MM-YYYY") %>
-                                        </h6>
+                                        <div class="comment__p">
+    
+                                            <h6><%= item.kinoId.name.uz %></h6>
+    
+                                            <p><%= item.message %></p>
+                                        </div>
                                     </div>
-                                    <div class="comment__p">
-
-                                        <h6>
-                                            <%= item.kinoId.name.uz %>
-                                        </h6>
-
-                                        <p>
-                                            <%= item.message %>
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
                             <% } %>
+
+
+                            <% for(const item of commentSeriya) {%>
+                                <a href="/kino/<%= item.season._id%>" class="text-dark">
+                                    <div class="comments__item">
+                                        <div class="comments-top">
+                                            <div class="left">
+                                                <div class="img">
+                                                    <% if(!item.user){%>
+                                                        <img src="" alt="">
+                                                        <% } else if(item.user){%>
+                                                            <img src="/uploads/<%= item.user.photo %>" alt="">
+                                                            <% } %>
+                                                </div>
+                                                <% if(!item.user){%>
+                                                    <h4></h4>
+                                                    <% } else if(item.user) {%>
+                                                        <h4>
+                                                            <%= item.user.name %>
+                                                        </h4>
+                                                        <% } %>
+    
+                                            </div>
+                                            <h6>
+                                                <%= moment(item.date).format("DD-MM-YYYY") %>
+                                            </h6>
+                                        </div>
+                                        <div class="comment__p">
+    
+                                            <h6><%= item.season.name.uz %></h6>
+    
+                                            <p><%= item.message %></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            <% } %>
+                        <% } %> 
+                       
 
 
 

@@ -195,7 +195,7 @@
                 <% if(oneKino == '') { %> 
                     <p>Video bor</p>
                     <iframe class="home__video" src="https://protonvideo.to/iframe/92c1159e5c14f1af9c40c56bcf3dcbc1/"></iframe>
-                <% } else { %> 
+                <% } else if(oneKino) { %> 
                     <% for(const item of oneKino) {%> 
                         <iframe class="home__video" src="<%=item.video %>"></iframe>
                     <% } %> 
