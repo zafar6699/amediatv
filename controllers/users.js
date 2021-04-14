@@ -25,11 +25,11 @@ exports.updateFile = async (req, res) => {
               }
           })
       })
-  admin.photo = path.basename(compressedFile)
+  // admin.photo = path.basename(compressedFile)
+  admin.photo = `/public/uploads/${req.file.filename}`
   admin.save()
       .then(() => {
         res.redirect('/profile')
-        // res.json(admin)
       })
       .catch((error) => {
           res.render('./main/404Auth', {
