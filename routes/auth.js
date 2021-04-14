@@ -18,9 +18,11 @@ router.post('/register', register);
 router.post('/signin', login);
 router.post('/logout', logout);
 router.get('/session', getSession);
-router.post('/upload/:id', upload.single('photo'), updateFile);
+
 router.post('/updatepassword/:id', UpdatePassword);
 router.post('/detail/:id', UpdateDetails);
 
+
+router.post('/upload/:id', upload.single('photo'), updateFile);
 
 module.exports = router;
