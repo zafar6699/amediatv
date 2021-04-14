@@ -69,7 +69,7 @@
                     <div class="item">
                         <div class="carousel__item">
                             
-                            <img class="carousel-out__img" src="http://amediatv.uz:2000<%= item.serial.image %>" alt="">
+                            <img class="carousel-out__img" src="http://amediatv.uz:2000/uploads/cinema/org<%= item.serial.image %>" alt="">
                             
                             <div class="opacity__banner"></div>
                             <div class="carousel-text-content">
@@ -141,7 +141,7 @@
                                                     <% item.serial.screens.thumb.forEach(screen_item => { %>
                                                         <div class="item">
                                                             <div class="sm__item">
-                                                                <img src="http://amediatv.uz:2000<%= screen_item %>" alt="">
+                                                                <img src="http://amediatv.uz:2000/public/uploads/thumb/<%= screen_item %>" alt="">
                                                             </div>
                                                         </div>
                                                     <%}) %>
@@ -152,7 +152,7 @@
                                         <div class="col-md-5">
                                             <div class="banner-right-img">
                                                 <div class="__img">
-                                                    <img src="http://amediatv.uz:2000<%= item.serial.screens.original[0] %>" alt="">
+                                                    <img src="http://amediatv.uz:2000/public/uploads/org/<%= item.serial.screens.original[0] %>" alt="">
                                                 </div>
                                             </div>
                                         </div>
