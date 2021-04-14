@@ -90,12 +90,12 @@
                 <div class="profile-content">
                     <div class="profile__img">
 
-                        <form action="<%=`/users/${user._id}`%>" method="POST" ref='uploadForm'
+                        <form action="<%=`/auth/upload/${user._id}?_method=PUT`%>" method="POST" ref='uploadForm'
                             encType="multipart/form-data"
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="avatar-wrapper">
                                    <% if(user.photo){%>
-                                       <img class="profile-pic" src="http://amediatv.uz:2000/public/uploads/<%= user.photo %>" alt="" />
+                                       <img class="profile-pic" src="http://amediatv.uz:2000<%= user.photo %>" alt="" />
                                     <% } else if(!user.photo) {%>
                                         <img class="profile-pic" src="" alt="" />
                                     <% } %>

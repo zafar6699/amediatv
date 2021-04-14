@@ -23,6 +23,6 @@ router.post('/updatepassword/:id', UpdatePassword);
 router.post('/detail/:id', UpdateDetails);
 
 
-router.post('/upload/image/:id', upload.single('photo'), updateFile);
+router.post('/upload/:id', upload.single('photo'), updateFile);
 
 module.exports = router;
