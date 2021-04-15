@@ -53,7 +53,7 @@ exports.Home = async (req, res) => {
         .populate({ path: 'category', select: 'nameuz' })
         .populate(['janr'])
 
-    const seasonSerial = await Serial.find()
+    const seasonSerial = await Serial.find({season: req.params.id})
 
 
 
