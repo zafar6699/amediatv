@@ -64,7 +64,7 @@ exports.Home = async (req, res) => {
         .populate({ path: 'category', select: 'nameuz' })
         .populate(['janr'])
 
-    const seasonSerial = Serial.find()
+    const seasonSerial = await Serial.find({season: req.params.id})
 
 
 
@@ -75,7 +75,7 @@ exports.Home = async (req, res) => {
         user: req.session.user, lang: req.session.ulang,
         serial, janr, slider, oneKino, news, kino, category, sortKino, seasonSerial
     })
-    // res.json(slider)
+    console.log(seasonSerial)
 
 }
 
