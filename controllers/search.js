@@ -20,26 +20,21 @@ exports.search = asyncHandler(async (req, res, next) => {
         .populate({ path: 'member' })
         .populate({ path: 'janr' })
     if (!kino && searchOne == [] && searchOne.name == '' && searchOne.name == null && searchOne.name == undefined) {
-        // res.render('./main/404', {
-        //     title: "Error", layout: 'error',
-        //     user: req.session.user,
-        //     lang: req.session.ulang,
+        res.render('./main/404', {
+            title: "Error", layout: 'error',
+            user: req.session.user,
+            lang: req.session.ulang,
 
-        // })
-        res.json({
-            data: 'topilmadi'
         })
     }
-    // res.render('./main/search', {
-    //     title: "AmediaTV.uz", layout: 'layout',
-    //     user: req.session.user,
-    //     lang: req.session.ulang,
-    //     kino,
-    //     janr
-    // })
-    res.json({
-        data: kino
+    res.render('./main/search', {
+        title: "AmediaTV.uz", layout: 'layout',
+        user: req.session.user,
+        lang: req.session.ulang,
+        kino,
+        janr
     })
+    
 
 
 })
