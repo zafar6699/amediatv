@@ -337,13 +337,13 @@
 
                         <li <% if(index == 0) { %> class="link__active" <% } %>>
                             <%if(lang === "uz") { %>
-                                <%= element.nameuz %>
+                                <button type="button" class="btn btn-dark" ><%= element.nameuz %></button>
                             <% } %>
                             <%if(lang === "ru") { %>
-                                <%= element.nameru %>
+                                <button type="button" class="btn btn-dark" ><%= element.nameru %></button>
                             <% } %>
                             <%if(lang == undefined) { %>
-                                <%= element.nameuz %>
+                                <button type="button" class="btn btn-dark" ><%= element.nameuz %></button>
                             <% } %>
                         </li>
                         
@@ -387,7 +387,7 @@
                                                 
                                             </div>
                                             
-                                            <h3 style="color: yellow;">
+                                            <h3 >
                                                 <%if ( lang === "uz" ) { %>
                                                     <%= item.name.uz %>
                                                 <% } %> 
