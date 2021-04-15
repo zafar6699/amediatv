@@ -9,7 +9,7 @@ exports.search = asyncHandler(async (req, res, next) => {
     const search1 = new RegExp(req.query.name);
     const result = await Kino.find()
         .or([
-            { name.uz: { $regex: search1 } },
+            { ['name.uz']: { $regex: search1 } },
         ])
         .sort({ date: -1 })
         .populate({ path: 'category' })
