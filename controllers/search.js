@@ -7,7 +7,7 @@ exports.search = asyncHandler(async (req, res, next) => {
     const janr = await Janr.find()
 
     const search1 = new RegExp(req.query.name);
-    const result = await Kino.find()
+    const kino = await Kino.find()
         .or([
             { ['name.uz']: { $regex: search1 } },
         ])
