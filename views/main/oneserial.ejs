@@ -140,19 +140,25 @@
                 </div>
             </div>
             <div class="col-md-9 mt-4">
-                <% if (!user) {%>
-                    <div>
-                        
-                    </div>
+
+
+                    <% if (!user) {%>
+                        <div></div>
                     <% }else if (user.status==="vip" ) {%>
-                    <div>
-                        <a class="__download" href="https://t.me/AmediaTV_yuklashbot" target="_blank">
-                            <i class="fa fa-download"></i> Yuklab olish
-                        </a>
-                    </div>
+                        <% for (const item of serial) {%> 
+                            <div>
+                                <a class="__download" href="https://t.me/AmediaTV_yuklashbot<%= item.url %> " target="_blank">
+                                    <i class="fa fa-download"></i> Yuklab olish
+                                </a>
+                            </div>
+                        <% } %> 
                     <% } else if (user.status==="vip" ) {%>
                         <div></div>
-                        <% } %>
+                    <% } %>
+
+
+
+
                             <p class="mt-4">
                                 <% if (lang=="uz" ) { %>
                                     <%= serial.description.uz %>
