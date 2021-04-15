@@ -4,7 +4,9 @@ const asyncHandler = require('../middlewares/async')
 const ErrorResponse = require('../utils/errorResponse');
 
 exports.search = asyncHandler(async (req, res, next) => {
+    const janr = await Janr.find()
 
+    
     let searchingQuery1 = new RegExp(req.query.name);
     const kino = await Kino.find()
         // .or([
@@ -30,13 +32,13 @@ exports.search = asyncHandler(async (req, res, next) => {
         .populate({ path: 'member' })
         .populate({ path: 'janr' })
 
-    res.render('./main/search', {
-        title: "AmediaTV.uz", layout: 'layout',
-        user: req.session.user,
-        lang: req.session.ulang,
-        kino,
-        janr
-    })
+    // res.render('./main/search', {
+    //     title: "AmediaTV.uz", layout: 'layout',
+    //     user: req.session.user,
+    //     lang: req.session.ulang,
+    //     kino,
+    //     janr
+    // })
     res.json(kino)
 })
 
