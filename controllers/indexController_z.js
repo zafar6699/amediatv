@@ -21,15 +21,17 @@ exports.Home = async (req, res) => {
         .populate(
             {
                 path: 'kino',
-                select: ['name', 'image', 'screens','description', 'rating']
+                select: ['name', 'image', 'screens', 'description', 'rating']
             }
         )
         .populate(
             {
                 path: 'serial',
-                select: ['name', 'image', 'screens','description', 'rating']
+                select: ['name', 'image', 'screens', 'description', 'rating']
             }
         )
+
+    const seasonSerial = await Serial.find({ _id: req.params.season })
 
     const oneKino = await Kino.find().sort({ date: -1 }).limit(1)
         .select({ name: 1, category: 1, image: 1, rating: 1, year: 1, janr: 1, date: 1, description: 1, video: 1 })
@@ -53,7 +55,7 @@ exports.Home = async (req, res) => {
         .populate({ path: 'category', select: 'nameuz' })
         .populate(['janr'])
 
-    const seasonSerial = await Serial.find({season: req.params.id})
+
 
 
 
@@ -62,7 +64,7 @@ exports.Home = async (req, res) => {
         title: "AmediaTV.uz",
         layout: "./layout",
         user: req.session.user, lang: req.session.ulang,
-        serial, janr, slider, oneKino, news, kino, category, sortKino
+        serial, janr, slider, oneKino, news, kino, category, sortKino, seasonSerial
     })
     console.log(seasonSerial)
 
