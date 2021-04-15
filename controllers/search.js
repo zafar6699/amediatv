@@ -7,7 +7,7 @@ exports.search = asyncHandler(async (req, res, next) => {
     const janr = await Janr.find()
 
     const pageNumber = req.query.page
-    const searchedQr = new RegExp(req.query.title);
+    const searchedQr = new RegExp(req.query.name);
     const kino = await Kino.find()
         .or([{name:{uz: {
                     $regex:  searchedQr , options: 'i'
