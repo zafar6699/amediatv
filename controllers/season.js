@@ -148,11 +148,11 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     } else {
         const me = req.session.user
         //  registrtasiydan otmasa va serial pullik bolsa serialni ichiga kirmays=di
-        if (!me && season.price === 'selling') {
+        if (!me.status == '' && season.price === 'selling') {
             res.redirect('/')
         }
         //  registrtasiydan otmasa va serial tekin bolsa serialni ichiga kirmays=di
-        else if (!me && season.price === 'free') {
+        else if (!me.status == '' && season.price === 'free') {
             res.render("./main/oneserial", {
                 title: "Serial",
                 layout: 'layout',
