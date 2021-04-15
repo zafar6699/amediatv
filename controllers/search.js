@@ -6,17 +6,17 @@ const ErrorResponse = require('../utils/errorResponse');
 exports.search = asyncHandler(async (req, res, next) => {
     const janr = await Janr.find()
 
-    const search1 = new RegExp(req.query.name);
+    const search1 = new RegExp(req.query.nameuz);
     const kino = await Kino.find()
         .or([
-            { ['name.uz']: { $regex: search1 } },
+            { name: { $regex: search1 } },
         ])
         .sort({ date: -1 })
         .populate({ path: 'category' })
         .populate({ path: 'member' })
         .populate({ path: 'janr' })
 
-    if (!result) {
+    if (!kino) {
         res.render('./main/404', {
             title: "Error", layout: 'error',
             user: req.session.user,
