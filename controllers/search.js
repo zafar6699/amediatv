@@ -6,31 +6,42 @@ const ErrorResponse = require('../utils/errorResponse');
 exports.search = asyncHandler(async (req, res, next) => {
     const janr = await Janr.find()
 
-    
-    let searchingQuery1 = new RegExp(req.query.name);
+    const pageNumber = req.query.page
+    const searchedQr = new RegExp(req.query.name);
     const kino = await Kino.find()
-        // .or([
-        //     { ['name.uz']: { $regex: searchingQuery1 } },
-        // ])
         .or([{
             name: {
                 uz: {
-                    $regex: searchingQuery1
+                    $regex: searchedQr, options: 'i'
                 }
             }
         },
         {
             name: {
                 ru: {
-                    $regex: searchingQuery1
+                    $regex: searchedQr, options: 'i'
                 }
             }
         }])
 
-        .sort({ date: -1 })
-        .populate({ path: 'category' })
-        .populate({ path: 'member' })
-        .populate({ path: 'janr' })
+
+        .populate('category')
+
+
+
+    res.json(kino)
+
+
+    // let searchOne = req.query.name;
+    // let searchingQuery1 = new RegExp(searchOne);
+    // const kino = await Kino.find()
+    //     .or([
+    //         { ['name.uz']: { $regex: searchingQuery1 } },
+    //     ])
+    //     .sort({ date: -1 })
+    //     .populate({ path: 'category' })
+    //     .populate({ path: 'member' })
+    //     .populate({ path: 'janr' })
 
     // res.render('./main/search', {
     //     title: "AmediaTV.uz", layout: 'layout',
@@ -39,7 +50,6 @@ exports.search = asyncHandler(async (req, res, next) => {
     //     kino,
     //     janr
     // })
-    res.json(kino)
 })
 
 exports.filterByYear = asyncHandler(async (req, res, next) => {
