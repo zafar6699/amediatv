@@ -818,9 +818,9 @@ div.tab-animes ul li {
 }
 
 div.tab-animes ul li.link__active {
-  border-bottom: 2px solid #6a2fe3;
+  /* border-bottom: 2px solid #6a2fe3;
   color: #6a2fe3;
-  font-weight: 600;
+  font-weight: 600; */
 }
 
 div.tab-animes div.tab-content aside:not(.__active) {
