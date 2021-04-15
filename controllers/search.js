@@ -6,10 +6,10 @@ const ErrorResponse = require('../utils/errorResponse');
 exports.search = asyncHandler(async (req, res, next) => {
     const janr = await Janr.find()
 
-    const search1 = new RegExp(req.query.name.uz);
+    const search1 = new RegExp(req.query.name);
     const kino = await Kino.find()
         .or([
-            { name: { $regex: search1 } },
+            { ['nameuz']: { $regex: search1 } },
         ])
         .sort({ date: -1 })
         .populate({ path: 'category' })
@@ -24,13 +24,15 @@ exports.search = asyncHandler(async (req, res, next) => {
 
         })
     }
-    res.render('./main/search', {
-        title: "AmediaTV.uz", layout: 'layout',
-        user: req.session.user,
-        lang: req.session.ulang,
-        kino,
-        janr
-    })
+    // res.render('./main/search', {
+    //     title: "AmediaTV.uz", layout: 'layout',
+    //     user: req.session.user,
+    //     lang: req.session.ulang,
+    //     kino,
+    //     janr
+    // })
+
+    res.json(kino)
 
 
     // let searchOne = req.query.name;
