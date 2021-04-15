@@ -814,6 +814,7 @@ div.tab-animes ul li {
   display: inline-block;
   color: #111;
   margin-right: 8px;
+  margin-top: 2px;
   cursor: pointer;
 }
 
