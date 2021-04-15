@@ -8,7 +8,7 @@ exports.search = asyncHandler(async (req, res, next) => {
 
     const pageNumber = req.query.page
     const searchedQr = new RegExp(req.query.title);
-    const result = await Kino.find()
+    const kino = await Kino.find()
         .or([{name:{uz: {
                     $regex:  searchedQr , options: 'i'
                 }}},
