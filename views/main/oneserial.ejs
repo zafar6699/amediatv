@@ -142,7 +142,7 @@
             <div class="col-md-9 mt-4">
 
 
-                    <% if (!user) {%>
+                    <% if (!user && user.status == "user" ) {%>
                         <div></div>
                     <% }else {%>
                         <% for (const item of serial) {%> 
@@ -152,8 +152,6 @@
                                 </a>
                             </div>
                         <% } %> 
-                    <% } else if (user.status==="vip" ) {%>
-                        <div></div>
                     <% } %>
 
 
