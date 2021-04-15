@@ -5,9 +5,11 @@ $(document).ready(function(){
 
 
 	$(".video-player .carousel-series .item").click(function(){
-		let src = $(this).find("input").val();
-
+		let src = $(this).find("input.video_hidden").val();
+		let url = $(this).find("input.download_hidden").val();
 		$(".video-player iframe").attr("src", src)
+		let static = "https://t.me/AmediaTV_yuklashbot/"
+		$("a.serial_url").attr("href", static + url)
 
 		$(".video-player .carousel-series .item").not(this).find("a").removeClass("__active")
 

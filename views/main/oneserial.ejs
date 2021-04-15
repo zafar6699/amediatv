@@ -43,7 +43,8 @@
                                         <% seria.forEach((element, index)=> { %>
                                             <div class="item">
                                                 <a <% if( index==0 ){ %> class="__active" <% } %> href="#">
-                                                        <input type="hidden" value="<%= element.video %>">
+                                                        <input type="hidden" class="video_hidden" value="<%= element.video %>">
+                                                        <input type="hidden" class="download_hidden" value="<%= element.url %>">
                                                         <% if (lang=="uz" ) { %>
                                                             <b>
                                                                 <%= element.name.uz %>
@@ -145,13 +146,11 @@
                     <% if (!user && user.status == "user" ) {%>
                         <div></div>
                     <% }else {%>
-                        <% for (const item of seria) {%> 
-                            <div>
-                                <a class="__download" href="https://t.me/AmediaTV_yuklashbot<%= item.video %> " target="_blank">
-                                    <i class="fa fa-download"></i> Yuklab olish
-                                </a>
-                            </div>
-                        <% } %> 
+                        <div>
+                            <a class="__download serial_url" href="https://t.me/AmediaTV_yuklashbot/<%= item.video %>" target="_blank">
+                                <i class="fa fa-download"></i> Yuklab olish
+                            </a>
+                        </div>
                     <% } %>
 
 
