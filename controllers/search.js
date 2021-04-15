@@ -6,7 +6,7 @@ const ErrorResponse = require('../utils/errorResponse');
 exports.search = asyncHandler(async (req, res, next) => {
     const janr = await Janr.find()
 
-    const search1 = new RegExp(req.query.nameuz);
+    const search1 = new RegExp(req.query.name.uz);
     const kino = await Kino.find()
         .or([
             { name: { $regex: search1 } },
