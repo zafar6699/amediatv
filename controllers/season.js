@@ -184,6 +184,8 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             })
         }
     }
+
+    console.log(comment)
 })
 
 exports.addSeriya = asyncHandler(async (req, res, next) => {
