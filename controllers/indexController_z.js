@@ -5,6 +5,7 @@ const Season = require('../models/season')
 const News = require("../models/news")
 const Kino = require("../models/kino")
 const Category = require("../models/category")
+const Serial = require("../models/seriya")
 
 
 exports.Home = async (req, res) => {
@@ -63,6 +64,8 @@ exports.Home = async (req, res) => {
         .populate({ path: 'category', select: 'nameuz' })
         .populate(['janr'])
 
+    const seasonSerial = Serial.find()
+
 
 
 
@@ -70,7 +73,7 @@ exports.Home = async (req, res) => {
         title: "AmediaTV.uz",
         layout: "./layout",
         user: req.session.user, lang: req.session.ulang,
-        serial, janr, slider, oneKino, news, kino, category, sortKino
+        serial, janr, slider, oneKino, news, kino, category, sortKino, seasonSerial
     })
     // res.json(slider)
 
