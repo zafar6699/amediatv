@@ -31,7 +31,7 @@ exports.Home = async (req, res) => {
             }
         )
 
-    const seasonSerial = await Serial.find({ _id: req.params.season })
+    
 
     const oneKino = await Kino.find().sort({ date: -1 }).limit(1)
         .select({ name: 1, category: 1, image: 1, rating: 1, year: 1, janr: 1, date: 1, description: 1, video: 1 })
@@ -64,9 +64,9 @@ exports.Home = async (req, res) => {
         title: "AmediaTV.uz",
         layout: "./layout",
         user: req.session.user, lang: req.session.ulang,
-        serial, janr, slider, oneKino, news, kino, category, sortKino, seasonSerial
+        serial, janr, slider, oneKino, news, kino, category, sortKino
     })
-    console.log(seasonSerial)
+    
 
 }
 
