@@ -10,23 +10,12 @@ const Serial = require("../models/seriya")
 
 exports.Home = async (req, res) => {
     const category = await Category.find()
-
     let sortKino = []
-
-
     category.forEach(async (element) => {
         let s = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
         sortKino.push(s);
     });
-
-
     const janr = await Janr.find()
-
-    // const slider = await Slider.find()
-    //     .sort({ date: -1 })
-    //     .populate({ path: 'kino', select: ['name', 'image', 'screens', 'description', 'rating'] })
-    // // .populate({path: 'serial',select: ['name','image','screens','description','rating']})
-
     let slider = await Slider.find()
         .sort({ date: -1 })
         .populate(
@@ -64,7 +53,7 @@ exports.Home = async (req, res) => {
         .populate({ path: 'category', select: 'nameuz' })
         .populate(['janr'])
 
-    const seasonSerial = await Serial.find({season: req.params.id})
+    const seasonSerial = await Serial.find()
 
 
 
@@ -73,7 +62,7 @@ exports.Home = async (req, res) => {
         title: "AmediaTV.uz",
         layout: "./layout",
         user: req.session.user, lang: req.session.ulang,
-        serial, janr, slider, oneKino, news, kino, category, sortKino, seasonSerial
+        serial, janr, slider, oneKino, news, kino, category, sortKino
     })
     console.log(seasonSerial)
 
