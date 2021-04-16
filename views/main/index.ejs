@@ -379,7 +379,7 @@
                                 
                                     <div class="__item">
                                         <a href="/kino/<%= item._id %>">
-                                            <div class="img__in">
+                                            <div class="img__in" style="display: flex; flex-direction: column; align-items: center;" >
                                                 <% if(item.price == "selling") {%> 
                                                     <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
                                                     <% } if(item.price == "free") {%>
@@ -387,7 +387,7 @@
                                                         <% } %> 
                                                 <div class="opa"></div>
                                                 <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                                
+                                                <h5 class="ml-5" style="display: block; z-index: 10;color: white; text-decoration: none;"><%= item.num %> </h5>
                                             </div>
                                             
                                             <h3 >
@@ -417,7 +417,7 @@
                                                     <% } %> 
                                             <div class="opa"></div>
                                             <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                            
+                                            <h5 class="ml-5" style="display: block; z-index: 10;color: white; text-decoration: none;"><%= item.num %> </h5>
                                         </div>
                                         
                                         <h3 >

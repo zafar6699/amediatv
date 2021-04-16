@@ -11,7 +11,7 @@
             <% serial.forEach(item => { %>
             <div class="col-md-3">
                 <a href="/season/<%= item._id %>" style="text-align: center;">
-                    <div class="box-border news__item" style="text-align: center;">
+                    <div class="box-border news__item" style="display: flex; flex-direction: column; align-items: center;">
                         <% if(item.price == "selling") {%> 
                             <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
                             <% } if(item.price == "free") {%>
@@ -21,7 +21,7 @@
 
                         <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
                         <div class="opa"></div>
-                        <h5 class="ml-5" style="margin-left: 20px; display: block; z-index: 10;color: white; text-decoration: none;"><%= item.num %> </h5>
+                        <h5 class="ml-5" style="display: block; z-index: 10;color: white; text-decoration: none;"><%= item.num %> </h5>
                     </div>
                     <div class="news__item__title2">
                         <% if(lang === "uz"){ %>
