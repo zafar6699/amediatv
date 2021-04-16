@@ -23,8 +23,8 @@ exports.Home = async (req, res) => {
 
     const array = []
     category.forEach(async (element) => {
-        const kino = await Kino.find({ category: req.params.id }).sort({ date: -1 })
-        const season = await Season.find({ category: req.params.id }).sort({ date: -1 })
+        const kino = await Kino.find({ category: req.element._id }).sort({ date: -1 })
+        const season = await Season.find({ category: req.element._id }).sort({ date: -1 })
         array.push(kino)
         array.push(season)
     });
