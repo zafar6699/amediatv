@@ -2,7 +2,7 @@ const express = require('express');
 const {
     getQuery,
     getCategories,
-    getCategory,SortAllCategoryKinoSeason
+    getCategory,SortAllCategoryKinoSeason,
     createCategory,
     getByJanr
 
