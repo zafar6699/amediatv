@@ -912,6 +912,20 @@ div.tab-animes div.tab-content div.tab-inner-box .__item h3 {
   margin-top: 10px;
 }
 
+@media (max-width: 768px) {
+  div.tab-content div.tab-inner-box {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  div.tab-content div.tab-inner-box div.__item {
+    width: 47% im !important;
+  }
+  div.tab-content div.tab-inner-box div.__item h3 {
+    font-size: 14px !important;
+  }
+}
+
 footer {
   background-color: #d8c6fd;
   padding: 60px 0px;
@@ -1586,7 +1600,7 @@ div.kino .flex-ijodkor div.__item div.img-pro img {
 
 @media (max-width: 768px) {
   div.tab-animes div.img__in {
-    height: 200px !important;
+    height: 150px !important;
   }
   div.tab-animes .tab-links {
     width: 100%;

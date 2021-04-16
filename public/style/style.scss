@@ -751,6 +751,21 @@ div.tab-animes {
 			}
 		}
 	}
+
+}
+@media(max-width: 768px){
+	div.tab-content{
+		div.tab-inner-box{
+			justify-content: space-between;
+			div.__item{
+				width: 47% im !important;
+				h3{
+					font-size: 14px !important;
+				}
+			}
+		}
+		
+	}
 }
 footer {
 	background-color: #d8c6fd;
@@ -1295,7 +1310,7 @@ div.kino {
 @media (max-width: 768px) {
 	div.tab-animes {
 		div.img__in {
-			height: 200px !important;
+			height: 150px !important;
 		}
 		.tab-links {
 			width: 100%;
