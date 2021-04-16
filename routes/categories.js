@@ -2,7 +2,7 @@ const express = require('express');
 const {
     getQuery,
     getCategories,
-    getCategory,
+    getCategory,SortAllCategoryKinoSeason,
     createCategory,
     getByJanr
 
@@ -27,6 +27,9 @@ router.route('/')
 router
     .route('/janrCategory/:id')
     .get(getByJanr)
+router
+    .route('/sortSeasonKino/:id')
+    .get(SortAllCategoryKinoSeason)
 
 router.route('/query/year/:year')
     .get(getQuery)

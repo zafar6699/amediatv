@@ -110,3 +110,21 @@ exports.getByJanr = asyncHandler(async (req, res) => {
 })
 
 
+
+
+
+
+exports.SortAllCategoryKinoSeason = async (req, res, next) => {
+    const array = []
+    const janr = await Janr.find()
+    const kino = await Kino.find({ category: req.params.id }).sort({date: -1})
+    const season = await Season.find({ category: req.params.id }).sort({date: -1})
+
+    array.push(kino)
+    array.push(season)
+
+    res.status(200).json({success: true, data: array})
+
+}
+
+
