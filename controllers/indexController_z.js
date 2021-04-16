@@ -11,14 +11,15 @@ const Serial = require("../models/seriya")
 exports.Home = async (req, res) => {
     const category = await Category.find()
     let sortKino = []
-    let arraySort = []
+    
  
     category.forEach(async (element) => {
         let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
         let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-        arraySort.push(s);
+        let arraySort = []
         arraySort.push(a);
-        sortKino.push(s)
+        arraySort.push(s);
+        sortKino.push(arraySort)
 
     });
 
