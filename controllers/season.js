@@ -118,12 +118,14 @@ exports.getAllSeason = asyncHandler(async (req, res, next) => {
         .populate({ path: 'category', select: 'nameuz' })
     const janr = await Janr.find().sort({ createdAt: - 1 })
 
-    res.render("./main/serial", {
-        janr,
-        serial: season,
-        title: "AmediaTV.uz",
-        user: req.session.user, layout: 'layout'
-    })
+    // res.render("./main/serial", {
+    //     janr,
+    //     serial: season,
+    //     title: "AmediaTV.uz",
+    //     user: req.session.user, layout: 'layout'
+    // })
+
+    res.json(season)
 })
 exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     const comment = await SeriyaCommnent.find({ season: req.params.id })
