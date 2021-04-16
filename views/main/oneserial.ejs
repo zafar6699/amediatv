@@ -32,19 +32,27 @@
             </div>
             <div class="col-md-9  __video">
                 <div class="video-player">
-                    <% if(seria[0] == undefined) {%>
+                    <% if(seria[0]==undefined) {%>
                         <iframe src=""></iframe>
-                        <%} else if(seria[0] != undefined) {%>
+                        <%} else if(seria[0] !=undefined) {%>
                             <iframe src="<%= seria[0].video %>"></iframe>
                             <% } %>
 
+
                                 <div class="carousel-series">
+
+                                    <button class="seria_bottom __seria_left"><i class="fa fa-angle-left"></i></button>
+                                    <button class="seria_bottom __seria_right"><i
+                                            class="fa fa-angle-right"></i></button>
+
                                     <div class="owl-carousel season-carousel owl-theme">
                                         <% seria.forEach((element, index)=> { %>
                                             <div class="item">
                                                 <a <% if( index==0 ){ %> class="__active" <% } %> href="#">
-                                                        <input type="hidden" class="video_hidden" value="<%= element.video %>">
-                                                        <input type="hidden" class="download_hidden" value="<%= element.url %>">
+                                                        <input type="hidden" class="video_hidden"
+                                                            value="<%= element.video %>">
+                                                        <input type="hidden" class="download_hidden"
+                                                            value="<%= element.url %>">
                                                         <% if (lang=="uz" ) { %>
                                                             <b>
                                                                 <%= element.name.uz %>
@@ -143,15 +151,15 @@
             <div class="col-md-9 mt-4">
 
 
-                    <% if (!user || user.status == "user" ) {%>
-                        <div></div>
+                <% if (!user || user.status=="user" ) {%>
+                    <div></div>
                     <% }else {%>
                         <div>
                             <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
                                 <i class="fa fa-download"></i> Yuklab olish
                             </a>
                         </div>
-                    <% } %>
+                        <% } %>
 
 
 
@@ -239,7 +247,7 @@
                     <div class="comments-top">
                         <div class="left">
                             <div class="img">
-                                
+
                                 <img src="http://amediatv.uz:2000/uploads/<%= item.user.photo %>" alt="">
                             </div>
                             <h4>
@@ -254,6 +262,17 @@
                         <p>
                             <%= item.message %>
                         </p>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="reply_button"><i class="fa fa-reply"> </i> Javob berish</button>
+                    </div>
+                    <div class="reply_content none_cc">
+                        <form action="" method="post">
+                            <textarea name="message" cols="10" ></textarea>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit">Javob berish</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <% } %>
