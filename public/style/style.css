@@ -647,18 +647,6 @@ div.banner div.carousel__item div.carousel-text-content div.sm__item img {
           transform: translate(-50%, -50%);
 }
 
-@media (max-width: 768px) {
-  div.banner div.carousel__item {
-    height: 250px !important;
-  }
-  div.banner div.carousel__item p {
-    display: none;
-  }
-  div.banner div.carousel__item .banner__link {
-    font-size: 16px !important;
-  }
-}
-
 h1.title__z {
   font-size: 30px;
   color: #000;
@@ -1974,6 +1962,18 @@ div.reply_content button {
 @media (max-width: 768px) {
   .paginate-pagination {
     overflow-x: scroll;
+  }
+}
+
+@media (max-width: 768px) {
+  div.banner div.carousel__item {
+    height: 250px !important;
+  }
+  div.banner div.carousel__item p {
+    display: none;
+  }
+  div.banner div.carousel__item .banner__link {
+    font-size: 16px !important;
   }
 }
 /*# sourceMappingURL=style.css.map */
