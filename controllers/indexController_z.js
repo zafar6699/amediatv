@@ -10,25 +10,17 @@ const Serial = require("../models/seriya")
 
 exports.Home = async (req, res) => {
     const category = await Category.find()
-    // let sortKino = []
-    // let arraySort = []
-    // category.forEach(async (element) => {
-    //     let s = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-    //     let a = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-    //     arraySort.push(s);
-    //     arraySort.push(a);
-    //     sortKino.push(arraySort)
+    let sortKino = []
+    let arraySort = []
+    category.forEach(async (element) => {
+        let s = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+        let a = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+        // arraySort.push(s);
+        // arraySort.push(a);
+        sortKino.push(a)
+        sortKino.push(s)
 
-    // });
-
-    const array = []
-    category.every(item => {
-        const kino =  Kino.find({ category: item._id }).sort({ date: -1 })
-        const season =  Season.find({ category: item._id }).sort({ date: -1 })
-        array.push(kino)
-        array.push(season)
-    })
-        
+    });
 
 
 
