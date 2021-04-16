@@ -444,10 +444,13 @@
         </div>
     </div>
 </div>
-
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="/js/jquery.paginate.js"></script>
 <script>
 
-$('#paginate').paginate({
-			perPage: 5, 
-		});
+setTimeout(() => {
+    $('#paginate').paginate({
+        perPage: 5, 
+    });
+}, 1000);
 </script>
