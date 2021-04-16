@@ -914,12 +914,12 @@ div.tab-animes div.tab-content div.tab-inner-box .__item h3 {
 
 @media (max-width: 768px) {
   div.tab-content div.tab-inner-box {
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -webkit-box-pack: justify !important;
+        -ms-flex-pack: justify !important;
+            justify-content: space-between !important;
   }
   div.tab-content div.tab-inner-box div.__item {
-    width: 47% im !important;
+    width: 47% !important;
   }
   div.tab-content div.tab-inner-box div.__item h3 {
     font-size: 14px !important;
