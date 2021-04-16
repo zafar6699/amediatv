@@ -374,7 +374,7 @@
             <%} else {%> 
                 <% sortKino.forEach((e, index) => { %>
                     <aside <% if(index == 0) { %> class="__active" <% } %> >
-                        <div class="tab-inner-box">
+                        <div class="tab-inner-box" id="paginate">
                             <% e[0].forEach(item => { %>
                                 
                                     <div class="__item">
@@ -446,4 +446,8 @@
 </div>
 
 <script>
+
+$('#paginate').paginate({
+			perPage: 5, 
+		});
 </script>
