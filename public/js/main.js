@@ -151,9 +151,9 @@ $(document).ready(function () {
 		$("div.carousel-inner .owl-next").click()
 	})
 
-	$(".tab-animes ul li").click(function () {
+	$(".tab-animes ul.tab-li li").click(function () {
 		$(this).addClass("link__active")
-		$(".tab-animes ul li").not(this).removeClass("link__active")
+		$(".tab-animes ul.tab-li li").not(this).removeClass("link__active")
 		$(".tab-animes div.tab-content aside")
 			.removeClass("__active")
 			.eq($(this).index())
