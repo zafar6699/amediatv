@@ -114,7 +114,7 @@ exports.getAllSeason = asyncHandler(async (req, res, next) => {
 
     const season = await Season.find()
         .sort({ date: -1 })
-        .select({ name: 1, category: 1, image: 1, rating: 1, janr: 1, price: 1, date: 1 })
+        .select({ name: 1, category: 1, image: 1, rating: 1, janr: 1, price: 1, date: 1, num: 1 })
         .populate({ path: 'category', select: 'nameuz' })
     const janr = await Janr.find().sort({ createdAt: - 1 })
 
