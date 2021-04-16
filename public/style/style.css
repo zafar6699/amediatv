@@ -1940,4 +1940,14 @@ div.reply_content button {
 .none_cc {
   display: none;
 }
+
+.paginate-pagination ul {
+  background: transparent !important;
+}
+
+@media (max-width: 768px) {
+  .paginate-pagination {
+    overflow-x: scroll;
+  }
+}
 /*# sourceMappingURL=style.css.map */

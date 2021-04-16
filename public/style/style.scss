@@ -1592,3 +1592,14 @@ div.reply_content {
 .none_cc {
 	display: none;
 }
+.paginate-pagination{
+	ul{
+		background: transparent !important;
+	}
+}
+
+@media(max-width: 768px){
+	.paginate-pagination{
+		overflow-x: scroll;
+	}
+}
