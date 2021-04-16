@@ -448,9 +448,10 @@
 <script src="/js/jquery.paginate.js"></script>
 <script>
 
-setTimeout(() => {
-    $('#paginate').paginate({
-        perPage: 5, 
-    });
-}, 3000);
+    $(document).ready(function(){
+        $('#paginate').paginate({
+            perPage: 20, 
+        });
+    })
+
 </script>
