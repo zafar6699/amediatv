@@ -1620,6 +1620,14 @@ div.reply_content {
 	}
 }
 @media(max-width: 768px){
+	div.news-home{
+		ul{
+			margin-top: 10px !important;
+			li{
+				margin-bottom: 5px !important;
+			}
+		}
+	}
 	div.banner{
 		div.carousel__item{
 			height: 250px !important;
