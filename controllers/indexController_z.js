@@ -13,9 +13,9 @@ exports.Home = async (req, res) => {
     let sortKino = []
     category.forEach(async (element) => {
         let s = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-        let a = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+        // let a = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
         sortKino.push(s);
-        sortKino.push(a);
+        // sortKino.push(a);
     });
     const janr = await Janr.find()
     let slider = await Slider.find()
