@@ -62,7 +62,7 @@ exports.getQuery = asyncHandler(async (req, res) => {
     array.push(kino)
     array.push(season)
 
-    if (!kino && !season) {
+    if (!kino || !season) {
         res.render('./main/404Auth', { title: '404', layout: 'error' })
     }
    
