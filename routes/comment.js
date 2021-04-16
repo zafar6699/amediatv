@@ -13,7 +13,6 @@ router.post("/season", async (req, res) => {
     const comment = await CommentSeason.create(req.body);
     
     res.redirect(`/season/${req.body.season}`)
-
 })
 
 // router.route('/add')

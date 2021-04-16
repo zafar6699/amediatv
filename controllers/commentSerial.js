@@ -5,7 +5,7 @@ const asyncHandler = require('../middlewares/async');
 
 // POST - /api/seriyaComment/add 
 exports.addSeriyaComment = asyncHandler(async (req, res) => {
-  
+  const user = req.session.user
   const seriyaComment = new CommentSeriya({
     message: req.body.message,
     season: req.body.season,
