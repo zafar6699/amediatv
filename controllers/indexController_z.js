@@ -10,16 +10,30 @@ const Serial = require("../models/seriya")
 
 exports.Home = async (req, res) => {
     const category = await Category.find()
-    let sortKino = []
-    let arraySort = []
-    category.forEach(async (element) => {
-        let s = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-        let a = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-        arraySort.push(s);
-        arraySort.push(a);
-        sortKino.push(arraySort)
+    // let sortKino = []
+    // let arraySort = []
+    // category.forEach(async (element) => {
+    //     let s = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+    //     let a = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+    //     arraySort.push(s);
+    //     arraySort.push(a);
+    //     sortKino.push(arraySort)
 
+    // });
+
+    const array = []
+    category.forEach(async (element) => {
+        const kino = await Kino.find({ category: req.params.id }).sort({ date: -1 })
+        const season = await Season.find({ category: req.params.id }).sort({ date: -1 })
+        array.push(kino)
+        array.push(season)
     });
+
+
+
+
+
+
     const janr = await Janr.find()
     let slider = await Slider.find()
         .sort({ date: -1 })
@@ -36,7 +50,7 @@ exports.Home = async (req, res) => {
             }
         )
 
-    
+
 
     const oneKino = await Kino.find().sort({ date: -1 }).limit(1)
         .select({ name: 1, category: 1, image: 1, rating: 1, year: 1, janr: 1, date: 1, description: 1, video: 1 })
@@ -56,7 +70,7 @@ exports.Home = async (req, res) => {
     const serial = await Season.find()
         .limit(4)
         .sort({ date: -1 })
-        .select({name: 1, category: 1, image: 1, rating: 1,year: 1, janr: 1,date: 1, num: 1, description: 1, price:1})
+        .select({ name: 1, category: 1, image: 1, rating: 1, year: 1, janr: 1, date: 1, num: 1, description: 1, price: 1 })
         .populate({ path: 'category', select: 'nameuz' })
         .populate(['janr'])
 
@@ -71,8 +85,8 @@ exports.Home = async (req, res) => {
     //     user: req.session.user, lang: req.session.ulang,
     //     serial, janr, slider, oneKino, news, kino, category, sortKino
     // })
-    
-    res.json(sortKino)
+
+    res.json(array)
 
 }
 
