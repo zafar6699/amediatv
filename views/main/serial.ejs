@@ -12,9 +12,16 @@
             <div class="col-md-3">
                 <a href="/season/<%= item._id %>">
                     <div class="box-border news__item">
+                        <% if(item.price == "selling") {%> 
+                            <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
+                            <% } if(item.price == "free") {%>
+                                <div></div>
+                                <% } %> 
+
+                                
                         <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
                         <div class="opa"></div>
-                        <h5 style="display: block; z-index: 10; color: white; text-decoration: none;"><%= item.num %> </h5>
+                        <h5 style="display: block; z-index: 10;text-align: center; color: white; text-decoration: none;"><%= item.num %> </h5>
                     </div>
                     <div class="news__item__title2">
                         <% if(lang === "uz"){ %>
