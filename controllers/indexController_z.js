@@ -73,14 +73,14 @@ exports.Home = async (req, res) => {
 
 
 
-    // res.render("./main/index", {
-    //     title: "AmediaTV.uz",
-    //     layout: "./layout",
-    //     user: req.session.user, lang: req.session.ulang,
-    //     serial, janr, slider, oneKino, news, kino, category, sortKino
-    // })
+    res.render("./main/index", {
+        title: "AmediaTV.uz",
+        layout: "./layout",
+        user: req.session.user, lang: req.session.ulang,
+        serial, janr, slider, oneKino, news, kino, category, sortKino
+    })
 
-    res.json(sortKino)
+    // res.json(sortKino)
 
 }
 
