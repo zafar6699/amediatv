@@ -31,12 +31,17 @@ exports.getOne = async (req, res) => {
 exports.getAll = async (req, res) => {
   const commentSeason = await CommentSeason.find()
   commentSeason.filter(item => {
-    const comment = await Comment.find({ prevComment: item._id }).sort({ date: -1 })
+    Comment.find({ prevComment: item._id }).sort({ date: -1 })
       .populate({
         path: 'userID', select: 'name'
+      }).exec((err, data) => {
+        if (err) throw error
+        else {
+          res.json(data)
+        }
       })
 
-    res.json(comment)
+
   })
 
 }
