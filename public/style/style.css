@@ -350,7 +350,7 @@ header.header div.header-content div.header-right a:hover h4 {
 
 @media (max-width: 768px) {
   div.news-home .news__item {
-    height: 200px !important;
+    height: 120px !important;
   }
   div.edit-actions button {
     width: 100% !important;
@@ -473,7 +473,7 @@ div.banner .prev-next {
 
 div.banner .prev-next i {
   font-size: 30px;
-  color: #111;
+  color: #fff;
 }
 
 div.banner .slider__prev {
@@ -947,6 +947,9 @@ div.tab-animes div.tab-content div.tab-inner-box .__item h3 {
 }
 
 @media (max-width: 768px) {
+  .home__video {
+    height: 200;
+  }
   div.tab-content div.tab-inner-box {
     -webkit-box-pack: justify !important;
         -ms-flex-pack: justify !important;
@@ -2002,6 +2005,7 @@ div.reply_content button {
 @media (max-width: 768px) {
   div.news-home ul {
     margin-top: 10px !important;
+    padding-top: 0px !important;
   }
   div.news-home ul li {
     margin-bottom: 5px !important;

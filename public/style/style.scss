@@ -278,7 +278,7 @@ header.header {
 @media (max-width: 768px) {
 	div.news-home {
 		.news__item {
-			height: 200px !important;
+			height: 120px !important;
 		}
 	}
 	div.edit-actions {
@@ -395,7 +395,7 @@ div.banner {
 		z-index: 4;
 		i{
 			font-size: 30px;
-			color: #111;
+			color: #fff;
 
 		}
 	}
@@ -781,6 +781,9 @@ div.tab-animes {
 
 }
 @media(max-width: 768px){
+	.home__video{
+		height: 200;
+	}
 	div.tab-content{
 		div.tab-inner-box{
 			justify-content: space-between !important;
@@ -1649,6 +1652,7 @@ div.reply_content {
 	div.news-home{
 		ul{
 			margin-top: 10px !important;
+			padding-top: 0px !important;
 			li{
 				margin-bottom: 5px !important;
 			}
