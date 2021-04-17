@@ -150,6 +150,13 @@ $(document).ready(function () {
 	$(".click__right").click(function () {
 		$("div.carousel-inner .owl-next").click()
 	})
+	$(".slider__prev").click(function () {
+		$("div.banner .owl-prev").click()
+	})
+
+	$(".slider__next").click(function () {
+		$("div.banner .owl-next").click()
+	})
 
 	$(".tab-animes ul.tab-li li").click(function () {
 		$(this).addClass("link__active")

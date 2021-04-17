@@ -453,10 +453,10 @@ header.header div.header-content div.header-right a:hover h4 {
 div.banner .prev-next {
   position: absolute;
   top: 50%;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.15);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -467,6 +467,7 @@ div.banner .prev-next {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  border: none;
   z-index: 4;
 }
 
