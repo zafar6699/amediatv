@@ -2010,6 +2010,9 @@ div.reply_content button {
   div.news-home ul li {
     margin-bottom: 5px !important;
   }
+  div.banner {
+    height: 250px !important;
+  }
   div.banner div.carousel__item {
     height: 250px !important;
   }
