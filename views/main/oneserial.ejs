@@ -280,7 +280,14 @@
                         <form action="/commentseason/add" method="POST">
                             <textarea name="message" cols="10" ></textarea>
                             <input type="hidden"  name="prevComment" value="<%= item._id %>">
-                            <input type="hidden" name="userID" value="<%= user._id %>">
+
+                            <% if(!user) {%> 
+                                <input type="hidden" name="userID" value="">
+                            <% } else {%> 
+                               <input type="hidden" name="userID" value="<%= user._id %>">
+                            <% } %> 
+
+
                             <input type="hidden" name="season" value="<%= serial._id %>">
                             <div class="d-flex justify-content-end">
                                 <button type="submit">Javob berish</button>
