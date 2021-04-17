@@ -6,7 +6,7 @@ exports.writeComment = async (req, res, next) => {
   const commentsss = new CommentSeason({
     message: req.body.message,
     prevComment: req.body.prevComment,
-    season: req.body.season,
+    kino: req.body.kino,
     userID: userss._id,
   })
   await commentsss.save()
@@ -26,7 +26,7 @@ exports.getSort = async (req, res) => {
       path: 'prevComment', select: 'message' 
     })
     .populate({
-      path: 'season', select: 'name' 
+      path: 'kino', select: 'name' 
     })
   
     res.render("./main/comSeason", {
