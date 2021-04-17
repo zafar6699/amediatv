@@ -88,7 +88,7 @@ app.use('/balance', require('./routes/balance'));
 app.use('/payment', require('./routes/payment'));
 app.use('/pricelist', require('./routes/priceList'));
 app.use('/search', require('./routes/search'));
-app.use('/commentseason', require('./routes/AddCommentSeason'));
+app.use('/commentseason', require('./routes/AddCommentSeason') );
 app.use('/commentkino', require('./routes/AddCommentKino'));
 
 

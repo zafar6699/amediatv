@@ -11,7 +11,7 @@ exports.writeComment = async (req, res, next) => {
   // await commentsss.save()
   // res.redirect('/')
   const comment = await CommentSeason.create(req.body);
-  res.redirect(`/kino/${req.body.prevComment}`)
+  res.redirect(`/commentkino/${req.body.prevComment}`)
 }
 
 
