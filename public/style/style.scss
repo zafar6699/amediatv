@@ -380,9 +380,10 @@ header.header {
 	}
 }
 div.banner {
+	position: relative;
 	.prev-next{
 		position: absolute;
-		top: 50%;
+		top: 45%;
 		width: 40px;
 		height: 40px;
 		border-radius: 100%;
@@ -1659,7 +1660,6 @@ div.reply_content {
 		}
 	}
 	div.banner{
-		height: 250px !important;
 		div.carousel__item{
 			height: 250px !important;
 			p{

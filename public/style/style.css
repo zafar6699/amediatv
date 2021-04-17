@@ -450,9 +450,13 @@ header.header div.header-content div.header-right a:hover h4 {
   }
 }
 
+div.banner {
+  position: relative;
+}
+
 div.banner .prev-next {
   position: absolute;
-  top: 50%;
+  top: 45%;
   width: 40px;
   height: 40px;
   border-radius: 100%;
@@ -2009,9 +2013,6 @@ div.reply_content button {
   }
   div.news-home ul li {
     margin-bottom: 5px !important;
-  }
-  div.banner {
-    height: 250px !important;
   }
   div.banner div.carousel__item {
     height: 250px !important;
