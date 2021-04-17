@@ -23,10 +23,10 @@ exports.getSort = async (req, res) => {
       path: 'userID', select: ['name', 'photo' ]
     })
     .populate({
-      path: 'prevComment', select:[ 'message' ]
+      path: 'prevComment', select: 'message' 
     })
     .populate({
-      path: 'season', select:[ 'name' ]
+      path: 'season', select: 'name' 
     })
   
     res.render("./main/comSeason", {
