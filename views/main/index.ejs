@@ -374,7 +374,6 @@
                     <aside <% if(index == 0) { %> class="__active" <% } %> >
                         <div class="tab-inner-box" id="paginate">
                             <% e[0].forEach(item => { %>
-                                
                                     <div class="__item">
                                         <a href="/kino/<%= item._id %>">
                                             <div class="img__in" style="display: flex; flex-direction: column; align-items: center;" >
@@ -407,36 +406,7 @@
                                     </div>
                                  
                             <% }); %>
-                            <% e[1].forEach(item => { %>
-                                
-                                <div class="__item">
-                                    <a href="/kino/<%= item._id %>">
-                                        <div class="img__in">
-                                            <% if(item.price == "selling") {%> 
-                                                <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
-                                                <% } if(item.price == "free") {%>
-                                                    <div></div>
-                                                    <% } %> 
-                                            <div class="opa"></div>
-                                            <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                            <h5 class="ml-5" style="display: block; z-index: 10;color: white; text-decoration: none;"><%= item.num %> </h5>
-                                        </div>
-                                        
-                                        <h3 >
-                                            <%if ( lang === "uz" ) { %>
-                                                <%= item.name.uz %>
-                                            <% } %> 
-                                            <%if ( lang === "ru" ) { %>
-                                                <%= item.name.ru %>
-                                            <% } %> 
-                                            <%if ( lang == undefined ) { %>
-                                                <%= item.name.uz %>
-                                            <% } %> 
-                                        </h3>
-                                    </a>  
-                                </div>
-                             
-                        <% }); %>
+                            
                         </div>
                     </aside>
                 <% }); %>
