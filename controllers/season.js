@@ -153,7 +153,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     }
 
 
-    else if ((!me || me) || season.price == 'selling' ) {
+    else if ( !me &&  season.price == 'selling' ) {
         res.redirect('/')
     }
 

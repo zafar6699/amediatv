@@ -170,7 +170,7 @@ exports.getById = async (req, res) => {
             kino
         })
     }
-    else if ((!me || me) || kino.price == 'selling') {
+    else if ( !me && kino.price == 'selling') {
         res.redirect('/')
     }
     
