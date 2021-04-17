@@ -27,15 +27,15 @@ exports.getSort = async (req, res) => {
     })
     
   
-    // res.render("./main/comSeason", {
-    //   title: "AmediaTV.uz",
-    //   layout: 'layout',
-    //   user: req.session.user,
-    //   lang: req.session.ulang,
-    //   janr,
-    //   result
-    // })
+    res.render("./main/comKino", {
+      title: "AmediaTV.uz",
+      layout: 'layout',
+      user: req.session.user,
+      lang: req.session.ulang,
+      janr,
+      result
+    })
 
-  res.json({data: result})
+  // res.json({data: result})
 }
 
