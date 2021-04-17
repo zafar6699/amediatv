@@ -13,43 +13,37 @@
 
 <div class="list-group comment___in m-3">
 
+ <% for (const item of result) {%> 
  <a href="#" class="list-group-item list-group-item-action">
   <div class="d-flex w-100 justify-content-between">
-   
-   <img src="http://cdn.amediatv.uz/uploads/<%= result.user.photo %>"" alt="">
-
-
-
-
-
-
+   <img src="http://cdn.amediatv.uz/uploads/<%= item.user.photo %>"" alt="">
    <h5 class=" mb-1">
    <%= result.user.name %>
     </h5>
     <small class="text-muted">
-     <%= moment(result.date).format("DD-MM-YYYY") %>
+     <%= moment(item.date).format("DD-MM-YYYY") %>
     </small>
   </div>
   <p class="mb-1">
-   <%= result.message %>
+   <%= item.message %>
   </p>
   <% if (lang=="uz" ) { %>
    <small class="text-muted">
-    <%= result.season.name.uz %>
+    <%= item.season.name.uz %>
    </small>
-    <% } %>
-     <% if (lang=="ru" ) { %>
-      <small class="text-muted">
-       <%= result.season.name.ru %>
-      </small>
+   <% } %>
+    <% if (lang=="ru" ) { %>
+     <small class="text-muted">
+      <%= item.season.name.ru %>
+     </small>
+     <% } %>
+      <% if (lang==undefined) { %>
+       <small class="text-muted">
+        <%= item.season.name.uz %>
+       </small>
        <% } %>
-        <% if (lang==undefined) { %>
-         <small class="text-muted">
-          <%= result.season.name.uz %>
-         </small>
-          <% } %>
-           
  </a>
+ <% } %> 
 
 
 
