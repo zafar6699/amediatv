@@ -16,25 +16,12 @@ exports.writeComment = async (req, res, next) => {
     })
 }
 
-exports.getOne = async (req, res) => {
-  const comment = await Comment.findById({ _id: req.body.id })
-    .populate({
-      path: 'userID', select: ['name']
-    })
-
-  res.json(comment)
-}
 
 
 exports.getAll = async (req, res) => {
-  const comment1 = await Comment.find(prevComment).sort({ date: -1 })
+  const comment1 = await Comment.find({ prevComment: req.body.id }).sort({ date: -1 })
     .populate({
       path: 'userID', select: 'name'
     })
-  // const comment2 = await Comment.find({ prevComment: req.body.id }).sort({ date: -1 })
-  //   .populate({
-  //     path: 'userID', select: 'name'
-  //   })
-
   res.json(comment1)
 }
