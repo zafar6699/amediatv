@@ -18,7 +18,7 @@ exports.writeComment = async (req, res, next) => {
 }
 
 exports.getOne = async (req, res) => {
-  const comment = await Comment.findById({ prevComment: req.params.id })
+  const comment = await Comment.findById(prevComment)
     .populate({
       path: 'userID', select: ['name']
     })
