@@ -13,14 +13,14 @@ exports.writeComment = async (req, res, next) => {
   const season = await Season.findById(req.params.id)
     .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
 
-  const user = req.session.user
-  const comment = new CommentSeason({
+  const userss = req.session.user
+  const commentsss = new CommentSeason({
     message: req.body.message,
     prevComment: req.body.prevComment,
     season: req.body.season,
-    userID: user._id,
+    userID: userss._id,
   })
-  await comment.save()
+  await commentsss.save()
   res.render("./main/oneserial", {
     title: "AmediaTV.uz",
     layout: 'layout',
