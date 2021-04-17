@@ -6,9 +6,6 @@ const ErrorResponse = require('../utils/errorResponse');
 exports.search = asyncHandler(async (req, res, next) => {
     const janr = await Janr.find()
 
-   
-
-
     let searchOne = req.query.name;
     let searchingQuery1 = new RegExp(searchOne);
     const kino = await Kino.find()
@@ -24,7 +21,6 @@ exports.search = asyncHandler(async (req, res, next) => {
             title: "Error", layout: 'error',
             user: req.session.user,
             lang: req.session.ulang,
-
         })
     }
     res.render('./main/search', {
