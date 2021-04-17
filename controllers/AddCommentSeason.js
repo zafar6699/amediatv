@@ -1,21 +1,7 @@
 const CommentSeason = require('../models/AddCommentSeason')
-const SeriyaCommnent = require('../models/commentSerial')
 const Janr = require('../models/janr')
-const Season = require('../models/season')
-const Seriya = require('../models/seriya')
 
 exports.writeComment = async (req, res, next) => {
-
-  const comment = await SeriyaCommnent.find({ season: req.params.id })
-    .sort({ date: -1 })
-    .populate(['user'])
-
-  let janr = await Janr.find()
-  const seria = await Seriya.find({ season: req.params.id })
-    .populate(['season'])
-  const season = await Season.findById(req.params.id)
-    .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
-
   const userss = req.session.user
   const commentsss = new CommentSeason({
     message: req.body.message,
@@ -24,29 +10,29 @@ exports.writeComment = async (req, res, next) => {
     userID: userss._id,
   })
   await commentsss.save()
-  res.render("./main/oneserial", {
-    title: "AmediaTV.uz",
-    layout: 'layout',
-    user: req.session.user,
-    lang: req.session.ulang,
-    janr,
-    serial: season,
-    seria,
-    comment
-  })
+  res.redirect('/')
 }
 
 
-exports.getAll = async (req, res) => {
-  const result = await CommentSeason.find()
-  res.status(200).json(result)
-}
+
 
 exports.getSort = async (req, res) => {
+  let janr = await Janr.find()
   const result = await CommentSeason.find({ prevComment: req.params.id }).sort({ date: -1 })
     .populate({
-      path: 'userID', select: 'name'
+      path: 'userID', select: 'name' 
     })
-  res.status(200).json(result)
+    .populate({
+      path: 'prevComment', select:[ 'message']
+    })
+  
+    res.render("./main/comSeason", {
+      title: "AmediaTV.uz",
+      layout: 'layout',
+      user: req.session.user,
+      lang: req.session.ulang,
+      janr,
+      result
+    })
 }
 
