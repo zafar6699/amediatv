@@ -1,5 +1,4 @@
 const Comment = require('../models/AddCommentSeason')
-const CommentSeason = require('../models/commentSerial')
 
 exports.writeComment = async (req, res, next) => {
   const user = req.session.user;
@@ -18,30 +17,24 @@ exports.writeComment = async (req, res, next) => {
 }
 
 exports.getOne = async (req, res) => {
-  const comment = await Comment.findById({ prevComment: req.body.prevComment })
+  const comment = await Comment.findById({ _id: req.body.id })
     .populate({
       path: 'userID', select: ['name']
     })
-
 
   res.json(comment)
 }
 
 
 exports.getAll = async (req, res) => {
-  const commentSeason = await CommentSeason.find()
-  commentSeason.filter(item => {
-    Comment.find({ prevComment: item._id }).sort({ date: -1 })
-      .populate({
-        path: 'userID', select: 'name'
-      }).exec((err, data) => {
-        if (err) throw error
-        else {
-          res.json(data)
-        }
-      })
+  const comment1 = await Comment.find({ prevComment: req.body.id }).sort({ date: -1 })
+    .populate({
+      path: 'userID', select: 'name'
+    })
+  // const comment2 = await Comment.find({ prevComment: req.body.id }).sort({ date: -1 })
+  //   .populate({
+  //     path: 'userID', select: 'name'
+  //   })
 
-
-  })
-
+  res.json(comment1)
 }
