@@ -27,7 +27,7 @@ exports.getOne = async (req, res) => {
 
 
 exports.getAll = async (req, res) => {
-  const comment1 = await Comment.find({ prevComment: req.params.id }).sort({ date: -1 })
+  const comment1 = await Comment.find(prevComment).sort({ date: -1 })
     .populate({
       path: 'userID', select: 'name'
     })
