@@ -67,7 +67,8 @@ app.use('/', require('./routes/videos'))
 
 
 //  Router Backend
-app.use('/commentseason', require('./routes/AddCommentSeason'));
+
+
 app.use('/auth', require('./routes/auth'));
 app.use('/comment', require('./routes/comment'));
 app.use('/users', require('./routes/users'));
@@ -87,6 +88,7 @@ app.use('/balance', require('./routes/balance'));
 app.use('/payment', require('./routes/payment'));
 app.use('/pricelist', require('./routes/priceList'));
 app.use('/search', require('./routes/search'));
+app.use('/commentseason', require('./routes/AddCommentSeason'));
 
 
 
