@@ -131,6 +131,8 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     const comment = await SeriyaCommnent.find({ season: req.params.id })
         .sort({ date: -1 })
         .populate(['user'])
+
+    
     let janr = await Janr.find()
     const seria = await Seriya.find({ season: req.params.id })
         .populate(['season'])
