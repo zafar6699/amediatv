@@ -139,7 +139,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     const season = await Season.findById(req.params.id)
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
     const me = req.session.user
-    if ((!me || me) || season.price == 'free' ) {
+    if ( !me && (season.price == 'free') ) {
         res.render("./main/oneserial", {
             title: "AmediaTV.uz",
             layout: 'layout',
@@ -152,13 +152,29 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
         })
     }
 
+
+    else if ((me.status == 'user') && (season.price == 'selling') ) {
+        res.redirect('/')
+    }
+
+    else if ((me.status == 'user') && (season.price == 'free') ) {
+        res.render("./main/oneserial", {
+            title: "AmediaTV.uz",
+            layout: 'layout',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr,
+            serial: season,
+            seria,
+            comment
+        })
+    }
+
+        
     else {
         const me = req.session.user
         //  registrtasiydan otmasa va serial pullik bolsa serialni ichiga kirmays=di
         if (!me && season.price === 'selling') {
-            res.redirect('/')
-        }
-        else if (me.status == 'user' && season.price === 'selling') {
             res.redirect('/')
         }
         //  registrtasiydan otmasa va serial tekin bolsa serialni ichiga kirmays=di
