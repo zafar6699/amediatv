@@ -18,22 +18,25 @@ exports.writeComment = async (req, res, next) => {
 }
 
 exports.getOne = async (req, res) => {
-  const comment = await Comment.findById({prevComment: req.body.prevComment})
+  const comment = await Comment.findById({ prevComment: req.body.prevComment })
     .populate({
       path: 'userID', select: ['name']
     })
-  
+
 
   res.json(comment)
 }
 
 
 exports.getAll = async (req, res) => {
-  
-  const comment = await Comment.find({ prevComment: req.body.id }).sort({ date: -1 })
-    .populate({
-      path: 'userID', select: 'name'
-    })
+  const commentSeason = await CommentSeason.find()
+  commentSeason.filter(item => {
+    const comment = await Comment.find({ prevComment: item._id }).sort({ date: -1 })
+      .populate({
+        path: 'userID', select: 'name'
+      })
 
-  res.json(comment)
+    res.json(comment)
+  })
+
 }
