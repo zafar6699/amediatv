@@ -388,6 +388,30 @@ div.banner {
 		margin-top: -30px;
 		position: relative;
 		z-index: 4;
+		.prev-next{
+			position: absolute;
+			top: 50%;
+			width: 30px;
+			height: 30px;
+			border-radius: 100%;
+			background: rgba($color: #000000, $alpha: 0.4);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			z-index: 4;
+			i{
+				font-size: 30px;
+				color: #111;
+
+			}
+		}
+		.slider__prev{
+			left: 10px;
+		}
+		.slider__next{
+			right: 10px;
+		}
 		button {
 			width: 10px;
 			height: 10px;
