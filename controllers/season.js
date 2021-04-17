@@ -183,7 +183,19 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
         // user vip bolsa va serial pullik bolsa serialga kiradi
     }
 
-    else if (me.status === 'vip' && season.price === 'selling') {
+    else if ((me.status === 'vip') && (season.price === 'selling')) {
+        res.render("./main/oneserial", {
+            title: "AmediaTV.uz",
+            layout: 'layout',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr,
+            serial: season,
+            seria, comment
+        })
+    }
+
+    else if ((me.status === 'vip') && (season.price === 'free')) {
         res.render("./main/oneserial", {
             title: "AmediaTV.uz",
             layout: 'layout',
