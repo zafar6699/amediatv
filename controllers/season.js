@@ -139,7 +139,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     const season = await Season.findById(req.params.id)
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
     const me = req.session.user
-    if (season.price == 'free' && !me) {
+    if ((!me || me) || season.price == 'free' ) {
         res.render("./main/oneserial", {
             title: "AmediaTV.uz",
             layout: 'layout',
@@ -150,7 +150,15 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             seria,
             comment
         })
-    } else {
+    }
+
+
+    else if ((!me || me) || season.price == 'free' ) {
+        res.redirect('/')
+    }
+
+        
+    else {
         const me = req.session.user
         //  registrtasiydan otmasa va serial pullik bolsa serialni ichiga kirmays=di
         if (!me && season.price === 'selling') {

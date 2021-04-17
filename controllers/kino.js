@@ -150,7 +150,7 @@ exports.sortByCat = asyncHandler(async (req, res, next) => {
 })
 
 exports.getById = async (req, res) => {
-   
+
     let janr = await Janr.find()
     const comment = await Comment.find({ kinoId: req.params.id })
         .sort({ date: -1 })
@@ -158,8 +158,8 @@ exports.getById = async (req, res) => {
 
     const kino = await Kino.findById({ _id: req.params.id })
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
-        const me = req.session.user
-    if (kino.price === 'free' || !me ) {
+    const me = req.session.user
+    if (kino.price === 'free' || !me || me) {
         res.render("./main/kino", {
             title: "AmediaTV.uz",
             layout: 'layout',
