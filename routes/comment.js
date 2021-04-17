@@ -6,12 +6,10 @@ const CommentSeason = require("../models/commentSerial")
 
 router.post("/kino", async (req, res) => {
     const comment = await Comment.create(req.body);
-    
     res.redirect(`/kino/${req.body.kinoId}`)
 })
 router.post("/season", async (req, res) => {
     const comment = await CommentSeason.create(req.body);
-    
     res.redirect(`/season/${req.body.season}`)
 })
 

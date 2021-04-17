@@ -9,8 +9,8 @@ exports.writeComment = async (req, res, next) => {
     userID: userss._id,
   })
   await commentsss.save()
-  // res.redirect('/')
-  res.json(commentsss)
+  res.redirect('/')
+  // res.json(commentsss)
 }
 
 
