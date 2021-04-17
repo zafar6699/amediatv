@@ -4,6 +4,6 @@ const router = express.Router({mergeParams: true});
 const { writeComment, getAll} = require("../controllers/AddCommentSeason")
 
 router.post('/', writeComment)
-router.get('/', getAll)
+router.get('/:prevComment', getAll)
 
 module.exports = router 
