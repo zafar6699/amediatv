@@ -6,7 +6,6 @@ exports.writeComment = async (req, res, next) => {
   const commentsss = new CommentSeason({
     message: req.body.message,
     prevComment: req.body.prevComment,
-    kino: req.body.kino,
     userID: userss._id,
   })
   await commentsss.save()
@@ -25,9 +24,7 @@ exports.getSort = async (req, res) => {
     .populate({
       path: 'prevComment', select: 'message' 
     })
-    .populate({
-      path: 'kino', select: 'name' 
-    })
+    
   
     res.render("./main/comSeason", {
       title: "AmediaTV.uz",
