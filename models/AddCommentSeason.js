@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const addCommentSchema = mongoose.Schema({
+const AddCommentSchema = mongoose.Schema({
  message: {
   type: String, required: true
  },
@@ -8,6 +8,11 @@ const addCommentSchema = mongoose.Schema({
   type: mongoose.Schema.ObjectId,
   required: true,
   ref: 'commentSeriya'
+ },
+ season: {
+  type: mongoose.Schema.ObjectId,
+  required: true,
+  ref: 'season'
  },
  userID: {
   type: mongoose.Schema.ObjectId,
@@ -19,4 +24,4 @@ const addCommentSchema = mongoose.Schema({
   default: Date.now()
  }
 })
-module.exports = mongoose.model('OtherCommenet', addCommentSchema)
+module.exports = mongoose.model('OtherCommenet', AddCommentSchema)

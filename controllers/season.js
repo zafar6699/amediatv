@@ -7,7 +7,7 @@ const path = require('path');
 const sharp = require('sharp')
 const JWT = require('jsonwebtoken');
 const User = require('../models/user')
-
+const SeasonComment = require('../models/AddCommentSeason')
 
 
 // Season Controller
@@ -131,7 +131,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     const comment = await SeriyaCommnent.find({ season: req.params.id })
         .sort({ date: -1 })
         .populate(['user'])
-
+    const seasonCOM = await SeasonComment()
     
     let janr = await Janr.find()
     const seria = await Seriya.find({ season: req.params.id })

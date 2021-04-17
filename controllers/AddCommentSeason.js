@@ -1,27 +1,28 @@
-const Comment = require('../models/AddCommentSeason')
+const CommentSeason = require('../models/AddCommentSeason')
 
 exports.writeComment = async (req, res, next) => {
-  const user = req.session.user;
-  const comment = new Comment({
+  const user = req.session.user
+  const comment = new CommentSeason({
     message: req.body.message,
     prevComment: req.body.prevComment,
+    season: req.body.season,
     userID: user._id,
   })
   await comment.save()
-    .then(() => {
-      res.json({ data: comment })
-    })
-    .catch((error) => {
-      res.json({ data: error })
-    })
+  res.redirect(`/season/${season}`)
 }
-
 
 
 exports.getAll = async (req, res) => {
-  const comment1 = await Comment.find({ prevComment: req.params.id }).sort({ date: -1 })
+  const result = await CommentSeason.find()
+  res.status(200).json(result)
+}
+
+exports.getSort = async (req, res) => {
+  const result = await CommentSeason.find({ prevComment: req.params.id }).sort({ date: -1 })
     .populate({
       path: 'userID', select: 'name'
     })
-  res.json(comment1)
+    res.status(200).json(result)
 }
+

@@ -263,15 +263,9 @@
                         </p>
                     </div>
                     
-                    <a href="/anotherCommentSeason/<%= item._id %>">Komnetni ko'rish</a>
+                    <a href="/commentseason/<%= item._id %>">Komnetni ko'rish</a>
 
-                    <!-- <div class="d-flex justify-content-end ml-3 mr-3">
-                        
-                        <form action="/anotherCommentSeason" method="GET">
-                            <input type="hidden" value="<%= item._id %>">
-                           <button type="submit"> <i class="fa fa-reply"> </i> Komnetni ko'rish</a> </button> 
-                        </form>
-                    </div> -->
+                    
 
                     <div class="d-flex justify-content-end">
                         <button class="reply_button"><i class="fa fa-reply"> </i> Javob berish</button>
@@ -282,10 +276,11 @@
 
 
                     <div class="reply_content none_cc">
-                        <form action="/anotherCommentSeason" method="POST">
+                        <form action="/commentseason/add" method="POST">
                             <textarea name="message" cols="10" ></textarea>
                             <input type="hidden"  name="prevComment" value="<%= item._id %>">
                             <input type="hidden" name="userID" value="<%= user._id %>">
+                            <input type="hidden" name="season" value="<%= serial._id %>">
                             <div class="d-flex justify-content-end">
                                 <button type="submit">Javob berish</button>
                             </div>

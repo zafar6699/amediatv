@@ -10,8 +10,8 @@ const i18n = require("i18n-express");
 const app = express()
 const bodyParser = require("body-parser")
 
-// const MongoURI = "mongodb://localhost:27017/amedia_test"
-const MongoURI = "mongodb://localhost:27017/amediatv"    
+const MongoURI = "mongodb://localhost:27017/amedia_test"
+// const MongoURI = "mongodb://localhost:27017/amediatv"    
 mongoose
   .connect(MongoURI, {
     useNewUrlParser: true,
@@ -67,6 +67,7 @@ app.use('/', require('./routes/videos'))
 
 
 //  Router Backend
+app.use('/commentseason', require('./routes/AddCommentSeason'));
 app.use('/auth', require('./routes/auth'));
 app.use('/comment', require('./routes/comment'));
 app.use('/users', require('./routes/users'));
@@ -86,8 +87,7 @@ app.use('/balance', require('./routes/balance'));
 app.use('/payment', require('./routes/payment'));
 app.use('/pricelist', require('./routes/priceList'));
 app.use('/search', require('./routes/search'));
-app.use('/anotherCommentSeason', require('./routes/AddCommentSeason'));
-app.use('/anotherCommentKino', require('./routes/AddCommentKino'));
+
 
 
 app.use('/', require('./routes/404'));

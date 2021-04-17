@@ -1,9 +1,9 @@
 const express = require('express')
-const router = express.Router({mergeParams: true});
+const router = express.Router();
+const comment = require("../controllers/AddCommentSeason")
 
-const { writeComment, getAll} = require("../controllers/AddCommentSeason")
-
-router.post('/', writeComment)
-router.get('/:prevComment', getAll)
+router.post('/add', comment.writeComment)
+router.get('/all', comment.getAll)
+router.get('/:id', comment.getSort)
 
 module.exports = router 
