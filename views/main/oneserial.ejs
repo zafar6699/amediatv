@@ -267,8 +267,10 @@
                         <button class="reply_button"><i class="fa fa-reply"> </i> Javob berish</button>
                     </div>
                     <div class="reply_content none_cc">
-                        <form action="" method="post">
+                        <form action="/anotherCommentSeason" method="POST">
                             <textarea name="message" cols="10" ></textarea>
+                            <input type="hidden" value="<%= item._id %>">
+                            <input type="hidden" value="<%= user._id %>">
                             <div class="d-flex justify-content-end">
                                 <button type="submit">Javob berish</button>
                             </div>
