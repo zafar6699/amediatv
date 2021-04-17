@@ -1,108 +1,125 @@
-<div class="news-home">
- <div class="container">
+<style>
+      .search11____in {
+            min-height: calc(100vh - 100px);
+      }
+</style>
 
 
 
-  <% if(array[0] !== []) {%>
-  <div class="d-flex justify-content-between">
-  </div>
-  <div class="row">
-   <% array[0].map(item=> { %>
-    <div class="col-md-3">
-     
-     <a href="/kino/<%= item._id %>">
-      
-      <div class="box-border news__item">
-       <% if(item.price == "selling") {%> 
-        <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
-        <% } if(item.price == "free") {%>
-            <div></div>
-            <% } %> 
-       <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-       <div class="opa"></div>
+
+<div class="news-home search11____in ">
+      <div class="container">
+
+
+
+            <% if(array[0] !==[]) {%>
+                  <div class="d-flex justify-content-between">
+                  </div>
+                  <div class="row">
+                        <% array[0].map(item=> { %>
+                              <div class="col-md-3">
+
+                                    <a href="/kino/<%= item._id %>">
+
+                                          <div class="box-border news__item">
+                                                <% if(item.price=="selling" ) {%>
+                                                      <i style="z-index: 100; font-size: 20px;"
+                                                            class="text-warning fas fa-crown"></i>
+                                                      <% } if(item.price=="free" ) {%>
+                                                            <div></div>
+                                                            <% } %>
+                                                                  <img src="http://cdn.amediatv.uz<%= item.image %>"
+                                                                        alt="">
+                                                                  <div class="opa"></div>
+
+                                          </div>
+                                          <div class="news__item__title2">
+                                                <% if(lang==="uz" ){ %>
+                                                      <h4>
+                                                            <%= item.name.uz%>
+                                                      </h4>
+                                                      <% } %>
+                                                            <% if(lang==="ru" ){ %>
+                                                                  <h4>
+                                                                        <%= item.name.ru%>
+                                                                  </h4>
+                                                                  <% } %>
+                                                                        <% if(lang==undefined){ %>
+                                                                              <h4>
+                                                                                    <%= item.name.uz%>
+                                                                              </h4>
+                                                                              <% } %>
+                                          </div>
+                                    </a>
+                              </div>
+                              <% }) %>
+                  </div>
+                  <% }else if(array[0]===[]){ %>
+                        <div>
+                              <p>Malumot topilmadi</p>
+                        </div>
+                        <% } %>
+
+
+
+
+                              <% if(array[1] !==[]) {%>
+                                    <div class="d-flex justify-content-between">
+                                    </div>
+                                    <div class="row">
+                                          <% array[1].map(item=> { %>
+                                                <div class="col-md-3">
+                                                      <a href="/season/<%= item._id %>">
+                                                            <div class="box-border news__item">
+                                                                  <% if(item.price=="selling" ) {%>
+                                                                        <i style="z-index: 100; font-size: 20px;"
+                                                                              class="text-warning fas fa-crown"></i>
+                                                                        <% } if(item.price=="free" ) {%>
+                                                                              <div></div>
+                                                                              <% } %>
+                                                                                    <img src="http://cdn.amediatv.uz<%= item.image %>"
+                                                                                          alt="">
+                                                                                    <div class="opa"></div>
+
+                                                            </div>
+                                                            <div class="news__item__title2">
+                                                                  <% if(lang==="uz" ){ %>
+                                                                        <h4>
+                                                                              <%= item.name.uz%>
+                                                                        </h4>
+                                                                        <% } %>
+                                                                              <% if(lang==="ru" ){ %>
+                                                                                    <h4>
+                                                                                          <%= item.name.ru%>
+                                                                                    </h4>
+                                                                                    <% } %>
+                                                                                          <% if(lang==undefined){ %>
+                                                                                                <h4>
+                                                                                                      <%= item.name.uz%>
+                                                                                                </h4>
+                                                                                                <% } %>
+                                                            </div>
+                                                      </a>
+                                                </div>
+                                                <% }) %>
+                                    </div>
+                                    <% }else if(array[1]===[]){ %>
+                                          <div>
+                                                <p>Malumot topilmadi</p>
+                                          </div>
+                                          <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
 
       </div>
-      <div class="news__item__title2">
-       <% if(lang==="uz" ){ %>
-        <h4>
-         <%= item.name.uz%>
-        </h4>
-        <% } %>
-         <% if(lang==="ru" ){ %>
-          <h4>
-           <%= item.name.ru%>
-          </h4>
-          <% } %>
-           <% if(lang==undefined){ %>
-            <h4>
-             <%= item.name.uz%>
-            </h4>
-            <% } %>
-      </div>
-     </a>
-    </div>
-    <% }) %>
-  </div>
-  <% }else if(array[0] === []){ %>
-   <div><p>Malumot topilmadi</p></div>
-   <% } %> 
-
-
-
-
-    <% if(array[1] !== []) {%>
-     <div class="d-flex justify-content-between">
-     </div>
-     <div class="row">
-      <% array[1].map(item=> { %>
-       <div class="col-md-3">
-        <a href="/season/<%= item._id %>">
-         <div class="box-border news__item">
-          <% if(item.price == "selling") {%> 
-           <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
-           <% } if(item.price == "free") {%>
-               <div></div>
-               <% } %> 
-          <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-          <div class="opa"></div>
-   
-         </div>
-         <div class="news__item__title2">
-          <% if(lang==="uz" ){ %>
-           <h4>
-            <%= item.name.uz%>
-           </h4>
-           <% } %>
-            <% if(lang==="ru" ){ %>
-             <h4>
-              <%= item.name.ru%>
-             </h4>
-             <% } %>
-              <% if(lang==undefined){ %>
-               <h4>
-                <%= item.name.uz%>
-               </h4>
-               <% } %>
-         </div>
-        </a>
-       </div>
-       <% }) %>
-     </div>
-      <% }else if(array[1] === []){ %>
-       <div><p>Malumot topilmadi</p></div>
-       <% } %>  
-   
-
-
-
-
-
-
-
-
-
-
-
-
- </div>
 </div>
