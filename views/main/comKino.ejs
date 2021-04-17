@@ -1,0 +1,36 @@
+<style>
+ .comment___in {
+  min-height: calc(100vh - 100px);
+ }
+</style>
+
+
+
+
+
+
+
+
+<div class="list-group comment___in m-5 col-md-8">
+
+ <% for (const item of result) {%>
+  <a href="#" class="list-group-item list-group-item-action text-left">
+   <div class="d-flex w-100 justify-content-between">
+    <img style="width: 50px; border-radius: 50%;" src="http://cdn.amediatv.uz:2000/uploads/<%= item.userID.photo %>"
+     alt="">
+    <h5 class=" mb-1">
+     <%= item.userID.name %>
+    </h5>
+    <small class="text-muted">
+     <%= moment(item.date).format("DD-MM-YYYY") %>
+    </small>
+   </div>
+   <p class="mb-1 mt-2">
+    <%= item.message %>
+   </p>
+  </a>
+  <% } %>
+
+
+
+</div>
