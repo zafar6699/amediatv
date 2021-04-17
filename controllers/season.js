@@ -132,13 +132,14 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
         .sort({ date: -1 })
         .populate(['user'])
     const seasonCOM = await SeasonComment()
-    
+
     let janr = await Janr.find()
     const seria = await Seriya.find({ season: req.params.id })
         .populate(['season'])
     const season = await Season.findById(req.params.id)
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
-    if (season.price == 'free' && !me ) {
+    const me = req.session.user
+    if (season.price == 'free' && !me) {
         res.render("./main/oneserial", {
             title: "AmediaTV.uz",
             layout: 'layout',
@@ -146,7 +147,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             lang: req.session.ulang,
             janr,
             serial: season,
-            seria,  
+            seria,
             comment
         })
     } else {
@@ -188,7 +189,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             })
         }
     }
-    
+
 })
 
 exports.addSeriya = asyncHandler(async (req, res, next) => {
