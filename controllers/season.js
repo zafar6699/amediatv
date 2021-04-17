@@ -138,7 +138,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
         .populate(['season'])
     const season = await Season.findById(req.params.id)
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
-    if (season.price == 'free' ) {
+    if (season.price == 'free' && !me ) {
         res.render("./main/oneserial", {
             title: "AmediaTV.uz",
             layout: 'layout',
