@@ -152,16 +152,13 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
         })
     }
 
-
-    else if ( !me &&  season.price == 'selling' ) {
-        res.redirect('/')
-    }
-
-        
     else {
         const me = req.session.user
         //  registrtasiydan otmasa va serial pullik bolsa serialni ichiga kirmays=di
         if (!me && season.price === 'selling') {
+            res.redirect('/')
+        }
+        else if (me.status == 'user' && season.price === 'selling') {
             res.redirect('/')
         }
         //  registrtasiydan otmasa va serial tekin bolsa serialni ichiga kirmays=di
