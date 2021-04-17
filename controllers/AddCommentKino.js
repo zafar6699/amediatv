@@ -2,15 +2,16 @@ const CommentSeason = require('../models/AddCommentKino')
 const Janr = require('../models/janr')
 
 exports.writeComment = async (req, res, next) => {
-  const userss = req.session.user
-  const commentsss = new CommentSeason({
-    message: req.body.message,
-    prevComment: req.body.prevComment,
-    userID: userss._id,
-  })
-  await commentsss.save()
-  res.redirect('/')
-  // res.json(commentsss)
+  // const userss = req.session.user
+  // const commentsss = new CommentSeason({
+  //   message: req.body.message,
+  //   prevComment: req.body.prevComment,
+  //   userID: userss._id,
+  // })
+  // await commentsss.save()
+  // res.redirect('/')
+  const comment = await CommentSeason.create(req.body);
+  res.redirect(`/season/${req.body.season}`)
 }
 
 
@@ -23,18 +24,18 @@ exports.getSort = async (req, res) => {
       path: 'userID', select: ['name', 'photo']
     })
     .populate({
-      path: 'prevComment', select: 'message' 
+      path: 'prevComment', select: 'message'
     })
-    
-  
-    res.render("./main/comKino", {
-      title: "AmediaTV.uz",
-      layout: 'layout',
-      user: req.session.user,
-      lang: req.session.ulang,
-      janr,
-      result
-    })
+
+
+  res.render("./main/comKino", {
+    title: "AmediaTV.uz",
+    layout: 'layout',
+    user: req.session.user,
+    lang: req.session.ulang,
+    janr,
+    result
+  })
 
   // res.json({data: result})
 }
