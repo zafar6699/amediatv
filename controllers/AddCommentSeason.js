@@ -9,7 +9,7 @@ exports.writeComment = async (req, res, next) => {
     userID: user._id,
   })
   await comment.save()
-  res.redirect(`/season/${season}`)
+  res.redirect(`/season/${req.params.id}`)
 }
 
 
