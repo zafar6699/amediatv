@@ -1,11 +1,13 @@
 const CommentSeason = require('../models/AddCommentSeason')
+const SeriyaCommnent = require('../models/commentSerial')
+const Janr = require('../models/janr')
+const Season = require('../models/season')
 
 exports.writeComment = async (req, res, next) => {
 
   const comment = await SeriyaCommnent.find({ season: req.params.id })
     .sort({ date: -1 })
     .populate(['user'])
-  const seasonCOM = await SeasonComment()
 
   let janr = await Janr.find()
   const seria = await Seriya.find({ season: req.params.id })
