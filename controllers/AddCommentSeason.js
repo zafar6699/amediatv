@@ -2,6 +2,7 @@ const CommentSeason = require('../models/AddCommentSeason')
 const SeriyaCommnent = require('../models/commentSerial')
 const Janr = require('../models/janr')
 const Season = require('../models/season')
+const Seriya = require('../models/seriya')
 
 exports.writeComment = async (req, res, next) => {
 
