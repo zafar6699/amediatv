@@ -13,7 +13,7 @@ exports.writeComment = async (req, res, next) => {
   // res.redirect('/')
 
   const comment = await CommentSeason.create(req.body);
-  res.redirect(`/kino/${req.body.kinoId}`)
+  res.redirect(`/season/${req.body.season}`)
 }
 
 
