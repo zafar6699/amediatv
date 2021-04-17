@@ -37,5 +37,7 @@ exports.getSort = async (req, res) => {
       janr,
       result
     })
+
+  // res.json(result)
 }
 
