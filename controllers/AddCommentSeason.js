@@ -20,10 +20,13 @@ exports.getSort = async (req, res) => {
   let janr = await Janr.find()
   const result = await CommentSeason.find({ prevComment: req.params.id }).sort({ date: -1 })
     .populate({
-      path: 'userID', select: 'name' 
+      path: 'userID', select: ['name', 'photo' ]
     })
     .populate({
-      path: 'prevComment', select:[ 'message']
+      path: 'prevComment', select:[ 'message' ]
+    })
+    .populate({
+      path: 'season', select:[ 'name' ]
     })
   
     res.render("./main/comSeason", {
