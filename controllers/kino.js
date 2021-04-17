@@ -158,7 +158,8 @@ exports.getById = async (req, res) => {
 
     const kino = await Kino.findById({ _id: req.params.id })
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
-    if (kino.price === 'free') {
+        const me = req.session.user
+    if (kino.price === 'free' && !me) {
         res.render("./main/kino", {
             title: "AmediaTV.uz",
             layout: 'layout',
