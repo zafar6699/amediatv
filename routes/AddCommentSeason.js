@@ -5,6 +5,6 @@ const { writeComment, getAll, getOne} = require("../controllers/AddCommentSeason
 
 router.post('/', writeComment)
 router.get('/all', getAll)
-router.get('/:id', getOne)
+router.get('/:prevComment', getOne)
 
 module.exports = router 
