@@ -14,12 +14,12 @@ exports.Home = async (req, res) => {
     
  
     category.forEach(async (element) => {
-        let a =  Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-        let s =  Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+        let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+        let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
         let arraySort = []
-        arraySort.push(a);
-        arraySort.push(s);
-        sortKino.push(arraySort)
+        await arraySort.push(a);
+        await arraySort.push(s);
+        await sortKino.push(arraySort)
     });
 
 
