@@ -26,8 +26,8 @@ exports.Home = async (req, res) => {
         let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
         let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
         let arraySort = []
-        await arraySort.push(a);
-        await arraySort.push(s);
+        await sortKino.push(a);
+        await sortKino.push(s);
     })
 
 
