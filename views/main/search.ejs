@@ -1,41 +1,72 @@
-
 <style>
     .search____in {
-     min-height: calc(100vh - 100px);
+        min-height: calc(100vh - 100px);
     }
-   </style>
+</style>
 
 
 <div class="news-home search____in">
- <div class="container">
-     <div class="d-flex justify-content-between">
-         <h1 class="title__z"><i class="fa fa-angle-right"></i> Izlab topilgan malumotlar</h1>
-     </div>
-     <div class="row">
-         <% arr.forEach(item => { %>
-         <div class="col-md-3">
-             <a href="/kino/<%= item._id %>">
-                 <div class="box-border news__item">
-                     <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                     <div class="opa"></div>
-                     
-                 </div>
-                 <div class="news__item__title2">
-                     <% if(lang === "uz"){ %>
-                         <h4><%= item.name.uz%></h4>
-                     <% } %>
-                     <% if(lang === "ru"){ %>
-                         <h4><%= item.name.ru%></h4>
-                     <% } %>
-                     <% if(lang == undefined){ %>
-                         <h4><%= item.name.uz%></h4>
-                     <% } %>
-                 </div>
-             </a>    
-         </div>
-         <% }) %>
-     </div>
- </div>
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h1 class="title__z"><i class="fa fa-angle-right"></i> Izlab topilgan malumotlar</h1>
+        </div>
+        <div class="row">
+            <% arr[0].forEach(item=> { %>
+                <div class="col-md-3">
+                    <a href="/kino/<%= item._id %>">
+                        <div class="box-border news__item">
+                            <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
+                            <div class="opa"></div>
+
+                        </div>
+                        <div class="news__item__title2">
+                            <% if(lang==="uz" ){ %>
+                                <h4>
+                                    <%= item.name.uz%>
+                                </h4>
+                                <% } %>
+                                    <% if(lang==="ru" ){ %>
+                                        <h4>
+                                            <%= item.name.ru%>
+                                        </h4>
+                                        <% } %>
+                                            <% if(lang==undefined){ %>
+                                                <h4>
+                                                    <%= item.name.uz%>
+                                                </h4>
+                                                <% } %>
+                        </div>
+                    </a>
+                </div>
+            <% }) %>
+            <% arr[1].forEach(item=> { %>
+                <div class="col-md-3">
+                    <a href="/kino/<%= item._id %>">
+                        <div class="box-border news__item">
+                            <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
+                            <div class="opa"></div>
+
+                        </div>
+                        <div class="news__item__title2">
+                            <% if(lang==="uz" ){ %>
+                                <h4>
+                                    <%= item.name.uz%>
+                                </h4>
+                                <% } %>
+                                    <% if(lang==="ru" ){ %>
+                                        <h4>
+                                            <%= item.name.ru%>
+                                        </h4>
+                                        <% } %>
+                                            <% if(lang==undefined){ %>
+                                                <h4>
+                                                    <%= item.name.uz%>
+                                                </h4>
+                                                <% } %>
+                        </div>
+                    </a>
+                </div>
+            <% }) %>
+        </div>
+    </div>
 </div>
-
-
