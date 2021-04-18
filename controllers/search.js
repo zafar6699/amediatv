@@ -32,8 +32,8 @@ exports.search = asyncHandler(async (req, res, next) => {
         res.redirect('/')
     }
 
-    arr.push(kino)
     arr.push(season)
+    arr.push(kino)
     // res.json(arr)
 
 
@@ -89,8 +89,8 @@ exports.searchDropDown = asyncHandler(async (req, res, next) => {
         res.redirect('/')
     }
 
-    arr.push(kino)
     arr.push(season)
+    arr.push(kino)
 
 
     res.status(200).json({ data: arr})
