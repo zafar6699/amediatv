@@ -13,22 +13,22 @@ exports.Home = async (req, res) => {
     let sortKino = []
     
  
-    // category.forEach(async (element) => {
-    //     let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-    //     let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-    //     let arraySort = []
-    //     await arraySort.push(a);
-    //     await arraySort.push(s);
-    //     await sortKino.push(arraySort)
-    // });
-
     category.forEach(async (element) => {
         let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
         let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
         let arraySort = []
-        await sortKino.push(a);
-        await sortKino.push(s);
-    })
+        await arraySort.push(a);
+        await arraySort.push(s);
+        await sortKino.push(arraySort)
+    });
+
+    // category.forEach(async (element) => {
+    //     let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+    //     let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
+    //     let arraySort = []
+    //     await sortKino.push(a);
+    //     await sortKino.push(s);
+    // })
 
 
 
@@ -80,14 +80,14 @@ exports.Home = async (req, res) => {
 
 
 
-    // res.render("./main/index", {
-    //     title: "AmediaTV.uz",
-    //     layout: "./layout",
-    //     user: req.session.user, lang: req.session.ulang,
-    //     serial, janr, slider, oneKino, news, kino, category, sortKino
-    // })
+    res.render("./main/index", {
+        title: "AmediaTV.uz",
+        layout: "./layout",
+        user: req.session.user, lang: req.session.ulang,
+        serial, janr, slider, oneKino, news, kino, category, sortKino
+    })
 
-    res.json(sortKino)
+    // res.json(sortKino)
 
 }
 
