@@ -236,6 +236,28 @@
                     </div>
                     <% }); %>
 
+                    <% serial.translator.forEach(element=> { %>
+                        <div class="__item">
+                            <div class="img-pro">
+                                <img src="http://cdn.amediatv.uz<%= element.image %>" alt="">
+                            </div>
+                            <h4>
+                                <%= element.name %>
+                            </h4>
+                        </div>
+                        <% }); %>
+
+                        <% serial.tayming.forEach(element=> { %>
+                            <div class="__item">
+                                <div class="img-pro">
+                                    <img src="http://cdn.amediatv.uz<%= element.image %>" alt="">
+                                </div>
+                                <h4>
+                                    <%= element.name %>
+                                </h4>
+                            </div>
+                            <% }); %>
+
             </div>
 
         </div>
