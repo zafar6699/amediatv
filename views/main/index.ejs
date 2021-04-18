@@ -317,16 +317,16 @@
                             <% e[0].forEach(item => { %>
                                     <div class="__item">
                                         <a href="/season/<%= item._id %>">
-                                            <div class="img__in" style="display: flex; flex-direction: column; align-items: center;" >
+                                            <div class="img__in" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end;" >
+                                                
+                                                <div class="opa"></div>
+                                                <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
+                                                <h5  style="z-index: 100; color: white; text-decoration: none; background-color: rgba(79, 79, 79, 0.234); border-radius: 4px;">[ <%= item.num %> ]</h5>
                                                 <% if(item.price == "selling") {%> 
                                                     <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
                                                     <% } if(item.price == "free") {%>
                                                         <div></div>
                                                         <% } %> 
-                                                <div class="opa"></div>
-                                                <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                                <h5 class="ml-5" style="z-index: 100; color: white; text-decoration: none; background-color: rgb(220, 220, 220); border-radius: 4px;"> <%= item.num %> </h5>
-                                                 
                                             </div>
                                             
                                             <h3 >
