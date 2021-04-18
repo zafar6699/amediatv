@@ -12,7 +12,7 @@ exports.search = asyncHandler(async (req, res, next) => {
     let arr = []
     const kino = await Kino.find()
         .or([
-            { ['name.uz']: { $regex: searchingQuery1 } },
+            { ['name.uz']: { $regex: searchingQuery1, $options: 'i' } },
         ])
         .sort({ date: -1 })
         .populate({ path: 'category' })
@@ -21,7 +21,7 @@ exports.search = asyncHandler(async (req, res, next) => {
 
     const season = await Season.find()
         .or([
-            { ['name.uz']: { $regex: searchingQuery1 } },
+            { ['name.uz']: { $regex: searchingQuery1, $options: 'i' } },
         ])
         .sort({ date: -1 })
         .populate({ path: 'category' })
@@ -29,14 +29,14 @@ exports.search = asyncHandler(async (req, res, next) => {
         .populate({ path: 'janr' })
 
     if (!kino && searchOne == [] && searchOne.name == '' && searchOne.name == null && searchOne.name == undefined) {
-        res.render('./main/404', {
-            title: "Error", layout: 'error',
-            user: req.session.user,
-            lang: req.session.ulang,
-        })
+        res.redirect('/')
     }
+
     arr.push(kino)
     arr.push(season)
+    // res.json(arr)
+
+
     res.render('./main/search', {
         title: "AmediaTV.uz", layout: 'layout',
         user: req.session.user,
@@ -44,12 +44,6 @@ exports.search = asyncHandler(async (req, res, next) => {
         arr,
         janr
     })
-
-    
-    // res.json(arr)
-
-
-
 })
 
 exports.filterByYear = asyncHandler(async (req, res, next) => {
