@@ -184,7 +184,7 @@
 <div class="news-home news-home__media">
     <div class="container">
         <div class="d-flex justify-content-between">
-            <h1 class="title__z"><i class="fa fa-angle-right"></i> <a href="/news/all">Barcha yangiliklar</a></h1>
+            
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -211,6 +211,7 @@
 
 
 
+            <h1 class="title__z"><i class="fa fa-angle-right"></i> <a href="/news/all">Barcha yangiliklar</a></h1>
             <% if(news == '') {%> 
                 <div class="col-md-4">
                     <a href="#">
@@ -260,65 +261,6 @@
 
 
 
-
-
-
-
-<div class="news-home home-season__media">
-    <div class="container">
-        <div class="d-flex justify-content-between">
-            <a href="/season/all" > 
-                <h1 class="title__z"><i class="fa fa-angle-right"></i> Seriallar</h1>
-            </a>
-        </div>
-        <div class="row">
-            <% if(serial == '') {%> 
-                <div class="col-md-3 col-6">
-                    <a href="#">
-                        <div class="box-border news__item">
-                            <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
-                            <img  src="/img/right_img.png" alt="">
-                            <div class="opa"></div>
-                        </div>
-                        <div class="news__item__title2">
-                            <h4>Serialni nomi</h4>
-                        </div>
-                    </a>    
-                </div>
-                
-            <%} else {%> 
-                <% serial.forEach(item => { %>
-                    <div class="col-md-3 col-6">
-                            <a href="/season/<%= item._id %>" style="text-align: center;" >
-                                <div class="box-border news__item" style="text-align: center;">
-                                    <% if(item.price == "selling") {%> 
-                                        <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
-                                        <% } if(item.price == "free") {%>
-                                            <div></div>
-                                            <% } %> 
-                                    <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                    <div class="opa"></div>
-                                    <h5 class="ml-5" style=" display: block; z-index: 10; color: white; text-decoration: none; "><%= item.num %> </h5>
-                                </div>
-                                <div class="news__item__title2">
-                                    <% if(lang === "uz"){ %>
-                                        <h4><%= item.name.uz%></h4>
-                                    <% } %>
-                                    <% if(lang === "ru"){ %>
-                                        <h4><%= item.name.ru%></h4>
-                                    <% } %>
-                                    <% if(lang == undefined){ %>
-                                        <h4><%= item.name.uz%></h4>
-                                    <% } %>
-                                </div>
-                            </a> 
-                    </div>
-                    <% }) %>
-            <% } %> 
-            
-        </div>
-    </div>
-</div>
 
 
 

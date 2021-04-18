@@ -27,8 +27,8 @@ exports.Home = async (req, res) => {
         const a = await Kino.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
         
         const arraySort = []
-        await arraySort.push(a);
         await arraySort.push(s);
+        await arraySort.push(a);
         await sortKino.push(arraySort)
     }
 
@@ -64,19 +64,13 @@ exports.Home = async (req, res) => {
         .select({ name: 1, category: 1, url: 1, image: 1, rating: 1, year: 1, janr: 1, date: 1, description: 1, price: 1 })
         .populate({ path: 'category', select: 'nameuz' })
         .populate(['janr'])
-    const serial = await Season.find()
-        .limit(4)
-        .sort({ date: -1 })
-        .select({ name: 1, category: 1, image: 1, rating: 1, year: 1, janr: 1, date: 1, num: 1, description: 1, price: 1 })
-        .populate({ path: 'category', select: 'nameuz' })
-        .populate(['janr'])
-
+   
 
     res.render("./main/index", {
         title: "AmediaTV.uz",
         layout: "./layout",
         user: req.session.user, lang: req.session.ulang,
-        serial, janr, slider, oneKino, news, kino, category, sortKino
+        janr, slider, oneKino, news, kino, category, sortKino
     })
 
     // res.json(sortKino)
