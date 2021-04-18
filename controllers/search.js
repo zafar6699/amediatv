@@ -61,3 +61,37 @@ exports.filterByYear = asyncHandler(async (req, res, next) => {
         data: kino
     })
 })
+
+exports.searchDropDown = asyncHandler(async (req, res, next) => {
+
+    let searchOne = req.query.name;
+    let searchingQuery1 = new RegExp(searchOne);
+    let arr = []
+    const kino = await Kino.find()
+        .or([
+            { ['name.uz']: { $regex: searchingQuery1, $options: 'i' } },
+        ])
+        .sort({ date: -1 })
+        .populate({ path: 'category' })
+        .populate({ path: 'member' })
+        .populate({ path: 'janr' })
+
+    const season = await Season.find()
+        .or([
+            { ['name.uz']: { $regex: searchingQuery1, $options: 'i' } },
+        ])
+        .sort({ date: -1 })
+        .populate({ path: 'category' })
+        .populate({ path: 'member' })
+        .populate({ path: 'janr' })
+
+    if (!kino && searchOne == [] && searchOne.name == '' && searchOne.name == null && searchOne.name == undefined) {
+        res.redirect('/')
+    }
+
+    arr.push(kino)
+    arr.push(season)
+
+
+    res.status(200).json({ data: arr})
+})
