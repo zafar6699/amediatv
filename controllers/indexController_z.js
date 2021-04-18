@@ -29,7 +29,7 @@ exports.Home = async (req, res) => {
         await arraySort.push(a);
         await arraySort.push(s);
         await sortKino.push(arraySort)
-    });
+    }
 
 
 
