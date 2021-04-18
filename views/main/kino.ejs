@@ -181,24 +181,28 @@
                 </div>
             </div>
         </div>
-        <div class="kino-kadr pt-3 ">
+
+        <div class="kino-kadr pt-3">
             <h1 class="title__z"><i class="fa fa-angle-right"></i> Ijodkorlar</h1>
 
-            <div class="flex-ijodkor ">
-                <% for(const item of kino.tarjimon) {%>
-                    <div class="__item">
-                        <div class="img-pro">
-                            <img style="z-index: 10" src="http://cdn.amediatv.uz<%= item.image %>" alt="">
+            <div class="carousel-kadr flex-ijodkor">
+                <div class="owl-carousel owl-kadr owl-theme">
+                    <% for(const item of kino.tarjimon) {%>
+                        <div class="__item">
+                            <div class="img-pro">
+                                <img style="z-index: 10" src="http://cdn.amediatv.uz<%= item.image %>" alt="">
+                            </div>
+                            <h4>
+                                <%= item.name %>
+                            </h4>
                         </div>
-                        <h4>
-                            <%= item.name %>
-                        </h4>
-                    </div>
-                    <% } %>
+                        <% } %>
+    
 
+                </div>
             </div>
-
         </div>
+
         <h1 class="title__z mt-3"><i class="fa fa-angle-right"></i> Izohlar</h1>
         <div class="content-comments2">
             <% if(!comment){%>
