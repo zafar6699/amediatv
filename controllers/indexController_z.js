@@ -20,7 +20,6 @@ exports.Home = async (req, res) => {
         arraySort.push(a);
         arraySort.push(s);
         sortKino.push(arraySort)
-
     });
 
 
