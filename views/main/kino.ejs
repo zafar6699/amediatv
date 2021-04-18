@@ -188,23 +188,18 @@
             <div class="carousel-kadr flex-ijodkor">
                 <div class="owl-carousel owl-kadr owl-theme">
 
-
+                    
+                    <% for(const item of kino.tarjimon) {%>
                         <div class="__item">
                             <div class="img-pro">
-                                <img style="z-index: 10" src="http://cdn.amediatv.uz<%= kino.tarjimon[0].image %>" alt="">
+                                <img style="z-index: 10" src="http://cdn.amediatv.uz<%= item.image %>" alt="">
                             </div>
                             <h4>
-                                <%= kino.tarjimon.name %>
+                                <%= item.name %>
                             </h4>
                         </div>
-                        <div class="__item">
-                            <div class="img-pro">
-                                <img style="z-index: 10" src="http://cdn.amediatv.uz<%= kino.translator[0].image %>" alt="">
-                            </div>
-                            <h4>
-                                <%= kino.translator.name %>
-                            </h4>
-                        </div>
+                    <% } %>
+                   
                    
     
 
