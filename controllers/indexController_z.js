@@ -13,22 +13,23 @@ exports.Home = async (req, res) => {
     let sortKino = []
     
  
-    category.forEach(async (element) => {
-        let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
-        let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
+    // category.forEach(async (element) => {
+    //     let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
+    //     let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
+    //     let arraySort = []
+    //     await arraySort.push(a);
+    //     await arraySort.push(s);
+    //     await sortKino.push(arraySort)
+    // });
+
+    for (const item of category) {
+        let a = await Kino.find({ category: item._id }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
+        let s = await Season.find({ category: item._id }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
         let arraySort = []
         await arraySort.push(a);
         await arraySort.push(s);
         await sortKino.push(arraySort)
     });
-
-    // category.forEach(async (element) => {
-    //     let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-    //     let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 });
-    //     let arraySort = []
-    //     await sortKino.push(a);
-    //     await sortKino.push(s);
-    // })
 
 
 
