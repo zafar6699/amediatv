@@ -23,9 +23,10 @@ exports.Home = async (req, res) => {
     // });
 
     for (const item of category) {
-        let a = await Kino.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
-        let s = await Season.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
-        let arraySort = []
+        const s = await Season.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
+        const a = await Kino.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
+        
+        const arraySort = []
         await arraySort.push(a);
         await arraySort.push(s);
         await sortKino.push(arraySort)
