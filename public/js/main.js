@@ -1,6 +1,22 @@
 /** @format */
 
 $(document).ready(function () {
+
+
+	setTimeout(() => {
+		ezoom.onInit($("#img-preview img"), {
+			hideControlBtn: false,
+			onClose: function (result) {
+				console.log(result)
+			},
+			onRotate: function (result) {
+				console.log(result)
+			},
+		})
+	}, 1000)
+
+
+
 	$(".carousel-series .__seria_right").click(function () {
 		$(".carousel-series .owl-next").click()
 	})
