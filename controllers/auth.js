@@ -34,15 +34,15 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
     if (!email || !password) {
-        res.render('./main/404Auth', { title: '404', layout: 'error' })
+        res.redirect('/')
     }
     const users = await User.findOne({ email: email }).select('password');
     if (!users) {
-        res.render('./main/404Auth', { title: '404', layout: 'error' })
+        res.redirect('/')
     }
     const isMatch = await users.matchPassword(password);
     if (!isMatch) {
-        res.render('./main/404Auth', { title: '404', layout: 'error' })
+        res.redirect('/')
     }
 
 
@@ -60,11 +60,6 @@ exports.login = async (req, res, next) => {
         body.status = "vip"
     }
     await body.save({validateBeforeSave: false})
-
-    console.log(today)
-    console.log(body.status)
-    console.log(Next)
-
 
     const balance = await Balance.find({ user: body._id }).sort({ createdAt: -1 }).skip(0).limit(1)
     req.session.balane = balance

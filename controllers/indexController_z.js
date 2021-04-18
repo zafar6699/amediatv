@@ -11,8 +11,8 @@ const Serial = require("../models/seriya")
 exports.Home = async (req, res) => {
     const category = await Category.find()
     let sortKino = []
-    
- 
+
+
     // category.forEach(async (element) => {
     //     let a = await Kino.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
     //     let s = await Season.find({ category: { $all: [element._id] } }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
@@ -23,18 +23,13 @@ exports.Home = async (req, res) => {
     // });
 
     for (const item of category) {
-        let a = await Kino.find({ category: item._id }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
-        let s = await Season.find({ category: item._id }).select({ name: 1, image: 1, price: 1 }).sort({date:-1});
+        let a = await Kino.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
+        let s = await Season.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
         let arraySort = []
         await arraySort.push(a);
         await arraySort.push(s);
         await sortKino.push(arraySort)
     }
-
-
-
-
-
 
     const janr = await Janr.find()
     let slider = await Slider.find()
@@ -51,7 +46,6 @@ exports.Home = async (req, res) => {
                 select: ['name', 'image', 'screens', 'description', 'rating']
             }
         )
-
 
 
     const oneKino = await Kino.find().sort({ date: -1 }).limit(1)
@@ -75,10 +69,6 @@ exports.Home = async (req, res) => {
         .select({ name: 1, category: 1, image: 1, rating: 1, year: 1, janr: 1, date: 1, num: 1, description: 1, price: 1 })
         .populate({ path: 'category', select: 'nameuz' })
         .populate(['janr'])
-
-
-
-
 
 
     res.render("./main/index", {
