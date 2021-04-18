@@ -1,4 +1,5 @@
 const Kino = require('../models/kino')
+const Season = require('../models/season')
 const Janr = require('../models/janr')
 const asyncHandler = require('../middlewares/async')
 const ErrorResponse = require('../utils/errorResponse');
@@ -8,6 +9,7 @@ exports.search = asyncHandler(async (req, res, next) => {
 
     let searchOne = req.query.name;
     let searchingQuery1 = new RegExp(searchOne);
+    let arr = []
     const kino = await Kino.find()
         .or([
             { ['name.uz']: { $regex: searchingQuery1 } },
@@ -16,6 +18,16 @@ exports.search = asyncHandler(async (req, res, next) => {
         .populate({ path: 'category' })
         .populate({ path: 'member' })
         .populate({ path: 'janr' })
+
+    const season = await Season.find()
+        .or([
+            { ['name.uz']: { $regex: searchingQuery1 } },
+        ])
+        .sort({ date: -1 })
+        .populate({ path: 'category' })
+        .populate({ path: 'member' })
+        .populate({ path: 'janr' })
+
     if (!kino && searchOne == [] && searchOne.name == '' && searchOne.name == null && searchOne.name == undefined) {
         res.render('./main/404', {
             title: "Error", layout: 'error',
@@ -23,14 +35,19 @@ exports.search = asyncHandler(async (req, res, next) => {
             lang: req.session.ulang,
         })
     }
+    arr.push(kino)
+    arr.push(season)
     res.render('./main/search', {
         title: "AmediaTV.uz", layout: 'layout',
         user: req.session.user,
         lang: req.session.ulang,
-        kino,
+        arr,
         janr
     })
+
     
+    // res.json(arr)
+
 
 
 })
