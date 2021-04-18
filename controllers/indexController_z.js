@@ -23,8 +23,8 @@ exports.Home = async (req, res) => {
     // });
 
     for (const item of category) {
-        const s = await Season.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
-        const a = await Kino.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1 });
+        const s = await Season.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1, num: 1 });
+        const a = await Kino.find({ category: item._id }).sort({ date: -1 }).select({ name: 1, image: 1, price: 1, num: 1 });
         
         const arraySort = []
         await arraySort.push(s);
@@ -66,14 +66,14 @@ exports.Home = async (req, res) => {
         .populate(['janr'])
    
 
-    // res.render("./main/index", {
-    //     title: "AmediaTV.uz",
-    //     layout: "./layout",
-    //     user: req.session.user, lang: req.session.ulang,
-    //     janr, slider, oneKino, news, kino, category, sortKino
-    // })
+    res.render("./main/index", {
+        title: "AmediaTV.uz",
+        layout: "./layout",
+        user: req.session.user, lang: req.session.ulang,
+        janr, slider, oneKino, news, kino, category, sortKino
+    })
 
-    res.json(sortKino)
+    // res.json(sortKino)
 
 }
 
