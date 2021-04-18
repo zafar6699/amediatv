@@ -3,13 +3,9 @@
 $(document).ready(function () {
 
 	$(".search-media button").click(function (e) {
-		$(".search-media .search-content").slideToggle(0)
+		$(".header-search").slideToggle(0)
 		e.stopPropagation()
-	})
-
-	$(".search-media .search-content").click(function (e) {
-		e.stopPropagation()
-	})
+})
 
 	setTimeout(() => {
 		ezoom.onInit($("#img-preview img"), {

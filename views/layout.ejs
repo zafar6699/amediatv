@@ -238,14 +238,30 @@
 
                 <div class="header-right">
 
-                    <div class="header-search">
-                        <form action="/search" method="GET">
-                            <input type="text" name="name" class="form-control" placeholder="Saytdan izlash...">
-                            <button style="z-index: 10;" type="submit" class=" bg-dark btn btn-success">
-                                <i class="text-white fa fa-search"></i>
+                    <div class="header-search" id="header-search">
+                        <div class="header___inner">
+                          <form action="/search" method="GET">
+                            <input
+                              type="search"
+                              name="name"
+                              class="form-control search-change"
+                              placeholder="Saytdan izlash..."
+                              autocomplete="off"
+                            />
+                            <button
+                              style="z-index: 10"
+                              type="submit"
+                              class="bg-dark btn btn-success"
+                            >
+                              <i class="text-white fa fa-search"></i>
                             </button>
-                        </form>
-                    </div>
+                          </form>
+          
+                          <div class="search-variant">
+                            <ul></ul>
+                          </div>
+                        </div>
+                      </div>
 
                     <div class="header-language">
                         <% if (lang=="uz" || lang==undefined) { %>
@@ -264,12 +280,6 @@
 
                     <div class="search-media">
                         <button><i class="fa fa-search"></i></button>
-                        <div class="search-content">
-                            <form action="/search" method="GET">
-                                <input type="text" name="name" />
-                                <button><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
                     </div>
 
 
@@ -423,6 +433,89 @@
 
 
         <script type="text/javascript">
+
+
+$(".search-change").keyup(function () {
+        let val = $(this).val()
+
+        axios({
+          url: "http://amediatv.uz:2000/search/down",
+          method: "get",
+          params: {
+            name: val,
+          },
+        })
+          .then(async res => {
+            console.log(val)
+            const data = await res.data.data
+            viewVariant(data)
+          })
+          .catch(err => {
+            console.log(err.data)
+          })
+
+        if ($(this).val() == "") {
+          $(".search-variant ul").html("")
+        }
+      })
+
+      function viewVariant(data) {
+        let ser = data[0]
+        let kin = data[1]
+        $(".search-variant ul").html("")
+        if ($(".search-change").val() != "") {
+          ser.forEach((el, index) => {
+            let ul = $(".search-variant ul")
+            ul.append(
+              "<li>" +
+                '<a href="/season/' +
+                el._id +
+                '">' +
+                '<div class="img-v">' +
+                "<img" +
+                ' src="http://cdn.amediatv.uz' +
+                el.image +
+                '"' +
+                'alt=""' +
+                "/>" +
+                "</div>" +
+                "<b>" +
+                el.name.uz +
+                "</b>" +
+                "</a>" +
+                "</li>"
+            )
+          })
+          kin.forEach((el, index) => {
+            let ul = $(".search-variant ul")
+            ul.append(
+              "<li>" +
+                '<a href="/kino/' +
+                el._id +
+                '">' +
+                '<div class="img-v">' +
+                "<img" +
+                ' src="http://cdn.amediatv.uz' +
+                el.image +
+                '"' +
+                'alt=""' +
+                "/>" +
+                "</div>" +
+                "<b>" +
+                el.name.uz +
+                "</b>" +
+                "</a>" +
+                "</li>"
+            )
+          })
+        }
+      }
+
+
+
+
+
+
 
             var player = new MediaElementPlayer('#player1');
             var selector = $(".input-mask");
