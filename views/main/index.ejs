@@ -211,7 +211,7 @@
 
 
 
-            <h1 class="title__z"><i class="fa fa-angle-right"></i> <a href="/news/all">Barcha yangiliklar</a></h1>
+            <h1 class="title__z mt-3"><i class="fa fa-angle-right"></i> <a class="text-dark" href="/news/all">Barcha yangiliklar</a></h1>
             <% if(news == '') {%> 
                 <div class="col-md-4">
                     <a href="#">
@@ -325,11 +325,8 @@
                                                         <% } %> 
                                                 <div class="opa"></div>
                                                 <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                                <% if(item.num) {%> 
-                                                    <h5 class="ml-5" style="display: block; z-index: 100;color: white; text-decoration: none; background-color: rgb(220, 220, 220); border-radius: 4px;"> <%= item.num %> </h5>
-                                                <% }else {%> 
-                                                    <h5 class="ml-5" style="display: block; z-index: 100;color: white; text-decoration: none;"> </h5>
-                                                <% } %> 
+                                                <h5 class="ml-5" style="display: block; z-index: 100;color: white; text-decoration: none; background-color: rgb(220, 220, 220); border-radius: 4px;"> <%= item.num %> </h5>
+                                                 
                                             </div>
                                             
                                             <h3 >
@@ -361,11 +358,7 @@
                                                     <% } %> 
                                             <div class="opa"></div>
                                             <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                            <% if(item.num) {%> 
-                                                <h5 class="ml-5" style="display: block; z-index: 100;color: white; text-decoration: none; background-color: rgb(220, 220, 220); border-radius: 4px;"> <%= item.num %> </h5>
-                                            <% }else {%> 
-                                                <h5 class="ml-5" style="display: block; z-index: 100;color: white; text-decoration: none;"> </h5>
-                                            <% } %>
+                                            
                                         </div>
                                         <h3 >
                                             <%if ( lang === "uz" ) { %>
