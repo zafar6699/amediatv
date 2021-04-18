@@ -278,13 +278,13 @@
 
                         <li <% if(index == 0) { %> class="link__active" <% } %>>
                             <%if(lang === "uz") { %>
-                                <%= element.nameuz %>
+                                <button class="btn btb-dark"><%= element.nameuz %></button>
                             <% } %>
                             <%if(lang === "ru") { %>
-                                <%= element.nameru %>
+                               <button class="btn btb-dark"><%= element.nameru %></button>
                             <% } %>
                             <%if(lang == undefined) { %>
-                                <%= element.nameuz %>
+                                <button class="btn btb-dark"><%= element.nameuz %></button>
                             <% } %>
                         </li>
                         
@@ -321,7 +321,7 @@
                                                 
                                                 <div class="opa"></div>
                                                 <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                                <h5  style="z-index: 100; color: white; text-decoration: none; background-color: rgba(51, 51, 51, 0.234); border-radius: 4px;"> <%= item.num %> </h5>
+                                                <h5  style="padding: 3px 8px; z-index: 100; color: white; text-decoration: none; background-color: rgba(51, 51, 51, 0.391); border-radius: 4px;"> <%= item.num %> </h5>
                                                 <% if(item.price == "selling") {%> 
                                                     <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
                                                     <% } if(item.price == "free") {%>
