@@ -316,7 +316,7 @@
                         <div class="tab-inner-box" id="paginate">
                             <% e[0].forEach(item => { %>
                                     <div class="__item">
-                                        <a href="/kino/<%= item._id %>">
+                                        <a href="/season/<%= item._id %>">
                                             <div class="img__in" style="display: flex; flex-direction: column; align-items: center;" >
                                                 <% if(item.price == "selling") {%> 
                                                     <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
@@ -325,7 +325,7 @@
                                                         <% } %> 
                                                 <div class="opa"></div>
                                                 <img src="http://cdn.amediatv.uz<%= item.image %>" alt="">
-                                                <h5 class="ml-5" style="display: block; z-index: 100;color: white; text-decoration: none; background-color: rgb(220, 220, 220); border-radius: 4px;"> <%= item.num %> </h5>
+                                                <h5 class="ml-5" style="z-index: 100; color: white; text-decoration: none; background-color: rgb(220, 220, 220); border-radius: 4px;"> <%= item.num %> </h5>
                                                  
                                             </div>
                                             
@@ -349,7 +349,7 @@
                             
                             <% e[1].forEach(item => { %>
                                 <div class="__item">
-                                    <a href="/season/<%= item._id %>">
+                                    <a href="/kino/<%= item._id %>">
                                         <div class="img__in">
                                             <% if(item.price == "selling") {%> 
                                                 <i style="z-index: 100; font-size: 20px;"  class="text-warning fas fa-crown"></i>
