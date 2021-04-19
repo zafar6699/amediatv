@@ -39,9 +39,6 @@
                             <% } %>
 
 
-
-                            
-
                                 <div class="carousel-series">
 
                                     <button class="seria_bottom __seria_left"><i class="fa fa-angle-left"></i></button>
@@ -56,6 +53,9 @@
                                                             value="<%= element.video %>">
                                                         <input type="hidden" class="download_hidden"
                                                             value="<%= element.url %>">
+
+
+
                                                         <% if (lang=="uz" ) { %>
                                                             <b>
                                                                 <%= element.name.uz %>
@@ -72,21 +72,24 @@
                                                                             </b><i class="fa fa-eye"></i>
                                                                             <% } %>
                                                 </a>
+
+
+
+                                                <% if (!user || user.status=="user" ) {%>
+                                                    <div></div>
+                                                    <% }else {%>
+                                                        <div>
+                                                            <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
+                                                                <i class="fa fa-download"></i> Yuklab olish
+                                                            </a>
+                                                        </div>
+                                                        <% } %>
+
+
+
+
                                             </div>
                                             <% }); %>
-
-
-
-                                            <% if (!user || user.status=="user" ) {%>
-                                                <div></div>
-                                                <% }else {%>
-                                                    <div>
-                                                        <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
-                                                            <i class="fa fa-download"></i> Yuklab olish
-                                                        </a>
-                                                    </div>
-                                                    <% } %>
-                
 
                                     </div>
                                 </div>
@@ -265,7 +268,7 @@
                                     <%= element.name %>
                                 </h4>
                             </div>
-                        <% }); %>
+                            <% }); %>
                 </div>
             </div>
 
