@@ -40,16 +40,7 @@
 
 
 
-                            <% if (!user || user.status=="user" ) {%>
-                                <div></div>
-                                <% }else {%>
-                                    <div>
-                                        <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
-                                            <i class="fa fa-download"></i> Yuklab olish
-                                        </a>
-                                    </div>
-                                    <% } %>
-
+                            
 
                                 <div class="carousel-series">
 
@@ -83,6 +74,19 @@
                                                 </a>
                                             </div>
                                             <% }); %>
+
+
+
+                                            <% if (!user || user.status=="user" ) {%>
+                                                <div></div>
+                                                <% }else {%>
+                                                    <div>
+                                                        <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
+                                                            <i class="fa fa-download"></i> Yuklab olish
+                                                        </a>
+                                                    </div>
+                                                    <% } %>
+                
 
                                     </div>
                                 </div>
