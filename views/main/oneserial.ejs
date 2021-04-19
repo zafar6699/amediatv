@@ -72,22 +72,7 @@
                                                                             </b><i class="fa fa-eye"></i>
                                                                             <% } %>
                                                 </a>
-
-
-
-                                                <% if (!user || user.status=="user" ) {%>
-                                                    <div></div>
-                                                    <% }else {%>
-                                                        <div>
-                                                            <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
-                                                                <i class="fa fa-download"></i> Yuklab olish
-                                                            </a>
-                                                        </div>
-                                                        <% } %>
-
-
-
-
+                                                
                                             </div>
                                             <% }); %>
 
@@ -170,7 +155,15 @@
             <div class="col-md-9 mt-4">
 
 
-                
+                <% if (!user || user.status=="user" ) {%>
+                    <div></div>
+                    <% }else {%>
+                        <div>
+                            <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
+                                <i class="fa fa-download"></i> Yuklab olish
+                            </a>
+                        </div>
+                        <% } %>
 
 
 
