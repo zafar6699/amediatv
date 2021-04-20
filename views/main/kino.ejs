@@ -39,9 +39,23 @@
                     allowfullscreen="allowfullscreen"></iframe>
 
             </div>
-            <div class="col-md-3 mt-4">
-                <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
+            <div class="col-md-3 mt-4  hidden-download-aa">
+                <% if (!user) {%>
+                    <div class="hidden-download-btn"></div>
+                    <% } else if (user.status==="user" ) {%>
+                        <div class="hidden-download-btn"></div>
+                        <% }else if (user.status==="vip"  ) {%>
+                            <div class="hidden-download-btn">
+                                <a class="__download" href="<%= kino.url %>" id="download_blank"
+                                    target="_blank">
+                                    <i class="fa fa-download"></i> Yuklab olish
+                                </a>
+                            </div>
+                            <% } %>
 
+                <h1 class="title__z mt-4"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
+
+                 
                 <div class="profile-info">
                     <div class="info__item">
                         <h3> <i class="fa fa-map"></i> Mamlakat:</h3>
@@ -110,13 +124,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 mt-2">
+            <div class="col-md-9 mt-2 download-bottom-aa">
                 <% if (!user) {%>
-                    <div></div>
+                    <div class="download-bottom"></div>
                     <% } else if (user.status==="user" ) {%>
-                        <div></div>
+                        <div class="download-bottom"></div>
                         <% }else if (user.status==="vip"  ) {%>
-                            <div>
+                            <div class="download-bottom">
                                 <a class="__download" href="<%= kino.url %>" id="download_blank"
                                     target="_blank">
                                     <i class="fa fa-download"></i> Yuklab olish

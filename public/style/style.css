@@ -89,6 +89,14 @@ div.my-modal div.form-auth h6.__active {
   opacity: 1 !important;
 }
 
+div.hidden-download-aa div.hidden-download-btn {
+  display: none;
+}
+
+div.download-bottom-aa div.download-bottom {
+  display: block;
+}
+
 header.header {
   padding: 15px 0px;
   background-color: #6a2fe3;
@@ -1075,6 +1083,12 @@ div.tab-animes div.tab-content div.tab-inner-box .__item h3 {
   div.tab-links ul li button {
     padding: 5px 10px !important;
     font-size: 12px !important;
+  }
+  div.hidden-download-aa div.hidden-download-btn {
+    display: block;
+  }
+  div.download-bottom-aa div.download-bottom {
+    display: none;
   }
   .home__video {
     height: 200;

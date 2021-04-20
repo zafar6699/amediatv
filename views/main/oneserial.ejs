@@ -81,8 +81,21 @@
                 </div>
 
             </div>
-            <div class="col-md-3 mt-4">
-                <h1 class="title__z"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
+            <div class="col-md-3 mt-4  hidden-download-aa">
+
+                <% if (!user || user.status=="user" ) {%>
+                    <div class="hidden-download-btn"></div>
+                    <% }else {%>
+                        <div class="hidden-download-btn">
+                            <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
+                                <i class="fa fa-download"></i> Yuklab olish
+                            </a>
+                        </div>
+                        <% } %>
+
+
+
+                <h1 class="title__z mt-3"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
 
                 <div class="profile-info">
                     <div class="info__item">
@@ -152,13 +165,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 mt-4">
+            <div class="col-md-9 mt-4 download-bottom-aa">
 
 
                 <% if (!user || user.status=="user" ) {%>
-                    <div></div>
+                    <div class="download-bottom"></div>
                     <% }else {%>
-                        <div>
+                        <div class="download-bottom">
                             <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
                                 <i class="fa fa-download"></i> Yuklab olish
                             </a>
