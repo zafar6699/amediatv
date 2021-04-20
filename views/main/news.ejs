@@ -1,21 +1,22 @@
 <div class="news-one">
     <div class="container">
         <div class="row">
-            <div class="col-md-9 pr-5">
+            <div class="main-image-o col-md-9 pr-5">
                 <div class="date-news">
                     <i class="fa fa-calendar" aria-hidden="false"></i>
                     <h6><%= moment(news.date).format("DD-MM-YYYY") %></h6>
                 </div>
                 <h1 class="title-news"><%= news.name.uz %></h1>
-                <div class="img-news">
-                    <img src="http://cdn.amediatv.uz<%= news.image %>" alt>
+                <div class="img-news salom">
+                    <!-- <img src="http://cdn.ammediatv.uz<%= news.image %>" alt> -->
+                    <img src="<%= news.image %>" alt>
                 </div>
                 <p>
                     <%= news.description.uz %>
                 </p>
             
 
-                <div class="adverstiment col" >
+                <div class="adverstiment">
                     <a href="http://<%= news.videoLink %>">
                         <div class="img-news">
                             <img src="/img/banner_img.png" alt="Rasm">
@@ -24,7 +25,8 @@
                     </a>
                 </div>
 
-                <div class="hashtag">
+
+                <div class="hashtag mb-4">
                     <span><%= news.tags %></span>
                 </div>
 
