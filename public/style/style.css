@@ -1860,6 +1860,7 @@ div.kino div.news-one div.container div.row div.main-image-o div.salom img {
 }
 
 div.hashtag {
+  margin-top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1877,7 +1878,7 @@ div.hashtag span {
 }
 
 div.rating {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 div.rating button {

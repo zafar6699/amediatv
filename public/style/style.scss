@@ -1592,6 +1592,7 @@ div.kino {
 }
 
 div.hashtag {
+	margin-top: 0;
 	display: flex;
 	flex-wrap: wrap;
 	span {
@@ -1605,7 +1606,7 @@ div.hashtag {
 }
 
 div.rating {
-	margin-top: 30px;
+	margin-top: 10px;
 	button {
 		padding: 8px 12px;
 		border-radius: 5px;
