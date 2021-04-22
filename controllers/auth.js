@@ -34,22 +34,29 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
     if (!email || !password) {
-        res.redirect('/')
+        // res.redirect('/')
+        res.status(401).json({
+            success: true, data: 'Unauthorized'
+        })
         
         
     }
     const users = await User.findOne({ email: email }).select('password');
     if (!users) {
-        res.redirect('/')
-       
+        // res.redirect('/')
+        res.status(401).json({
+            success: true, data: 'Unauthorized'
+        })
         
     }
     const isMatch = await users.matchPassword(password);
     if (!isMatch) {
-        res.redirect('/')
+        // res.redirect('/')
+        res.status(401).json({
+            success: true, data: 'Unauthorized'
+        })
         
     }
-
 
     /* Agar har safar profilga kirganda userni trafigi tugasa "status: user" boladi. 
     Aks holda "vip" qiladi */
@@ -57,22 +64,17 @@ exports.login = async (req, res, next) => {
 
     const today = new Date();
     const Next = new Date(body.balanceJournals)
-    
-    
     if (today > Next) {
         body.status = "user"
     } else if(today < Next){
         body.status = "vip"
     }
     await body.save({validateBeforeSave: false})
-
     const balance = await Balance.find({ user: body._id }).sort({ createdAt: -1 }).skip(0).limit(1)
     req.session.balane = balance
     req.session.user = body
     req.session.save()
     res.redirect('/')
-    
-
 }
 exports.getSession = async (req, res) => {
     const user = req.session
