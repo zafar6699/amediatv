@@ -36,7 +36,7 @@ exports.login = async (req, res, next) => {
     if (!email || !password) {
         // res.redirect('/')
         res.status(401).json({
-            success: true, data: 'Unauthorized'
+            success: true, data: '401'
         })
         
         
@@ -45,7 +45,7 @@ exports.login = async (req, res, next) => {
     if (!users) {
         // res.redirect('/')
         res.status(401).json({
-            success: true, data: 'Unauthorized'
+            success: true, data: '401'
         })
         
     }
@@ -53,7 +53,7 @@ exports.login = async (req, res, next) => {
     if (!isMatch) {
         // res.redirect('/')
         res.status(401).json({
-            success: true, data: 'Unauthorized'
+            success: true, data: '401'
         })
         
     }
