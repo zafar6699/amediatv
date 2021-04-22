@@ -153,11 +153,23 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     }
 
     else if (!me && (season.price === 'selling')) {
-        res.redirect('/')
+        res.render("./main/notVip", {
+            title: "AmediaTV.uz",
+            layout: 'error',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr
+        })
     }
 
     else if ((me.status == 'user') && (season.price == 'selling')) {
-        res.redirect('/')
+        res.render("./main/notVip", {
+            title: "AmediaTV.uz",
+            layout: 'error',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr
+        })
     }
 
     else if ((me.status == 'user') && (season.price == 'free')) {

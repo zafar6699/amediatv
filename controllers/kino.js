@@ -158,8 +158,10 @@ exports.getById = async (req, res) => {
 
     const kino = await Kino.findById({ _id: req.params.id })
         .populate(['category', 'janr', 'translator', 'tayming', 'tarjimon', 'seriya'])
+
+
     const me = req.session.user
-    if ((!me || me) || kino.price === 'free') {
+    if (!me && (kino.price == 'free')) {
         res.render("./main/kino", {
             title: "AmediaTV.uz",
             layout: 'layout',
@@ -170,56 +172,143 @@ exports.getById = async (req, res) => {
             kino
         })
     }
-    else if ( !me && kino.price == 'selling') {
-        res.redirect('/')
-    }
-    
-    else {
-        const me = req.session.user
-        if (!me && kino.price === 'selling') {
-            res.redirect('/')
-        }
-        else if (!me && kino.price === 'free') {
-            res.render("./main/kino", {
-                title: "AmediaTV.uz",
-                layout: 'layout',
-                user: req.session.user,
-                lang: req.session.ulang,
-                janr,
-                kino,
-                comment
-            })
-        }
-        else if (me.status !== 'vip' && kino.price === 'selling') {
-            res.render('./main/notVip', {
-                title: "Error", layout: 'error',
-                user: req.session.user,
-                lang: req.session.ulang,
-                janr,
-                comment
-            })
-        } else if (!me && me.price === 'selling') {
-            res.render('./main/notVip', {
-                title: "Error", layout: 'error',
-                user: req.session.user,
-                lang: req.session.ulang,
-                janr,
-                comment
-            })
-        } else if (me.status === 'vip' && kino.price === 'selling') {
 
-            res.render("./main/kino", {
-                title: "AmediaTV.uz",
-                layout: 'layout',
-                user: req.session.user,
-                lang: req.session.ulang,
-                janr,
-                kino,
-                comment
-            })
-        }
-
+    else if (!me && (kino.price === 'selling')) {
+        res.render("./main/notVip", {
+            title: "AmediaTV.uz",
+            layout: 'error',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr
+        })
     }
+
+    else if ((me.status == 'user') && (kino.price == 'selling')) {
+        res.render("./main/notVip", {
+            title: "AmediaTV.uz",
+            layout: 'error',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr
+        })
+    }
+
+    else if ((me.status == 'user') && (kino.price == 'free')) {
+        res.render("./main/kino", {
+            title: "AmediaTV.uz",
+            layout: 'layout',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr,
+            comment,
+            kino
+        })
+    }
+
+    else if ((me.status !== 'vip') && (kino.price === 'selling')) {
+        res.render('./main/notVip', {
+            title: "401", layout: 'error',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr, seria, comment
+        })
+        // user vip bolsa va serial pullik bolsa serialga kiradi
+    }
+
+    else if ((me.status === 'vip') && (kino.price === 'selling')) {
+        res.render("./main/kino", {
+            title: "AmediaTV.uz",
+            layout: 'layout',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr,
+            comment,
+            kino
+        })
+    }
+
+    else if ((me.status === 'vip') && (season.price === 'free')) {
+        res.render("./main/kino", {
+            title: "AmediaTV.uz",
+            layout: 'layout',
+            user: req.session.user,
+            lang: req.session.ulang,
+            janr,
+            comment,
+            kino
+        })
+    }
+
+
+
+
+
+    // const me = req.session.user
+    // if ((!me || me) || kino.price === 'free') {
+    //     res.render("./main/kino", {
+    //         title: "AmediaTV.uz",
+    //         layout: 'layout',
+    //         user: req.session.user,
+    //         lang: req.session.ulang,
+    //         janr,
+    //         comment,
+    //         kino
+    //     })
+    // }
+    // else if (!me && kino.price == 'selling') {
+    //     res.render("./main/notVip", {
+    //         title: "AmediaTV.uz",
+    //         layout: 'error',
+
+    //     })
+    // }
+
+    // else {
+    //     const me = req.session.user
+    //     if (!me && kino.price === 'selling') {
+    //         res.render("./main/notVip", {
+    //             title: "AmediaTV.uz",
+    //             layout: 'error',
+    //         })
+    //     }
+    //     else if (!me && kino.price === 'free') {
+    //         res.render("./main/kino", {
+    //             title: "AmediaTV.uz",
+    //             layout: 'layout',
+    //             user: req.session.user,
+    //             lang: req.session.ulang,
+    //             janr,
+    //             kino,
+    //             comment
+    //         })
+    //     }
+    //     else if (me.status !== 'vip' && kino.price === 'selling') {
+    //         res.render('./main/notVip', {
+    //             title: "Error", layout: 'error',
+    //             user: req.session.user,
+    //             lang: req.session.ulang,
+
+    //         })
+    //     } else if (!me && me.price === 'selling') {
+    //         res.render('./main/notVip', {
+    //             title: "Error", layout: 'error',
+    //             user: req.session.user,
+    //             lang: req.session.ulang,
+    //         })
+    //     } else if (me.status === 'vip' && kino.price === 'selling') {
+
+    //         res.render("./main/kino", {
+    //             title: "AmediaTV.uz",
+    //             layout: 'layout',
+    //             user: req.session.user,
+    //             lang: req.session.ulang,
+    //             janr,
+    //             kino,
+    //             comment
+    //         })
+    //     }
+
+    // }
 
 
 

@@ -1,53 +1,23 @@
 <style>
-  @import url("https://fonts.googleapis.com/css?family=Dosis:300,400,700,800");
-
-  /** Styles for the 403 Page **/
-
-  .particle-error,
-  .permission_denied,
-  #particles-js {
+  .image_111 img {
     width: 100%;
-    height: 100%;
-    margin: 0px !important;
-    overflow: hidden;
+    height: 100vh;
   }
 
-  #particles-js {
-    position: fixed !important;
-    opacity: 0.23;
+  @media (max-width: 768px) {
+    .image_111 img {
+      width: 100%;
+      height: 40vh;
+      margin: 40% auto;
+    }
   }
-
-  .permission_denied {
-    background: #24344c !important;
-  }
-
-  .denied__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10%;
-    font-family: "Dosis", sans-serif;
-    text-align: center;
-    color: white;
-  }
-  .denied__wrapper h1{
-    font-family: "Dosis", sans-serif;
-    font-size: 150px;
-  }
-
-  
 </style>
 
 
 <!-- Icons purchased via Iconfinder under Basic License -->
 
 <body class="permission_denied">
-  <div id="particles-js"></div>
-  <div class="denied__wrapper">
-    <h1>402</h1>
-    <h3>Salom hurmatli foydalanuvchi. Video olishingiz uchun avval <br> 
-      tarif sotib olishingiz kerak</h3>
-
+  <div id="particles-js" class="image_111">
+    <img src="/img/warning.jpg" alt="">
   </div>
 </body>
