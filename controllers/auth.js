@@ -34,26 +34,19 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
     if (!email || !password) {
-        // res.redirect('/')
-        res.status(401).json({
-            success: true, data: "Avtorizatsiyda o'tilmagan"
-        })
+        res.redirect('/')
+        
         
     }
     const users = await User.findOne({ email: email }).select('password');
     if (!users) {
-        // res.redirect('/')
-        res.status(401).json({
-            success: true, data: "Avtorizatsiyda o'tilmagan"
-        })
+        res.redirect('/')
+       
         
     }
     const isMatch = await users.matchPassword(password);
     if (!isMatch) {
-        // res.redirect('/')
-        res.status(401).json({
-            success: true, data: "Avtorizatsiyda o'tilmagan"
-        })
+        res.redirect('/')
         
     }
 
@@ -77,10 +70,8 @@ exports.login = async (req, res, next) => {
     req.session.balane = balance
     req.session.user = body
     req.session.save()
-    // res.redirect('/')
-    res.status(200).json({
-        success: true, data: body
-    })
+    res.redirect('/')
+    
 
 }
 exports.getSession = async (req, res) => {
