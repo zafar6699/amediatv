@@ -59,7 +59,7 @@
 
 
 
-    <form action="/auth/signin" method="POST">
+    <form action="/auth/signin" method="POST" class="login_submit">
         <div class="modal fade my-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -70,6 +70,12 @@
                     </div>
 
                     <div class="modal-body">
+
+                        <div class="alert alert-danger none__alert" role="alert">
+                            Email yoki parol noto'g'ri
+                        </div>
+
+
                         <div class="form-auth">
                             <h4>Email</h4>
                             <input type="email" id="email-login" name="email" placeholder="Emailni kiriting...">
@@ -85,7 +91,7 @@
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary">Kirish</button>
+                        <button type="button" onclick="loginUser()" class="btn btn-primary">Kirish</button>
                     </div>
 
 
@@ -240,28 +246,19 @@
 
                     <div class="header-search" id="header-search">
                         <div class="header___inner">
-                          <form action="/search" method="GET">
-                            <input
-                              type="search"
-                              name="name"
-                              class="form-control search-change"
-                              placeholder="Saytdan izlash..."
-                              autocomplete="off"
-                            />
-                            <button
-                              style="z-index: 10"
-                              type="submit"
-                              class="bg-dark btn btn-success"
-                            >
-                              <i class="text-white fa fa-search"></i>
-                            </button>
-                          </form>
-          
-                          <div class="search-variant">
-                            <ul></ul>
-                          </div>
+                            <form action="/search" method="GET">
+                                <input type="search" name="name" class="form-control search-change"
+                                    placeholder="Saytdan izlash..." autocomplete="off" />
+                                <button style="z-index: 10" type="submit" class="bg-dark btn btn-success">
+                                    <i class="text-white fa fa-search"></i>
+                                </button>
+                            </form>
+
+                            <div class="search-variant">
+                                <ul></ul>
+                            </div>
                         </div>
-                      </div>
+                    </div>
 
                     <div class="header-language">
                         <% if (lang=="uz" || lang==undefined) { %>
@@ -435,81 +432,81 @@
         <script type="text/javascript">
 
 
-$(".search-change").keyup(function () {
-        let val = $(this).val()
+            $(".search-change").keyup(function () {
+                let val = $(this).val()
 
-        axios({
-          url: "http://amediatv.uz:2000/search/down",
-          method: "get",
-          params: {
-            name: val,
-          },
-        })
-          .then(async res => {
-            console.log(val)
-            const data = await res.data.data
-            viewVariant(data)
-          })
-          .catch(err => {
-            console.log(err.data)
-          })
+                axios({
+                    url: "http://amediatv.uz:2000/search/down",
+                    method: "get",
+                    params: {
+                        name: val,
+                    },
+                })
+                    .then(async res => {
+                        console.log(val)
+                        const data = await res.data.data
+                        viewVariant(data)
+                    })
+                    .catch(err => {
+                        console.log(err.data)
+                    })
 
-        if ($(this).val() == "") {
-          $(".search-variant ul").html("")
-        }
-      })
+                if ($(this).val() == "") {
+                    $(".search-variant ul").html("")
+                }
+            })
 
-      function viewVariant(data) {
-        let ser = data[0]
-        let kin = data[1]
-        $(".search-variant ul").html("")
-        if ($(".search-change").val() != "") {
-          ser.forEach((el, index) => {
-            let ul = $(".search-variant ul")
-            ul.append(
-              "<li>" +
-                '<a href="/season/' +
-                el._id +
-                '">' +
-                '<div class="img-v">' +
-                "<img" +
-                ' src="http://cdn.amediatv.uz' +
-                el.image +
-                '"' +
-                'alt=""' +
-                "/>" +
-                "</div>" +
-                "<b>" +
-                el.name.uz +
-                "</b>" +
-                "</a>" +
-                "</li>"
-            )
-          })
-          kin.forEach((el, index) => {
-            let ul = $(".search-variant ul")
-            ul.append(
-              "<li>" +
-                '<a href="/kino/' +
-                el._id +
-                '">' +
-                '<div class="img-v">' +
-                "<img" +
-                ' src="http://cdn.amediatv.uz' +
-                el.image +
-                '"' +
-                'alt=""' +
-                "/>" +
-                "</div>" +
-                "<b>" +
-                el.name.uz +
-                "</b>" +
-                "</a>" +
-                "</li>"
-            )
-          })
-        }
-      }
+            function viewVariant(data) {
+                let ser = data[0]
+                let kin = data[1]
+                $(".search-variant ul").html("")
+                if ($(".search-change").val() != "") {
+                    ser.forEach((el, index) => {
+                        let ul = $(".search-variant ul")
+                        ul.append(
+                            "<li>" +
+                            '<a href="/season/' +
+                            el._id +
+                            '">' +
+                            '<div class="img-v">' +
+                            "<img" +
+                            ' src="http://cdn.amediatv.uz' +
+                            el.image +
+                            '"' +
+                            'alt=""' +
+                            "/>" +
+                            "</div>" +
+                            "<b>" +
+                            el.name.uz +
+                            "</b>" +
+                            "</a>" +
+                            "</li>"
+                        )
+                    })
+                    kin.forEach((el, index) => {
+                        let ul = $(".search-variant ul")
+                        ul.append(
+                            "<li>" +
+                            '<a href="/kino/' +
+                            el._id +
+                            '">' +
+                            '<div class="img-v">' +
+                            "<img" +
+                            ' src="http://cdn.amediatv.uz' +
+                            el.image +
+                            '"' +
+                            'alt=""' +
+                            "/>" +
+                            "</div>" +
+                            "<b>" +
+                            el.name.uz +
+                            "</b>" +
+                            "</a>" +
+                            "</li>"
+                        )
+                    })
+                }
+            }
 
 
 
@@ -606,34 +603,59 @@ $(".search-change").keyup(function () {
 
 
 
-
-
-
-
             function loginUser() {
-                let email = document.getElementById("email-login").value;
-                let password = document.getElementById("password-login").value;
+                let email = document.getElementById("email-login").value
+                let password = document.getElementById("password-login").value
 
                 axios({
                     url: "/auth/signin",
                     method: "POST",
                     data: {
                         email: email,
-                        password: password
-                    }
+                        password: password,
+                    },
                 })
                     .then(res => {
-                        console.log(res);
-
-                        localStorage.setItem('token', res.data.token);
-
+                        console.log(res)
+                            $(".login_submit").submit()
 
                     })
                     .catch(err => {
-                        console.log(err);
-                    })
+                        console.log(err)
+                        $(".none__alert").removeClass("none__alert")
 
+                        
+                    })
             }
+
+
+
+
+
+            // function loginUser() {
+            //     let email = document.getElementById("email-login").value;
+            //     let password = document.getElementById("password-login").value;
+
+            //     axios({
+            //         url: "/auth/signin",
+            //         method: "POST",
+            //         data: {
+            //             email: email,
+            //             password: password
+            //         }
+            //     })
+            //         .then(res => {
+            //             console.log(res);
+
+            //             localStorage.setItem('token', res.data.token);
+
+
+            //         })
+            //         .catch(err => {
+            //             console.log(err);
+            //         })
+
+            // }
 
 
 
@@ -661,3 +683,9 @@ $(".search-change").keyup(function () {
 </body>
 
 </html>
+
+<style>
+    .none__alert {
+      display: none;
+    }
+  </style>
