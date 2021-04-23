@@ -53,7 +53,7 @@ app.use(i18n({
 
 // Layout and ejs
 app.use(layout)
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
