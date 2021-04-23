@@ -4,52 +4,59 @@
             <div class="main-image-o col-md-9 pr-5">
                 <div class="date-news">
                     <i class="fa fa-calendar" aria-hidden="false"></i>
-                    <h6><%= moment(news.date).format("DD-MM-YYYY") %></h6>
+                    <h6>
+                        <%= moment(news.date).format("DD-MM-YYYY") %>
+                    </h6>
                 </div>
-                <h1 class="title-news"><%= news.name.uz %></h1>
+                <h1 class="title-news">
+                    <%= news.name.uz %>
+                </h1>
                 <div class="img-news salom">
                     <img src="http://cdn.amediatv.uz<%= news.image %>" alt>
                 </div>
                 <p>
                     <%= news.description.uz %>
                 </p>
-            
+
 
                 <div class="adverstiment">
-                    <a href="http://<%= news.videoLink %>">
-                        <div class="img-news">
-                            <img src="/img/banner_img.png" alt="Rasm">
-                        </div>
-                        
-                    </a>
+                    <div class="img-news">
+                        <!-- <img src="/img/banner_img.png" alt="Rasm"> -->
+                        <iframe src="<%= news.videoLink %>"></iframe>
+                    </div>
                 </div>
 
 
                 <div class="hashtag mb-4">
-                    <span><%= news.tags %></span>
+                    <span>
+                        <%= news.tags %>
+                    </span>
                 </div>
 
             </div>
             <div class="col-md-3">
-                <h1 class="title__z"><i class="fa fa-angle-right"></i> <a href="/news/all" class="text-dark">Yangiliklar</a></h1>
+                <h1 class="title__z"><i class="fa fa-angle-right"></i> <a href="/news/all"
+                        class="text-dark">Yangiliklar</a></h1>
 
                 <div class="news-home">
                     <div class="row">
                         <div class="col-12">
-                            <% allNews.forEach(element => { %>
+                            <% allNews.forEach(element=> { %>
                                 <a href="/news/<%= element._id %>">
                                     <div class="box-border news__item">
                                         <img src="http://cdn.amediatv.uz<%= element.image %>" alt="">
                                         <div class="opa"></div>
                                         <div class="news__item__title">
-                                            <h4><%= element.name.uz %></h4>
+                                            <h4>
+                                                <%= element.name.uz %>
+                                            </h4>
                                         </div>
                                     </div>
                                 </a>
-                                    
-                            <% }); %>
-                            
-                            
+
+                                <% }); %>
+
+
                         </div>
                     </div>
                 </div>

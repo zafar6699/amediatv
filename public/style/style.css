@@ -1090,8 +1090,8 @@ div.tab-animes div.tab-content div.tab-inner-box .__item h3 {
   div.download-bottom-aa div.download-bottom {
     display: none;
   }
-  div.adverstiment a div.img-news img {
-    margin-top: -50px;
+  div.adverstiment div.img-news iframe {
+    margin-top: -45px;
     width: 100%;
     height: 45%;
     border-radius: 10px;
