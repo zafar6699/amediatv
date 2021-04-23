@@ -53,16 +53,16 @@ app.use(i18n({
 
 // Layout and ejs
 app.use(layout)
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 
-app.use(express.static('public'));
-app.use('/uploads', express.static(__dirname + 'public/uploads'));
-app.use('/css', express.static(__dirname + 'public/css'));
-app.use('/img', express.static(__dirname + 'public/img'));
-app.use('/js', express.static(__dirname + 'public/js'));
+// app.use(express.static('public'));
+// app.use('/uploads', express.static(__dirname + 'public/uploads'));
+// app.use('/css', express.static(__dirname + 'public/css'));
+// app.use('/img', express.static(__dirname + 'public/img'));
+// app.use('/js', express.static(__dirname + 'public/js'));
 
 
 // Routes EJS
