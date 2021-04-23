@@ -10,8 +10,8 @@ const i18n = require("i18n-express");
 const app = express()
 const bodyParser = require("body-parser")
 
-// const MongoURI = "mongodb://localhost:27017/amedia_test"
-const MongoURI = "mongodb://localhost:27017/amediatv"    
+const MongoURI = "mongodb://localhost:27017/amedia_test"
+// const MongoURI = "mongodb://localhost:27017/amediatv"    
 mongoose
   .connect(MongoURI, {
     useNewUrlParser: true,
@@ -57,7 +57,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-// app.use( express.json() )
+
+app.use(express.static('public'));
+app.use('/uploads', express.static(__dirname + 'public/uploads'));
+app.use('/css', express.static(__dirname + 'public/css'));
+app.use('/img', express.static(__dirname + 'public/img'));
+app.use('/js', express.static(__dirname + 'public/js'));
 
 
 // Routes EJS
@@ -67,7 +72,6 @@ app.use('/', require('./routes/videos'))
 
 
 //  Router Backend
-
 
 app.use('/auth', require('./routes/auth'));
 app.use('/comment', require('./routes/comment'));
@@ -90,8 +94,6 @@ app.use('/pricelist', require('./routes/priceList'));
 app.use('/search', require('./routes/search'));
 app.use('/commentseason', require('./routes/AddCommentSeason') );
 app.use('/commentkino', require('./routes/AddCommentKino'));
-
-
 
 app.use('/', require('./routes/404'));
 
