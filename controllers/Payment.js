@@ -2,29 +2,48 @@ const User = require('../models/user')
 const Jurnal = require('../models/jurnal')
 
 exports.checkUser = async (req, res) => {
-    try {
-        const user = req.session.user
+    // try {
+    //     const user = req.session.user
 
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                data: 0
-            })
-        } else {
-            const priceCheck = new Jurnal({
-                amount: req.body.amount,
-                userID: user._id,
-            })
-            priceCheck.save()
-            res.redirect(`https://pay.amediatv.uz/pay/payme/${user.uid}/${priceCheck.amount}`)
+    //     if (!user) {
+    //         return res.status(404).json({
+    //             success: false,
+    //             data: 0
+    //         })
+    //     } else {
+    //         const priceCheck = new Jurnal({
+    //             amount: req.body.amount,
+    //             userID: user._id
+    //         })
+    //         priceCheck.save()
+    //         res.redirect(`https://pay.amediatv.uz/pay/payme/${user.uid}/${priceCheck.amount}`)
 
-        }
+    //     }
 
-    } catch (e) {
-        res.status(400).json({
+    // } catch (e) {
+    //     res.status(400).json({
+    //         success: false,
+    //         data: e
+    //     })
+    // }
+
+
+    
+    const user = req.session.user
+
+    if (!user) {
+        return res.status(404).json({
             success: false,
-            data: e
+            data: 0
         })
+    } else {
+        const priceCheck = new Jurnal({
+            amount: req.body.amount,
+            userID: user._id
+        })
+        priceCheck.save()
+        res.redirect(`https://pay.amediatv.uz/pay/payme/${user.uid}/${priceCheck.amount}`)
+
     }
 }
 
