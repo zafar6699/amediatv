@@ -5,7 +5,7 @@ const {checkUser, saveData, Events,checkOson,payOson} = require('../controllers/
 
 router.post('/check', checkOson)
 router.post('/pay',payOson)
-router.post('/check/:id', checkUser)
+router.post('/check/:id/:code', checkUser)
 router.post('/create', saveData)
 router.get('/all', Events)
 

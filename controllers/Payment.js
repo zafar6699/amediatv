@@ -1,15 +1,8 @@
 const User = require('../models/user')
 const Jurnal = require('../models/jurnal')
 
-
-
-
-
 exports.checkUser = async (req, res) => {
     try {
-        // const user = await User.findOne({ uid: req.params.id })
-        //     .select({ name: 1, balance: 1 })
-
         const user = req.session.user
 
         if (!user) {
@@ -18,10 +11,6 @@ exports.checkUser = async (req, res) => {
                 data: 0
             })
         } else {
-            // return res.status(200).json({
-            //     success: true,
-            //     user: user
-            // })
             const priceCheck = new Jurnal({
                 amount: req.body.amount
             })
