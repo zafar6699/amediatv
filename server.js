@@ -73,6 +73,7 @@ app.use('/', require('./routes/videos'))
 
 //  Router Backend
 
+app.use('/pay', require('./routes/POST_PAYMENT'));
 app.use('/auth', require('./routes/auth'));
 app.use('/comment', require('./routes/comment'));
 app.use('/users', require('./routes/users'));
