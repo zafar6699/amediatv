@@ -3,7 +3,6 @@ const Jurnal = require('../models/jurnal')
 
 exports.checkUser = async (req, res) => {
     try {
-        const user = req.session.user
 
         if (!user) {
             return res.status(404).json({
@@ -11,6 +10,7 @@ exports.checkUser = async (req, res) => {
                 data: 0
             })
         } else {
+            const user = req.session.user
             const priceCheck = new Jurnal({
                 amount: req.body.amount,
                 userID: user._id
