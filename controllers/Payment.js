@@ -12,7 +12,8 @@ exports.checkUser = async (req, res) => {
             })
         } else {
             const priceCheck = new Jurnal({
-                amount: req.body.amount
+                amount: req.body.amount,
+                userID: req.body.userID,
             })
             priceCheck.save()
             res.redirect(`https://pay.amediatv.uz/pay/payme/${user.uid}/${priceCheck.amount}`)
