@@ -32,16 +32,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <form action="/pay/check/<%= user.uid %>" method="POST">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Balansni to'ldirish</h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Balansni to'ldirish</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <form action="/pay/check/<%= user.uid %>" method="POST"></form>
                 <div class="modal-body">
                     <div class="form-auth">
                         <h4>Summa</h4>
-                        <input type="number" name="amount" placeholder="Summani kiriting..." required>
-                        <input type="text" name="userID" value="<%= user._id %>"  required />
+                        <input type="number" name="amount" value="" placeholder="Summani kiriting..." required>
+                        <input type="hidden" name="userID" value="<%= user._id %>" required />
                     </div>
 
                 </div>
@@ -98,15 +100,16 @@
                             encType="multipart/form-data"
                             style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                             <div class="avatar-wrapper">
-                                   <% if(user.photo){%>
-                                       <img class="profile-pic" src="http://amediatv.uz:2000/uploads/<%= user.photo %>" alt="" />
+                                <% if(user.photo){%>
+                                    <img class="profile-pic" src="http://amediatv.uz:2000/uploads/<%= user.photo %>"
+                                        alt="" />
                                     <% } else if(!user.photo) {%>
                                         <img class="profile-pic" src="" alt="" />
-                                    <% } %>
-                                    <div class="upload-button">
-                                        <i class="fa fa-arrow-circle-up"></i>
-                                    </div>
-                                    <input class="file-upload" type="file" name="photo" multiple />
+                                        <% } %>
+                                            <div class="upload-button">
+                                                <i class="fa fa-arrow-circle-up"></i>
+                                            </div>
+                                            <input class="file-upload" type="file" name="photo" multiple />
                             </div>
                             <button type="submit" class="btn btn-success ml-2 mb-5">
                                 <i class="fas fa-check"></i> Saqlash
@@ -200,47 +203,52 @@
 
                     <div class="content-comments">
 
-                        <% if(commentSeriya == '') {%> 
+                        <% if(commentSeriya=='' ) {%>
                             <h5>Komment mavjud emas</h5>
-                        <% } else  {%> 
-                            <% for(const item of commentSeriya) {%>
-                                <a href="/season/<%= item.season._id%>" class="text-dark">
-                                    <div class="comments__item">
-                                        <div class="comments-top">
-                                            <div class="left">
-                                                <div class="img">
+                            <% } else {%>
+                                <% for(const item of commentSeriya) {%>
+                                    <a href="/season/<%= item.season._id%>" class="text-dark">
+                                        <div class="comments__item">
+                                            <div class="comments-top">
+                                                <div class="left">
+                                                    <div class="img">
+                                                        <% if(!item.user){%>
+                                                            <img src="" alt="">
+                                                            <% } else if(item.user){%>
+                                                                <img src="http://amediatv.uz:2000/uploads/<%= item.user.photo %>"
+                                                                    alt="">
+                                                                <% } %>
+                                                    </div>
                                                     <% if(!item.user){%>
-                                                        <img src="" alt="">
-                                                        <% } else if(item.user){%>
-                                                            <img src="http://amediatv.uz:2000/uploads/<%= item.user.photo %>" alt="">
+                                                        <h4></h4>
+                                                        <% } else if(item.user) {%>
+                                                            <h4>
+                                                                <%= item.user.name %>
+                                                            </h4>
                                                             <% } %>
-                                                </div>
-                                                <% if(!item.user){%>
-                                                    <h4></h4>
-                                                    <% } else if(item.user) {%>
-                                                        <h4>
-                                                            <%= item.user.name %>
-                                                        </h4>
-                                                        <% } %>
-    
-                                            </div>
-                                            <h6>
-                                                <%= moment(item.date).format("DD-MM-YYYY") %>
-                                            </h6>
-                                        </div>
-                                        <div class="comment__p">
-    
-                                            <h6><%= item.season.name.uz %></h6>
-    
-                                            <p><%= item.message %></p>
-                                        </div>
-                                    </div>
-                                </a>
-                            <% } %>
 
-                          
-                        <% } %> 
-                       
+                                                </div>
+                                                <h6>
+                                                    <%= moment(item.date).format("DD-MM-YYYY") %>
+                                                </h6>
+                                            </div>
+                                            <div class="comment__p">
+
+                                                <h6>
+                                                    <%= item.season.name.uz %>
+                                                </h6>
+
+                                                <p>
+                                                    <%= item.message %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <% } %>
+
+
+                                        <% } %>
+
 
 
 
