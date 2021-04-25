@@ -32,19 +32,18 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <form action="/pay/check/<%= user.uid %>" method="POST"></form>
 
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Balansni to'ldirish</h5>
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Balansni to'ldirish</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-
+            <form action="/pay/check/<%= user.uid %>" method="POST">
                 <div class="modal-body">
                     <div class="form-auth">
                         <h4>Summa</h4>
-                        <input type="number" name="amount" value="0" placeholder="Summani kiriting..." required>
-                        <input type="hidden" name="userID" value="<%= user._id %>" required />
+                        <input type="number" name="amount" value="0" required>
+                        <input type="text" name="userID" value="<%= user._id %>" required />
                     </div>
 
                 </div>
@@ -54,7 +53,7 @@
             </form>
 
 
-            <% console.log(user) %>
+            <% console.log(user.name) %>
         </div>
 
     </div>
