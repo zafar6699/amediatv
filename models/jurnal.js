@@ -4,7 +4,6 @@ const jurnalSchema =  mongoose.Schema({
     userID: {
         type : mongoose.Schema.ObjectId,
         ref: 'Users',
-        required : true
     },
     date: {
         type: Date,
