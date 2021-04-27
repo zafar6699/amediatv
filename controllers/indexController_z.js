@@ -6,9 +6,14 @@ const News = require("../models/news")
 const Kino = require("../models/kino")
 const Category = require("../models/category")
 const Serial = require("../models/seriya")
+const Anotation = require('../models/anotatsiya')
 
 
 exports.Home = async (req, res) => {
+
+    const anotation = await Anotation.find().sort({date: -1}).limit(1)
+
+
     const category = await Category.find()
     let sortKino = []
 
@@ -70,7 +75,7 @@ exports.Home = async (req, res) => {
         title: "AmediaTV.uz",
         layout: "./layout",
         user: req.session.user, lang: req.session.ulang,
-        janr, slider, oneKino, news, kino, category, sortKino
+        janr, slider, oneKino, news, kino, category, sortKino, anotation
     })
 
     // res.json(sortKino)

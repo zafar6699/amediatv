@@ -191,21 +191,39 @@
                 <div class="box-border news-first">
                     <img class="back_korona" src="img/back_korona.png" alt="">
                     <div class="title-top">
-                        <h2>H.U.M</h2>
+                        <% if(lang==='uz' ){ %>
+                            <h2><%= anotation[0].name.uz  %> </h2>
+                        <% } %>
+                        <%  if(lang==='ru' ){ %>
+                            <h2><%= anotation[0].name.ru  %> </h2>
+                        <% } %>
+                        <%  if(lang==undefined ){ %>
+                            <h2><%= anotation[0].name.uz  %> </h2>
+                        <% } %>
+
+                        
                         <img src="img/korona.png" alt="">
                     </div>
                     <ul>
-                        <li>1. Haqida</li>
-                        <li>2. Umumiy</li>
-                        <li>3. Ma`lumot</li>
-                        <li>4. Yangi animelar haqida ma`lumotlar</li>
+
+                        <% if(lang==='uz' ){ %>
+                            <li><%= anotation[0].description.uz  %> </li>
+                        <% } %>
+                        <%  if(lang==='ru' ){ %>
+                            <li><%= anotation[0].description.ru  %> </li>
+                        <% } %>
+                        <%  if(lang==undefined ){ %>
+                            <li><%= anotation[0].description.uz  %> </li>
+                        <% } %>
+
+
                     </ul>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="box-border">
                     <!-- ONE KINO -->
-                    <iframe class="home__video" src="<%=oneKino[0].video %>"></iframe>
+                    <iframe class="home__video" src="<%= anotation[0].video %>"></iframe>
                 </div>
             </div>
 
