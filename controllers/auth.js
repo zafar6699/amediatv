@@ -121,9 +121,6 @@ exports.updateFile = async (req, res) => {
 
 }
 
-
-
-
 exports.UpdateDetails = async (req, res, next) => {
     const user = req.session.user
     const admin = await User.findByIdAndUpdate({ _id: user._id });

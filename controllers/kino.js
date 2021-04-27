@@ -227,7 +227,7 @@ exports.getById = async (req, res) => {
         })
     }
 
-    else if ((me.status === 'vip') && (season.price === 'free')) {
+    else if ((me.status === 'vip') && (kino.price === 'free')) {
         res.render("./main/kino", {
             title: "AmediaTV.uz",
             layout: 'layout',
