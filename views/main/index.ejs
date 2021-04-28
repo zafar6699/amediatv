@@ -223,10 +223,7 @@
             <div class="col-md-8">
                 <div class="box-border">
                     <!-- ONE KINO -->
-                    <video class="home__video"  controls="true" src="<%= anotation[0].video %>" autoplay="none" preload="auto" ></video>
-                    <amp-list load-more="manual" src="<%= anotation[0].video %>"></amp-list>
-                    <a target=_blank href="www.youtube.com/watch?v=<%=anotation[0].video %>"></a>
-                    <a target=_blank href="<%=anotation[0].video %>"></a>
+                    <iframe class="home__video"  src="<%= anotation[0].video%>?controls=0" ></iframe>
                 </div>
             </div>
 
