@@ -9,7 +9,84 @@
 </head>
 <body  style="background-color: rgb(41, 48, 75);">
     
-    <%- body %>
+
+
+    
+  <div id="particles-js" class="image_111">
+    <!-- <img src="/public/img/warning.jpg" alt=""> -->
+
+    <h3 class="text-white">Ushbu videoni ko'rish uchun:</h3>
+     <ul>
+       <li class="text-white">Ro'yhatdan o'ting</li>
+       <li class="text-white">Ro'yhatdan o'tgach "VIP" tarif sotib oling</li>
+     </ul>
+
+    <div class="flex-dir mt-4">
+      <button id="myBtn" class="btn btn-warning">Registratsiya</button>
+
+      <% if(anotation == "") {%>
+        <a href=""></a>
+        <% }else if (anotation) {%>
+            <i class="fa fa-eye"></i> <a target="_blank" href="<%= anotation[0].video %> " class="btn btn-warning"><%= anotation[0].name.uz %></a>
+            <% } %>
+    </div>
+
+
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-body">
+          <div class="form-auth mt-3">
+            <h6>Foydalanuvchi nomi</h6>
+            <input class="form-control" type="text" name="name" id="name" placeholder="Ismingizni kiriting...">
+          </div>
+          <div class="form-auth mt-3">
+            <h6>Email</h6>
+            <input class="form-control" type="email" name="email" id="email" placeholder="Emailni kiriting...">
+          </div>
+          <div class="form-auth mt-3">
+            <h6>Parol</h6>
+            <input class="form-control" type="password" name="password" id="password" placeholder="Parolni kiriting...">
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary">Ro'yxatdan
+            o'tish</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function () {
+          modal.style.display = "block";
+        }
+        span.onclick = function () {
+          modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      </script>
 
 </body>
 </html>

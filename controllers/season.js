@@ -155,7 +155,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     }
 
     else if (!me && (season.price === 'selling')) {
-        res.render("./main/notVip", {
+        res.render("error", {
             title: "AmediaTV.uz",
             layout: 'error',
             user: req.session.user,
@@ -165,7 +165,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     }
 
     else if ((me.status == 'user') && (season.price == 'selling')) {
-        res.render("./main/notVip", {
+        res.render("error", {
             title: "AmediaTV.uz",
             layout: 'error',
             user: req.session.user,
@@ -188,7 +188,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     }
 
     else if ((me.status !== 'vip') && (season.price === 'selling')) {
-        res.render('./main/notVip', {
+        res.render('error', {
             title: "401", layout: 'error',
             user: req.session.user,
             lang: req.session.ulang,
