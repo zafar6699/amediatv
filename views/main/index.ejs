@@ -192,13 +192,13 @@
                     <img class="back_korona" src="img/back_korona.png" alt="">
                     <div class="title-top">
                         <% if(lang==='uz' ){ %>
-                            <h2><%= anotation[0].name.uz  %> </h2>
+                            <h2><%= anotation.name.uz  %> </h2>
                         <% } %>
                         <%  if(lang==='ru' ){ %>
-                            <h2><%= anotation[0].name.ru  %> </h2>
+                            <h2><%= anotation.name.ru  %> </h2>
                         <% } %>
                         <%  if(lang==undefined ){ %>
-                            <h2><%= anotation[0].name.uz  %> </h2>
+                            <h2><%= anotation.name.uz  %> </h2>
                         <% } %>
 
                         
@@ -207,13 +207,13 @@
                     <ul>
 
                         <% if(lang==='uz' ){ %>
-                            <li><%= anotation[0].description.uz  %> </li>
+                            <li><%= anotation.description.uz  %> </li>
                         <% } %>
                         <%  if(lang==='ru' ){ %>
-                            <li><%= anotation[0].description.ru  %> </li>
+                            <li><%= anotation.description.ru  %> </li>
                         <% } %>
                         <%  if(lang==undefined ){ %>
-                            <li><%= anotation[0].description.uz  %> </li>
+                            <li><%= anotation.description.uz  %> </li>
                         <% } %>
 
 
