@@ -10,6 +10,7 @@ const JWT = require('jsonwebtoken');
 const User = require('../models/user')
 const md5 = require('md5');
 const Janr = require("../models/janr")
+const Anotation = require("../models/anotatsiya")
 
 
 exports.addCinema = asyncHandler(async (req, res, next) => {
@@ -151,6 +152,7 @@ exports.sortByCat = asyncHandler(async (req, res, next) => {
 
 exports.getById = async (req, res) => {
 
+    const anotation = await Anotation.find().sort({date: -1}).limit(1)
     let janr = await Janr.find()
     const comment = await Comment.find({ kinoId: req.params.id })
         .sort({ date: -1 })
@@ -179,7 +181,7 @@ exports.getById = async (req, res) => {
             layout: 'error',
             user: req.session.user,
             lang: req.session.ulang,
-            janr
+            janr, anotation
         })
     }
 
@@ -189,7 +191,7 @@ exports.getById = async (req, res) => {
             layout: 'error',
             user: req.session.user,
             lang: req.session.ulang,
-            janr
+            janr, anotation,anotation
         })
     }
 
@@ -210,7 +212,7 @@ exports.getById = async (req, res) => {
             title: "401", layout: 'error',
             user: req.session.user,
             lang: req.session.ulang,
-            janr, seria, comment
+            janr, seria, comment, anotation
         })
         // user vip bolsa va serial pullik bolsa serialga kiradi
     }

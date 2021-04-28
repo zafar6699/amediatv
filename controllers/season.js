@@ -7,6 +7,7 @@ const path = require('path');
 const sharp = require('sharp')
 const JWT = require('jsonwebtoken');
 const User = require('../models/user')
+const Anotation = require('../models/anotatsiya')
 const SeasonComment = require('../models/AddCommentSeason')
 
 
@@ -128,6 +129,7 @@ exports.getAllSeason = asyncHandler(async (req, res, next) => {
     // res.json(season)
 })
 exports.getByIdSeason = asyncHandler(async (req, res, next) => {
+    const anotation = await Anotation.find().sort({date: -1}).limit(1)
     const comment = await SeriyaCommnent.find({ season: req.params.id })
         .sort({ date: -1 })
         .populate(['user'])
@@ -158,7 +160,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             layout: 'error',
             user: req.session.user,
             lang: req.session.ulang,
-            janr
+            janr, anotation
         })
     }
 
@@ -168,7 +170,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             layout: 'error',
             user: req.session.user,
             lang: req.session.ulang,
-            janr
+            janr, anotation
         })
     }
 
@@ -190,7 +192,7 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
             title: "401", layout: 'error',
             user: req.session.user,
             lang: req.session.ulang,
-            janr, seria, comment
+            janr, seria, comment, anotation
         })
         // user vip bolsa va serial pullik bolsa serialga kiradi
     }
