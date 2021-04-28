@@ -12,7 +12,7 @@ const Anotation = require('../models/anotatsiya')
 exports.Home = async (req, res) => {
 
     const Anotatsiya = await Anotation.find().sort({date: -1})
-    const anontation = Anotatsiya[0]
+    const anotation = Anotatsiya[0]
 
 
     const category = await Category.find()
