@@ -9,7 +9,7 @@ const seriyaSchema = new mongoose.Schema({
     slug: {type: String, unique: true, lowercase: true},
     url: { type: String, required: true },
     length: {type: String, required: true},
-    tags: {type: String, default: ""},
+    tags: {type: String, default: " "},
     date: {type: Date, default: Date.now()}
 })
 module.exports = mongoose.model('seriya', seriyaSchema)
