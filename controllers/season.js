@@ -155,22 +155,44 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     }
 
     else if (!me && (season.price === 'selling')) {
-        res.render("error", {
+        // res.render("error", {
+        //     title: "AmediaTV.uz",
+        //     layout: 'error',
+        //     user: req.session.user,
+        //     lang: req.session.ulang,
+        //     janr, anotation
+        // })
+
+        res.render("./main/oneserial", {
             title: "AmediaTV.uz",
-            layout: 'error',
+            layout: 'layout',
             user: req.session.user,
             lang: req.session.ulang,
-            janr, anotation
+            janr,
+            serial: season,
+            seria,
+            comment
         })
     }
 
     else if ((me.status == 'user') && (season.price == 'selling')) {
-        res.render("error", {
+        // res.render("error", {
+        //     title: "AmediaTV.uz",
+        //     layout: 'error',
+        //     user: req.session.user,
+        //     lang: req.session.ulang,
+        //     janr, anotation
+        // })
+
+        res.render("./main/oneserial", {
             title: "AmediaTV.uz",
-            layout: 'error',
+            layout: 'layout',
             user: req.session.user,
             lang: req.session.ulang,
-            janr, anotation
+            janr,
+            serial: season,
+            seria,
+            comment
         })
     }
 
@@ -188,12 +210,24 @@ exports.getByIdSeason = asyncHandler(async (req, res, next) => {
     }
 
     else if ((me.status !== 'vip') && (season.price === 'selling')) {
-        res.render('error', {
-            title: "401", layout: 'error',
+        // res.render('error', {
+        //     title: "401", layout: 'error',
+        //     user: req.session.user,
+        //     lang: req.session.ulang,
+        //     janr, seria, comment, anotation
+        // })
+
+        res.render("./main/oneserial", {
+            title: "AmediaTV.uz",
+            layout: 'layout',
             user: req.session.user,
             lang: req.session.ulang,
-            janr, seria, comment, anotation
+            janr,
+            serial: season,
+            seria,
+            comment
         })
+        
         // user vip bolsa va serial pullik bolsa serialga kiradi
     }
 

@@ -176,23 +176,44 @@ exports.getById = async (req, res) => {
     }
 
     else if (!me && (kino.price === 'selling')) {
-        res.render("./main/notVip", {
+        // res.render("./main/notVip", {
+        //     title: "AmediaTV.uz",
+        //     layout: 'error',
+        //     user: req.session.user,
+        //     lang: req.session.ulang,
+        //     janr, anotation
+        // })
+
+        res.render("./main/kino", {
             title: "AmediaTV.uz",
-            layout: 'error',
+            layout: 'layout',
             user: req.session.user,
             lang: req.session.ulang,
-            janr, anotation
+            janr,
+            comment,
+            kino
         })
     }
 
     else if ((me.status == 'user') && (kino.price == 'selling')) {
-        res.render("./main/notVip", {
+        // res.render("./main/notVip", {
+        //     title: "AmediaTV.uz",
+        //     layout: 'error',
+        //     user: req.session.user,
+        //     lang: req.session.ulang,
+        //     janr, anotation,anotation
+        // })
+
+        res.render("./main/kino", {
             title: "AmediaTV.uz",
-            layout: 'error',
+            layout: 'layout',
             user: req.session.user,
             lang: req.session.ulang,
-            janr, anotation,anotation
+            janr,
+            comment,
+            kino
         })
+
     }
 
     else if ((me.status == 'user') && (kino.price == 'free')) {
@@ -208,11 +229,20 @@ exports.getById = async (req, res) => {
     }
 
     else if ((me.status !== 'vip') && (kino.price === 'selling')) {
-        res.render('./main/notVip', {
-            title: "401", layout: 'error',
+        // res.render('./main/notVip', {
+        //     title: "401", layout: 'error',
+        //     user: req.session.user,
+        //     lang: req.session.ulang,
+        //     janr, seria, comment, anotation
+        // })
+        res.render("./main/kino", {
+            title: "AmediaTV.uz",
+            layout: 'layout',
             user: req.session.user,
             lang: req.session.ulang,
-            janr, seria, comment, anotation
+            janr,
+            comment,
+            kino
         })
         // user vip bolsa va serial pullik bolsa serialga kiradi
     }
@@ -242,81 +272,5 @@ exports.getById = async (req, res) => {
     }
 
 
-
-
-
-    // const me = req.session.user
-    // if ((!me || me) || kino.price === 'free') {
-    //     res.render("./main/kino", {
-    //         title: "AmediaTV.uz",
-    //         layout: 'layout',
-    //         user: req.session.user,
-    //         lang: req.session.ulang,
-    //         janr,
-    //         comment,
-    //         kino
-    //     })
-    // }
-    // else if (!me && kino.price == 'selling') {
-    //     res.render("./main/notVip", {
-    //         title: "AmediaTV.uz",
-    //         layout: 'error',
-
-    //     })
-    // }
-
-    // else {
-    //     const me = req.session.user
-    //     if (!me && kino.price === 'selling') {
-    //         res.render("./main/notVip", {
-    //             title: "AmediaTV.uz",
-    //             layout: 'error',
-    //         })
-    //     }
-    //     else if (!me && kino.price === 'free') {
-    //         res.render("./main/kino", {
-    //             title: "AmediaTV.uz",
-    //             layout: 'layout',
-    //             user: req.session.user,
-    //             lang: req.session.ulang,
-    //             janr,
-    //             kino,
-    //             comment
-    //         })
-    //     }
-    //     else if (me.status !== 'vip' && kino.price === 'selling') {
-    //         res.render('./main/notVip', {
-    //             title: "Error", layout: 'error',
-    //             user: req.session.user,
-    //             lang: req.session.ulang,
-
-    //         })
-    //     } else if (!me && me.price === 'selling') {
-    //         res.render('./main/notVip', {
-    //             title: "Error", layout: 'error',
-    //             user: req.session.user,
-    //             lang: req.session.ulang,
-    //         })
-    //     } else if (me.status === 'vip' && kino.price === 'selling') {
-
-    //         res.render("./main/kino", {
-    //             title: "AmediaTV.uz",
-    //             layout: 'layout',
-    //             user: req.session.user,
-    //             lang: req.session.ulang,
-    //             janr,
-    //             kino,
-    //             comment
-    //         })
-    //     }
-
-    // }
-
-
-
-
-
-
-}
 
 
