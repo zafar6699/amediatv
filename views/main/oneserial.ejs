@@ -83,34 +83,11 @@
             </div>
             <div class="col-md-3 mt-4  hidden-download-aa">
 
-                <% if (!user || user.status=="user" ) {%>
-                    <div class="hidden-download-btn"></div>
-                    <% }else {%>
-                        <div class="hidden-download-btn">
-                            <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
-                                <i class="fa fa-download"></i> Yuklab olish
-                            </a>
-                        </div>
-                        <% } %>
-
-                        <% if(!user) {%>
-                            <div class=" col alert alert-danger hidden-download-btn" role="alert">
-                                <p style="font-size: 14px; word-break: break-all " class="hidden-download-btn">
-                                    Videoni tortib olish uchun vip sotib oling: <br> Murojat uchun: +998909596608
-                                </p> 
-                            </div>
-                        <% }else if (user.status == 'user') {%>
-                            <div class=" col alert alert-danger hidden-download-btn" role="alert">
-                                <p style="font-size: 14px; word-break: break-all " class="hidden-download-btn">
-                                    Videoni tortib olish uchun vip sotib oling: <br> Murojat uchun: +998909596608
-                                </p> 
-                            </div>
-                        <%} else if (user.status == 'vip') {%>  
-                                <div class=" col hidden-download-btn">
-                                    <p style="font-size: 14px; word-break: break-all " class="hidden-download-btn"></p>
-                                </div>
-                        <% } %> 
-
+                <div class="hidden-download-btn">
+                    <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
+                        <i class="fa fa-download"></i> Yuklab olish
+                    </a>
+                </div>
 
                 <h1 class="title__z mt-3"><i class="fa fa-angle-right"></i> Ma`lumotlar</h1>
 
@@ -184,36 +161,11 @@
             </div>
             <div class="col-md-9 mt-4 download-bottom-aa">
 
-
-                <% if (!user || user.status=="user" ) {%>
-                    <div class="download-bottom"></div>
-                    <% }else {%>
-                        <div class="download-bottom">
-                            <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
-                                <i class="fa fa-download"></i> Yuklab olish
-                            </a>
-                        </div>
-                        <% } %>
-
-
-
-                        <% if(!user) {%>
-                            <div class="col alert alert-danger download-bottom" role="alert">
-                                <p style="font-size: 14px; word-break: break-all " class="download-bottom">
-                                    Videoni tortib olish uchun vip sotib oling: <br> Murojat uchun: +998909596608
-                                </p> 
-                            </div>
-                        <% }else if (user.status == 'user') {%>
-                            <div class="col alert alert-danger download-bottom" role="alert">
-                                <p style="font-size: 14px; word-break: break-all " class="download-bottom">
-                                    Videoni tortib olish uchun vip sotib oling: <br> Murojat uchun: +998909596608
-                                </p> 
-                            </div>
-                        <%} else if (user.status == 'vip') {%>  
-                                <div class="col download-bottom">
-                                    <p style="font-size: 14px; word-break: break-all " class="download-bottom"></p>
-                                </div>
-                        <% } %>
+                <div class="download-bottom">
+                    <a class="__download serial_url" href="<%= seria[0].url %>" target="_blank">
+                        <i class="fa fa-download"></i> Yuklab olish
+                    </a>
+                </div>
 
 
                         
