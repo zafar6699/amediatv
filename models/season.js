@@ -46,7 +46,7 @@ const SeasonSchema = new mongoose.Schema({
     country: {type: String, required: true},
     rating: {type: Number, default: 0},
     year: {type: String, required: true},
-    tags: {type: String, default: " "},
+    tags: {type: String},
     num: {type: String, required: true},
 
     slug: {type: String, unique: true, lowercase: true},

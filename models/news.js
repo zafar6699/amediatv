@@ -12,7 +12,7 @@ const newsSchema = mongoose.Schema({
     image: {type: String, required: true},
     slug: {type: String, required: true},
     videoLink: {type: String, default: ""},
-    tags: {type: String, default: ""},
+    tags: {type: String},
     status:{
         type: Boolean, default: true
     },

@@ -68,6 +68,7 @@ exports.addSeason = asyncHandler(async (req, res, next) => {
 
 
     const season = new Season({
+        tags: req.body.tags,
         name: {
             uz: req.body.nameuz,
             ru: req.body.nameru
@@ -94,7 +95,7 @@ exports.addSeason = asyncHandler(async (req, res, next) => {
         price: req.body.price,
         janr: janrs,
         country: req.body.country,
-        tags: req.body.tags,
+       
         slug: (Math.floor(Math.random() * 9999999999999)).toString()
     })
     season.save()
@@ -271,7 +272,7 @@ exports.addSeriya = asyncHandler(async (req, res, next) => {
         video: req.body.video,
         season: req.body.season,
         slug: (Math.floor(Math.random() * 9999999999999)).toString(),
-        // tags: req.body.tags
+        
     })
     seriya.save()
         .then(() => {

@@ -52,7 +52,7 @@ const KinoSchema = mongoose.Schema({
     }],
     country: {type: String, required: true},
     rating: {type: Number, default: 0},
-    tags: {type: String, default: " "},
+    tags: {type: String},
     info:{
         views: {type: Number, default: 0},
     },
